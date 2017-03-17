@@ -34,7 +34,6 @@ public class PublicMenu extends Menu{
                    }
                    else
                    {
-                      System.out.println("you have successfully logged in.");
                       /*
                        *  call customer or owner menu? 
                        *  or should we do this from the login function?
@@ -64,6 +63,8 @@ public class PublicMenu extends Menu{
 	public boolean login()
    {
       Boolean loginSuccess = false;
+      Boolean userNameExist = false;
+      Boolean passCorrect = false;
       String username, password;
       
       // reads in the two databases
@@ -77,39 +78,66 @@ public class PublicMenu extends Menu{
          
          username = sc.next();
          
-         // gets all the user names (keys) and adds them to an array, "key" : "values"
-         String[] custUsernames = JSONObject.getNames(custInfo);
+         // gets the business database username
+         String BusDBUsername = busInfo.getString("username");
          
-         // searches customers database
-         for(int i=0; i<custUsernames.length; i++)
+         //checks user input with database
+         if( username.equals(BusDBUsername) )
          {
-            String jsonKey = custUsernames[i];
-            if(jsonKey.equals(username))
-            {
-               JSONObject customer = custInfo.getJSONObject(username);
-               
-               
-               System.out.println("Please enter your password:");
-               password = sc.next();
-
-               System.out.println( customer.getString("password") );
-               System.out.println( password );
-               
-               if ( password.equals( customer.getString("password") ) )
-               {
-                  System.out.println("You have successfully logged in.");
-                  return true;
-               }
-               else
-               {
-                  System.out.println("your password doesn't match the one for " + jsonKey );
-               }
-               
-               
-               break;
-            }         
+            userNameExist = true;
+            System.out.println("\nYou have successfully logged in.\n");
+            return true;
          }
-         // searches business database
+         else
+         {
+            // gets all the user names (keys) and adds them to an array, "key" : "values"
+            String[] custUsernames = JSONObject.getNames(custInfo);
+            
+            // searches customers database
+            for(int i=0; i<custUsernames.length; i++)
+            {
+               String jsonKey = custUsernames[i];
+               if(jsonKey.equals(username))
+               {
+                  userNameExist = true;
+                  JSONObject customer = custInfo.getJSONObject(username);
+                  
+                  System.out.println("\nPlease enter your password:");
+                  
+                  do
+                  {
+                     
+                     password = sc.next();
+                    
+                     if ( password.equals( customer.getString("password") ) )
+                     {
+                        System.out.println("\nYou have successfully logged in.\n");
+                        passCorrect = true;
+                        return true;
+                     }
+                     else
+                     {
+                        System.out.println("\nYour password doesn't match the one for: \"" + jsonKey + "\"");
+                        System.out.println("Please re-enter your password: (Ctrl-D to return to main menu)");
+                     }
+                  }
+                  while(passCorrect != true);
+                  
+                                    
+                  break;
+               }         
+            }
+         }
+         
+         if(userNameExist == false)
+         {
+            System.out.println("This username doesn't exist: \"" + username + "\"");
+            
+         }
+         
+         userNameExist = false;
+         System.out.println("Please re-enter your username: (Ctrl-D to return to main menu)");
+         
       }
       while(loginSuccess != true);
       
