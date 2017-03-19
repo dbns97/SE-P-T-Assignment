@@ -1,4 +1,4 @@
-package code;
+
 import java.util.Scanner;
 
 import org.json.JSONObject;
@@ -57,7 +57,7 @@ public class PublicMenu extends Menu{
 	
 	public boolean register()
 	{
-		
+		return false;
 	}
 	
 	public boolean login()
