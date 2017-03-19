@@ -1,19 +1,31 @@
 package code;
 import java.util.Scanner;
-import org.json.simple.*
-
-import org.json.JSONObject;
-import org.json.simple.*;
-import org.json.simple.parser.JSONParser;
+import java.io.*;
+import org.json.*;
 
 public class PublicMenu extends Menu{
 
 	private Scanner sc;
-	JSONParser parser = new JSONParser();
+    private JSONObject busInfo;
+    private JSONObject custInfo;
    
 	public PublicMenu()
 	{
 		sc = new Scanner(System.in);
+        try 
+        {
+            JSONObject busInfo = JSONObject(new Scanner(new File("business.json")).useDelimiter("\\Z").next());
+            JSONObject custInfo = JSONObject(new Scanner(new File("customerinfo.json")).useDelimiter("\\Z").next());
+            //JSONObject custInfo = (JSONObject) parser.parse(new FileReader("customerinfo.json"));
+        } 
+        catch(FileNotFoundException e) 
+        {
+            e.printStackTrace();
+        }
+        catch(IOException e) 
+        {
+            e.printStackTrace();
+        }
 	}
 	
 	public void run()
@@ -60,10 +72,6 @@ public class PublicMenu extends Menu{
     {
         Boolean uniqueUsername = false;
         Boolean registerSuccess = false;
-        
-        // Loading necessary json files
-        JSONObject busInfo = JSONUtils.getJSONObjectFromFile("business.json");
-        JSONObject custInfo = JSONUtils.getJSONObjectFromFile("customerinfo.json");
 		
 		// Get username from user
         do
@@ -77,7 +85,7 @@ public class PublicMenu extends Menu{
             // Checks if the username is same as the owners
             if(username.equals(ownerUsername))
             {
-                System.out.println("Username already exists");
+                System.out.println("Username already exists (Ctrl-D to return to main menu)");
                 continue;
             }
             
@@ -118,7 +126,7 @@ public class PublicMenu extends Menu{
                 
             }
         }
-        while (!registerSuccess)
+        while (!registerSuccess);
     }
 	
 	public boolean login()
@@ -129,14 +137,13 @@ public class PublicMenu extends Menu{
       String username, password;
       
       // reads in the two databases
-      JSONObject busInfo = JSONUtils.getJSONObjectFromFile("business.json");
-      JSONObject custInfo = JSONUtils.getJSONObjectFromFile("customerinfo.json");
+      //JSONObject busInfo = JSONUtils.getJSONObjectFromFile("business.json");
+      //JSONObject custInfo = JSONUtils.getJSONObjectFromFile("customerinfo.json");
       
       System.out.println("Please enter your username:");
       
       do
       {
-         
          username = sc.next();
          
          // gets the business database username
@@ -183,7 +190,6 @@ public class PublicMenu extends Menu{
                      }
                   }
                   while(passCorrect != true);
-                  
                                     
                   break;
                }         
@@ -193,7 +199,6 @@ public class PublicMenu extends Menu{
          if(userNameExist == false)
          {
             System.out.println("This username doesn't exist: \"" + username + "\"");
-            
          }
          
          userNameExist = false;
@@ -207,7 +212,7 @@ public class PublicMenu extends Menu{
     }
 	
     public void printMainMenu()
-   `{
+    {
         System.out.println("   Appointment Booking System   ");
         System.out.println("--------------------------------");
         System.out.println("1. Login");
