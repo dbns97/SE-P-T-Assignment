@@ -1,4 +1,4 @@
-package code;
+
 import java.util.Scanner;
 import java.io.*;
 import org.json.*;
@@ -12,25 +12,12 @@ public class PublicMenu extends Menu{
 	public PublicMenu()
 	{
 		sc = new Scanner(System.in);
-        try 
-        {
-            JSONObject busInfo = JSONObject(new Scanner(new File("business.json")).useDelimiter("\\Z").next());
-            JSONObject custInfo = JSONObject(new Scanner(new File("customerinfo.json")).useDelimiter("\\Z").next());
-            //JSONObject custInfo = (JSONObject) parser.parse(new FileReader("customerinfo.json"));
-        } 
-        catch(FileNotFoundException e) 
-        {
-            e.printStackTrace();
-        }
-        catch(IOException e) 
-        {
-            e.printStackTrace();
-        }
 	}
 	
 	public void run()
     {
         int choice;
+        
         do
         {
 		  printMainMenu();
@@ -72,12 +59,24 @@ public class PublicMenu extends Menu{
     {
         Boolean uniqueUsername = false;
         Boolean registerSuccess = false;
-		
+        
+        JSONObject busInfo = JSONUtils.getJSONObjectFromFile("business.json");
+        JSONObject custInfo = JSONUtils.getJSONObjectFromFile("customerinfo.json");
+        		
 		// Get username from user
         do
         {
-            System.out.println("Please enter your Username:");
-            String username = sc.next();
+        	String username;
+        	
+        	// Clearing \n character from before
+        	sc.nextLine();
+        	
+        	while(true)
+        	{
+        		System.out.println("Please enter your Username:");
+        		username = sc.nextLine();
+        		if(!username.trim().isEmpty()) break;
+        	}
             
             String ownerUsername = busInfo.getString("username");
             JSONArray usernames = custInfo.names();
@@ -89,44 +88,90 @@ public class PublicMenu extends Menu{
                 continue;
             }
             
+            // Scans the usernames JSONArray to check if the username already exists
             int i = 0;
             if(usernames != null)
             {
-                uniqueUsername = true;                
-            }
-            else
-            {
-                while(!usernames.isNull(i))
+            	uniqueUsername = true;
+            	while(!usernames.isNull(i))
                 {
                     if(username.equals(usernames.getString(i)))
                     {
+                    	System.out.println("Username already exists (Ctrl-D to return to main menu)");
+                    	uniqueUsername = false;
                         break;
                     }
-                
+                    
                     i++;
-                }
-                
+                }            
+            }
+            else
+            {                
                 uniqueUsername = true;
             }
             
             if(uniqueUsername)
             {
-                System.out.println("Please enter your Password:");
-                String password = sc.next();
+            	// Holds all the user information to be written on file
+            	JSONObject newUser = new JSONObject();
+            	
+            	String password;
+            	while(true)
+            	{
+            		System.out.println("Please enter your Password:");
+            		 password = sc.nextLine();
+            		if(!password.trim().isEmpty()) break;
+            	}
+            	newUser.put("password", password);
+            	
+            	String name;
+            	while(true)
+            	{
+            		System.out.println("Please enter your Name:");
+            		name = sc.nextLine();
+            		if(name.matches("[a-zA-z ,.'-]+") && !name.trim().isEmpty()) break;
+            	}
+                newUser.put("name", name);
                 
-                System.out.println("Please enter your Name:");
-                String name = sc.next();
+                String address;
+            	while(true)
+            	{
+            		System.out.println("Please enter your Address (One line):");
+            		address = sc.nextLine();
+            		if(address.matches("[a-zA-z0-9 ,.'-]+") && !address.trim().isEmpty()) break;
+            	}
+            	newUser.put("address", address);
                 
-                System.out.println("Please enter your Address:");
-                String address = sc.next();
+            	String number;
+            	while(true)
+            	{
+            		System.out.println("Please enter your Contact Number (Only digits):");
+            		number = sc.nextLine();
+            		if(number.matches("[0-9]+") && !number.trim().isEmpty()) break;
+            	}
+                newUser.put("contact number", number);
                 
-                System.out.println("Please enter your Contact Number:");
-                String number = sc.next();
+                newUser.put("booking status", "not booked");
+                newUser.put("booking time", -1);
+                custInfo.put(username, newUser);
                 
+                try
+                {
+                	PrintWriter custWriter = new PrintWriter("code/src/customerinfo.json");
+                	custWriter.print(custInfo.toString(4));
+                	custWriter.close();
+                }
+                catch (FileNotFoundException e)
+                {
+                	e.printStackTrace();
+                }
                 
+                registerSuccess = true;
             }
         }
         while (!registerSuccess);
+        
+        return true;
     }
 	
 	public boolean login()
@@ -137,8 +182,8 @@ public class PublicMenu extends Menu{
       String username, password;
       
       // reads in the two databases
-      //JSONObject busInfo = JSONUtils.getJSONObjectFromFile("business.json");
-      //JSONObject custInfo = JSONUtils.getJSONObjectFromFile("customerinfo.json");
+      JSONObject busInfo = JSONUtils.getJSONObjectFromFile("business.json");
+      JSONObject custInfo = JSONUtils.getJSONObjectFromFile("customerinfo.json");
       
       System.out.println("Please enter your username:");
       

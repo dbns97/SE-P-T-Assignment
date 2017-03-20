@@ -1,35 +1,42 @@
 {
-    "username":
-    {
-        "password": "pass1",
-        "name": "NameOfCust",
-        "address": "12345 fake street", 
-        "contact number" : "87362981223",
-        
-        "booking status" : "not booked",
-        "booking time": null
+    "username 4": {
+        "booking status": "not booked",
+        "password": "pass",
+        "address": "29 new address new place",
+        "booking time": -1,
+        "contact number": "13464784",
+        "name": "new name"
     },
-    
-    "username2":
-    {
-        "password": "pass2",
-        "name": "NameOfCust",
-        "address": "12345 fake street", 
-        "contact number" : "87362981223",
-        
-        "booking status" : "not booked",
-        "booking time": null
+    "username4": {
+        "booking status": "not booked",
+        "password": "pass",
+        "address": "293 street suburb city",
+        "booking time": -1,
+        "contact number": "879879",
+        "name": "new name"
     },
-    
-    "username3":
-    {
+    "username3": {
+        "booking status": "not booked",
         "password": "pass3",
-        "name": "NameOfCust",
-        "address": "12345 fake street", 
-        "contact number" : "87362981223",
-        
-        "booking status" : "not booked",
-        "booking time": null
+        "address": "12345 fake street",
+        "booking time": null,
+        "contact number": "87362981223",
+        "name": "NameOfCust"
+    },
+    "username2": {
+        "booking status": "not booked",
+        "password": "pass2",
+        "address": "12345 fake street",
+        "booking time": null,
+        "contact number": "87362981223",
+        "name": "NameOfCust"
+    },
+    "username": {
+        "booking status": "not booked",
+        "password": "pass1",
+        "address": "12345 fake street",
+        "booking time": null,
+        "contact number": "87362981223",
+        "name": "NameOfCust"
     }
-    
 }

@@ -1,4 +1,4 @@
-package code;
+
 import java.util.Scanner;
 public class OwnerMenu extends Menu{
 	
@@ -16,12 +16,13 @@ public class OwnerMenu extends Menu{
 	
 	public boolean addEmployee()
 	{
+		return false;
 		
 	}
 	
 	public boolean addShift()
 	{
-		
+		return false;
 	}
 	
 	public void viewBookings()
@@ -31,7 +32,7 @@ public class OwnerMenu extends Menu{
 	
 	public boolean addBookingTimes()
 	{
-		
+		return false;
 	}
 	
 	public void printAvailability()
