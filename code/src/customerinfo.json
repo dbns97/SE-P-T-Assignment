@@ -1,32 +1,42 @@
 {
-    "username":
-    {
-        "password": "pass1",
-        "name": "NameOfCust",
-        "address": "12345 fake street",
-        "contact number" : "87362981223",
-        "booking status" : "not booked",
-        "booking time": null
-    },
-
-    "username2":
-    {
-        "password": "pass2",
-        "name": "NameOfCust",
-        "address": "12345 fake street",
-        "contact number" : "87362981223",
-        "booking status" : "not booked",
-        "booking time": null
-    },
-
-    "username3":
-    {
+    "username3": {
+        "booking status": "not booked",
         "password": "pass3",
-        "name": "NameOfCust",
         "address": "12345 fake street",
-        "contact number" : "87362981223",
-        "booking status" : "not booked",
-        "booking time": null
+        "booking time": null,
+        "contact number": "87362981223",
+        "name": "NameOfCust"
+    },
+    "username2": {
+        "booking status": "not booked",
+        "password": "pass2",
+        "address": "12345 fake street",
+        "booking time": null,
+        "contact number": "87362981223",
+        "name": "NameOfCust"
+    },
+    "username1": {
+        "booking status": "not booked",
+        "password": "pass",
+        "address": "29305243",
+        "booking time": -1,
+        "contact number": "920357",
+        "name": "ehga"
+    },
+    "username 1": {
+        "booking status": "not booked",
+        "password": "pass1",
+        "address": "jhfgi0",
+        "booking time": -1,
+        "contact number": "9290358",
+        "name": "ajgha"
+    },
+    "username": {
+        "booking status": "not booked",
+        "password": "pass1",
+        "address": "12345 fake street",
+        "booking time": null,
+        "contact number": "87362981223",
+        "name": "NameOfCust"
     }
-
 }

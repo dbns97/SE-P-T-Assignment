@@ -22,6 +22,8 @@ public class PublicMenu extends Menu{
             printMainMenu();
 
             choice = sc.nextInt();
+            //Removes newline character if needed
+            if(sc.hasNextLine()) sc.nextLine();
 
             switch(choice)
             {
@@ -67,15 +69,11 @@ public class PublicMenu extends Menu{
         {
             String username;
 
-            // Clearing \n character from before
-            sc.nextLine();
-
-            while(true)
-            {
-                System.out.println("Please enter your Username:");
-                username = sc.nextLine();
-                if(!username.trim().isEmpty()) break;
-            }
+            
+            System.out.println("Please enter your Username:");
+            username = sc.nextLine();
+            
+            if(username.trim().isEmpty() || !username.matches("[a-zA-z0-9]+")) continue;
 
             String ownerUsername = busInfo.getString("username");
             JSONArray usernames = custInfo.names();
@@ -84,6 +82,7 @@ public class PublicMenu extends Menu{
             if(username.equals(ownerUsername))
             {
                 System.out.println("Username already exists (Ctrl-D to return to main menu)");
+                uniqueUsername = false;
                 continue;
             }
 
@@ -98,7 +97,6 @@ public class PublicMenu extends Menu{
                     {
                         System.out.println("Username already exists (Ctrl-D to return to main menu)");
                         uniqueUsername = false;
-                        break;
                     }
 
                     i++;
@@ -156,7 +154,7 @@ public class PublicMenu extends Menu{
 
                 try
                 {
-                    PrintWriter custWriter = new PrintWriter("code/src/customerinfo.json");
+                    PrintWriter custWriter = new PrintWriter("customerinfo.json");
                     custWriter.print(custInfo.toString(4));
                     custWriter.close();
                 }
