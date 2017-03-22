@@ -3,33 +3,30 @@
     {
         "password": "pass1",
         "name": "NameOfCust",
-        "address": "12345 fake street", 
+        "address": "12345 fake street",
         "contact number" : "87362981223",
-        
         "booking status" : "not booked",
         "booking time": null
     },
-    
+
     "username2":
     {
         "password": "pass2",
         "name": "NameOfCust",
-        "address": "12345 fake street", 
+        "address": "12345 fake street",
         "contact number" : "87362981223",
-        
         "booking status" : "not booked",
         "booking time": null
     },
-    
+
     "username3":
     {
         "password": "pass3",
         "name": "NameOfCust",
-        "address": "12345 fake street", 
+        "address": "12345 fake street",
         "contact number" : "87362981223",
-        
         "booking status" : "not booked",
         "booking time": null
     }
-    
+
 }
