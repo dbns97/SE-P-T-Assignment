@@ -5,6 +5,7 @@ import org.json.*;
 public class PublicMenu extends Menu{
 
     private Scanner sc;
+    // Stores the two json files in memory to be read by the system
     private JSONObject busInfo;
     private JSONObject custInfo;
 
@@ -13,6 +14,7 @@ public class PublicMenu extends Menu{
         sc = new Scanner(System.in);
     }
 
+    // Main menu loop, takes number from user and calls functions
     public void run()
     {
         int choice;
@@ -22,7 +24,7 @@ public class PublicMenu extends Menu{
             printMainMenu();
 
             choice = sc.nextInt();
-            //Removes newline character if needed
+            // Removes newline character, clearing buffer
             if(sc.hasNextLine()) sc.nextLine();
 
             switch(choice)
@@ -33,14 +35,6 @@ public class PublicMenu extends Menu{
                     {
                         System.out.println("login fail");
                     }
-                    else
-                    {
-                        /*
-                        *  call customer or owner menu?
-                        *  or should we do this from the login function?
-                        */
-                    }
-
                     break;
                 case 2:
                     Boolean didRegister = register();
@@ -81,7 +75,7 @@ public class PublicMenu extends Menu{
             // Checks if the username is same as the owners
             if(username.equals(ownerUsername))
             {
-                System.out.println("Username already exists (Ctrl-D to return to main menu)");
+                System.out.println("Username already exists");
                 uniqueUsername = false;
                 continue;
             }
@@ -95,7 +89,7 @@ public class PublicMenu extends Menu{
                 {
                     if(username.equals(usernames.getString(i)))
                     {
-                        System.out.println("Username already exists (Ctrl-D to return to main menu)");
+                        System.out.println("Username already exists");
                         uniqueUsername = false;
                     }
 
@@ -228,7 +222,7 @@ public class PublicMenu extends Menu{
                             else
                             {
                                 System.out.println("\nYour password doesn't match the one for: \"" + jsonKey + "\"");
-                                System.out.println("Please re-enter your password: (Ctrl-D to return to main menu)");
+                                System.out.println("Please re-enter your password:");
                             }
                         }
                         while(passCorrect != true);
@@ -244,7 +238,7 @@ public class PublicMenu extends Menu{
             }
 
             userNameExist = false;
-            System.out.println("Please re-enter your username: (Ctrl-D to return to main menu)");
+            System.out.println("Please re-enter your username:");
 
         }
         while(loginSuccess != true);
