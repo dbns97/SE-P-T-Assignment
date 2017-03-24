@@ -1,9 +1,17 @@
 {
+    "username5": {
+        "booking status": "not booked",
+        "password": "pass5",
+        "address": "aajhfhjfas89jhka",
+        "booking time": -1,
+        "contact number": "36385863",
+        "name": "my name"
+    },
     "username3": {
         "booking status": "not booked",
         "password": "pass3",
         "address": "12345 fake street",
-        "booking time": null,
+        "booking time": -1,
         "contact number": "87362981223",
         "name": "NameOfCust"
     },
@@ -35,7 +43,7 @@
         "booking status": "not booked",
         "password": "pass1",
         "address": "12345 fake street",
-        "booking time": null,
+        "booking time": -1,
         "contact number": "87362981223",
         "name": "NameOfCust"
     }

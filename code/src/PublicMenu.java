@@ -64,7 +64,7 @@ public class PublicMenu extends Menu{
             String username;
 
             
-            System.out.println("Please enter your Username:");
+            System.out.println("Please enter your Username (No symbols or whitespace):");
             username = sc.nextLine();
             
             if(username.trim().isEmpty() || !username.matches("[a-zA-z0-9]+")) continue;
