@@ -32,21 +32,26 @@ public class PublicMenu extends Menu {
 		this.primaryStage.setTitle("Booking System");
 		
 		setRoot();
+		showPublicMenu();
+		
+	}
+	
+	public void showPublicMenu()
+	{
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("PublicMenu.fxml"));
 			AnchorPane publicMenu = (AnchorPane) loader.load();
+			PublicMenuController controller = loader.getController();
 			
 			//primaryStage.setWidth(publicMenu.getPrefWidth());
 			//primaryStage.setHeight(publicMenu.getPrefHeight());
 			root.setCenter(publicMenu);
-			PublicMenuController controller = loader.getController();
 			controller.setMainMenu(this);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
 	public void setRoot()
 	{
 		try {
