@@ -63,6 +63,8 @@ public class OwnerMenu extends Menu{
 	*
 	* @param none
 	* @return void
+	* @author Drew Nuttall-Smith
+	* @since 26/03/2017
 	*/
     public void printOwnerMenu()
     {
@@ -78,12 +80,22 @@ public class OwnerMenu extends Menu{
 		System.out.println("please choose an option (1 - 7)");
     }
 
+	/**
+	* Add an employee to the list
+	*
+	* @param none
+	* @return boolean - whether the new employee was added
+	* @author Drew Nuttall-Smith
+	* @since 26/03/2017
+	*/
 	public boolean addEmployee()
 	{
 		String name;
 		String email;
+		boolean uniqueEmail;
 		JSONObject newEmployee;
-		JSONArray employees = busInfo.getJSONArray("employees");
+		JSONObject employees = busInfo.getJSONObject("employees");
+		String emailRegex = "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]+";
 
 		do
 		{
@@ -109,29 +121,42 @@ public class OwnerMenu extends Menu{
 			// Get employee email
 			System.out.println("Please enter email of employee:");
 			email = sc.nextLine();
+			uniqueEmail = true;
 
 			// If user doesn't enter anything, cancel this operation
 			if (email.length() == 0) return false;
 
 			// If invalid format, print error message
-	        if(!email.matches("[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]")) {
+	        if(!email.matches(emailRegex)) {
 				System.out.println("Invalid email");
 				continue;
 			} else {
+				// Check if email already exists in system
+	            String[] existingEmails = JSONObject.getNames(employees);
+				for (String e : existingEmails) {
+					if (e.equals(email)) {
+						System.out.println("An employee already exists with that email");
+						uniqueEmail = false;
+						continue;
+					}
+				}
 				break;
 			}
-		} while (!email.matches("[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]"));
+		} while (!email.matches(emailRegex) || !uniqueEmail);
 
 		// Populate JSON object with employee info
         newEmployee = new JSONObject();
         newEmployee.put("name", name);
-        newEmployee.put("email", email);
         newEmployee.put("workingTime", new JSONArray());
         newEmployee.put("workingDates", new JSONArray());
 
 		// Write employee JSON object to business data JSON object
-		employess.put(newEmployee);
+		employees.put(email, newEmployee);
 		busInfo.put("employees", employees);
+
+		System.out.println("\nA new employee was added:");
+		System.out.println("Name: " + name);
+		System.out.println("Name: " + email + "\n");
 
 		return false;
 	}
@@ -168,37 +193,46 @@ public class OwnerMenu extends Menu{
 	}
 
 	public void writeToFiles() {
+		/*
+		File busFile;
+		FileWriter busWriter;
+		File custFile;
+		FileWriter custWriter;
+
 		// Write to business data file
         try
         {
-            FileWriter busFile = new FileWriter("business.json");
-            busFile.write(busInfo.toJSONString());
+			busFile = new File("business.json");
+			busWriter = new FileWriter(busFile);
+            busWriter.write(busInfo.toString());
         }
-        catch (FileNotFoundException e)
+        catch (IOException e)
         {
 			System.out.println("Error writing to business data file");
         }
 		finally
 		{
-            busFile.flush();
-            busFile.close();
+            busWriter.flush();
+            busWriter.close();
 		}
 
 		// Write to customer data file
         try
         {
-            FileWriter custFile = new FileWriter("customerinfo.json");
-            custFile.write(custInfo.toJSONString());
+			custFile = new File("customerinfo.json");
+			custWriter = new FileWriter(custFile);
+            custWriter.write(custInfo.toString());
         }
-        catch (FileNotFoundException e)
+        catch (IOException e)
         {
 			System.out.println("Error writing to customer data file");
         }
 		finally
 		{
-            custFile.flush();
-            custFile.close();
+            custWriter.flush();
+            custWriter.close();
 		}
+		*/
 	}
 
 }
