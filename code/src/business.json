@@ -10,32 +10,18 @@
     "employees":{
         "bob@gmail.com": {
             "name" : "bob",
-            "workingTime" : [
-                9,10,11,12,1,2
-            ],
-            "workingDates":[
-
-            ]
+            "shifts": {
+                "27032017": [9,18],
+                "28032017": [12,18]
+            }
         },
 
         "jim@gmail.com": {
             "name":"Jim",
-            "workingTime":[
-                9,10,11,12,1,2,3,4,5
-            ],
-            "workingDates":[
-
-            ]
         },
 
         "tim@gmail.com": {
             "name":"Tim",
-            "workingTime":[
-                1,2,3,4,5
-            ],
-            "workingDates":[
-
-            ]
         }
     }
 
