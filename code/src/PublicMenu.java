@@ -8,6 +8,7 @@ public class PublicMenu extends Menu{
     // Stores the two json files in memory to be read by the system
     private JSONObject busInfo;
     private JSONObject custInfo;
+    private Menu privateMenu;
 
     public PublicMenu()
     {
@@ -63,10 +64,10 @@ public class PublicMenu extends Menu{
         {
             String username;
 
-            
+
             System.out.println("Please enter your Username (No symbols or whitespace):");
             username = sc.nextLine();
-            
+
             if(username.trim().isEmpty() || !username.matches("[a-zA-z0-9]+")) continue;
 
             String ownerUsername = busInfo.getString("username");
@@ -183,14 +184,34 @@ public class PublicMenu extends Menu{
             username = sc.next();
 
             // gets the business database username
-            String BusDBUsername = busInfo.getString("username");
+            String busDBUsername = busInfo.getString("username");
 
             //checks user input with database
-            if( username.equals(BusDBUsername) )
+            if( username.equals(busDBUsername) )
             {
                 userNameExist = true;
-                System.out.println("\nYou have successfully logged in.\n");
-                return true;
+
+                // Get password from user
+                System.out.println("\nPlease enter your password:");
+                do
+                {
+                    password = sc.next();
+
+                    if ( password.equals( busInfo.getString("password") ) )
+                    {
+                        System.out.println("\nYou have successfully logged in.\n");
+                        passCorrect = true;
+                        privateMenu = new OwnerMenu(sc);
+                        privateMenu.run();
+                        return true;
+                    }
+                    else
+                    {
+                        System.out.println("\nYour password doesn't match the one for: \"" + busDBUsername + "\"");
+                        System.out.println("Please re-enter your password:");
+                    }
+                }
+                while(passCorrect != true);
             }
             else
             {
