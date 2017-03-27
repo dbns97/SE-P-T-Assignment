@@ -10,7 +10,13 @@ public class PublicMenuController {
 	
 	public void handleLoginMenu()
 	{
-		pm.showLoginMenu();
+		
+		//pm.showLoginMenu();
+	}
+	
+	public void handleRegister()
+	{
+		pm.showRegister();
 	}
 	
 }

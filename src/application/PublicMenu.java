@@ -2,7 +2,6 @@ package application;
 
 import java.io.IOException;
 
-import iMeldaBot.MainApp;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -11,11 +10,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class PublicMenu extends Menu {
 
 	public Stage primaryStage;
+	public BorderPane root;
 	@FXML
     private TextField username;
     @FXML
@@ -30,27 +31,67 @@ public class PublicMenu extends Menu {
 		this.primaryStage = primaryStage;
 		this.primaryStage.setTitle("Booking System");
 		
+		setRoot();
 		try {
-			AnchorPane root = (AnchorPane)FXMLLoader.load(getClass().getResource("PublicMenu.fxml"));
-			Scene scene = new Scene(root,346.0,290.0);
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("PublicMenu.fxml"));
+			AnchorPane publicMenu = (AnchorPane) loader.load();
+			
+			//primaryStage.setWidth(publicMenu.getPrefWidth());
+			//primaryStage.setHeight(publicMenu.getPrefHeight());
+			root.setCenter(publicMenu);
+			PublicMenuController controller = loader.getController();
+			controller.setMainMenu(this);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void setRoot()
+	{
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(getClass().getResource("RootLayout.fxml"));
+			root = (BorderPane) loader.load();
+			
+			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
 	public void showLoginMenu()
 	{
+		/*
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(PublicMenu.class.getResource("LoginMenu.fxml"));
+			loader.setLocation(PublicMenu.class.getResource("CustomerMenu.fxml"));
+			loader.setLocation(PublicMenu.class.getResource("OwnerMenu.fxml"));
 			
 		} catch (IOException e) {
             e.printStackTrace();
             
         }
-		
+		*/
+	}
+	
+	public void showRegister()
+	{
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(PublicMenu.class.getResource("RegisterForm.fxml"));
+			AnchorPane registerForm = (AnchorPane) loader.load();
+			RegisterFormController controller = loader.getController();
+			
+			//primaryStage.setWidth(registerForm.getPrefWidth());
+			//primaryStage.setHeight(registerForm.getPrefHeight());
+			root.setCenter(registerForm);
+			controller.setMainMenu(this);
+		} catch (IOException e) {
+            e.printStackTrace();
+            
+        }
 	}
 	
 	//Takes in user input for username and password, returns false if either is incorrect
