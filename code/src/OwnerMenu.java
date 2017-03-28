@@ -244,7 +244,7 @@ public class OwnerMenu extends Menu{
 		employee.put("shifts", shifts);
 		employees.put(email, employee);
 		busInfo.put("employees", employees);
-		
+
 		// TESTING: this log is for testing purposes
 		System.out.println(shifts.toString());
 
@@ -278,7 +278,6 @@ public class OwnerMenu extends Menu{
 	}
 
 	public void writeToFiles() {
-		/*
 		File busFile;
 		FileWriter busWriter;
 		File custFile;
@@ -289,35 +288,28 @@ public class OwnerMenu extends Menu{
         {
 			busFile = new File("business.json");
 			busWriter = new FileWriter(busFile);
-            busWriter.write(busInfo.toString());
+            busWriter.write(busInfo.toString(4));
+            busWriter.flush();
+            busWriter.close();
         }
         catch (IOException e)
         {
 			System.out.println("Error writing to business data file");
         }
-		finally
-		{
-            busWriter.flush();
-            busWriter.close();
-		}
 
 		// Write to customer data file
         try
         {
 			custFile = new File("customerinfo.json");
 			custWriter = new FileWriter(custFile);
-            custWriter.write(custInfo.toString());
+            custWriter.write(custInfo.toString(4));
+            custWriter.flush();
+            custWriter.close();
         }
         catch (IOException e)
         {
 			System.out.println("Error writing to customer data file");
         }
-		finally
-		{
-            custWriter.flush();
-            custWriter.close();
-		}
-		*/
 	}
 
 }
