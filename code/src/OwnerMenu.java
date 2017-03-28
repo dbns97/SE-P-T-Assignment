@@ -161,9 +161,6 @@ public class OwnerMenu extends Menu{
 		System.out.println("Name: " + name);
 		System.out.println("Name: " + email + "\n");
 
-		// TESTING: this log is for testing purposes
-		System.out.println(newEmployee.toString());
-
 		return true;
 	}
 
@@ -247,9 +244,6 @@ public class OwnerMenu extends Menu{
 		employee.put("shifts", shifts);
 		employees.put(email, employee);
 		busInfo.put("employees", employees);
-
-		// TESTING: this log is for testing purposes
-		System.out.println(shifts.toString());
 
 		return true;
 	}
