@@ -5,12 +5,14 @@ import org.json.*;
 public class OwnerMenu extends Menu{
 
 	private Scanner sc;
+	private PublicMenu publicMenu;
     private JSONObject busInfo;
     private JSONObject custInfo;
 
-	public OwnerMenu(Scanner scanner)
+	public OwnerMenu(Scanner scanner, PublicMenu publicMenu)
 	{
 		this.sc  = scanner;
+		this.publicMenu = publicMenu;
         busInfo  = JSONUtils.getJSONObjectFromFile("business.json");
         custInfo = JSONUtils.getJSONObjectFromFile("customerinfo.json");
 	}
@@ -56,6 +58,7 @@ public class OwnerMenu extends Menu{
             }
 
 		} while(choice != 6 && choice != 7);
+
 	}
 
 	/**
@@ -269,6 +272,7 @@ public class OwnerMenu extends Menu{
 	public void logout()
 	{
 		writeToFiles();
+		publicMenu.run();
 	}
 
 	public void exit()

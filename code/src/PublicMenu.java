@@ -201,7 +201,7 @@ public class PublicMenu extends Menu{
                     {
                         System.out.println("\nYou have successfully logged in.\n");
                         passCorrect = true;
-                        privateMenu = new OwnerMenu(sc);
+                        privateMenu = new OwnerMenu(sc, this);
                         privateMenu.run();
                         return true;
                     }
