@@ -3,40 +3,26 @@
     "business owner name" : "George",
     "address" : "123 fake street",
     "phone" : "123456789",
-    
+
     "username" : "georgebusiness",
     "password" : "password1",
-    
-    "employees":[
-        {
-            "name" : "bob", 
-            "workingTime" : [
-                9,10,11,12,1,2
-            ],
-            "workingDates":[
-                
-            ]
+
+    "employees":{
+        "bob@gmail.com": {
+            "name" : "bob",
+            "shifts": {
+                "27032017": [9,18],
+                "28032017": [12,18]
+            }
         },
-        
-        {
-            "name":"Jim", 
-            "workingTime":[
-                9,10,11,12,1,2,3,4,5
-            ],
-            "workingDates":[
-                
-            ]
+
+        "jim@gmail.com": {
+            "name":"Jim",
         },
-        
-        {
-            "name":"Tim", 
-            "workingTime":[
-                1,2,3,4,5
-            ],
-            "workingDates":[
-                
-            ]
+
+        "tim@gmail.com": {
+            "name":"Tim",
         }
-    ]
-    
+    }
+
 }
