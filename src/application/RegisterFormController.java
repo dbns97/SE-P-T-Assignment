@@ -1,8 +1,12 @@
 package application;
 
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import javafx.fxml.FXML;
@@ -40,7 +44,11 @@ public class RegisterFormController {
 	
 	public boolean handleRegister()
 	{
+		File file = new File("src/JSONdatabase");
+		for(String fileNames : file.list()) System.out.println(fileNames);
+		
 		JSONObject users = JSONUtils.getJSONObjectFromFile("../JSONdatabase/users.json");
+		System.out.println(users.toString());
 		
 		errorLabel.setWrapText(true);
 		if(username.getText().trim().isEmpty() || !(username.getText().matches("[a-zA-z0-9]+")))
@@ -73,22 +81,43 @@ public class RegisterFormController {
 			return false;
 		}
 		
+		JSONArray usernames = users.names();
 		
+		// Scans the usernames JSONArray to check if the username already exists
+        int i = 0;
+        if(usernames != null)
+        {
+            while(!usernames.isNull(i))
+            {
+            	System.out.println(usernames.getString(i));
+                if(username.getText().equals(usernames.getString(i)))
+                {
+                	errorLabel.setText("Username already exists");
+                    return false;
+                }
+
+                i++;
+            }
+        }
+        
 		Customer newUser = new Customer(username.getText(), name.getText(), password.getText(), address.getText(), Integer.parseInt(contactNumber.getText()));
 		
 		users.put(username.getText(), newUser.toJSONObject());
+		System.out.println(users.toString());
 		
 		try
         {
-            PrintWriter custWriter = new PrintWriter("../JSONdatabase/users.json");
-            custWriter.print(users.toString(4));
+            FileWriter custWriter = new FileWriter("src/JSONdatabase/users.json");
+            custWriter.write(users.toString(4));
+            custWriter.flush();
             custWriter.close();
         }
-        catch (FileNotFoundException e)
+        catch (IOException e)
         {
             e.printStackTrace();
         }
 		
+		System.out.println(JSONUtils.getJSONObjectFromFile("users.json").toString());
 		return true;		
 		
 	}
