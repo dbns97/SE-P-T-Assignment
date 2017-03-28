@@ -1,5 +1,10 @@
 package application;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+
+import org.json.JSONObject;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -35,6 +40,8 @@ public class RegisterFormController {
 	
 	public boolean handleRegister()
 	{
+		JSONObject users = JSONUtils.getJSONObjectFromFile("../JSONdatabase/users.json");
+		
 		errorLabel.setWrapText(true);
 		if(username.getText().trim().isEmpty() || !(username.getText().matches("[a-zA-z0-9]+")))
 		{
@@ -65,6 +72,22 @@ public class RegisterFormController {
 			errorLabel.setText("Please enter a contact number with only numbers");
 			return false;
 		}
+		
+		
+		Customer newUser = new Customer(username.getText(), name.getText(), password.getText(), address.getText(), Integer.parseInt(contactNumber.getText()));
+		
+		users.put(username.getText(), newUser.toJSONObject());
+		
+		try
+        {
+            PrintWriter custWriter = new PrintWriter("../JSONdatabase/users.json");
+            custWriter.print(users.toString(4));
+            custWriter.close();
+        }
+        catch (FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
 		
 		return true;		
 		

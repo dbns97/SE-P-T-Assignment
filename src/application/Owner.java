@@ -7,11 +7,5 @@ public class Owner extends User {
 	private String address;
 	private int contactNumber;
 	
-	@Override
-	public String toJSONString() {
-		String output = "";
-		
-		return output;
-	}
 
 }
