@@ -70,5 +70,14 @@
         "booking time": -1,
         "contact number": 989,
         "name": "sdfg"
+    },
+    "tfjfj": {
+        "booking status": "not booked",
+        "password": "htdh",
+        "address": "gs",
+        "isOwner": false,
+        "booking time": -1,
+        "contact number": 5885,
+        "name": "hdht"
     }
 }

@@ -44,8 +44,8 @@ public class RegisterFormController {
 	
 	public boolean handleRegister()
 	{
-		File file = new File("src/JSONdatabase");
-		for(String fileNames : file.list()) System.out.println(fileNames);
+		//File file = new File("src/JSONdatabase");
+		//for(String fileNames : file.list()) System.out.println(fileNames);
 		
 		JSONObject users = JSONUtils.getJSONObjectFromFile("../JSONdatabase/users.json");
 		System.out.println(users.toString());
@@ -117,7 +117,7 @@ public class RegisterFormController {
             e.printStackTrace();
         }
 		
-		System.out.println(JSONUtils.getJSONObjectFromFile("users.json").toString());
+		//System.out.println(JSONUtils.getJSONObjectFromFile("users.json").toString());
 		return true;		
 		
 	}
