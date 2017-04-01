@@ -8,24 +8,6 @@
         "contact number": "87362981223",
         "name": "NameOfCust"
     },
-    "test": {
-        "booking status": "not booked",
-        "password": "sdfg",
-        "address": "sdfg",
-        "isOwner": false,
-        "booking time": -1,
-        "contact number": 989,
-        "name": "sdfgd"
-    },
-    "NEWTEST": {
-        "booking status": "not booked",
-        "password": "fg",
-        "address": "ddfg",
-        "isOwner": false,
-        "booking time": -1,
-        "contact number": 78907,
-        "name": "f"
-    },
     "username5": {
         "booking status": "not booked",
         "password": "pass5",
@@ -70,14 +52,5 @@
         "booking time": -1,
         "contact number": "9290358",
         "name": "ajgha"
-    },
-    "asfd": {
-        "booking status": "not booked",
-        "password": "sdfg",
-        "address": "sdfg",
-        "isOwner": false,
-        "booking time": -1,
-        "contact number": 989,
-        "name": "sdfg"
     }
 }

@@ -46,7 +46,7 @@
               </rowConstraints>
                <children>
                   <Label focusTraversable="false" text="Username" />
-                  <Button fx:id="loginButton" mnemonicParsing="false" text="Login" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Button fx:id="loginButton" mnemonicParsing="false" onAction="#handleLogin" text="Login" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <PasswordField fx:id="password" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <TextField fx:id="username" prefWidth="221.0" GridPane.columnIndex="1" />
                   <Label focusTraversable="false" text="Password" GridPane.rowIndex="1" />
