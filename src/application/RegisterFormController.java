@@ -31,6 +31,7 @@ public class RegisterFormController {
     private Button registerButton;
     @FXML
     private Label errorLabel;
+    private Buisness buisness;
     
 	public void setMainMenu(PublicMenu pm)
 	{
@@ -42,6 +43,10 @@ public class RegisterFormController {
 		pm.showPublicMenu();
 	}
 	
+	public void setBuisness(Buisness buisness)
+	{
+		this.buisness = buisness;
+	}
 	public boolean handleRegister()
 	{
 		//File file = new File("src/JSONdatabase");
@@ -102,9 +107,9 @@ public class RegisterFormController {
         
 		Customer newUser = new Customer(username.getText(), name.getText(), password.getText(), address.getText(), Integer.parseInt(contactNumber.getText()));
 		
-		users.put(username.getText(), newUser.toJSONObject());
-		System.out.println(users.toString());
+		buisness.addUser(username.getText(), newUser.toJSONObject());
 		
+		/*
 		try
         {
             FileWriter custWriter = new FileWriter("src/JSONdatabase/users.json");
@@ -116,7 +121,7 @@ public class RegisterFormController {
         {
             e.printStackTrace();
         }
-		
+		*/
 		//System.out.println(JSONUtils.getJSONObjectFromFile("users.json").toString());
 		return true;		
 		
