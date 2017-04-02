@@ -8,51 +8,6 @@
         "contact number": "87362981223",
         "name": "NameOfCust"
     },
-    "test": {
-        "booking status": "not booked",
-        "password": "sdfg",
-        "address": "sdfg",
-        "isOwner": false,
-        "booking time": -1,
-        "contact number": 989,
-        "name": "sdfgd"
-    },
-    "NEWTEST": {
-        "booking status": "not booked",
-        "password": "fg",
-        "address": "ddfg",
-        "isOwner": false,
-        "booking time": -1,
-        "contact number": 78907,
-        "name": "f"
-    },
-    "username5": {
-        "booking status": "not booked",
-        "password": "pass5",
-        "address": "aajhfhjfas89jhka",
-        "isOwner": false,
-        "booking time": -1,
-        "contact number": "36385863",
-        "name": "my name"
-    },
-    "username3": {
-        "booking status": "not booked",
-        "password": "pass3",
-        "address": "12345 fake street",
-        "isOwner": false,
-        "booking time": -1,
-        "contact number": "87362981223",
-        "name": "NameOfCust"
-    },
-    "username2": {
-        "booking status": "not booked",
-        "password": "pass2",
-        "address": "12345 fake street",
-        "isOwner": false,
-        "booking time": null,
-        "contact number": "87362981223",
-        "name": "NameOfCust"
-    },
     "username1": {
         "booking status": "not booked",
         "password": "pass",
@@ -70,14 +25,5 @@
         "booking time": -1,
         "contact number": "9290358",
         "name": "ajgha"
-    },
-    "asfd": {
-        "booking status": "not booked",
-        "password": "sdfg",
-        "address": "sdfg",
-        "isOwner": false,
-        "booking time": -1,
-        "contact number": 989,
-        "name": "sdfg"
     }
 }

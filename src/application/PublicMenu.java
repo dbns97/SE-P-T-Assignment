@@ -26,20 +26,20 @@ public class PublicMenu extends Menu {
     @FXML
     private Label errorLabel;
     private Buisness buisness;
-    
+
 	@Override
 	public void start(Stage primaryStage) {
 		buisness = new Buisness();
 		this.primaryStage = primaryStage;
 		primaryStage.setOnCloseRequest(e -> {buisness.updateFile();});
 		this.primaryStage.setTitle("Booking System");
-		
+
 		//buisness.loadUsers();
 		setRoot();
 		showPublicMenu();
-		
+
 	}
-	
+
 	public void showPublicMenu()
 	{
 		try {
@@ -47,7 +47,7 @@ public class PublicMenu extends Menu {
 			loader.setLocation(getClass().getResource("PublicMenu.fxml"));
 			AnchorPane publicMenu = (AnchorPane) loader.load();
 			PublicMenuController controller = loader.getController();
-			
+
 			//primaryStage.setWidth(publicMenu.getPrefWidth());
 			//primaryStage.setHeight(publicMenu.getPrefHeight());
 			root.setCenter(publicMenu);
@@ -62,7 +62,7 @@ public class PublicMenu extends Menu {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("RootLayout.fxml"));
 			root = (BorderPane) loader.load();
-			
+
 			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);
 			primaryStage.show();
@@ -77,14 +77,14 @@ public class PublicMenu extends Menu {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(PublicMenu.class.getResource("CustomerMenu.fxml"));
 			loader.setLocation(PublicMenu.class.getResource("OwnerMenu.fxml"));
-			
+
 		} catch (IOException e) {
             e.printStackTrace();
-            
+
         }
 		*/
 	}
-	
+
 	public void showRegister()
 	{
 		try {
@@ -92,7 +92,7 @@ public class PublicMenu extends Menu {
 			loader.setLocation(PublicMenu.class.getResource("RegisterForm.fxml"));
 			AnchorPane registerForm = (AnchorPane) loader.load();
 			RegisterFormController controller = loader.getController();
-			
+
 			//primaryStage.setWidth(registerForm.getPrefWidth());
 			//primaryStage.setHeight(registerForm.getPrefHeight());
 			root.setCenter(registerForm);
@@ -100,16 +100,16 @@ public class PublicMenu extends Menu {
 			controller.setBuisness(buisness);
 		} catch (IOException e) {
             e.printStackTrace();
-            
+
         }
 	}
-	
+
 	//Takes in user input for username and password, returns false if either is incorrect
 	public boolean checkLogin(String username, String password)
 	{
 		return false;
 	}
-	
+
 	//Takes in input for making customer objects, returns false if the input is incorrect or the username is taken
 	public boolean registerUser(String username, String password, String address, int contactNumber)
 	{
