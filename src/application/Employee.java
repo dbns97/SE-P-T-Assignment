@@ -1,5 +1,6 @@
 package application;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 import java.util.ArrayList;
 
@@ -25,17 +26,17 @@ public class Employee {
 	 **/
 	public boolean addShift(String start, String end)
 	{
-		Shift newShift = Shift(start, end);
+		Shift newShift = new Shift(start, end);
 
 		if (shifts.size() == 0) shifts.add(newShift);
 
 		// Compare new shift to all existing shifts
 		for(int i = 0; i < shifts.size(); i++) {
 			// Check if the newShift starts before the current one being checked
-			if (shifts.get(i).start.after(newShift.start))
+			if (shifts.get(i).getStart().after(newShift.getStart()))
 			{
 				// Check that the newShift also ends before the current one starts
-				if (shifts.get(i).start.after(newShift.end))
+				if (shifts.get(i).getStart().after(newShift.getEnd()))
 				{
 					shifts.add(i, newShift);
 					return true;
@@ -46,7 +47,7 @@ public class Employee {
 			} else if (i == (shifts.size() - 1))
 			{
 				// It starts after the last existing shift starts. Check they don't overlap
-				if (shifts.get(i).end.before(newShift.start))
+				if (shifts.get(i).getEnd().before(newShift.getStart()))
 				{
 					shifts.add(newShift);
 					return true;
@@ -70,7 +71,7 @@ public class Employee {
 
 		JSONArray jsonShift = new JSONArray();
 		for(Shift shift : shifts) {
-			jsonShift.add(shift.toJSONObject());
+			jsonShift.put(shift.toJSONObject());
 		}
 
 		return newEmployee;
