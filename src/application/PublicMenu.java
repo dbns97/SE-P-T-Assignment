@@ -26,21 +26,21 @@ public class PublicMenu extends Menu {
     @FXML
     private Label errorLabel;
     private Buisness buisness;
-    
+
 	@Override
 	public void start(Stage primaryStage) {
 		buisness = new Buisness();
 		this.primaryStage = primaryStage;
 		primaryStage.setOnCloseRequest(e -> {buisness.updateFile();});
 		this.primaryStage.setTitle("Booking System");
-		
+
 		//buisness.loadUsers();
 		setRoot();
 		showPublicMenu();
-		
+
 	}
-	
-	public void showPublicMenu()
+
+    public void showPublicMenu()
 	{
 		try {
 			FXMLLoader loader = new FXMLLoader();
@@ -63,7 +63,7 @@ public class PublicMenu extends Menu {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("RootLayout.fxml"));
 			root = (BorderPane) loader.load();
-			
+
 			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);
 			primaryStage.show();
@@ -71,7 +71,6 @@ public class PublicMenu extends Menu {
 			e.printStackTrace();
 		}
 	}
-		
 	public void showRegister()
 	{
 		try {

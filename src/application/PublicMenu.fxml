@@ -29,7 +29,7 @@
             </Label>
             <AnchorPane GridPane.rowIndex="2">
                <children>
-                  <Label layoutX="148.0" layoutY="22.0" text="New account?" />
+                  <Label layoutX="108.0" layoutY="22.0" text="New account?" />
                   <Button fx:id="registerButton" layoutX="236.0" layoutY="18.0" mnemonicParsing="false" onAction="#handleRegister" text="Register" />
                   <Label fx:id="errorLabel" layoutY="22.0" />
                </children>
