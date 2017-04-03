@@ -25,16 +25,16 @@ public class PublicMenu extends Menu {
     private Button loginButton;
     @FXML
     private Label errorLabel;
-    private Buisness buisness;
-
+    private Business business;
+    
 	@Override
 	public void start(Stage primaryStage) {
-		buisness = new Buisness();
+		business = new Business();
 		this.primaryStage = primaryStage;
-		primaryStage.setOnCloseRequest(e -> {buisness.updateFile();});
+		primaryStage.setOnCloseRequest(e -> {business.updateFile();});
 		this.primaryStage.setTitle("Booking System");
-
-		//buisness.loadUsers();
+		
+		//business.loadUsers();
 		setRoot();
 		showPublicMenu();
 
@@ -52,7 +52,7 @@ public class PublicMenu extends Menu {
 			primaryStage.setHeight(publicMenu.getPrefHeight() + 32);
 			root.setCenter(publicMenu);
 			controller.setMainMenu(this);
-			controller.setBuisness(buisness);
+			controller.setBusiness(business);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -83,7 +83,7 @@ public class PublicMenu extends Menu {
 			primaryStage.setHeight(registerForm.getPrefHeight() + 32);
 			root.setCenter(registerForm);
 			controller.setMainMenu(this);
-			controller.setBuisness(buisness);
+			controller.setBusiness(business);
 		} catch (IOException e) {
             e.printStackTrace();
             

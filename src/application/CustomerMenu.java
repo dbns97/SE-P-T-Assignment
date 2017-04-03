@@ -13,7 +13,7 @@ public class CustomerMenu extends Menu {
 	private Stage primaryStage;
 	public BorderPane root;
 	private PublicMenu pm;
-	private Buisness buisness;
+	private Business business;
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -56,7 +56,7 @@ public class CustomerMenu extends Menu {
 			root.setCenter(CustomerMenu);
 			controller.setCustomerMenu(this);
 			controller.setMainMenu(pm);
-			controller.setBuisness(buisness);
+			controller.setBusiness(business);
 			
 		} catch (IOException e) {
             e.printStackTrace();
@@ -77,7 +77,7 @@ public class CustomerMenu extends Menu {
 			root.setCenter(CustomerBookingTimesForm);
 			controller.setCustomerMenu(this);
 			controller.setMainMenu(pm);
-			controller.setBuisness(buisness);
+			controller.setBusiness(business);
 			
 		} catch (IOException e) {
             e.printStackTrace();
@@ -85,9 +85,9 @@ public class CustomerMenu extends Menu {
         }
 	}
 	
-	public void setBuisness(Buisness buisness)
+	public void setBusiness(Business business)
 	{
-		this.buisness = buisness;
+		this.business = business;
 	}
 
 }

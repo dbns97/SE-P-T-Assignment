@@ -33,7 +33,7 @@ public class RegisterFormController {
     private Button registerButton;
     @FXML
     private Label errorLabel;
-    private Buisness buisness;
+    private Business business;
     
 	public void setMainMenu(PublicMenu pm)
 	{
@@ -45,9 +45,9 @@ public class RegisterFormController {
 		pm.showPublicMenu();
 	}
 	
-	public void setBuisness(Buisness buisness)
+	public void setBusiness(Business business)
 	{
-		this.buisness = buisness;
+		this.business = business;
 	}
 	
 	public boolean handleRegister()
@@ -94,7 +94,7 @@ public class RegisterFormController {
 			return false;
 		}
 		
-		JSONArray usernames = buisness.getUsers().names();
+		JSONArray usernames = business.getUsers().names();
 		
 		// Scans the usernames JSONArray to check if the username already exists
         int i = 0;
@@ -115,7 +115,7 @@ public class RegisterFormController {
         
 		Customer newUser = new Customer(username.getText(), name.getText(), password.getText(), address.getText(), Integer.parseInt(contactNumber.getText()));
 		
-		buisness.addUser(username.getText(), newUser.toJSONObject());
+		business.addUser(username.getText(), newUser.toJSONObject());
 		
 		errorLabel.setText("Successfully registered" + username.getText());
 		/*

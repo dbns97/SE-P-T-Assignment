@@ -1,15 +1,26 @@
 package application;
 
+import java.io.IOException;
+
+import org.json.JSONArray;
+
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class OwnerMenuController {
 
 	private OwnerMenu om;
 	private PublicMenu pm;
-	private Buisness buisness;
+	private Business business;
 	
+	@FXML
+	private Button addEmployee;
 	@FXML
 	private Button logout;
 	
@@ -23,9 +34,24 @@ public class OwnerMenuController {
 		this.pm = pm;
 	}
 	
-	public void setBuisness(Buisness buisness)
+	public void setBusiness(Business business)
 	{
-		this.buisness = buisness;
+		this.business = business;
+	}
+	
+	public void handleBack()
+	{
+		om.showOwnerMenu();
+	}
+	
+	public void showAddEmployee()
+	{
+		om.showAddEmployee();
+	}
+	
+	public void showAddShift()
+	{
+		om.showAddShift();
 	}
 	
 	public void handleViewBookings()

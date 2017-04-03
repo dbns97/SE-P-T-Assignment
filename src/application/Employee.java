@@ -2,13 +2,14 @@ package application;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.json.JSONArray;
 import java.util.ArrayList;
 
 public class Employee {
 
 	private String email;
 	private String name;
-	ArrayList<Shift> shifts = new ArrayList();
+	ArrayList<Shift> shifts = new ArrayList<Shift>();
 
 	public Employee(String email, String name)
 	{
@@ -67,12 +68,14 @@ public class Employee {
 	public JSONObject toJSONObject()
 	{
 		JSONObject newEmployee = new JSONObject();
+		newEmployee.put("email", email);
 		newEmployee.put("name", name);
 
-		JSONArray jsonShift = new JSONArray();
+		JSONArray jsonShifts = new JSONArray();
 		for(Shift shift : shifts) {
-			jsonShift.put(shift.toJSONObject());
+			jsonShifts.put(shift.toJSONObject());
 		}
+		newEmployee.put("shifts", jsonShifts);
 
 		return newEmployee;
 	}

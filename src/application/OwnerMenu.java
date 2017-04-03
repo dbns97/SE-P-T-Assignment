@@ -13,7 +13,7 @@ public class OwnerMenu extends Menu {
 	private Stage primaryStage;
 	public BorderPane root;
 	private PublicMenu pm;
-	private Buisness buisness;
+	private Business business;
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -56,7 +56,7 @@ public class OwnerMenu extends Menu {
 			root.setCenter(OwnerMenu);
 			controller.setOwnerMenu(this);
 			controller.setMainMenu(pm);
-			controller.setBuisness(buisness);
+			controller.setBusiness(business);
 			
 		} catch (IOException e) {
             e.printStackTrace();
@@ -84,9 +84,49 @@ public class OwnerMenu extends Menu {
         }
 	}
 	
-	public void setBuisness(Buisness buisness)
+	public void showAddEmployee()
 	{
-		this.buisness = buisness;
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(PublicMenu.class.getResource("AddEmployee.fxml"));
+			AnchorPane addEmployee = (AnchorPane) loader.load();
+			AddEmployeeController controller = loader.getController();
+			
+			primaryStage.setWidth(addEmployee.getPrefWidth() + 50);
+			primaryStage.setHeight(addEmployee.getPrefHeight() + 32);
+			root.setCenter(addEmployee);
+			controller.setMainMenu(this);
+			controller.setBusiness(business);
+			
+		} catch (IOException e) {
+            e.printStackTrace();
+            
+        }
+	}
+	
+	public void showAddShift()
+	{
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(PublicMenu.class.getResource("AddShift.fxml"));
+			AnchorPane addShift = (AnchorPane) loader.load();
+			AddShiftController controller = loader.getController();
+			
+			primaryStage.setWidth(addShift.getPrefWidth() + 50);
+			primaryStage.setHeight(addShift.getPrefHeight() + 32);
+			root.setCenter(addShift);
+			controller.setMainMenu(this);
+			controller.setBusiness(business);
+			
+		} catch (IOException e) {
+            e.printStackTrace();
+            
+        }
+	}
+	
+	public void setBusiness(Business business)
+	{
+		this.business = business;
 	}
 
 }

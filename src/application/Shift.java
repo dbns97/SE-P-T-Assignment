@@ -9,8 +9,8 @@ import java.util.Date;
 public class Shift {
 
 	public static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
-	private Date start;
-	private Date end;
+	public Date start;
+	public Date end;
 
 	public Date getStart()
 	{
@@ -30,13 +30,12 @@ public class Shift {
 
 	public Shift(String start, String end)
 	{
-		try
+		try 
 		{
-		this.start = sdf.parse(start);
-		this.end = sdf.parse(end);
-		}
-		catch(ParseException e)
-		{
+			this.start = sdf.parse(start);
+			this.end = sdf.parse(end);
+		} 
+		catch (ParseException e) {
 			e.printStackTrace();
 		}
 	}

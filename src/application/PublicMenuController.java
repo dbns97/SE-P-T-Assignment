@@ -16,8 +16,7 @@ import javafx.stage.Stage;
 
 public class PublicMenuController {
 	private PublicMenu pm;
-
-    private Buisness buisness;
+	private Business business;
 	private JSONObject loggedInUser = null;
 
 	@FXML
@@ -35,16 +34,42 @@ public class PublicMenuController {
 		this.pm = pm;
 	}
 
-	public void setBuisness(Buisness buisness)
+	public void setBusiness(Business business)
 	{
-		this.buisness = buisness;
+		this.business = business;
 	}
 
 	public void setLoggedInUser(JSONObject user)
 	{
 		loggedInUser = user;
 	}
-
+	
+	public void handleLogin()
+	{
+		/*
+		CustomerMenu menu = new CustomerMenu();
+		menu.setMainMenu(pm);
+		Stage stage = (Stage) loginButton.getScene().getWindow();
+        try
+        {
+        	menu.start(stage);
+        } catch(Exception e) {
+			e.printStackTrace();
+		}
+		*/
+		OwnerMenu menu = new OwnerMenu();
+		menu.setBusiness(business);
+		menu.setMainMenu(pm);
+		Stage stage = (Stage) loginButton.getScene().getWindow();
+        try
+        {
+        	menu.start(stage);
+        } catch(Exception e) {
+			e.printStackTrace();
+		}
+        
+	}
+	
 	public void handleRegister()
 	{
 		pm.showRegister();
