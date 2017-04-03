@@ -52,5 +52,14 @@
         "booking time": -1,
         "contact number": "9290358",
         "name": "ajgha"
+    },
+    "abcd": {
+        "booking status": "not booked",
+        "password": "password",
+        "address": "1 Main Street",
+        "isOwner": false,
+        "booking time": -1,
+        "contact number": 46001234,
+        "name": "Joe Bloggs"
     }
 }

@@ -44,32 +44,6 @@ public class PublicMenuController {
 		loggedInUser = user;
 	}
 	
-	public void handleLogin()
-	{
-		/*
-		CustomerMenu menu = new CustomerMenu();
-		menu.setMainMenu(pm);
-		Stage stage = (Stage) loginButton.getScene().getWindow();
-        try
-        {
-        	menu.start(stage);
-        } catch(Exception e) {
-			e.printStackTrace();
-		}
-		*/
-		OwnerMenu menu = new OwnerMenu();
-		menu.setBusiness(business);
-		menu.setMainMenu(pm);
-		Stage stage = (Stage) loginButton.getScene().getWindow();
-        try
-        {
-        	menu.start(stage);
-        } catch(Exception e) {
-			e.printStackTrace();
-		}
-        
-	}
-	
 	public void handleRegister()
 	{
 		pm.showRegister();
@@ -89,6 +63,7 @@ public class PublicMenuController {
          if( user.getBoolean("isOwner") == true )
          {
             OwnerMenu menu = new OwnerMenu();
+            menu.setBusiness(business);
             menu.setMainMenu(pm);
             Stage stage = (Stage) loginButton.getScene().getWindow();
               try
@@ -102,6 +77,7 @@ public class PublicMenuController {
          else
          {
             CustomerMenu menu = new CustomerMenu();
+            menu.setBusiness(business);
             menu.setMainMenu(pm);
             Stage stage = (Stage) loginButton.getScene().getWindow();
               try

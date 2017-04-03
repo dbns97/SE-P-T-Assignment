@@ -76,7 +76,7 @@ public class OwnerMenu extends Menu {
 			primaryStage.setHeight(ViewBookingsForm.getPrefHeight() + 50);
 			root.setCenter(ViewBookingsForm);
 			controller.setOwnerMenu(this);
-			controller.setBuisness(buisness);
+			controller.setBusiness(business);
 			
 		} catch (IOException e) {
             e.printStackTrace();

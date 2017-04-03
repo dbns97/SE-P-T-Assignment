@@ -5,7 +5,7 @@ import javafx.scene.control.TableColumn;
 
 public class ViewBookingsController {
 	private OwnerMenu om;
-	private Buisness buisness;
+	private Business business;
 	@FXML
 	private TableColumn timeColumn;
 	@FXML
@@ -16,9 +16,9 @@ public class ViewBookingsController {
 		this.om = om;
 	}
 	
-	public void setBuisness(Buisness buisness)
+	public void setBusiness(Business business)
 	{
-		this.buisness = buisness;
+		this.business = business;
 	}
 	
 	public void handleView()

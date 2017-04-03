@@ -117,7 +117,7 @@ public class RegisterFormController {
 		
 		business.addUser(username.getText(), newUser.toJSONObject());
 		
-		errorLabel.setText("Successfully registered" + username.getText());
+		errorLabel.setText("Successfully registered " + username.getText());
 		/*
 		try
         {
