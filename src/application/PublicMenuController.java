@@ -31,6 +31,7 @@ public class PublicMenuController {
 	
 	public void handleLogin()
 	{
+		/*
 		CustomerMenu menu = new CustomerMenu();
 		menu.setMainMenu(pm);
 		Stage stage = (Stage) loginButton.getScene().getWindow();
@@ -40,7 +41,7 @@ public class PublicMenuController {
         } catch(Exception e) {
 			e.printStackTrace();
 		}
-        /*
+        */
 		OwnerMenu menu = new OwnerMenu();
 		menu.setMainMenu(pm);
 		Stage stage = (Stage) loginButton.getScene().getWindow();
@@ -49,7 +50,7 @@ public class PublicMenuController {
         	menu.start(stage);
         } catch(Exception e) {
 			e.printStackTrace();
-		}*/
+		}
         
         
 	}

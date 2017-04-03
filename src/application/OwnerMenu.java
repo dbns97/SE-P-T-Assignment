@@ -64,6 +64,26 @@ public class OwnerMenu extends Menu {
         }
 	}
 	
+	public void showViewBookings()
+	{
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(PublicMenu.class.getResource("ViewBookingsForm.fxml"));
+			AnchorPane ViewBookingsForm = (AnchorPane) loader.load();
+			ViewBookingsController controller = loader.getController();
+			
+			primaryStage.setWidth(ViewBookingsForm.getPrefWidth() + 50);
+			primaryStage.setHeight(ViewBookingsForm.getPrefHeight() + 50);
+			root.setCenter(ViewBookingsForm);
+			controller.setOwnerMenu(this);
+			controller.setBuisness(buisness);
+			
+		} catch (IOException e) {
+            e.printStackTrace();
+            
+        }
+	}
+	
 	public void setBuisness(Buisness buisness)
 	{
 		this.buisness = buisness;

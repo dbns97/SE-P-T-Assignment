@@ -28,6 +28,11 @@ public class OwnerMenuController {
 		this.buisness = buisness;
 	}
 	
+	public void handleViewBookings()
+	{
+		om.showViewBookings();
+	}
+	
 	public void handleLogout()
 	{
 		Stage stage = (Stage) logout.getScene().getWindow();

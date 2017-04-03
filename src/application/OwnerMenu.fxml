@@ -30,7 +30,7 @@
             </Label>
             <Button mnemonicParsing="false" text="Add employee" GridPane.rowIndex="1" />
             <Button mnemonicParsing="false" text="Add working times" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" text="View bookings summary" GridPane.rowIndex="3" />
+            <Button mnemonicParsing="false" onAction="#handleViewBookings" text="View bookings summary" GridPane.rowIndex="3" />
             <Button mnemonicParsing="false" text="View workers' availability" GridPane.rowIndex="4" />
             <Button fx:id="logout" mnemonicParsing="false" onAction="#handleLogout" text="Logout" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
          </children>
