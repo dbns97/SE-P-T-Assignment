@@ -9,12 +9,30 @@ public class Employee {
 
 	private String email;
 	private String name;
-	ArrayList<Shift> shifts = new ArrayList<Shift>();
+	ArrayList<Shift> shifts;
 
 	public Employee(String email, String name)
 	{
 		this.email = email;
 		this.name = name;
+		this.shifts = new ArrayList<Shift>();
+	}
+	
+	public Employee(String email, String name, JSONArray shifts)
+	{
+		this.email = email;
+		this.name = name;
+		this.shifts = initialiseShifts(shifts);
+	}
+	
+	public String getEmail()
+	{
+		return email;
+	}
+	
+	public String getName()
+	{
+		return name;
 	}
 
 	/**
@@ -29,7 +47,10 @@ public class Employee {
 	{
 		Shift newShift = new Shift(start, end);
 
-		if (shifts.size() == 0) shifts.add(newShift);
+		if (shifts.size() == 0) {
+			shifts.add(newShift);
+			return true;
+		}
 
 		// Compare new shift to all existing shifts
 		for(int i = 0; i < shifts.size(); i++) {
@@ -78,6 +99,35 @@ public class Employee {
 		newEmployee.put("shifts", jsonShifts);
 
 		return newEmployee;
+	}
+	
+	/*-------------------- Private Methods --------------------*/
+	
+	/**
+	 * @description create an ArrayList containing all shifts from a JSONArray of shifts
+	 * @param jsonShifts A JSONArray of shifts
+	 * @return ArrayList<Shift> the list of all shifts
+	 * @author Drew Nuttall-Smith
+	 * @since 3/4/2017
+	 **/
+	private ArrayList<Shift> initialiseShifts(JSONArray jsonShifts)
+	{
+    	ArrayList<Shift> shifts = new ArrayList<Shift>();
+    	
+		// Iterate over each shift
+        int i = 0;
+        if(jsonShifts != null)
+        {
+            while(!jsonShifts.isNull(i))
+            {
+            	String start = jsonShifts.getJSONObject(i).getString("start");
+            	String end = jsonShifts.getJSONObject(i).getString("end");
+            	shifts.add(new Shift(start, end));
+                i++;
+            }
+        }
+        
+        return shifts;
 	}
 
 }

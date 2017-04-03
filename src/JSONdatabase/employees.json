@@ -1,6 +1,7 @@
 {
     "jbloggs@gmail.com": {
         "name": "Joe Bloggs",
-        "email": "jbloggs@gmail.com"
+        "email": "jbloggs@gmail.com",
+        "shifts": []
     }
 }

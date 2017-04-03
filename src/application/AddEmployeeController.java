@@ -44,47 +44,28 @@ public class AddEmployeeController {
 	
 	public boolean handleAddEmployee()
 	{
-		//File file = new File("src/JSONdatabase");
-		//for(String fileNames : file.list()) System.out.println(fileNames);
-		
-		//JSONObject employees = JSONUtils.getJSONObjectFromFile("../JSONdatabase/employees.json");
-		//System.out.println(employees.toString());
-	    
-		//errorLabel.setWrapText(true);
+		// Check name format
 		if(name.getText().trim().isEmpty() || !(name.getText().matches("[a-zA-Z ,.'-]+")))
 		{
 			errorLabel.setText("Please enter a valid name");
 			return false;
 		}
 		
+		// Check email format
 		if(email.getText().isEmpty() || !(email.getText().matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]+")))
 		{
 			errorLabel.setText("Please enter a valid email");
 			return false;
 		}
 		
-		JSONArray existingEmails = business.getEmployees().names();
+		// Check if employee already exists with supplied email
+		if (business.getEmployee(email.getText()) != null)
+		{
+        	errorLabel.setText("Employee already exists with that email");
+            return false;
+		}
 		
-		// Scans the emails JSONArray to check if the employee already exists
-        int i = 0;
-        if(existingEmails != null)
-        {
-            while(!existingEmails.isNull(i))
-            {
-            	System.out.println(existingEmails.getString(i));
-                if(email.getText().equals(existingEmails.getString(i)))
-                {
-                	errorLabel.setText("Employee already exists with that email");
-                    return false;
-                }
-
-                i++;
-            }
-        }
-        
-		Employee newEmployee = new Employee(email.getText(), name.getText());
-		
-		business.addEmployee(email.getText(), newEmployee.toJSONObject());
+		business.addEmployee(email.getText(), name.getText());
 		
 		errorLabel.setText("Successfully registered new employee");
 

@@ -2,6 +2,8 @@ package application;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+
 import org.json.JSONObject;
 import org.json.JSONArray;
 
@@ -10,12 +12,12 @@ public class Business {
 	private String employeesFilepath = "../JSONdatabase/employees.json";
 	//private JSONObject[] loadedUsers;
 	private JSONObject users;
-	private JSONObject employees;
+	private ArrayList<Employee> employees;
 	
 	public Business()
 	{
 		users = JSONUtils.getJSONObjectFromFile(usersFilepath);
-		employees = JSONUtils.getJSONObjectFromFile(employeesFilepath);
+		employees = initialiseEmployees();
 	}
 	
 	public JSONObject getUsers()
@@ -23,15 +25,29 @@ public class Business {
 		return users;
 	}
 	
-	public JSONObject getEmployees()
+	public ArrayList<Employee> getEmployees()
 	{
 		return employees;
 	}
 	
-	// This doesn't work. TBC
-	public JSONObject getEmployee(String email)
+	/**
+	 * @description return an employee with a specific email
+	 * @param email the email of the employee to be returned
+	 * @return Employee the employee
+	 * @author Drew Nuttall-Smith
+	 * @since 3/4/2017
+	 **/
+	public Employee getEmployee(String email)
 	{
-		return employees.get(email);
+		for (Employee emp : employees)
+		{
+			if (emp.getEmail().equals(email))
+			{
+				return emp;
+			}
+		}
+		
+		return null;
 	}
 	
 	/*
@@ -71,10 +87,10 @@ public class Business {
 		*/
 	}
 	
-	public void addEmployee(String email, JSONObject newEmployee)
+	public void addEmployee(String email, String name)
 	{
-		employees.put(email, newEmployee);
-		System.out.println(newEmployee);
+		Employee newEmployee = new Employee(email, name);
+		employees.add(newEmployee);
 	}
 	
 	public void updateFile()
@@ -90,6 +106,40 @@ public class Business {
         {
             e.printStackTrace();
         }
+	}
+
+	/*-------------------- Private Methods --------------------*/
+	
+	/**
+	 * @description create an ArrayList containing all employees from the employees JSON file
+	 * @return ArrayList<Employee> the list of all employees
+	 * @author Drew Nuttall-Smith
+	 * @since 3/4/2017
+	 **/
+	private ArrayList<Employee> initialiseEmployees()
+	{
+		ArrayList<Employee> employees = new ArrayList<Employee>();
+		JSONObject jsonEmployees = JSONUtils.getJSONObjectFromFile(employeesFilepath);
+		JSONArray emails = jsonEmployees.names();
+		
+		// Iterate over each employee
+        int i = 0;
+        if(emails != null)
+        {
+            while(!emails.isNull(i))
+            {
+            	String email = emails.getString(i);
+            	String name = jsonEmployees.getJSONObject(email).getString("name");
+            	JSONArray jsonShifts = jsonEmployees.getJSONObject(email).getJSONArray("shifts");
+            	
+            	employees.add(new Employee(email, name, jsonShifts));
+
+                i++;
+            }
+        }
+        
+        return employees;
+		
 	}
 
 }

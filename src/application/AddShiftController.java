@@ -47,62 +47,52 @@ public class AddShiftController {
 	}
 	
 	public boolean handleAddShift()
-	{
-		//File file = new File("src/JSONdatabase");
-		//for(String fileNames : file.list()) System.out.println(fileNames);
-		
-		//JSONObject employees = JSONUtils.getJSONObjectFromFile("../JSONdatabase/employees.json");
-		//System.out.println(employees.toString());
-	    
-		//errorLabel.setWrapText(true);
-		
+	{	
+		// Check email format
 		if(email.getText().isEmpty() || !(email.getText().matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]+")))
 		{
 			errorLabel.setText("Please enter a valid email");
 			return false;
 		}
         
-		if(date.getText().trim().isEmpty() || !(date.getText().matches("[0-9]{2}/[0-9]{2}/[0-9]{4}")))
+		// Check date format
+		if(date.getText().trim().isEmpty() || !(date.getText().matches("[0-9]{1,2}/[0-9]{1,2}/[0-9]{4}")))
 		{
 			errorLabel.setText("Please enter a valid date");
 			return false;
 		}
 		
+		// Check start time format
 		if(startTime.getText().trim().isEmpty() || !(startTime.getText().matches("[0-9]{1,2}")))
 		{
 			errorLabel.setText("Please enter a valid start time");
 			return false;
 		}
 		
+		// Check end time format
 		if(endTime.getText().trim().isEmpty() || !(endTime.getText().matches("[0-9]{1,2}")))
 		{
 			errorLabel.setText("Please enter a valid end time");
 			return false;
 		}
 		
-		JSONArray existingEmails = business.getEmployees().names();
-		boolean foundEmployee = false;
+		Employee employee = business.getEmployee(email.getText());
 		
-		// Scans the emails JSONArray to check if the employee exists
-        int i = 0;
-        if(existingEmails != null)
+		// Check that employee exists
+		if (employee == null)
+		{
+			errorLabel.setText("No employee exists with that email");
+			return false;
+		}
+        
+		// Add the shift to the employee
+		String startStr = date.getText() + " " + startTime.getText() + ":00:00";
+		String endStr = date.getText() + " " + endTime.getText() + ":00:00";
+        if (employee.addShift(startStr, endStr) == false)
         {
-            while(!existingEmails.isNull(i))
-            {
-            	System.out.println(existingEmails.getString(i));
-                if(email.getText().equals(existingEmails.getString(i)))
-                {
-                	foundEmployee = true;
-                }
-
-                i++;
-            }
+        	errorLabel.setText("Could not add shift to employee");
+        	return false;
         }
-        
-        if (!foundEmployee) return false;
-        
-        
-        // CONTINUE HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		
 		errorLabel.setText("Successfully created shift for employee with email: " + email.getText());
 		/*
