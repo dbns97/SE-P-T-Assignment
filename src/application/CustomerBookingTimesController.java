@@ -4,7 +4,7 @@ public class CustomerBookingTimesController {
 
 	private CustomerMenu cm;
 	private PublicMenu pm;
-	private Buisness buisness;
+	private Business business;
 	
 	public void setCustomerMenu(CustomerMenu cm)
 	{
@@ -16,9 +16,9 @@ public class CustomerBookingTimesController {
 		this.pm = pm;
 	}
 	
-	public void setBuisness(Buisness buisness)
+	public void setBusiness(Business business)
 	{
-		this.buisness = buisness;
+		this.business = business;
 	}
 	
 	public void handleBack()

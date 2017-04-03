@@ -8,7 +8,7 @@ public class CustomerMenuController {
 
 	private CustomerMenu cm;
 	private PublicMenu pm;
-	private Buisness buisness;
+	private Business business;
 	
 	@FXML
 	private Button logout;
@@ -23,9 +23,9 @@ public class CustomerMenuController {
 		this.pm = pm;
 	}
 	
-	public void setBuisness(Buisness buisness)
+	public void setBusiness(Business business)
 	{
-		this.buisness = buisness;
+		this.business = business;
 	}
 	
 	public void handleViewBookings()

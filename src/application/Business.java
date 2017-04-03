@@ -3,20 +3,37 @@ package application;
 import java.io.FileWriter;
 import java.io.IOException;
 import org.json.JSONObject;
+import org.json.JSONArray;
 
-public class Buisness {
+public class Business {
 	private String usersFilepath = "../JSONdatabase/users.json";
+	private String employeesFilepath = "../JSONdatabase/employees.json";
 	//private JSONObject[] loadedUsers;
-	private JSONObject users; 
+	private JSONObject users;
+	private JSONObject employees;
 	
-	public Buisness()
+	public Business()
 	{
-		users = JSONUtils.getJSONObjectFromFile(usersFilepath); 
+		users = JSONUtils.getJSONObjectFromFile(usersFilepath);
+		employees = JSONUtils.getJSONObjectFromFile(employeesFilepath);
 	}
+	
 	public JSONObject getUsers()
 	{
 		return users;
 	}
+	
+	public JSONObject getEmployees()
+	{
+		return employees;
+	}
+	
+	// This doesn't work. TBC
+	public JSONObject getEmployee(String email)
+	{
+		return employees.get(email);
+	}
+	
 	/*
 	public void loadUsers()
 	{
@@ -40,6 +57,7 @@ public class Buisness {
         
 	}
 	*/
+	
 	public void addUser(String username, JSONObject newUserData)
 	{
 		users.put(username, newUserData);
@@ -52,6 +70,13 @@ public class Buisness {
 		loadedUsers = newArray;
 		*/
 	}
+	
+	public void addEmployee(String email, JSONObject newEmployee)
+	{
+		employees.put(email, newEmployee);
+		System.out.println(newEmployee);
+	}
+	
 	public void updateFile()
 	{
 		try
