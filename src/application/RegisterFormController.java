@@ -21,6 +21,8 @@ public class RegisterFormController {
     private TextField username;
     @FXML
     private PasswordField password;
+    @FXML
+    private PasswordField reenter;
 	@FXML
     private TextField name;
 	@FXML
@@ -47,13 +49,14 @@ public class RegisterFormController {
 	{
 		this.buisness = buisness;
 	}
+	
 	public boolean handleRegister()
 	{
 		//File file = new File("src/JSONdatabase");
 		//for(String fileNames : file.list()) System.out.println(fileNames);
 		
-		JSONObject users = JSONUtils.getJSONObjectFromFile("../JSONdatabase/users.json");
-		System.out.println(users.toString());
+		//JSONObject users = JSONUtils.getJSONObjectFromFile("../JSONdatabase/users.json");
+		//System.out.println(users.toString());
 		
 		errorLabel.setWrapText(true);
 		if(username.getText().trim().isEmpty() || !(username.getText().matches("[a-zA-z0-9]+")))
@@ -62,10 +65,15 @@ public class RegisterFormController {
 			return false;
 		}
 		
-		if(password.getText().trim().isEmpty())
+		if(password.getText().isEmpty())
 		{
 			errorLabel.setText("Please enter a password");
 			return false;
+		}
+		
+		if(reenter.getText().isEmpty() || !reenter.getText().equals(password.getText()))
+		{
+			errorLabel.setText("Please re-enter your password");
 		}
 		
 		if(!(name.getText().matches("[a-zA-z ,.'-]+")) || name.getText().trim().isEmpty())
@@ -86,7 +94,7 @@ public class RegisterFormController {
 			return false;
 		}
 		
-		JSONArray usernames = users.names();
+		JSONArray usernames = buisness.getUsers().names();
 		
 		// Scans the usernames JSONArray to check if the username already exists
         int i = 0;
@@ -109,6 +117,7 @@ public class RegisterFormController {
 		
 		buisness.addUser(username.getText(), newUser.toJSONObject());
 		
+		errorLabel.setText("Successfully registered" + username.getText());
 		/*
 		try
         {

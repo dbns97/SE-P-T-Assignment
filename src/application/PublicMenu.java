@@ -40,18 +40,19 @@ public class PublicMenu extends Menu {
 
 	}
 
-	public void showPublicMenu()
+    public void showPublicMenu()
 	{
 		try {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("PublicMenu.fxml"));
 			AnchorPane publicMenu = (AnchorPane) loader.load();
 			PublicMenuController controller = loader.getController();
-
-			//primaryStage.setWidth(publicMenu.getPrefWidth());
-			//primaryStage.setHeight(publicMenu.getPrefHeight());
+			
+			primaryStage.setWidth(publicMenu.getPrefWidth() + 50);
+			primaryStage.setHeight(publicMenu.getPrefHeight() + 32);
 			root.setCenter(publicMenu);
 			controller.setMainMenu(this);
+			controller.setBuisness(buisness);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -70,20 +71,6 @@ public class PublicMenu extends Menu {
 			e.printStackTrace();
 		}
 	}
-	public void showLoginMenu()
-	{
-		/*
-		try {
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(PublicMenu.class.getResource("CustomerMenu.fxml"));
-			loader.setLocation(PublicMenu.class.getResource("OwnerMenu.fxml"));
-
-		} catch (IOException e) {
-            e.printStackTrace();
-
-        }
-		*/
-	}
 
 	public void showRegister()
 	{
@@ -92,27 +79,15 @@ public class PublicMenu extends Menu {
 			loader.setLocation(PublicMenu.class.getResource("RegisterForm.fxml"));
 			AnchorPane registerForm = (AnchorPane) loader.load();
 			RegisterFormController controller = loader.getController();
-
-			//primaryStage.setWidth(registerForm.getPrefWidth());
-			//primaryStage.setHeight(registerForm.getPrefHeight());
+			
+			primaryStage.setWidth(registerForm.getPrefWidth() + 50);
+			primaryStage.setHeight(registerForm.getPrefHeight() + 32);
 			root.setCenter(registerForm);
 			controller.setMainMenu(this);
 			controller.setBuisness(buisness);
 		} catch (IOException e) {
             e.printStackTrace();
-
+            
         }
-	}
-
-	//Takes in user input for username and password, returns false if either is incorrect
-	public boolean checkLogin(String username, String password)
-	{
-		return false;
-	}
-
-	//Takes in input for making customer objects, returns false if the input is incorrect or the username is taken
-	public boolean registerUser(String username, String password, String address, int contactNumber)
-	{
-		return false;
 	}
 }

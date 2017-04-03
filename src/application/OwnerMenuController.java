@@ -4,18 +4,18 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-public class CustomerMenuController {
+public class OwnerMenuController {
 
-	private CustomerMenu cm;
+	private OwnerMenu om;
 	private PublicMenu pm;
 	private Buisness buisness;
 	
 	@FXML
 	private Button logout;
 	
-	public void setCustomerMenu(CustomerMenu cm)
+	public void setOwnerMenu(OwnerMenu om)
 	{
-		this.cm = cm;
+		this.om = om;
 	}
 	
 	public void setMainMenu(PublicMenu pm)
@@ -26,11 +26,6 @@ public class CustomerMenuController {
 	public void setBuisness(Buisness buisness)
 	{
 		this.buisness = buisness;
-	}
-	
-	public void handleViewBookings()
-	{
-		cm.showViewBookings();
 	}
 	
 	public void handleLogout()

@@ -1,31 +1,41 @@
 package application;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class PublicMenuController {
 	private PublicMenu pm;
+    private Buisness buisness;
+	private JSONObject loggedInUser = null;
 
 	@FXML
-   private TextField username;
-   @FXML
-   private PasswordField password;
-   @FXML
-   private Label errorLabel;
+	private Button loginButton;
+	@FXML
+    private TextField username;
+    @FXML
+    private PasswordField password;
+    @FXML
+    private Label errorLabel;
 
 	public void setMainMenu(PublicMenu pm)
 	{
 		this.pm = pm;
 	}
 
-	public void handleLoginMenu()
+    public void setBuisness(Buisness buisness)
 	{
+		this.buisness = buisness;
+	}
 
-		//pm.showLoginMenu();
+    public void setLoggedInUser(JSONObject user)
+	{
+		loggedInUser = user;
 	}
 
 	public void handleRegister()
@@ -36,7 +46,7 @@ public class PublicMenuController {
 	public void handleLogin()
    {
       Boolean userExist = checkLogin();
-
+System.out.println(userExist);
       if( userExist == true )
       {
          // now load this user from the data base
@@ -45,16 +55,28 @@ public class PublicMenuController {
          // find out if owner or customer
          if( user.getBoolean("isOwner") == true )
          {
-            // display owner menu
-            //OwnerMenu om = new OwnerMenu();
-            //om.showCustomerMenu();
-            //pm.showLoginMenu();
+            OwnerMenu menu = new OwnerMenu();
+            menu.setMainMenu(pm);
+            Stage stage = (Stage) loginButton.getScene().getWindow();
+              try
+              {
+               menu.start(stage);
+              } catch(Exception e) {
+               e.printStackTrace();
+            }
+
          }
          else
          {
-            // display Customer menu
-            CustomerMenu cm = new CustomerMenu();
-            cm.showCustomerMenu();
+            CustomerMenu menu = new CustomerMenu();
+            menu.setMainMenu(pm);
+            Stage stage = (Stage) loginButton.getScene().getWindow();
+              try
+              {
+               menu.start(stage);
+              } catch(Exception e) {
+               e.printStackTrace();
+            }
          }
       }
 
@@ -67,20 +89,16 @@ public class PublicMenuController {
 	 */
 	public boolean checkLogin()
    {
-
 	   errorLabel.setWrapText(true);
-
-	   //debug System.out.println("clicked login");
 
 	   // loads all users from database
 	   JSONObject data = JSONUtils.getJSONObjectFromFile("../JSONdatabase/users.json");
+       // checks the database user names and compares to what was entered in the text field
 
-	   //debug System.out.println(data);
-
-	   // checks the database user names and compares to what was entered in the text field
-	   String[] dataUsernames = JSONObject.getNames(data);
-	   for ( int i=0; i < dataUsernames.length; i++ )
+       String[] dataUsernames = JSONObject.getNames(data);
+       for ( int i=0; i < dataUsernames.length; i++ )
 	   {
+
 	      if ( username.getText().equals( dataUsernames[i] ) )
 	      {
 	         // if here they entered the right user name
@@ -95,22 +113,15 @@ public class PublicMenuController {
 	         }
 	         else
 	         {
-	            // change this to show in gui
-	            System.out.println("password in invalid");
+
 
 	            errorLabel.setText("password in invalid");
 	            return false;
 	         }
 	      }
-	      else
-	      {
-	         // change this to show in gui
-	         System.out.println("username enter doesnt exist");
 
-	         errorLabel.setText("username enter doesnt exist");
-	         return false;
-	      }
 	   }
+      errorLabel.setText("username enter doesnt exist");
       return false;
    }
 
