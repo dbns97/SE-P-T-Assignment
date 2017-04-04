@@ -90,7 +90,7 @@ public class Business {
 	}
 	
 	public void addEmployee(String email, String name)
-	{
+	{	
 		Employee newEmployee = new Employee(email, name);
 		employees.add(newEmployee);
 	}
@@ -103,6 +103,16 @@ public class Business {
             custWriter.write(users.toString(4));
             custWriter.flush();
             custWriter.close();
+            
+            JSONObject jsonEmployees = new JSONObject();
+            for (Employee e : employees)
+            {
+            	jsonEmployees.put(e.getEmail(), e.toJSONObject());
+            }
+            FileWriter employeeWriter = new FileWriter("src/JSONdatabase/employees.json");
+            employeeWriter.write(jsonEmployees.toString(4));
+            employeeWriter.flush();
+            employeeWriter.close();
         }
         catch (IOException e)
         {

@@ -7,6 +7,8 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -50,6 +52,8 @@ public class AddShiftController {
 	
 	public boolean handleAddShift()
 	{	
+		SimpleDateFormat inputSdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		
 		// Check email format
 		if(email.getText().isEmpty() || !(email.getText().matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]+")))
 		{
@@ -88,8 +92,17 @@ public class AddShiftController {
 		}
         
 		// Add the shift to the employee
-		String startStr = date.getText() + " " + startTime.getText() + ":00:00";
-		String endStr = date.getText() + " " + endTime.getText() + ":00:00";
+		String startStr = String.format("%s %02d:00:00", date.getText(), Integer.parseInt(startTime.getText()));
+		String endStr = String.format("%s %02d:00:00", date.getText(), Integer.parseInt(endTime.getText()));
+		
+		try {
+			startStr = Shift.getSdf().format(inputSdf.parse(startStr));
+			endStr = Shift.getSdf().format(inputSdf.parse(endStr));
+		} catch (ParseException e) {
+			e.printStackTrace();
+        	return false;
+		}
+		
         if (employee.addShift(startStr, endStr) == false)
         {
         	errorLabel.setText("Could not add shift to employee");
