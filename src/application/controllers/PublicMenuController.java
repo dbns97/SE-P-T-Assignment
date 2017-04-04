@@ -1,4 +1,6 @@
-package application;
+package application.controllers;
+import application.models.*;
+import application.views.*;
 
 import javafx.scene.control.Button;
 
@@ -101,7 +103,7 @@ public class PublicMenuController {
 	   errorLabel.setWrapText(true);
 
 	   // loads all users from database
-	   JSONObject data = JSONUtils.getJSONObjectFromFile("../JSONdatabase/users.json");
+	   JSONObject data = JSONUtils.getJSONObjectFromFile("../../JSONdatabase/users.json");
        // checks the database user names and compares to what was entered in the text field
 
        String[] dataUsernames = JSONObject.getNames(data);
@@ -137,7 +139,7 @@ public class PublicMenuController {
 	public JSONObject loadUser(String username)
 	{
 	   // loads all users from database
-      JSONObject data = JSONUtils.getJSONObjectFromFile("../JSONdatabase/users.json");
+      JSONObject data = JSONUtils.getJSONObjectFromFile("../../JSONdatabase/users.json");
 
       // load that user information from database
       JSONObject user = data.getJSONObject( username );

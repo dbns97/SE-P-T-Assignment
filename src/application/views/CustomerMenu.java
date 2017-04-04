@@ -1,4 +1,6 @@
-package application;
+package application.views;
+import application.models.*;
+import application.controllers.*;
 
 import java.io.IOException;
 
@@ -14,27 +16,27 @@ public class CustomerMenu extends Menu {
 	public BorderPane root;
 	private PublicMenu pm;
 	private Business business;
-	
+
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		this.primaryStage = primaryStage;
-		
+
 		setRoot();
 		showCustomerMenu();
 	}
-	
+
 	public void setMainMenu(PublicMenu pm)
 	{
 		this.pm = pm;
 	}
-	
+
 	public void setRoot()
 	{
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("RootLayout.fxml"));
+			loader.setLocation(getClass().getResource("../views/RootLayout.fxml"));
 			root = (BorderPane) loader.load();
-			
+
 			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);
 			primaryStage.show();
@@ -42,49 +44,49 @@ public class CustomerMenu extends Menu {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void showCustomerMenu()
 	{
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(PublicMenu.class.getResource("CustomerMenu.fxml"));
+			loader.setLocation(PublicMenu.class.getResource("../views/CustomerMenu.fxml"));
 			AnchorPane CustomerMenu = (AnchorPane) loader.load();
 			CustomerMenuController controller = loader.getController();
-			
+
 			primaryStage.setWidth(CustomerMenu.getPrefWidth() + 50);
 			primaryStage.setHeight(CustomerMenu.getPrefHeight() + 50);
 			root.setCenter(CustomerMenu);
 			controller.setCustomerMenu(this);
 			controller.setMainMenu(pm);
 			controller.setBusiness(business);
-			
+
 		} catch (IOException e) {
             e.printStackTrace();
-            
+
         }
 	}
-	
+
 	public void showViewBookings()
 	{
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(PublicMenu.class.getResource("CustomerBookingTimesForm.fxml"));
+			loader.setLocation(PublicMenu.class.getResource("../views/CustomerBookingTimesForm.fxml"));
 			AnchorPane CustomerBookingTimesForm = (AnchorPane) loader.load();
 			CustomerBookingTimesController controller = loader.getController();
-			
+
 			primaryStage.setWidth(CustomerBookingTimesForm.getPrefWidth() + 50);
 			primaryStage.setHeight(CustomerBookingTimesForm.getPrefHeight() + 50);
 			root.setCenter(CustomerBookingTimesForm);
 			controller.setCustomerMenu(this);
 			controller.setMainMenu(pm);
 			controller.setBusiness(business);
-			
+
 		} catch (IOException e) {
             e.printStackTrace();
-            
+
         }
 	}
-	
+
 	public void setBusiness(Business business)
 	{
 		this.business = business;

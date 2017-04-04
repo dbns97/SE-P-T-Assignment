@@ -1,4 +1,6 @@
-package application;
+package application.controllers;
+import application.models.*;
+import application.views.*;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -55,7 +57,7 @@ public class RegisterFormController {
 		//File file = new File("src/JSONdatabase");
 		//for(String fileNames : file.list()) System.out.println(fileNames);
 		
-		//JSONObject users = JSONUtils.getJSONObjectFromFile("../JSONdatabase/users.json");
+		//JSONObject users = JSONUtils.getJSONObjectFromFile("../../JSONdatabase/users.json");
 		//System.out.println(users.toString());
 		
 		errorLabel.setWrapText(true);

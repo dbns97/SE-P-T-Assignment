@@ -1,4 +1,6 @@
-package application;
+package application.views;
+import application.models.*;
+import application.controllers.*;
 
 import java.io.IOException;
 
@@ -26,14 +28,14 @@ public class PublicMenu extends Menu {
     @FXML
     private Label errorLabel;
     private Business business;
-    
+
 	@Override
 	public void start(Stage primaryStage) {
 		business = new Business();
 		this.primaryStage = primaryStage;
 		primaryStage.setOnCloseRequest(e -> {business.updateFile();});
 		this.primaryStage.setTitle("Booking System");
-		
+
 		//business.loadUsers();
 		setRoot();
 		showPublicMenu();
@@ -44,10 +46,10 @@ public class PublicMenu extends Menu {
 	{
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("PublicMenu.fxml"));
+			loader.setLocation(getClass().getResource("../views/PublicMenu.fxml"));
 			AnchorPane publicMenu = (AnchorPane) loader.load();
 			PublicMenuController controller = loader.getController();
-			
+
 			primaryStage.setWidth(publicMenu.getPrefWidth() + 50);
 			primaryStage.setHeight(publicMenu.getPrefHeight() + 32);
 			root.setCenter(publicMenu);
@@ -61,7 +63,7 @@ public class PublicMenu extends Menu {
 	{
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("RootLayout.fxml"));
+			loader.setLocation(getClass().getResource("../views/RootLayout.fxml"));
 			root = (BorderPane) loader.load();
 
 			Scene scene = new Scene(root);
@@ -75,10 +77,10 @@ public class PublicMenu extends Menu {
 	{
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(PublicMenu.class.getResource("RegisterForm.fxml"));
+			loader.setLocation(PublicMenu.class.getResource("../views/RegisterForm.fxml"));
 			AnchorPane registerForm = (AnchorPane) loader.load();
 			RegisterFormController controller = loader.getController();
-			
+
 			primaryStage.setWidth(registerForm.getPrefWidth() + 50);
 			primaryStage.setHeight(registerForm.getPrefHeight() + 32);
 			root.setCenter(registerForm);
@@ -86,7 +88,7 @@ public class PublicMenu extends Menu {
 			controller.setBusiness(business);
 		} catch (IOException e) {
             e.printStackTrace();
-            
+
         }
 	}
 }

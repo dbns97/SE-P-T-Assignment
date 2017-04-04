@@ -1,4 +1,6 @@
-package application;
+package application.models;
+import application.views.*;
+import application.controllers.*;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -8,8 +10,8 @@ import org.json.JSONObject;
 import org.json.JSONArray;
 
 public class Business {
-	private String usersFilepath = "../JSONdatabase/users.json";
-	private String employeesFilepath = "../JSONdatabase/employees.json";
+	private String usersFilepath = "../../JSONdatabase/users.json";
+	private String employeesFilepath = "../../JSONdatabase/employees.json";
 	//private JSONObject[] loadedUsers;
 	private JSONObject users;
 	private ArrayList<Employee> employees;

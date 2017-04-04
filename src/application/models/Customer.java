@@ -1,4 +1,6 @@
-package application;
+package application.models;
+import application.views.*;
+import application.controllers.*;
 
 import org.json.JSONObject;
 
