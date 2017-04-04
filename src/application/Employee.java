@@ -16,6 +16,16 @@ public class Employee {
 		this.email = email;
 		this.name = name;
 	}
+	
+	public String getName()
+	{
+		return name;
+	}
+	
+	public Shift getShift(int i)
+	{
+		return shifts.get(i);
+	}
 
 	/**
 	 * @description add shift in order into shifts

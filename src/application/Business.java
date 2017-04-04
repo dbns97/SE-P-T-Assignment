@@ -31,7 +31,7 @@ public class Business {
 	// This doesn't work. TBC
 	public JSONObject getEmployee(String email)
 	{
-		return employees.get(email);
+		return employees.getJSONObject(email);
 	}
 	
 	/*
