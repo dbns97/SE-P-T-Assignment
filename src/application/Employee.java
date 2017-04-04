@@ -29,10 +29,20 @@ public class Employee {
 	{
 		return email;
 	}
-	
+
 	public String getName()
 	{
 		return name;
+	}
+
+	public Shift getShift(int i)
+	{
+		return shifts.get(i);
+	}
+
+	public ArrayList<Shift> getShifts()
+	{
+		return shifts;
 	}
 
 	/**
@@ -46,6 +56,7 @@ public class Employee {
 	public boolean addShift(String start, String end)
 	{
 		Shift newShift = new Shift(start, end);
+		newShift.setEmployee(this);
 
 		if (shifts.size() == 0) {
 			shifts.add(newShift);
@@ -122,7 +133,9 @@ public class Employee {
             {
             	String start = jsonShifts.getJSONObject(i).getString("start");
             	String end = jsonShifts.getJSONObject(i).getString("end");
-            	shifts.add(new Shift(start, end));
+            	Shift newShift = new Shift(start, end);
+            	newShift.setEmployee(this);
+            	shifts.add(newShift);
                 i++;
             }
         }
