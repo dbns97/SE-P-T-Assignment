@@ -16,15 +16,20 @@ public class Employee {
 		this.email = email;
 		this.name = name;
 	}
-	
+
 	public String getName()
 	{
 		return name;
 	}
-	
+
 	public Shift getShift(int i)
 	{
 		return shifts.get(i);
+	}
+
+	public ArrayList<Shift> getShifts()
+	{
+		return shifts;
 	}
 
 	/**

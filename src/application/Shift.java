@@ -8,36 +8,54 @@ import java.util.Date;
 
 public class Shift {
 
-	public static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
-	public Date start;
-	public Date end;
+	private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
+	private Date start;
+	private Date end;
+	private Employee employee;
+
+	public Shift(Date start, Date end)
+	{
+		this.start = start;
+		this.end = end;
+		this.employee = null;
+	}
+
+	public Shift(String start, String end)
+	{
+		try
+		{
+			this.start = sdf.parse(start);
+			this.end = sdf.parse(end);
+			this.employee = null;
+		}
+		catch (ParseException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void setEmployee(Employee employee)
+	{
+		this.employee = employee;
+	}
+
+	public Employee getEmployee()
+	{
+		return employee;
+	}
 
 	public Date getStart()
 	{
 		return start;
 	}
-	
+
 	public Date getEnd()
 	{
 		return end;
 	}
-	
-	public Shift(Date start, Date end)
-	{
-		this.start = start;
-		this.end = end;
-	}
 
-	public Shift(String start, String end)
+	public static SimpleDateFormat getSdf()
 	{
-		try 
-		{
-			this.start = sdf.parse(start);
-			this.end = sdf.parse(end);
-		} 
-		catch (ParseException e) {
-			e.printStackTrace();
-		}
+		return sdf;
 	}
 
 	/**
@@ -50,8 +68,8 @@ public class Shift {
 	{
 		JSONObject jsonShift = new JSONObject();
 
-		jsonShift.put("start", start.toString());
-		jsonShift.put("end", end.toString());
+		jsonShift.put("start", sdf.format(start));
+		jsonShift.put("end", sdf.format(end));
 
 		return jsonShift;
 	}
