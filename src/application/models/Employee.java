@@ -4,27 +4,26 @@ import application.controllers.*;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.json.JSONArray;
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Employee {
 
 	private String email;
 	private String name;
-	ArrayList<Shift> shifts;
+	private HashMap<String,Shift> roster;
 
 	public Employee(String email, String name)
 	{
 		this.email = email;
 		this.name = name;
-		this.shifts = new ArrayList<Shift>();
+		this.roster = new HashMap<String,Shift>(7);
 	}
 	
-	public Employee(String email, String name, JSONArray shifts)
+	public Employee(String email, String name, JSONObject roster)
 	{
 		this.email = email;
 		this.name = name;
-		this.shifts = initialiseShifts(shifts);
+		this.roster = initialiseRoster(roster);
 	}
 	
 	public String getEmail()
@@ -36,61 +35,34 @@ public class Employee {
 	{
 		return name;
 	}
-
-	public Shift getShift(int i)
+	
+	public Shift getShift(String day)
 	{
-		return shifts.get(i);
+		return roster.get(day);
 	}
 
-	public ArrayList<Shift> getShifts()
+	public HashMap<String,Shift> getRoster()
 	{
-		return shifts;
+		return roster;
 	}
 
 	/**
-	 * @description add shift in order into shifts
+	 * @description set the shift for a day
+	 * @param day day of week of the shift
 	 * @param start string representing start time of shift
 	 * @param end string representing end time of shift
 	 * @return boolean whether shift was added to shifts
 	 * @author Drew Nuttall-Smith
-	 * @since 2/4/2017
+	 * @since 8/4/2017
 	 **/
-	public boolean addShift(String start, String end)
+	public boolean setShift(String day, String start, String end)
 	{
 		Shift newShift = new Shift(start, end);
 		newShift.setEmployee(this);
+		
+		roster.put(day, newShift);
 
-		if (shifts.size() == 0) {
-			shifts.add(newShift);
-			return true;
-		}
-
-		// Compare new shift to all existing shifts
-		for(int i = 0; i < shifts.size(); i++) {
-			// Check if the newShift starts before the current one being checked
-			if (shifts.get(i).getStart().after(newShift.getStart()))
-			{
-				// Check that the newShift also ends before the current one starts
-				if (shifts.get(i).getStart().after(newShift.getEnd()))
-				{
-					shifts.add(i, newShift);
-					return true;
-				} else {
-					System.out.println("Shift clashes with an existing shift!");
-					return false;
-				}
-			} else if (i == (shifts.size() - 1))
-			{
-				// It starts after the last existing shift starts. Check they don't overlap
-				if (shifts.get(i).getEnd().before(newShift.getStart()))
-				{
-					shifts.add(newShift);
-					return true;
-				}
-			}
-		}
-
-		return false;
+		return true;
 	}
 
 	/**
@@ -102,14 +74,15 @@ public class Employee {
 	public JSONObject toJSONObject()
 	{
 		JSONObject newEmployee = new JSONObject();
+		
 		newEmployee.put("email", email);
 		newEmployee.put("name", name);
-
-		JSONArray jsonShifts = new JSONArray();
-		for(Shift shift : shifts) {
-			jsonShifts.put(shift.toJSONObject());
+		
+		JSONObject jsonRoster = new JSONObject();
+		for (HashMap.Entry<String,Shift> entry : roster.entrySet()) {
+		    jsonRoster.put(entry.getKey(), entry.getValue().toJSONObject());
 		}
-		newEmployee.put("shifts", jsonShifts);
+		newEmployee.put("roster", jsonRoster);
 
 		return newEmployee;
 	}
@@ -123,6 +96,7 @@ public class Employee {
 	 * @author Drew Nuttall-Smith
 	 * @since 3/4/2017
 	 **/
+	/*
 	private ArrayList<Shift> initialiseShifts(JSONArray jsonShifts)
 	{
     	ArrayList<Shift> shifts = new ArrayList<Shift>();
@@ -144,5 +118,37 @@ public class Employee {
         
         return shifts;
 	}
+	*/
 
+	/**
+	 * @description create a HashMap of a roster from a JSONObject of a roster
+	 * @param jsonRoster A JSONObjects of a roster
+	 * @return HashMap<String,Shift> the roster
+	 * @author Drew Nuttall-Smith
+	 * @since 8/4/2017
+	 **/
+	private HashMap<String,Shift> initialiseRoster(JSONObject jsonRoster)
+	{
+		HashMap<String,Shift> roster = new HashMap<String,Shift>();
+        
+		JSONArray days = jsonRoster.names();
+		
+        int i = 0;
+        if(days != null)
+        {
+            while(!days.isNull(i))
+            {
+            	JSONObject jsonShift = jsonRoster.getJSONObject(days.getString(i));
+            	String start = jsonShift.getString("start");
+            	String end = jsonShift.getString("end");
+            	Shift newShift = new Shift(start, end);
+            	newShift.setEmployee(this);
+            	
+            	roster.put(days.getString(i), newShift);
+                i++;
+            }
+        }
+        
+        return roster;
+	}
 }

@@ -142,9 +142,9 @@ public class Business {
             {
             	String email = emails.getString(i);
             	String name = jsonEmployees.getJSONObject(email).getString("name");
-            	JSONArray jsonShifts = jsonEmployees.getJSONObject(email).getJSONArray("shifts");
+            	JSONObject jsonRoster = jsonEmployees.getJSONObject(email).getJSONObject("roster");
             	
-            	employees.add(new Employee(email, name, jsonShifts));
+            	employees.add(new Employee(email, name, jsonRoster));
 
                 i++;
             }
