@@ -31,8 +31,8 @@
             </Label>
             <TableView fx:id="bookingsTable" prefHeight="193.0" prefWidth="296.0" GridPane.rowIndex="2">
                <columns>
-                  <TableColumn fx:id="startColumn" prefWidth="70.0" text="Start Time" />
-                  <TableColumn fx:id="endColumn" prefWidth="70.0" text="End Time" />
+                  <TableColumn fx:id="dayColumn" prefWidth="55.0" text="Day" />
+                  <TableColumn fx:id="timeColumn" prefWidth="84.0" text="Time" />
                   <TableColumn fx:id="employeeColumn" prefWidth="78.0" text="Employee" />
                   <TableColumn fx:id="customerColumn" prefWidth="78.0" text="Customer" />
                </columns>

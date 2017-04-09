@@ -30,9 +30,9 @@ public class ViewBookingsController {
 	@FXML
 	private TableView<Booking> bookingsTable;
 	@FXML
-	private TableColumn<Booking,String> startColumn;
+	private TableColumn<Booking,String> dayColumn;
 	@FXML
-	private TableColumn<Booking,String> endColumn;
+	private TableColumn<Booking,String> timeColumn;
 	@FXML
 	private TableColumn<Booking,String> employeeColumn;
 	@FXML
@@ -124,6 +124,7 @@ public class ViewBookingsController {
 	{	
 		ObservableList<Booking> bookings = FXCollections.observableArrayList();
 		SimpleDateFormat displayFormat = new SimpleDateFormat("HH:mm");
+		SimpleDateFormat displayDayFormat = new SimpleDateFormat("EEE");
 		
 		Calendar startOfWeek = Calendar.getInstance();
 		Calendar endOfWeek = Calendar.getInstance();
@@ -170,11 +171,11 @@ public class ViewBookingsController {
 		
     	employeeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEmployee().getName()));
     	customerColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCustomer().getName()));
-        startColumn.setCellValueFactory(cellData -> {
-			return new SimpleStringProperty(displayFormat.format(cellData.getValue().getStart()));
+    	dayColumn.setCellValueFactory(cellData -> {
+			return new SimpleStringProperty(displayDayFormat.format(cellData.getValue().getStart()));
 		});
-        endColumn.setCellValueFactory(cellData -> {
-			return new SimpleStringProperty(displayFormat.format(cellData.getValue().getEnd()));
+        timeColumn.setCellValueFactory(cellData -> {
+			return new SimpleStringProperty(displayFormat.format(cellData.getValue().getStart()) + "-" + displayFormat.format(cellData.getValue().getEnd()));
 		});
         
         bookingsTable.setItems(bookings);
