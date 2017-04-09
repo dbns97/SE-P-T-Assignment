@@ -25,7 +25,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 public class ViewBookingsController {
-	private OwnerMenu om;
+	private Menu parentMenu;
 	private Business business;
 	@FXML
 	private TableView<Booking> bookingsTable;
@@ -42,9 +42,9 @@ public class ViewBookingsController {
 	@FXML
 	private Label errorLabel;
 
-	public void setOwnerMenu(OwnerMenu om)
+	public void setParentMenu(Menu menu)
 	{
-		this.om = om;
+		this.parentMenu = menu;
 	}
 
 	public void setBusiness(Business business)
@@ -184,7 +184,13 @@ public class ViewBookingsController {
 	
 	public void handleBack()
 	{
-		om.showOwnerMenu();
+		if (parentMenu instanceof OwnerMenu) {
+			OwnerMenu om = (OwnerMenu) parentMenu;
+			om.showOwnerMenu();
+		} else {
+			CustomerMenu cm = (CustomerMenu) parentMenu;
+			cm.showCustomerMenu();
+		}
 	}
 
 }

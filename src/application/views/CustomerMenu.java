@@ -70,16 +70,16 @@ public class CustomerMenu extends Menu {
 	{
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(PublicMenu.class.getResource("../views/CustomerBookingTimesForm.fxml"));
+			loader.setLocation(PublicMenu.class.getResource("../views/ViewBookingsForm.fxml"));
 			AnchorPane CustomerBookingTimesForm = (AnchorPane) loader.load();
-			CustomerBookingTimesController controller = loader.getController();
+			ViewBookingsController controller = loader.getController();
 
 			primaryStage.setWidth(CustomerBookingTimesForm.getPrefWidth() + 50);
 			primaryStage.setHeight(CustomerBookingTimesForm.getPrefHeight() + 50);
 			root.setCenter(CustomerBookingTimesForm);
-			controller.setCustomerMenu(this);
-			controller.setMainMenu(pm);
+			controller.setParentMenu(this);
 			controller.setBusiness(business);
+			controller.setWeekChoiceBox();
 
 		} catch (IOException e) {
             e.printStackTrace();

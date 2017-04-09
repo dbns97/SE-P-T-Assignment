@@ -98,7 +98,7 @@ public class OwnerMenu extends Menu {
 			primaryStage.setWidth(ViewBookingsForm.getPrefWidth() + 50);
 			primaryStage.setHeight(ViewBookingsForm.getPrefHeight() + 50);
 			root.setCenter(ViewBookingsForm);
-			controller.setOwnerMenu(this);
+			controller.setParentMenu(this);
 			controller.setBusiness(business);
 			controller.setWeekChoiceBox();
 
