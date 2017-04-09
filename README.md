@@ -19,8 +19,8 @@ Time:  Tuesday 4.30
 * Trello: https://trello.com/b/e5k9w1I6/project-information
 
 ## Testing
-The tests for the application couldnt be completed in time, because of a lack of jUnit knowledge and further inability to write unit testing for the GUI.
+The tests for the application couldnt be completed in time, because of a lack of jUnit knowledge and further inability to write unit testing for the GUI. The code isn't working or integrated, and can be found in the tests subdirectory.
 
 ## Compiling and Running
 To run the application in eclipse, download the JavaFX plugin e(fx)clipse here: http://www.eclipse.org/efxclipse/install.html
-Import the project, and choose the 'Existing Projects into Workspace' option. The application will run from the Driver class in src.
+Import the project, and choose the 'Existing Projects into Workspace' option. The application will run from the Driver class in src. Do not import the tests subdirectory.
