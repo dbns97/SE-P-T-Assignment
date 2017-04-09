@@ -31,7 +31,7 @@ public class PublicMenu extends Menu {
 
 	@Override
 	public void start(Stage primaryStage) {
-		business = new Business();
+		this.business = new Business();
 		this.primaryStage = primaryStage;
 		primaryStage.setOnCloseRequest(e -> {business.updateFile();});
 		this.primaryStage.setTitle("Booking System");
@@ -40,6 +40,23 @@ public class PublicMenu extends Menu {
 		setRoot();
 		showPublicMenu();
 
+	}
+	
+	public void start(Stage primaryStage, Business business) {
+		this.business = business;
+		this.primaryStage = primaryStage;
+		primaryStage.setOnCloseRequest(e -> {business.updateFile();});
+		this.primaryStage.setTitle("Booking System");
+
+		//business.loadUsers();
+		setRoot();
+		showPublicMenu();
+
+	}
+	
+	public void setBusiness(Business business)
+	{
+		this.business = business;
 	}
 
     public void showPublicMenu()

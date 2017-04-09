@@ -66,7 +66,7 @@ public class OwnerMenuController {
 		Stage stage = (Stage) logout.getScene().getWindow();
         try
         {
-        	pm.start(stage);
+        	pm.start(stage, business);
         } catch(Exception e) {
 			e.printStackTrace();
 		}
