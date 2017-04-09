@@ -1,57 +1,140 @@
-package owner;
+package Application;
 
 import static org.junit.Assert.*;
+
+import java.util.concurrent.TimeoutException;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.testfx.api.FxToolkit;
 
-public class shiftTest 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.MouseButton;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+
+public class shiftfxTest 
 {
+	private static final String Date = null;
 
 	@Before
-	public void setup()
+	public void AddShiftController() throws Exception
 	{
-		ownerMenu shifts = new ownerMenu(null);
+		Menu.launch(OwnerMenu.class);
 	}
 	
-	//when employee email is null or doesn't match
-	String emailRegex = "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]+";
-	String email;
-	String addShift = shifts.addShift(email);
-	String result = emailRegex;
+	//shows the menu
+	public void start(Stage primaryStage) throws Exception
+	{
+		//primaryStage.showPublicMenu();
+	}
+	
+	@After
+	public void afterEachTest() throws TimeoutException
+	{
+		FxToolkit.hideStage();
+		//stops from freezing keys and mouse clicks to avoid crash
+		release(new KeyCode[]{});
+		release(new MouseButton[]{});
+	}
+	
+	private void release(KeyCode[] keyCodes) {
+		// TODO Auto-generated method stub
+		
+	}
+	private void release(MouseButton[] keyCodes) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	@Test
-	public void testEmail() 
+	//successful shift add
+	public void valid_shiftSuccessful()
 	{
-		System.out.println("No employees exist under that email");
-		assertNotEquals(addShift, email);	    
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("OwnerMenu.fxml"));
+		AnchorPane publicMenu = (AnchorPane) loader.load();
+		OwnerMenuController controller = loader.getController();
+		
+		OwnerMenuController.click("#startTime").type(1pm);
+		OwnerMenuController.click("#endTime").type(5pm);
+		OwnerMenuController.click("#addShiftButton");
+		OwnerMenuController.click("#employee");
+		
+		JSONObject jsonShift = new JSONObject();
+		
+		while (OwnerMenuController.click("employee") && OwnerMenuController.click("#startTime") != jsonShift)
+		{
+			assertTrue("Shift successfully added", true);
+		}	
 	}
-	
-	//when the date doens't match regex
-	private String dateRegex= "[0-9]{2}/[0-9]{2}/[0-9]{4}";
-	String date;
-	String addShift2 = shifts.addShift2(date);
-	String result2 = dateRegex;
 	
 	@Test
-	public void testExist()
+	//employee field empty or employee doesn't exist
+	public void null_shiftFail()
 	{
-		System.out.println("Employee Already Exists!");
-		assertEquals(addShift2, result2);
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("OwnerMenu.fxml"));
+		AnchorPane publicMenu = (AnchorPane) loader.load();
+		OwnerMenuController controller = loader.getController();
+		
+		OwnerMenuController.click("#startTime").type(1pm);
+		OwnerMenuController.click("#endTime").type(5pm);
+		OwnerMenuController.click("#addShiftButton");
+		OwnerMenuController.click("#employee");
+		
+		JSONObject jsonShift = new JSONObject();
+		
+		while (OwnerMenuController.click("employee") != jsonShift || OwnerMenuController.click("employee") == null)
+		{
+			assertFalse("Shift not added!", true);
+		}	
 	}
-	
-	//when the date is in the past
-	int[] year = {2017, 2018};
-	//test input
-	int sampleYear;
 	
 	@Test
-	public void testPast()
+	//shift already exists
+	public void shiftExist()
 	{
-		System.out.println("Inavlid Year. Year is in the past");
-		assertNotEquals(sampleYear, year);
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("OwnerMenu.fxml"));
+		AnchorPane publicMenu = (AnchorPane) loader.load();
+		OwnerMenuController controller = loader.getController();
+		
+		OwnerMenuController.click("#startTime").type(1pm);
+		OwnerMenuController.click("#endTime").type(1pm);
+		OwnerMenuController.click("#addShiftButton");
+		OwnerMenuController.click("#employee");
+		
+		JSONObject jsonShift = new JSONObject();
+		
+		while (OwnerMenuController.click("#startTime") == jsonShift && OwnerMenuController.click("#endTime") == jsonShift)
+		{
+			assertFalse("Shift already exists!", true);
+		}	
 	}
 	
-}
+	@Test
+	//shift too long (assuming a shift goes for 5h)
+	public void shiftLong()
+	{
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("OwnerMenu.fxml"));
+		AnchorPane publicMenu = (AnchorPane) loader.load();
+		OwnerMenuController controller = loader.getController();
+		
+		OwnerMenuController.click("#startTime").type(1pm);
+		OwnerMenuController.click("#endTime").type(5pm);
+		OwnerMenuController.click("#addShiftButton");
+		OwnerMenuController.click("#employee");
+		
+		JSONObject jsonShift = new JSONObject();
+		
+		while (OwnerMenuController.click("#startTime") + OwnerMenuController.click("#endTime") != 5)
+		{
+			assertFalse("Shift already exists!", true);
+		}	
+	}	
 
+}
