@@ -1,9 +1,5 @@
 {
     "bsmith@gmail.com": {
-        "roster": {"WEDNESDAY": {
-            "start": "09:00",
-            "end": "17:00"
-        }},
         "roster": {
             "MONDAY": {
                 "start": "01:30",
@@ -13,13 +9,13 @@
                 "start": "01:30",
                 "end": "03:20"
             },
-            "FRIDAY": {
-                "start": "01:30",
-                "end": "03:50"
-            },
             "TUESDAY": {
                 "start": "01:00",
                 "end": "03:30"
+            },
+            "FRIDAY": {
+                "start": "01:30",
+                "end": "03:50"
             },
             "SATURDAY": {
                 "start": "01:30",
@@ -51,13 +47,13 @@
                 "start": "01:30",
                 "end": "03:20"
             },
-            "FRIDAY": {
-                "start": "01:30",
-                "end": "03:50"
-            },
             "TUESDAY": {
                 "start": "01:00",
                 "end": "03:30"
+            },
+            "FRIDAY": {
+                "start": "01:30",
+                "end": "03:50"
             },
             "SATURDAY": {
                 "start": "01:30",
