@@ -61,6 +61,11 @@ public class OwnerMenuController {
 		om.showViewBookings();
 	}
 	
+	public void handleViewEmployeeAvailability()
+	{
+		om.showViewEmployeeAvailability();
+	}
+	
 	public void handleLogout()
 	{
 		Stage stage = (Stage) logout.getScene().getWindow();
