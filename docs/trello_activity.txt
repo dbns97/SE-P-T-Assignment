@@ -1,0 +1,236 @@
+Nish joined Unit Test: Owner Add Employeean hour ago
+NNish added Unit Test: Owner Add Employee to Sprint 6 (Ending 11/4)an hour ago
+NNish joined Unit Test: Owner Add Shiftan hour ago
+NNish added Unit Test: Owner Add Shift to Sprint 6 (Ending 11/4)an hour ago
+DNDrew Nuttall-Smith joined Customer Function: View bookingsan hour ago
+DNDrew Nuttall-Smith added Customer Function: View bookings to Sprint 6 (Ending 11/4)an hour ago
+DNDrew Nuttall-Smith joined Add Booking classan hour ago
+DNDrew Nuttall-Smith added Add Booking class to Sprint 6 (Ending 11/4)an hour ago
+DNDrew Nuttall-Smith joined Owner Function: re-implement View Bookingsan hour ago
+DNDrew Nuttall-Smith added Owner Function: re-implement View Bookings to Sprint 6 (Ending 11/4)an hour ago
+ASAleksandar Stefanovic deleted card #61 from Product Backlog3 hours ago
+ASAleksandar Stefanovic deleted card #60 from Product Backlog3 hours ago
+ASAleksandar Stefanovic deleted card #31 from Product Backlog3 hours ago
+ASAleksandar Stefanovic deleted card #32 from Product Backlog3 hours ago
+ASAleksandar Stefanovic added Nish to Finish testing3 hours ago
+ASAleksandar Stefanovic added Finish testing to Sprint 6 (Ending 11/4)3 hours ago
+ASAleksandar Stefanovic added Drew Nuttall-Smith to Change employee shifts to weekly roster3 hours ago
+DNDrew Nuttall-Smith added Aleksandar Stefanovic to View bookings: show full week instead of one dayApr 4 at 5:33 PM
+DNDrew Nuttall-Smith joined Add shift: make drop down of emailsApr 4 at 5:32 PM
+DNDrew Nuttall-Smith added View bookings: show full week instead of one day to Sprint 6 (Ending 11/4)Apr 4 at 5:32 PM
+DNDrew Nuttall-Smith added Change employee shifts to weekly roster to Sprint 6 (Ending 11/4)Apr 4 at 5:31 PM
+DNDrew Nuttall-Smith added Add shift: make drop down of emails to Sprint 6 (Ending 11/4)Apr 4 at 5:31 PM
+DNDrew Nuttall-Smith added Sprint 6 (Ending 11/4) to this boardApr 4 at 5:30 PM
+ASAleksandar Stefanovic added Change shift to roster to LinksApr 4 at 4:48 PM
+ST
+Shawn Taylor attached gui mock ups to JavaFX Mockups: Owner Functions  
+Apr 4 at 2:50 PM
+STShawn Taylor removed Aleksandar Stefanovic from JavaFX Mockups: Owner FunctionsApr 4 at 2:48 PM
+STShawn Taylor joined JavaFX Mockups: Owner FunctionsApr 4 at 2:48 PM
+DNDrew Nuttall-Smith added Aleksandar Stefanovic to Owner Function: View bookingsApr 4 at 1:55 PM
+DNDrew Nuttall-Smith left Owner Function: View bookingsApr 4 at 1:55 PM
+DNDrew Nuttall-Smith joined Create Employee classApr 4 at 1:24 AM
+DNDrew Nuttall-Smith joined Create Shift classApr 4 at 1:23 AM
+DNDrew Nuttall-Smith added Create Employee class to Sprint 5 (Ending 4/4)Apr 4 at 1:23 AM
+DNDrew Nuttall-Smith added Create Shift class to Sprint 5 (Ending 4/4)Apr 4 at 1:23 AM
+STShawn Taylor added Aleksandar Stefanovic to Code: Customer view booking timesApr 3 at 6:55 PM
+STShawn Taylor left Code: Customer view booking timesApr 3 at 6:55 PM
+AS
+Aleksandar Stefanovic attached Class Diagram (1).pdf to Class diagram - Second Iteration  
+Mar 29 at 4:46 PM
+ASAleksandar Stefanovic joined Class diagram - Second IterationMar 29 at 4:45 PM
+ASAleksandar Stefanovic added Class diagram - Second Iteration to Sprint 5 (Ending 4/4)Mar 29 at 4:45 PM
+DNDrew Nuttall-Smith added Nish to Unit tests: registerMar 28 at 5:14 PM
+DNDrew Nuttall-Smith added Unit tests: register to Sprint 5 (Ending 4/4)Mar 28 at 5:14 PM
+DNDrew Nuttall-Smith added Aleksandar Stefanovic to Fix: registerMar 28 at 5:12 PM
+DNDrew Nuttall-Smith added Fix: register to Sprint 5 (Ending 4/4)Mar 28 at 5:12 PM
+DNDrew Nuttall-Smith added Nish to Unit tests: owner view worker availabilityMar 28 at 5:12 PM
+DNDrew Nuttall-Smith added Unit tests: owner view worker availability to Sprint 5 (Ending 4/4)Mar 28 at 5:12 PM
+DNDrew Nuttall-Smith added Nish to Unit tests: owner view bookingsMar 28 at 5:11 PM
+DNDrew Nuttall-Smith added Nish to Unit tests: owner add shiftMar 28 at 5:11 PM
+DNDrew Nuttall-Smith added Nish to Unit tests: owner add employeeMar 28 at 5:11 PM
+DNDrew Nuttall-Smith added Unit tests: owner view bookings to Sprint 5 (Ending 4/4)Mar 28 at 5:11 PM
+DNDrew Nuttall-Smith added Unit tests: owner add shift to Sprint 5 (Ending 4/4)Mar 28 at 5:11 PM
+DNDrew Nuttall-Smith added Unit tests: owner add employee to Sprint 5 (Ending 4/4)Mar 28 at 5:10 PM
+DNDrew Nuttall-Smith added Aleksandar Stefanovic to JavaFX Mockups: Owner FunctionsMar 28 at 5:10 PM
+DNDrew Nuttall-Smith added JavaFX Mockups: Owner Functions to Sprint 5 (Ending 4/4)Mar 28 at 5:09 PM
+DNDrew Nuttall-Smith joined Owner Function: add shift (port to JavaFX)Mar 28 at 5:08 PM
+DNDrew Nuttall-Smith joined Owner Function: add employee (port to JavaFX)Mar 28 at 5:08 PM
+DNDrew Nuttall-Smith added Owner Function: add shift (port to JavaFX) to Sprint 5 (Ending 4/4)Mar 28 at 5:08 PM
+DNDrew Nuttall-Smith added Owner Function: add employee (port to JavaFX) to Sprint 5 (Ending 4/4)Mar 28 at 5:08 PM
+DNDrew Nuttall-Smith joined Owner Function: View worker availabilityMar 28 at 5:07 PM
+DNDrew Nuttall-Smith joined Owner Function: View bookingsMar 28 at 5:07 PM
+DNDrew Nuttall-Smith added Owner Function: View worker availability to Sprint 5 (Ending 4/4)Mar 28 at 5:07 PM
+DNDrew Nuttall-Smith added Owner Function: View bookings to Sprint 5 (Ending 4/4)Mar 28 at 5:07 PM
+DNDrew Nuttall-Smith archived list Sprint 5 (Ending 4/4)Mar 28 at 5:05 PM
+STShawn Taylor joined Code: Customer view booking timesMar 28 at 5:05 PM
+DNDrew Nuttall-Smith added Sprint 5 (Ending 4/4) to this boardMar 28 at 5:05 PM
+STShawn Taylor added Code: Customer view booking times to Sprint 5 (Ending 4/4)Mar 28 at 5:05 PM
+STShawn Taylor joined Finish JavaFX: Login codeMar 28 at 5:04 PM
+STShawn Taylor added Finish JavaFX: Login code to Sprint 5 (Ending 4/4)Mar 28 at 5:03 PM
+STShawn Taylor added Sprint 5 (Ending 4/4) to this boardMar 28 at 5:03 PM
+N
+Nish attached https://github.com/dbns97/SE-P-T-Assignment/blob/test/code/src/EmployeeTest.java to Unit Test: Owner Function  
+Mar 28 at 4:36 PM
+ASAleksandar Stefanovic deleted card #30 from Product BacklogMar 28 at 4:36 PM
+ASAleksandar Stefanovic deleted card #29 from Product BacklogMar 28 at 4:36 PM
+N
+Nish attached https://github.com/dbns97/SE-P-T-Assignment/blob/test/code/src/shiftTest.java to Unit Test: Owner Function  
+Mar 28 at 4:36 PM
+NNish added Unit Test: Owner Function to Sprint 4 (Ends 28/3)Mar 28 at 4:35 PM
+N
+Nish attached https://github.com/dbns97/SE-P-T-Assignment/blob/master/code/src/PublicMenuTest2.java to Unit test: Login  
+Mar 28 at 4:34 PM
+NNish deleted the https://github.com/dbns97/SE-P-T-Assignment/blob/test/code/src/shiftTest.java attachment from Unit test: LoginMar 28 at 4:34 PM
+N
+Nish attached https://github.com/dbns97/SE-P-T-Assignment/blob/master/code/src/PublicMenuTest.java to Unit test: Login  
+Mar 28 at 4:34 PM
+N
+Nish attached https://github.com/dbns97/SE-P-T-Assignment/blob/test/code/src/shiftTest.java to Unit test: Login  
+Mar 28 at 4:33 PM
+DNDrew Nuttall-Smith deleted card #49 from Sprint 4 (Ends 28/3)Mar 28 at 2:39 PM
+DNDrew Nuttall-Smith added Aleksandar Stefanovic to JavaFX: Register codeMar 28 at 2:38 PM
+DNDrew Nuttall-Smith added Aleksandar Stefanovic to JavaFX: Register UIMar 28 at 2:38 PM
+DNDrew Nuttall-Smith added Aleksandar Stefanovic to JavaFX: Public Menu UIMar 28 at 2:38 PM
+DNDrew Nuttall-Smith added JavaFX: Register code to Sprint 4 (Ends 28/3)Mar 28 at 2:38 PM
+DNDrew Nuttall-Smith added JavaFX: Register UI to Sprint 4 (Ends 28/3)Mar 28 at 2:38 PM
+DNDrew Nuttall-Smith added JavaFX: Public Menu UI to Sprint 4 (Ends 28/3)Mar 28 at 2:37 PM
+DNDrew Nuttall-Smith deleted card #51 from Sprint 4 (Ends 28/3)Mar 28 at 2:35 PM
+DNDrew Nuttall-Smith joined Owner Function: addShiftMar 28 at 2:34 PM
+DNDrew Nuttall-Smith joined Owner Function: addEmployeeMar 28 at 2:34 PM
+DNDrew Nuttall-Smith added Owner Function: addShift to Sprint 4 (Ends 28/3)Mar 28 at 2:33 PM
+DNDrew Nuttall-Smith added Owner Function: addEmployee to Sprint 4 (Ends 28/3)Mar 28 at 2:33 PM
+ST
+Shawn Taylor attached https://drive.google.com/open?id=1vEQAU3EMt9MPhmdCbRdqoOch7RdrtvBwwN7nJFglsPk to User story: Customer view bookings  
+Mar 28 at 2:31 PM
+STShawn Taylor joined User story: Customer view bookingsMar 28 at 2:26 PM
+STShawn Taylor added User story: Customer view bookings to Sprint 4 (Ends 28/3)Mar 28 at 2:26 PM
+ASAleksandar Stefanovic joined Owner Menu MockupsMar 28 at 12:52 AM
+AS
+Aleksandar Stefanovic attached upload 3/28/2017 at 12:51:50 AM.png to Owner Menu Mockups 
+Mar 28 at 12:51 AM
+AS
+Aleksandar Stefanovic attached upload 3/28/2017 at 12:48:12 AM.png to Owner Menu Mockups 
+Mar 28 at 12:48 AM
+ASAleksandar Stefanovic added Owner Menu Mockups to Sprint 4 (Ends 28/3)Mar 28 at 12:46 AM
+ASAleksandar Stefanovic added Shawn Taylor to JavaFX: Login codeMar 27 at 5:35 PM
+ASAleksandar Stefanovic archived list Sprint 4 (28/3)Mar 23 at 7:04 PM
+ASAleksandar Stefanovic deleted card #45 from Sprint 4 (28/3)Mar 23 at 7:04 PM
+ASAleksandar Stefanovic deleted card #46 from Sprint 4 (28/3)Mar 23 at 7:04 PM
+ASAleksandar Stefanovic added Drew Nuttall-Smith to Owner function: MockupsMar 23 at 7:04 PM
+ASAleksandar Stefanovic added Drew Nuttall-Smith to User stories: owner functionsMar 23 at 7:03 PM
+ASAleksandar Stefanovic moved JavaFX: Login code from Sprint 4 (28/3) to Sprint 4 (Ends 28/3)Mar 23 at 7:03 PM
+ASAleksandar Stefanovic moved Finalise and submit zip file from Sprint 4 (28/3) to Sprint 4 (Ends 28/3)Mar 23 at 7:03 PM
+ASAleksandar Stefanovic moved Fix current code from Sprint 4 (28/3) to Sprint 4 (Ends 28/3)Mar 23 at 7:03 PM
+ASAleksandar Stefanovic moved Unit test: Login from Sprint 4 (28/3) to Sprint 4 (Ends 28/3)Mar 23 at 7:03 PM
+ASAleksandar Stefanovic moved Unit test: Registration from Sprint 4 (28/3) to Sprint 4 (Ends 28/3)Mar 23 at 7:03 PM
+ASAleksandar Stefanovic added Shawn Taylor to Fix current codeMar 23 at 5:50 PM
+ASAleksandar Stefanovic joined Fix current codeMar 23 at 5:50 PM
+ASAleksandar Stefanovic added Fix current code to Sprint 4 (28/3)Mar 23 at 5:50 PM
+ASAleksandar Stefanovic joined Finalise and submit zip fileMar 23 at 5:50 PM
+ASAleksandar Stefanovic added Nish to Unit test: LoginMar 23 at 5:49 PM
+ASAleksandar Stefanovic added Nish to Unit test: RegistrationMar 23 at 5:49 PM
+ASAleksandar Stefanovic added JavaFX: Login code to Sprint 4 (28/3)Mar 23 at 5:49 PM
+ASAleksandar Stefanovic added Finalise and submit zip file to Sprint 4 (28/3)Mar 23 at 5:48 PM
+ASAleksandar Stefanovic added Unit test: Login to Sprint 4 (28/3)Mar 23 at 5:47 PM
+ASAleksandar Stefanovic added Unit test: Registration to Sprint 4 (28/3)Mar 23 at 5:47 PM
+ASAleksandar Stefanovic added Sprint 4 (28/3) to this boardMar 23 at 5:46 PM
+AS
+Aleksandar Stefanovic attached swing login.txt to Swing example  
+Mar 22 at 3:23 PM
+ASAleksandar Stefanovic added Swing example to LinksMar 22 at 3:22 PM
+ASAleksandar Stefanovic added Owner function: Mockups to Sprint 4 (Ends 28/3)Mar 21 at 5:24 PM
+ASAleksandar Stefanovic added User stories: owner functions to Sprint 4 (Ends 28/3)Mar 21 at 5:23 PM
+ASAleksandar Stefanovic added Sprint 4 (Ends 28/3) to this boardMar 21 at 5:21 PM
+ASAleksandar Stefanovic added Drew Nuttall-Smith to User story: View booking timesMar 21 at 4:40 PM
+ASAleksandar Stefanovic added User story: View booking times to Sprint 3 (Ending 21/3)Mar 21 at 4:40 PM
+ASAleksandar Stefanovic added Shawn Taylor to Wrote skeleton code for projectMar 15 at 4:26 PM
+ASAleksandar Stefanovic added Drew Nuttall-Smith to Wrote skeleton code for projectMar 15 at 4:26 PM
+ASAleksandar Stefanovic joined Wrote skeleton code for projectMar 15 at 4:26 PM
+ASAleksandar Stefanovic added Nish to Wrote skeleton code for projectMar 15 at 4:26 PM
+ASAleksandar Stefanovic added Wrote skeleton code for project to Sprint 3 (Ending 21/3)Mar 15 at 4:26 PM
+ASAleksandar Stefanovic added Drew Nuttall-Smith to Code view booking functionMar 15 at 4:23 PM
+ASAleksandar Stefanovic added Drew Nuttall-Smith to Mock up for CustomerMenuMar 15 at 4:23 PM
+ASAleksandar Stefanovic added Code view booking function to Sprint 3 (Ending 21/3)Mar 15 at 4:22 PM
+ASAleksandar Stefanovic added Mock up for CustomerMenu to Sprint 3 (Ending 21/3)Mar 15 at 4:21 PM
+AS
+Aleksandar Stefanovic attached Class Diagram.pdf to Class diagrams - First Iteration  
+Mar 15 at 3:12 PM
+ASAleksandar Stefanovic added Shawn Taylor to Code abstract classMar 15 at 3:09 PM
+ASAleksandar Stefanovic joined Code abstract classMar 15 at 3:09 PM
+ASAleksandar Stefanovic added Code abstract class to Sprint 3 (Ending 21/3)Mar 15 at 3:09 PM
+ASAleksandar Stefanovic removed Shawn Taylor from Logging for all functions in sprintMar 15 at 3:09 PM
+ASAleksandar Stefanovic added Shawn Taylor to Logging for all functions in sprintMar 15 at 3:08 PM
+ASAleksandar Stefanovic joined Code register functionMar 15 at 2:58 PM
+STShawn Taylor joined Database functions for menuMar 15 at 2:58 PM
+STShawn Taylor joined Code login functionMar 15 at 2:58 PM
+ASAleksandar Stefanovic added Logging for all functions in sprint to Sprint 3 (Ending 21/3)Mar 15 at 2:58 PM
+STShawn Taylor added Database functions for menu to Sprint 3 (Ending 21/3)Mar 15 at 2:56 PM
+STShawn Taylor moved Unit test: Registration from Product Backlog to Sprint 3 (Ending 21/3)Mar 15 at 2:55 PM
+STShawn Taylor moved Unit test: login from Product Backlog to Sprint 3 (Ending 21/3)Mar 15 at 2:55 PM
+ASAleksandar Stefanovic deleted card #26 from Sprint 3 (Ending 21/3)Mar 15 at 2:54 PM
+ASAleksandar Stefanovic deleted card #25 from Sprint 3 (Ending 21/3)Mar 15 at 2:54 PM
+ASAleksandar Stefanovic deleted card #24 from Sprint 3 (Ending 21/3)Mar 15 at 2:54 PM
+ASAleksandar Stefanovic deleted card #23 from Sprint 3 (Ending 21/3)Mar 15 at 2:53 PM
+STShawn Taylor added Code register function to Sprint 3 (Ending 21/3)Mar 15 at 2:53 PM
+STShawn Taylor added Code login function to Sprint 3 (Ending 21/3)Mar 15 at 2:53 PM
+ASAleksandar Stefanovic joined Rearrange trelloMar 14 at 10:26 PM
+ASAleksandar Stefanovic added Rearrange trello to Sprint 3 (Ending 21/3Mar 14 at 10:26 PM
+ASAleksandar Stefanovic transferred Class diagrams - First Iteration from Sprint 2 (ending 14/3)Mar 14 at 10:25 PM
+ASAleksandar Stefanovic transferred Login mockups from Sprint 2 (ending 14/3)Mar 14 at 10:25 PM
+ASAleksandar Stefanovic transferred User story: User login from Sprint 2 (ending 14/3)Mar 14 at 10:25 PM
+ASAleksandar Stefanovic transferred User story: Customer registration from Sprint 2 (ending 14/3)Mar 14 at 10:25 PM
+ASAleksandar Stefanovic transferred Unit test: login from Sprint 2 (ending 14/3)Mar 14 at 10:24 PM
+ASAleksandar Stefanovic transferred Unit test: Registration from Sprint 2 (ending 14/3)Mar 14 at 10:24 PM
+ASAleksandar Stefanovic archived list Meeting MinutesMar 14 at 10:23 PM
+ASAleksandar Stefanovic deleted card #15 from Meeting MinutesMar 14 at 10:22 PM
+ASAleksandar Stefanovic moved Link to document for all meeting minutes from Meeting Minutes to LinksMar 14 at 10:20 PM
+ASAleksandar Stefanovic transferred User story: owner login from Sprint 1 (ending 7/3)Mar 14 at 10:20 PM
+ASAleksandar Stefanovic transferred User story: customer login from Sprint 1 (ending 7/3)Mar 14 at 10:19 PM
+ASAleksandar Stefanovic added Complete to LegendMar 14 at 10:19 PM
+ASAleksandar Stefanovic added In Progress to LegendMar 14 at 10:19 PM
+ASAleksandar Stefanovic added Sprint Backlog to LegendMar 14 at 10:18 PM
+ASAleksandar Stefanovic added Legend to this boardMar 14 at 10:18 PM
+ASAleksandar Stefanovic added Sprint 3 to this boardMar 14 at 10:17 PM
+ASAleksandar Stefanovic added Sprint 2 to this boardMar 14 at 10:17 PM
+ASAleksandar Stefanovic added Sprint 1 to this boardMar 14 at 10:17 PM
+ASAleksandar Stefanovic renamed this board (from Notes)Mar 14 at 4:50 PM
+NNish added Nishara Waidyasekara to Group MembersMar 14 at 4:45 PM
+STShawn Taylor added Shawn Taylor to Group MembersMar 14 at 4:44 PM
+ASAleksandar Stefanovic copied Unit test: Registration from Unit test: Registration in list Product BacklogMar 14 at 4:42 PM
+ASAleksandar Stefanovic copied Unit test: login from Unit test: login in list Product BacklogMar 14 at 4:42 PM
+ASAleksandar Stefanovic added Product Backlog to this boardMar 14 at 4:41 PM
+ASAleksandar Stefanovic added Nish to Unit test: RegistrationMar 8 at 7:28 PM
+ASAleksandar Stefanovic added Unit test: Registration to BacklogMar 8 at 7:28 PM
+DNDrew Nuttall-Smith added Nish to Unit test: loginMar 7 at 5:58 PM
+DNDrew Nuttall-Smith added Unit test: login to BacklogMar 7 at 5:58 PM
+DNDrew Nuttall-Smith added Aleksandar Stefanovic to Class diagrams - First IterationMar 7 at 5:58 PM
+DNDrew Nuttall-Smith added Class diagrams - First Iteration to BacklogMar 7 at 5:58 PM
+DNDrew Nuttall-Smith added Shawn Taylor to Login mockupsMar 7 at 5:57 PM
+DNDrew Nuttall-Smith joined User story: Customer registrationMar 7 at 5:57 PM
+DNDrew Nuttall-Smith joined User story: User loginMar 7 at 5:57 PM
+DNDrew Nuttall-Smith added User story: Customer registration to BacklogMar 7 at 5:56 PM
+DNDrew Nuttall-Smith added User story: User login to BacklogMar 7 at 5:56 PM
+DNDrew Nuttall-Smith added Login mockups to BacklogMar 7 at 5:55 PM
+DNDrew Nuttall-Smith enabled the GitHub Power-UpMar 7 at 5:10 PM
+DNDrew Nuttall-Smith added Drew Nuttall-Smith to Group MembersMar 7 at 5:08 PM
+DNDrew Nuttall-Smith made Nish an admin of this boardMar 7 at 5:07 PM
+DNDrew Nuttall-Smith made Shawn Taylor an admin of this boardMar 7 at 5:07 PM
+DNDrew Nuttall-Smith added Homy to this boardMar 7 at 5:07 PM
+DNDrew Nuttall-Smith added Shawn Taylor to this boardMar 7 at 5:07 PM
+DNDrew Nuttall-Smith added Nish to this boardMar 7 at 5:07 PM
+DNDrew Nuttall-Smith made Aleksandar Stefanovic an admin of this boardMar 7 at 5:07 PM
+ASAleksandar Stefanovic added Aleksandar Stefanovic to Group MembersMar 7 at 5:04 PM
+ASAleksandar Stefanovic added Group Members to this boardMar 7 at 5:04 PM
+DNDrew Nuttall-Smith added Github to LinksMar 7 at 4:46 PM
+DNDrew Nuttall-Smith added Github to this boardMar 7 at 4:46 PM
+DNDrew Nuttall-Smith joined User story: owner loginMar 6 at 6:26 PM
+DNDrew Nuttall-Smith joined User story: customer loginMar 6 at 6:26 PM
+DNDrew Nuttall-Smith added User story: owner login to BacklogMar 6 at 6:22 PM
+DNDrew Nuttall-Smith added User story: customer login to BacklogMar 6 at 6:22 PM
+ASAleksandar Stefanovic added Link to document for all meeting minutes to Meeting MinutesFeb 28 at 10:52 PM
+ASAleksandar Stefanovic deleted card #1 from Meeting MinutesFeb 28 at 10:52 PM
+ASAleksandar Stefanovic joined this boardFeb 28 at 10:51 PM
+DNDrew Nuttall-Smith added Meeting Minutes to this boardFeb 28 at 6:16 PM
+DNDrew Nuttall-Smith added this board to Software Engineering: Process & ToolsFeb 28 at 6:16 PM
+DNDrew Nuttall-Smith created this board
