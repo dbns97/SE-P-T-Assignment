@@ -66,6 +66,27 @@ public class OwnerMenu extends Menu {
         }
 	}
 
+	public void showViewEmployeeAvailability()
+	{
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(PublicMenu.class.getResource("../views/ViewEmployeeAvailability.fxml"));
+			AnchorPane ViewEmployeeAvailability = (AnchorPane) loader.load();
+			ViewEmployeeAvailabilityController controller = loader.getController();
+
+			primaryStage.setWidth(ViewEmployeeAvailability.getPrefWidth() + 50);
+			primaryStage.setHeight(ViewEmployeeAvailability.getPrefHeight() + 50);
+			root.setCenter(ViewEmployeeAvailability);
+			controller.setOwnerMenu(this);
+			controller.setBusiness(business);
+			controller.loadRoster();
+
+		} catch (IOException e) {
+            e.printStackTrace();
+
+        }
+	}
+	
 	public void showViewBookings()
 	{
 		try {

@@ -89,7 +89,7 @@ public class ViewBookingsController {
         	employeeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEmployee().getName()));
             timeColumn.setCellValueFactory(cellData -> {
 				try {
-					return new SimpleStringProperty(displayFormat.format(convertingFormat.parse(cellData.getValue().getStart().toString())) + " - " + displayFormat.format(convertingFormat.parse(cellData.getValue().getEnd().toString())));
+					return new SimpleStringProperty(cellData.getValue().getStart().toString() + " - " + cellData.getValue().getEnd().toString());
 				} catch (ParseException e) {
 					e.printStackTrace();
 					return null;
