@@ -10,13 +10,13 @@ public class Employee {
 
 	private String email;
 	private String name;
-	private HashMap<String,Shift> roster;
+	private HashMap<Day,Shift> roster;
 
 	public Employee(String email, String name)
 	{
 		this.email = email;
 		this.name = name;
-		this.roster = new HashMap<String,Shift>(7);
+		this.roster = initialiseRoster(); 
 	}
 	
 	public Employee(String email, String name, JSONObject roster)
@@ -41,7 +41,7 @@ public class Employee {
 		return roster.get(day);
 	}
 
-	public HashMap<String,Shift> getRoster()
+	public HashMap<Day,Shift> getRoster()
 	{
 		return roster;
 	}
@@ -60,7 +60,7 @@ public class Employee {
 		Shift newShift = new Shift(start, end);
 		newShift.setEmployee(this);
 		
-		roster.put(day, newShift);
+		roster.put(Day.valueOf(day.toUpperCase()), newShift);
 
 		return true;
 	}
@@ -79,8 +79,10 @@ public class Employee {
 		newEmployee.put("name", name);
 		
 		JSONObject jsonRoster = new JSONObject();
-		for (HashMap.Entry<String,Shift> entry : roster.entrySet()) {
-		    jsonRoster.put(entry.getKey(), entry.getValue().toJSONObject());
+		for (HashMap.Entry<Day,Shift> entry : roster.entrySet()) {
+			if (entry.getValue() != null) {
+				jsonRoster.put(entry.getKey().name(), entry.getValue().toJSONObject());	
+			}
 		}
 		newEmployee.put("roster", jsonRoster);
 
@@ -121,33 +123,49 @@ public class Employee {
 	*/
 
 	/**
+	 * @description create a HashMap of a roster if there is no roster in the JSON file
+	 * @return HashMap<Day,Shift> the roster
+	 * @author Drew Nuttall-Smith
+	 * @since 9/4/2017
+	 **/
+	private HashMap<Day,Shift> initialiseRoster()
+	{
+		HashMap<Day,Shift> roster = new HashMap<Day,Shift>(7);
+		
+		for (Day day : Day.values())
+		{
+			roster.put(day, null);
+		}
+		
+		return roster;
+	}
+	
+	/**
 	 * @description create a HashMap of a roster from a JSONObject of a roster
 	 * @param jsonRoster A JSONObjects of a roster
 	 * @return HashMap<String,Shift> the roster
 	 * @author Drew Nuttall-Smith
 	 * @since 8/4/2017
 	 **/
-	private HashMap<String,Shift> initialiseRoster(JSONObject jsonRoster)
+	private HashMap<Day,Shift> initialiseRoster(JSONObject jsonRoster)
 	{
-		HashMap<String,Shift> roster = new HashMap<String,Shift>();
-        
-		JSONArray days = jsonRoster.names();
+		HashMap<Day,Shift> roster = new HashMap<Day,Shift>(7);
 		
-        int i = 0;
-        if(days != null)
-        {
-            while(!days.isNull(i))
-            {
-            	JSONObject jsonShift = jsonRoster.getJSONObject(days.getString(i));
+		for (Day day : Day.values())
+		{
+			if (jsonRoster.has(day.name()))
+			{
+				JSONObject jsonShift = jsonRoster.getJSONObject(day.name());
             	String start = jsonShift.getString("start");
             	String end = jsonShift.getString("end");
             	Shift newShift = new Shift(start, end);
             	newShift.setEmployee(this);
             	
-            	roster.put(days.getString(i), newShift);
-                i++;
-            }
-        }
+            	roster.put(day, newShift);
+			} else {
+				roster.put(day, null);
+			}
+		}
         
         return roster;
 	}

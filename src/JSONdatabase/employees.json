@@ -1,61 +1,12 @@
 {
     "bsmith@gmail.com": {
+        "roster": {},
         "name": "Bill Smith",
-        "shifts": [],
         "email": "bsmith@gmail.com"
     },
     "bob@gmail.com": {
+        "roster": {},
         "name": "Bob Dobalina",
-        "shifts": [{
-            "start": "Sat Jan 03 09:00:00 AEST 1970",
-            "end": "Sat Jan 03 17:00:00 AEST 1970"
-        }],
         "email": "bob@gmail.com"
-    },
-    "jbloggs@gmail.com": {
-        "name": "Joe Bloggs",
-        "shifts": [
-            {
-                "start": "Thu Jan 01 02:34:09 AEST 1970",
-                "end": "Thu Jan 01 03:34:09 AEST 1970"
-            },
-            {
-                "start": "Thu Jan 01 08:00:09 AEST 1970",
-                "end": "Thu Jan 01 10:30:09 AEST 1970"
-            },
-            {
-                "start": "Fri Jan 02 02:34:09 AEST 1970",
-                "end": "Fri Jan 02 03:34:09 AEST 1970"
-            }
-        ],
-        "email": "jbloggs@gmail.com"
-    },
-    "jbloggs2@gmail.com": {
-        "name": "Big Boy Joe",
-        "shifts": [
-            {
-                "start": "Thu Jan 01 02:34:09 AEST 1970",
-                "end": "Thu Jan 01 03:34:09 AEST 1970"
-            },
-            {
-                "start": "Fri Jan 02 02:34:09 AEST 1970",
-                "end": "Fri Jan 02 03:34:09 AEST 1970"
-            }
-        ],
-        "email": "jbloggs2@gmail.com"
-    },
-    "jbloggs3@gmail.com": {
-        "name": "Joey Blogga",
-        "shifts": [
-            {
-                "start": "Thu Jan 01 03:34:09 AEST 1970",
-                "end": "Thu Jan 01 04:34:09 AEST 1970"
-            },
-            {
-                "start": "Fri Jan 02 02:34:09 AEST 1970",
-                "end": "Fri Jan 02 03:34:09 AEST 1970"
-            }
-        ],
-        "email": "jbloggs3@gmail.com"
     }
 }

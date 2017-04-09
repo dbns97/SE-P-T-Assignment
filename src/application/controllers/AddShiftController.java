@@ -9,12 +9,16 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -22,9 +26,9 @@ import javafx.scene.control.TextField;
 public class AddShiftController {
 	private OwnerMenu om;
 	@FXML
-    private TextField email;
+    private ChoiceBox<String> email;
 	@FXML
-    private TextField date;
+    private ChoiceBox<String> day;
     @FXML
     private TextField startTime;
     @FXML
@@ -50,39 +54,43 @@ public class AddShiftController {
 		this.business = business;
 	}
 	
+	public void setDays()
+	{
+		day.setItems(FXCollections.observableArrayList("Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"));
+		day.setValue("Monday");
+	}
+	
+	public void setEmails()
+	{
+		ArrayList<Employee> employeeList = business.getEmployees();
+		ObservableList<String> emailList = FXCollections.observableArrayList();
+		
+		for (Employee emp : employeeList)
+		{
+			emailList.add(emp.getEmail());
+		}
+		email.setItems(emailList);
+		day.setValue(employeeList.get(0).getEmail());
+		
+	}
+	
 	public boolean handleAddShift()
 	{	
-		SimpleDateFormat inputSdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-		
-		// Check email format
-		if(email.getText().isEmpty() || !(email.getText().matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]+")))
-		{
-			errorLabel.setText("Please enter a valid email");
-			return false;
-		}
-        
-		// Check date format
-		if(date.getText().trim().isEmpty() || !(date.getText().matches("[0-9]{1,2}/[0-9]{1,2}/[0-9]{4}")))
-		{
-			errorLabel.setText("Please enter a valid date");
-			return false;
-		}
-		
 		// Check start time format
-		if(startTime.getText().trim().isEmpty() || !(startTime.getText().matches("[0-9]{1,2}")))
+		if(startTime.getText().trim().isEmpty() || !(startTime.getText().matches("[0-9]{2}:[0-9]{2}")))
 		{
 			errorLabel.setText("Please enter a valid start time");
 			return false;
 		}
 		
 		// Check end time format
-		if(endTime.getText().trim().isEmpty() || !(endTime.getText().matches("[0-9]{1,2}")))
+		if(endTime.getText().trim().isEmpty() || !(endTime.getText().matches("[0-9]{2}:[0-9]{2}")))
 		{
 			errorLabel.setText("Please enter a valid end time");
 			return false;
 		}
 		
-		Employee employee = business.getEmployee(email.getText());
+		Employee employee = business.getEmployee(email.getValue());
 		
 		// Check that employee exists
 		if (employee == null)
@@ -90,26 +98,10 @@ public class AddShiftController {
 			errorLabel.setText("No employee exists with that email");
 			return false;
 		}
-        
-		// Add the shift to the employee
-		String startStr = String.format("%s %02d:00:00", date.getText(), Integer.parseInt(startTime.getText()));
-		String endStr = String.format("%s %02d:00:00", date.getText(), Integer.parseInt(endTime.getText()));
 		
-		try {
-			startStr = Shift.getSdf().format(inputSdf.parse(startStr));
-			endStr = Shift.getSdf().format(inputSdf.parse(endStr));
-		} catch (ParseException e) {
-			e.printStackTrace();
-        	return false;
-		}
+        employee.setShift(day.getValue(), startTime.getText(), endTime.getText());
 		
-        if (employee.addShift(startStr, endStr) == false)
-        {
-        	errorLabel.setText("Could not add shift to employee");
-        	return false;
-        }
-		
-		errorLabel.setText("Successfully created shift for employee with email: " + email.getText());
+		errorLabel.setText("Successfully created shift for employee with email: " + email.getValue());
 		/*
 		try
         {

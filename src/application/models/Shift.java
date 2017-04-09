@@ -10,7 +10,7 @@ import java.util.Date;
 
 public class Shift {
 
-	private static SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy");
+	private static SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
 	private Date start;
 	private Date end;
 	private Employee employee;

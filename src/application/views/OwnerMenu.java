@@ -119,6 +119,8 @@ public class OwnerMenu extends Menu {
 			root.setCenter(addShift);
 			controller.setMainMenu(this);
 			controller.setBusiness(business);
+			controller.setDays();
+			controller.setEmails();
 
 		} catch (IOException e) {
             e.printStackTrace();
