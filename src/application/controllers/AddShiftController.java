@@ -70,7 +70,7 @@ public class AddShiftController {
 			emailList.add(emp.getEmail());
 		}
 		email.setItems(emailList);
-		day.setValue(employeeList.get(0).getEmail());
+		email.setValue(employeeList.get(0).getEmail());
 		
 	}
 	
