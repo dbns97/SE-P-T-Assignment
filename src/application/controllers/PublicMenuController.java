@@ -123,13 +123,13 @@ public class PublicMenuController {
 	         {
 
 
-	            errorLabel.setText("password in invalid");
+	            errorLabel.setText("Password is invalid");
 	            return false;
 	         }
 	      }
 
 	   }
-      errorLabel.setText("username enter doesnt exist");
+      errorLabel.setText("Username entered doesnt exist");
       return false;
    }
 
