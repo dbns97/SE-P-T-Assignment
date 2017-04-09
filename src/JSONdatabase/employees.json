@@ -1,0 +1,66 @@
+{
+    "bsmith@gmail.com": {
+        "roster": {
+            "MONDAY": {
+                "start": "01:30",
+                "end": "03:10"
+            },
+            "THURSDAY": {
+                "start": "01:30",
+                "end": "03:20"
+            },
+            "FRIDAY": {
+                "start": "01:30",
+                "end": "03:50"
+            },
+            "TUESDAY": {
+                "start": "01:00",
+                "end": "03:30"
+            },
+            "SATURDAY": {
+                "start": "01:30",
+                "end": "03:40"
+            }
+        },
+        "name": "Bill Smith",
+        "email": "bsmith@gmail.com"
+    },
+    "jimbo@gmail.com": {
+        "roster": {"THURSDAY": {
+            "start": "09:00",
+            "end": "12:00"
+        }},
+        "name": "Jimbo",
+        "email": "jimbo@gmail.com"
+    },
+    "bob@gmail.com": {
+        "roster": {
+            "WEDNESDAY": {
+                "start": "01:30",
+                "end": "03:00"
+            },
+            "MONDAY": {
+                "start": "01:30",
+                "end": "03:10"
+            },
+            "THURSDAY": {
+                "start": "01:30",
+                "end": "03:20"
+            },
+            "FRIDAY": {
+                "start": "01:30",
+                "end": "03:50"
+            },
+            "TUESDAY": {
+                "start": "01:00",
+                "end": "03:30"
+            },
+            "SATURDAY": {
+                "start": "01:30",
+                "end": "03:40"
+            }
+        },
+        "name": "Bob Dobalina",
+        "email": "bob@gmail.com"
+    }
+}

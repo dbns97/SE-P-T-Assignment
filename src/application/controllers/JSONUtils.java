@@ -1,3 +1,7 @@
+package application.controllers;
+import application.models.*;
+import application.views.*;
+
 import java.io.InputStream;
 import java.util.Scanner;
 
