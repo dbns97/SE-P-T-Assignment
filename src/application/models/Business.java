@@ -13,18 +13,45 @@ public class Business {
 	private String usersFilepath = "../../JSONdatabase/users.json";
 	private String employeesFilepath = "../../JSONdatabase/employees.json";
 	//private JSONObject[] loadedUsers;
-	private JSONObject users;
+	private Owner owner;
+	private ArrayList<Customer> customers;
 	private ArrayList<Employee> employees;
 	
 	public Business()
 	{
-		users = JSONUtils.getJSONObjectFromFile(usersFilepath);
+		owner = initialiseOwner();
 		employees = initialiseEmployees();
+		customers = initialiseCustomers();
 	}
 	
-	public JSONObject getUsers()
+	public Owner getOwner()
 	{
-		return users;
+		return owner;
+	}
+	
+	public ArrayList<Customer> getCustomers()
+	{
+		return customers;
+	}
+	
+	/**
+	 * @description return a customer with a specific username
+	 * @param username the username of the customer to be returned
+	 * @return Customer the customer
+	 * @author Drew Nuttall-Smith
+	 * @since 9/4/2017
+	 **/
+	public Customer getCustomer(String username)
+	{
+		for (Customer cust : customers)
+		{
+			if (cust.getUsername().equals(username))
+			{
+				return cust;
+			}
+		}
+		
+		return null;
 	}
 	
 	public ArrayList<Employee> getEmployees()
@@ -76,9 +103,9 @@ public class Business {
 	}
 	*/
 	
-	public void addUser(String username, JSONObject newUserData)
+	public void addCustomer(Customer customer)
 	{
-		users.put(username, newUserData);
+		customers.add(customer);
 		/*
 		JSONObject[] newArray = new JSONObject[loadedUsers.length + 1];
 		for (int i = 0; i < loadedUsers.length; i++){
@@ -99,8 +126,15 @@ public class Business {
 	{
 		try
         {
+			JSONObject jsonUsers = new JSONObject();
+			for (Customer c : customers)
+			{
+				jsonUsers.put(c.getUsername(), c.toJSONObject());
+			}
+			jsonUsers.put("owner", owner.toJSONObject());
+			
             FileWriter custWriter = new FileWriter("src/JSONdatabase/users.json");
-            custWriter.write(users.toString(4));
+            custWriter.write(jsonUsers.toString(4));
             custWriter.flush();
             custWriter.close();
             
@@ -109,6 +143,7 @@ public class Business {
             {
             	jsonEmployees.put(e.getEmail(), e.toJSONObject());
             }
+            
             FileWriter employeeWriter = new FileWriter("src/JSONdatabase/employees.json");
             employeeWriter.write(jsonEmployees.toString(4));
             employeeWriter.flush();
@@ -152,6 +187,79 @@ public class Business {
         
         return employees;
 		
+	}
+	
+	private ArrayList<Customer> initialiseCustomers()
+	{
+		ArrayList<Customer> customers = new ArrayList<Customer>();
+		JSONObject jsonUsers = JSONUtils.getJSONObjectFromFile(usersFilepath);
+		JSONArray usernames = jsonUsers.names();
+		
+		// Iterate over each employee
+        int i = 0;
+        if(usernames != null)
+        {
+            while(!usernames.isNull(i))
+            {
+            	String username = usernames.getString(i);
+            	if (!jsonUsers.getJSONObject(username).getBoolean("isOwner")) {
+                	String name = jsonUsers.getJSONObject(username).getString("name");
+                	String password = jsonUsers.getJSONObject(username).getString("password");
+                	
+                	JSONArray jsonBookings = jsonUsers.getJSONObject(username).getJSONArray("bookings");
+                	ArrayList<Booking> bookings = new ArrayList<Booking>();
+                	for (int j = 0; j < jsonBookings.length(); j++)
+                	{
+                		String bookingStart = jsonBookings.getJSONObject(j).getString("start");
+                		String bookingEnd = jsonBookings.getJSONObject(j).getString("end");
+                		String bookingEmployee = jsonBookings.getJSONObject(j).getString("employee");
+                		
+                		bookings.add(new Booking(bookingStart, bookingEnd, getEmployee(bookingEmployee)));
+                	}
+                	
+                	// Add the new customer
+                	Customer newCustomer = new Customer(username, name, password, bookings);
+                	customers.add(newCustomer);
+                	
+                	// Add the reference to the customer in each booking
+                	for (Booking b : newCustomer.getBookings())
+                	{
+                		b.setCustomer(newCustomer);
+                	}
+            	}
+
+                i++;
+            }
+        }
+        
+        return customers;
+	}
+	
+	private Owner initialiseOwner()
+	{
+		JSONObject jsonUsers = JSONUtils.getJSONObjectFromFile(usersFilepath);
+		JSONArray usernames = jsonUsers.names();
+		
+		// Iterate over each user
+        int i = 0;
+        if(usernames != null)
+        {
+            while(!usernames.isNull(i))
+            {
+            	String username = usernames.getString(i);
+            	if (jsonUsers.getJSONObject(username).getBoolean("isOwner")) {
+                	String password = jsonUsers.getJSONObject(username).getString("password");
+                	
+                	// Return the owner
+                	return new Owner(username, password);
+            	}
+
+                i++;
+            }
+        }
+        
+        return null;
+    	
 	}
 
 }

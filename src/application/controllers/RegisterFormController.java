@@ -96,28 +96,19 @@ public class RegisterFormController {
 			return false;
 		}
 		
-		JSONArray usernames = business.getUsers().names();
-		
 		// Scans the usernames JSONArray to check if the username already exists
-        int i = 0;
-        if(usernames != null)
-        {
-            while(!usernames.isNull(i))
-            {
-            	System.out.println(usernames.getString(i));
-                if(username.getText().equals(usernames.getString(i)))
-                {
-                	errorLabel.setText("Username already exists");
-                    return false;
-                }
-
-                i++;
-            }
-        }
+		for (Customer customer : business.getCustomers())
+		{
+			if (customer.getUsername().equals(username.getText()))
+			{
+				errorLabel.setText("Username already exists");
+				return false;
+			}
+		}
         
-		Customer newUser = new Customer(username.getText(), name.getText(), password.getText(), address.getText(), Integer.parseInt(contactNumber.getText()));
+		Customer newUser = new Customer(username.getText(), name.getText(), password.getText());
 		
-		business.addUser(username.getText(), newUser.toJSONObject());
+		business.addCustomer(newUser);
 		
 		errorLabel.setText("Successfully registered " + username.getText());
 		/*

@@ -58,11 +58,8 @@ public class PublicMenuController {
 
       if( userExist == true )
       {
-         // now load this user from the data base
-         JSONObject user = loadUser(username.getText() );
-
          // find out if owner or customer
-         if( user.getBoolean("isOwner") == true )
+         if(business.getOwner().getUsername().equals(username.getText()))
          {
             OwnerMenu menu = new OwnerMenu();
             menu.setBusiness(business);

@@ -13,25 +13,32 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 
 public class ViewBookingsController {
 	private OwnerMenu om;
 	private Business business;
 	@FXML
-	private TableView<Shift> shiftTable;
+	private TableView<Booking> bookingsTable;
 	@FXML
-	private TableColumn<Shift,String> timeColumn;
+	private TableColumn<Booking,String> startColumn;
 	@FXML
-	private TableColumn<Shift,String> employeeColumn;
+	private TableColumn<Booking,String> endColumn;
 	@FXML
-    private TextField date;
+	private TableColumn<Booking,String> employeeColumn;
+	@FXML
+	private TableColumn<Booking,String> customerColumn;
+	@FXML
+    private ChoiceBox<String> week;
 	@FXML
 	private Label errorLabel;
 
@@ -44,7 +51,14 @@ public class ViewBookingsController {
 	{
 		this.business = business;
 	}
+	
+	public void setWeekChoiceBox()
+	{
+		week.setItems(FXCollections.observableArrayList("Last week", "This week", "Next week"));
+		week.setValue("This week");
+	}
 
+	/*
 	public void handleView()
 	{
 		ObservableList<Shift> shiftList = FXCollections.observableArrayList();
@@ -78,10 +92,11 @@ public class ViewBookingsController {
 
 			// Create list of all shifts for the entered date
 			for(Employee e : employees) {
-				for(Shift s : e.getShifts()) {
-					if(comparingFormat.format(s.getStart()).equals(comparingFormat.format(input)))
+				HashMap<Day,Shift> roster = e.getRoster();
+				for (HashMap.Entry<Day,Shift> entry : roster.entrySet()) {
+					if(comparingFormat.format(entry.getValue().getStart()).equals(comparingFormat.format(input)))
 					{
-						shiftList.add(s);
+						shiftList.add(entry.getValue());
 					}
 				}
 			}
@@ -101,80 +116,71 @@ public class ViewBookingsController {
 			e.printStackTrace();
 		}
 
-		// OLD
-		/*
-		ObservableList<Employee> employeeList = FXCollections.observableArrayList();
-		JSONObject employees = business.getEmployees();
-		JSONObject employeeJSON;
-		Employee employee;
-		JSONArray emails = employees.names();
-		SimpleDateFormat comparingFormat = new SimpleDateFormat("ddMMyyyy");
-		SimpleDateFormat convertingFormat = new SimpleDateFormat("EEE MMM dd hh:mm:ss zzz yyyy");
-		SimpleDateFormat inputFormat = new SimpleDateFormat("dd/MM/yyyy");
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
-		SimpleDateFormat displayFormat = new SimpleDateFormat("HH:mm");
-		Date input;
-
-		errorLabel.setText("");
-		errorLabel.setWrapText(true);
-		try
-		{
-			if(date.getText().trim().isEmpty() || !(date.getText().matches("[0-9][0-9]/[0-9][0-9]/[0-9][0-9][0-9][0-9]")))
-			{
-				errorLabel.setText("Please enter a date in the dd/mm/yyyy format");
-				return;
-			}
-
-			try
-			{
-				input = inputFormat.parse(date.getText());
-			}
-			catch(Exception e)
-			{
-				errorLabel.setText("Invalid date");
-				return;
-			}
-
-			// Scans the database for any shifts
-        	int i = 0;
-        	if(emails != null)
-        	{
-            	while(!emails.isNull(i))
-            	{
-            		System.out.println(emails.getString(i));
-            		JSONArray shifts = business.getEmployee(emails.getString(i)).getJSONArray("shifts");
-            		employeeJSON = business.getEmployee(emails.getString(i));
-
-            		for(int j = 0; j < shifts.length(); j++)
-            		{
-						if(comparingFormat.format(convertingFormat.parse(shifts.getJSONObject(j).getString("start"))).equals(comparingFormat.format(input)))
-						{
-							employee = new Employee(employeeJSON.getString("email"), employeeJSON.getString("name"));
-							employee.addShift(sdf.format(convertingFormat.parse(shifts.getJSONObject(j).getString("start"))), sdf.format(convertingFormat.parse(shifts.getJSONObject(j).getString("end"))));
-							System.out.println(employee.toJSONObject().toString());
-							employeeList.add(employee);
-						}
-            		}
-                	i++;
-            	}
-        	}
-
-        	employeeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getName()));
-            timeColumn.setCellValueFactory(cellData -> {
-				try {
-					return new SimpleStringProperty(displayFormat.format(convertingFormat.parse(cellData.getValue().getShift(0).getStart().toString())) + " - " + displayFormat.format(convertingFormat.parse(cellData.getValue().getShift(0).getEnd().toString())));
-				} catch (ParseException e) {
-					e.printStackTrace();
-					return null;
-				}
-			});
-            employeeTable.setItems(employeeList);
-		}
-		catch(Exception e) {
-			e.printStackTrace();
-		}
-		*/
 	}
+	*/
+	
+	// NEW
+	public void handleView()
+	{	
+		ObservableList<Booking> bookings = FXCollections.observableArrayList();
+		SimpleDateFormat displayFormat = new SimpleDateFormat("HH:mm");
+		
+		Calendar startOfWeek = Calendar.getInstance();
+		Calendar endOfWeek = Calendar.getInstance();
+		startOfWeek.setFirstDayOfWeek(Calendar.MONDAY);
+		
+		// Set startOfWeek calendar value to beginning of day
+		startOfWeek.set(Calendar.HOUR_OF_DAY, 0); // Clear doesn't reset the hour of day
+		startOfWeek.clear(Calendar.MINUTE);
+		startOfWeek.clear(Calendar.SECOND);
+		startOfWeek.clear(Calendar.MILLISECOND);
+		
+		// Set startOfWeek calendar to match the selected week
+		if (week.getValue().equals("Last week")) {
+			// Get start of last week
+			startOfWeek.set(Calendar.DAY_OF_WEEK, startOfWeek.getFirstDayOfWeek());
+			startOfWeek.add(Calendar.WEEK_OF_YEAR, -1);
+		} else if (week.getValue().equals("This week")) {
+			// Get start of this week
+			startOfWeek.set(Calendar.DAY_OF_WEEK, startOfWeek.getFirstDayOfWeek());
+		} else if (week.getValue().equals("Next week")) {
+			// Get start of next week
+			startOfWeek.set(Calendar.DAY_OF_WEEK, startOfWeek.getFirstDayOfWeek());
+			startOfWeek.add(Calendar.WEEK_OF_YEAR, 1);
+		}
+		
+		// Set endOfWeek calendar based on startOfWeek calendar
+		endOfWeek.setTimeInMillis(startOfWeek.getTimeInMillis());
+		endOfWeek.add(Calendar.WEEK_OF_YEAR, 1);
+		
+		ArrayList<Customer> customers = business.getCustomers();
+		
+		for (Customer customer : customers)
+		{
+			for (Booking booking : customer.getBookings())
+			{
+				// Check if booking is in the selected week
+				if (booking.getStart().getTime() > startOfWeek.getTimeInMillis() && booking.getEnd().getTime() < endOfWeek.getTimeInMillis()){
+					bookings.add(booking);
+				}
+			}
+		}
+		
+		bookings.sort((a,b) -> a.getStart().getTime() < b.getStart().getTime() ? -1 : a.getStart().getTime() == b.getStart().getTime() ? 0 : 1);
+		
+    	employeeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEmployee().getName()));
+    	customerColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCustomer().getName()));
+        startColumn.setCellValueFactory(cellData -> {
+			return new SimpleStringProperty(displayFormat.format(cellData.getValue().getStart()));
+		});
+        endColumn.setCellValueFactory(cellData -> {
+			return new SimpleStringProperty(displayFormat.format(cellData.getValue().getEnd()));
+		});
+        
+        bookingsTable.setItems(bookings);
+		
+	}
+	
 	public void handleBack()
 	{
 		om.showOwnerMenu();

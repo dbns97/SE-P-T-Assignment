@@ -79,6 +79,7 @@ public class OwnerMenu extends Menu {
 			root.setCenter(ViewBookingsForm);
 			controller.setOwnerMenu(this);
 			controller.setBusiness(business);
+			controller.setWeekChoiceBox();
 
 		} catch (IOException e) {
             e.printStackTrace();
@@ -119,8 +120,8 @@ public class OwnerMenu extends Menu {
 			root.setCenter(addShift);
 			controller.setMainMenu(this);
 			controller.setBusiness(business);
-			controller.setDays();
-			controller.setEmails();
+			controller.setDaysChoiceBox();
+			controller.setEmailsChoiceBox();
 
 		} catch (IOException e) {
             e.printStackTrace();

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -29,10 +29,12 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <TableView fx:id="shiftTable" prefHeight="193.0" prefWidth="296.0" GridPane.rowIndex="2">
+            <TableView fx:id="bookingsTable" prefHeight="193.0" prefWidth="296.0" GridPane.rowIndex="2">
                <columns>
-                  <TableColumn fx:id="timeColumn" prefWidth="87.0" text="Time" />
-                  <TableColumn fx:id="employeeColumn" prefWidth="208.0" text="Employee" />
+                  <TableColumn fx:id="startColumn" prefWidth="70.0" text="Start Time" />
+                  <TableColumn fx:id="endColumn" prefWidth="70.0" text="End Time" />
+                  <TableColumn fx:id="employeeColumn" prefWidth="78.0" text="Employee" />
+                  <TableColumn fx:id="customerColumn" prefWidth="78.0" text="Customer" />
                </columns>
             </TableView>
             <GridPane GridPane.rowIndex="1">
@@ -44,8 +46,8 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <TextField fx:id="date" prefHeight="25.0" prefWidth="214.0" GridPane.columnIndex="1" />
-                  <Label text="Enter Date" />
+                  <Label text="Select week" />
+                  <ChoiceBox fx:id="week" prefWidth="200.0" GridPane.columnIndex="1" />
                </children>
             </GridPane>
             <GridPane GridPane.halignment="LEFT" GridPane.rowIndex="3">

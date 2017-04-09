@@ -54,13 +54,13 @@ public class AddShiftController {
 		this.business = business;
 	}
 	
-	public void setDays()
+	public void setDaysChoiceBox()
 	{
 		day.setItems(FXCollections.observableArrayList("Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"));
 		day.setValue("Monday");
 	}
 	
-	public void setEmails()
+	public void setEmailsChoiceBox()
 	{
 		ArrayList<Employee> employeeList = business.getEmployees();
 		ObservableList<String> emailList = FXCollections.observableArrayList();

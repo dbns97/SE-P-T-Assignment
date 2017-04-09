@@ -1,8 +1,19 @@
 {
     "bsmith@gmail.com": {
-        "roster": {},
+        "roster": {"WEDNESDAY": {
+            "start": "09:00",
+            "end": "17:00"
+        }},
         "name": "Bill Smith",
         "email": "bsmith@gmail.com"
+    },
+    "jimbo@gmail.com": {
+        "roster": {"THURSDAY": {
+            "start": "09:00",
+            "end": "12:00"
+        }},
+        "name": "Jimbo",
+        "email": "jimbo@gmail.com"
     },
     "bob@gmail.com": {
         "roster": {},
