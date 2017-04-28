@@ -10,18 +10,21 @@ import org.json.JSONObject;
 import org.json.JSONArray;
 
 public class Business {
-	private String usersFilepath = "../../JSONdatabase/users.json";
+	private String usersFilepath     = "../../JSONdatabase/users.json";
 	private String employeesFilepath = "../../JSONdatabase/employees.json";
+	private String businessFilepath  = "../../JSONdatabase/business.json";
 	//private JSONObject[] loadedUsers;
 	private Owner owner;
 	private ArrayList<Customer> customers;
 	private ArrayList<Employee> employees;
+	private ArrayList<Service> services;
 	
 	public Business()
 	{
 		owner = initialiseOwner();
 		employees = initialiseEmployees();
 		customers = initialiseCustomers();
+		services = initialiseServices();
 	}
 	
 	public Owner getOwner()
@@ -126,6 +129,7 @@ public class Business {
 	{
 		try
         {
+			// Write users to file
 			JSONObject jsonUsers = new JSONObject();
 			for (Customer c : customers)
 			{
@@ -138,6 +142,7 @@ public class Business {
             custWriter.flush();
             custWriter.close();
             
+            // Write employees to file
             JSONObject jsonEmployees = new JSONObject();
             for (Employee e : employees)
             {
@@ -148,6 +153,20 @@ public class Business {
             employeeWriter.write(jsonEmployees.toString(4));
             employeeWriter.flush();
             employeeWriter.close();
+            
+            // Write business to file
+            JSONObject jsonBusiness = new JSONObject();
+            JSONObject jsonServices = new JSONObject();
+            for (Service s : services)
+            {
+            	jsonServices.put(s.getName(), s.toJSONObject());
+            }
+            jsonBusiness.put("services", jsonServices);
+            
+            FileWriter serviceWriter = new FileWriter("src/JSONdatabase/business.json");
+            serviceWriter.write(jsonServices.toString(4));
+            serviceWriter.flush();
+            serviceWriter.close();
         }
         catch (IOException e)
         {
@@ -233,6 +252,38 @@ public class Business {
         }
         
         return customers;
+	}
+	
+	/**
+	 * @description create an ArrayList containing all services offered from the business JSON file
+	 * @return ArrayList<Service> the list of all services offered
+	 * @author Drew Nuttall-Smith
+	 * @since 27/4/2017
+	 **/
+	private ArrayList<Service> initialiseServices()
+	{
+		ArrayList<Service> services = new ArrayList<Service>();
+		// TODO: add services to the JSON in a business file (in future this will hold all businesses)
+		JSONObject jsonServices = JSONUtils.getJSONObjectFromFile(businessFilepath);
+		JSONArray names = jsonServices.names();
+		
+		// Iterate over each service
+        int i = 0;
+        if(names != null)
+        {
+            while(!names.isNull(i))
+            {
+            	String name = names.getString(i);
+            	int duration = Integer.parseInt(jsonServices.getJSONObject(name).getString("duration"));
+            	
+            	services.add(new Service(name, duration));
+
+                i++;
+            }
+        }
+        
+        return services;
+		
 	}
 	
 	private Owner initialiseOwner()
