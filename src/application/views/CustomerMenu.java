@@ -91,5 +91,34 @@ public class CustomerMenu extends Menu {
 	{
 		this.business = business;
 	}
+	
+	public void showMakeBookings()
+	{
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(PublicMenu.class.getResource("../views/CustomerMakeBooking.fxml"));
+			AnchorPane CustomerMakeBooking = (AnchorPane) loader.load();
+			CustomerMakeBookingController controller = loader.getController();
+
+			primaryStage.setWidth(CustomerMakeBooking.getPrefWidth() + 50);
+			primaryStage.setHeight(CustomerMakeBooking.getPrefHeight() + 50);
+			root.setCenter(CustomerMakeBooking);
+			controller.setMainMenu(this);
+			controller.setBusiness(business);
+			
+			controller.setEmployeeBox();
+			controller.setDayBox();
+			controller.setTimeBox();
+			
+			controller.setServiceChoiceBox();
+			
+			
+			
+
+		} catch (IOException e) {
+            e.printStackTrace();
+
+        }
+	}
 
 }

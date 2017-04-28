@@ -34,6 +34,11 @@ public class CustomerMenuController {
 	{
 		cm.showViewBookings();
 	}
+	
+	public void handleMakeBookings()
+	{
+		cm.showMakeBookings();
+	}
 
 	public void handleLogout()
 	{
