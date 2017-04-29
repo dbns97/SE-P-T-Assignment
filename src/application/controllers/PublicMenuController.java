@@ -20,6 +20,7 @@ public class PublicMenuController {
 	private PublicMenu pm;
 	private Business business;
 	private JSONObject loggedInUser = null;
+	private String usersFilepath = "../../JSONdatabase/users.json";
 
 	@FXML
 	private Button loginButton;
@@ -31,6 +32,16 @@ public class PublicMenuController {
     private Label errorLabel;
 
 
+    public void setUsername(String username)
+    {
+    	this.username.setText(username);
+    }
+    
+    public void setPassword(String password)
+    {
+    	this.password.setText(password);
+    }
+    
 	public void setMainMenu(PublicMenu pm)
 	{
 		this.pm = pm;
@@ -51,7 +62,26 @@ public class PublicMenuController {
 		pm.showRegister();
 	}
 
-
+	public void setUsername(TextField username)
+	{
+		this.username = username;		
+	}
+	
+	public void setErrorLabel(Label errorLabel)
+	{
+		this.errorLabel = errorLabel;		
+	}
+	
+	public void setUsersFilepath(String path)
+	{
+		this.usersFilepath = path;
+	}
+	
+	public void setPassword(PasswordField password)
+	{
+		this.password = password;
+	}
+	
 	public void handleLogin()
    {
       Boolean userExist = checkLogin();
@@ -100,7 +130,7 @@ public class PublicMenuController {
 	   errorLabel.setWrapText(true);
 
 	   // loads all users from database
-	   JSONObject data = JSONUtils.getJSONObjectFromFile("../../JSONdatabase/users.json");
+	   JSONObject data = JSONUtils.getJSONObjectFromFile(usersFilepath);
        // checks the database user names and compares to what was entered in the text field
 
        String[] dataUsernames = JSONObject.getNames(data);
