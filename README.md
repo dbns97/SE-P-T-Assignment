@@ -4,10 +4,16 @@
 * Aleksandar Stefanovic, s3605170@student.rmit.edu.au
 * Nishara Waidyasekara, s3394527@student.rmit.edu.au
 
-## Contributions
+## Part A Contributions
 * Drew: User stories, Mockups, Code (Some classes. Customer and owner functions) - 25%
 * Shawn: User stories, Mockups, Code (Some classes. login and register) - 25%
 * Aleks: User stories, Mockups, Code (Some classes. Customer and owner functions) - 25%
+* Nish: User stories, Tests - 25%
+
+## Part B Contributions
+* Drew: GUI Mockups, Code (Added services, view available times) - 25%
+* Shawn: Mockups, Code (Create booking functions) - 25%
+* Aleks: Tests, Code - 25%
 * Nish: User stories, Tests - 25%
 
 ## Tutorial
