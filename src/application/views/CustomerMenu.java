@@ -66,20 +66,21 @@ public class CustomerMenu extends Menu {
         }
 	}
 
-	public void showViewBookings()
+	public void viewAvailableTimes()
 	{
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(PublicMenu.class.getResource("../views/ViewBookingsForm.fxml"));
-			AnchorPane CustomerBookingTimesForm = (AnchorPane) loader.load();
-			ViewBookingsController controller = loader.getController();
+			loader.setLocation(PublicMenu.class.getResource("../views/ViewAvailableTimesForm.fxml"));
+			AnchorPane CustomerAvailableTimesForm = (AnchorPane) loader.load();
+			ViewAvailableTimesController controller = loader.getController();
 
-			primaryStage.setWidth(CustomerBookingTimesForm.getPrefWidth() + 50);
-			primaryStage.setHeight(CustomerBookingTimesForm.getPrefHeight() + 50);
-			root.setCenter(CustomerBookingTimesForm);
+			primaryStage.setWidth(CustomerAvailableTimesForm.getPrefWidth() + 50);
+			primaryStage.setHeight(CustomerAvailableTimesForm.getPrefHeight() + 50);
+			root.setCenter(CustomerAvailableTimesForm);
 			controller.setParentMenu(this);
 			controller.setBusiness(business);
 			controller.setWeekChoiceBox();
+			controller.handleView();
 
 		} catch (IOException e) {
             e.printStackTrace();
