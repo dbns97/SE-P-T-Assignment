@@ -1,12 +1,8 @@
 {
-    "service10": 
-    {
+    "service10": {
         "duration": "30"
     },
-    
-    "service130": 
-    {
+    "service130": {
         "duration": "60"
     }
-
 }

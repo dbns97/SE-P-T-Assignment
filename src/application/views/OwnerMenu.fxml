@@ -21,6 +21,7 @@
             <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Label text="Company Name" GridPane.halignment="LEFT">
@@ -31,8 +32,9 @@
             <Button mnemonicParsing="false" onAction="#handleViewBookings" prefWidth="175.0" text="View bookings summary" GridPane.rowIndex="3" />
             <Button mnemonicParsing="false" onAction="#showAddEmployee" prefWidth="175.0" text="Add employee" GridPane.rowIndex="1" />
             <Button mnemonicParsing="false" onAction="#showAddShift" prefWidth="175.0" text="Add shift" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" onAction="#handleViewEmployeeAvailability" prefWidth="175.0" text="View employees' availability" GridPane.rowIndex="4" />
-            <Button fx:id="logout" mnemonicParsing="false" onAction="#handleLogout" text="Logout" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
+            <Button mnemonicParsing="false" onAction="#handleViewEmployeeAvailability" prefWidth="175.0" text="View employees' availability" GridPane.rowIndex="5" />
+            <Button fx:id="logout" mnemonicParsing="false" onAction="#handleLogout" text="Logout" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
+            <Button mnemonicParsing="false" onAction="#handleMakeBooking" prefWidth="175.0" text="Make Booking" GridPane.rowIndex="4" />
          </children>
       </GridPane>
    </children>

@@ -113,9 +113,6 @@ public class CustomerMenu extends Menu {
 			
 			controller.setServiceChoiceBox();
 			
-			
-			
-
 		} catch (IOException e) {
             e.printStackTrace();
 

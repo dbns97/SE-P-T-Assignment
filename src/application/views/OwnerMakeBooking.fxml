@@ -19,42 +19,42 @@
       </AnchorPane>
       <AnchorPane layoutY="55.0" prefHeight="450.0" prefWidth="502.0">
          <children>
-            <AnchorPane layoutY="29.0" prefHeight="70.0" prefWidth="500.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <AnchorPane fx:id="customerBox" layoutY="29.0" prefHeight="70.0" prefWidth="500.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
                   <ChoiceBox fx:id="customer" layoutX="167.0" layoutY="35.0" prefWidth="150.0" />
                   <Label layoutX="212.0" layoutY="14.0" text="Customer" />
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="1.0" layoutY="99.0" prefHeight="70.0" prefWidth="500.0">
+            <AnchorPane fx:id="serviceBox" layoutX="1.0" layoutY="99.0" prefHeight="70.0" prefWidth="500.0">
                <children>
                   <Label layoutX="219.0" layoutY="14.0" text="Service" />
-                  <ChoiceBox fx:id="service" layoutX="167.0" layoutY="35.0" prefWidth="150.0" />
+                  <ChoiceBox fx:id="service" onAction="#handleServiceChoiceBox" layoutX="167.0" layoutY="35.0" prefWidth="150.0" />
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="1.0" layoutY="239.0" prefHeight="70.0" prefWidth="500.0">
+            <AnchorPane fx:id="dayBox" layoutX="1.0" layoutY="239.0" prefHeight="70.0" prefWidth="500.0">
                <children>
                   <Label layoutX="230.0" layoutY="14.0" text="Day" />
-                  <ChoiceBox fx:id="day" layoutX="167.0" layoutY="35.0" prefWidth="150.0" />
+                  <ChoiceBox fx:id="day" onAction="#handleDayChoiceBox" layoutX="167.0" layoutY="35.0" prefWidth="150.0" />
                </children>
             </AnchorPane>
-            <AnchorPane layoutY="309.0" prefHeight="70.0" prefWidth="500.0">
+            <AnchorPane fx:id="timeBox" layoutY="309.0" prefHeight="70.0" prefWidth="500.0">
                <children>
-                  <ChoiceBox fx:id="time" layoutX="167.0" layoutY="35.0" prefWidth="150.0" />
+                  <ChoiceBox fx:id="time" onAction="#handleTimeChoiceBox" layoutX="167.0" layoutY="35.0" prefWidth="150.0" />
                   <Label layoutX="226.0" layoutY="18.0" text="Time" />
                </children>
             </AnchorPane>
             <AnchorPane layoutX="1.0" layoutY="379.0" prefHeight="71.0" prefWidth="500.0">
                <children>
-                  <Button fx:id="back" layoutX="41.0" layoutY="29.0" mnemonicParsing="false" text="Back" />
-                  <Button fx:id="comfirm" layoutX="409.0" layoutY="29.0" mnemonicParsing="false" text="Confirm" />
-                  <Label fx:id="error" layoutX="112.0" layoutY="8.0" prefHeight="55.0" prefWidth="277.0" textFill="#ff0101" wrapText="true" />
+                  <Button fx:id="back" layoutX="41.0" layoutY="29.0" mnemonicParsing="false" onAction="#handleBack" text="Back" />
+                  <Button fx:id="confirm" layoutX="409.0" layoutY="29.0" mnemonicParsing="false" onAction="#handleConfirmButton" text="Confirm" />
+                  <Label fx:id="errorLabel" layoutX="112.0" layoutY="8.0" prefHeight="55.0" prefWidth="277.0" textFill="#ff0101" wrapText="true" />
                </children>
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="1.0" layoutY="228.0" prefHeight="70.0" prefWidth="500.0">
+      <AnchorPane fx:id="employeeBox" layoutX="1.0" layoutY="228.0" prefHeight="70.0" prefWidth="500.0">
          <children>
-            <ChoiceBox fx:id="employee" layoutX="167.0" layoutY="35.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="employee" onAction="#handleEmployeeChoiceBox" layoutX="167.0" layoutY="35.0" prefWidth="150.0" />
             <Label layoutX="212.0" layoutY="14.0" text="Employee" />
          </children>
       </AnchorPane>
