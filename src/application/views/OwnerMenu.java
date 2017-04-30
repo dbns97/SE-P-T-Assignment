@@ -101,6 +101,7 @@ public class OwnerMenu extends Menu {
 			controller.setParentMenu(this);
 			controller.setBusiness(business);
 			controller.setWeekChoiceBox();
+			controller.handleView();
 
 		} catch (IOException e) {
             e.printStackTrace();

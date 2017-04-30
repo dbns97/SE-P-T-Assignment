@@ -8,8 +8,9 @@
         "isOwner": false,
         "name": "Joe",
         "bookings": [{
-            "start": "Tue 18/04/2017 14:00",
-            "end": "Tue 18/04/2017 15:00",
+            "service": "Style Cut",
+            "start": "Mon 01/05/2017 14:10",
+            "end": "Mon 01/05/2017 14:55",
             "employee": "bob@gmail.com",
             "customer": "username3"
         }]
@@ -20,20 +21,23 @@
         "name": "Bill",
         "bookings": [
             {
-                "start": "Mon 03/04/2017 12:00",
-                "end": "Mon 03/04/2017 13:00",
-                "employee": "bob@gmail.com",
-                "customer": "username2"
-            },
-            {
-                "start": "Mon 10/04/2017 12:00",
-                "end": "Mon 10/04/2017 13:00",
-                "employee": "bob@gmail.com",
-                "customer": "username2"
-            },
-            {
+                "service": "Simple Cut",
                 "start": "Mon 17/04/2017 12:00",
                 "end": "Mon 17/04/2017 13:00",
+                "employee": "bob@gmail.com",
+                "customer": "username2"
+            },
+            {
+                "service": "Simple Cut",
+                "start": "Mon 24/04/2017 12:00",
+                "end": "Mon 24/04/2017 13:00",
+                "employee": "bob@gmail.com",
+                "customer": "username2"
+            },
+            {
+                "service": "Simple Cut",
+                "start": "Mon 01/05/2017 12:00",
+                "end": "Mon 01/05/2017 13:00",
                 "employee": "bob@gmail.com",
                 "customer": "username2"
             }
@@ -45,20 +49,23 @@
         "name": "Bob",
         "bookings": [
             {
-                "start": "Mon 03/04/2017 10:00",
-                "end": "Mon 03/04/2017 11:00",
-                "employee": "bob@gmail.com",
-                "customer": "username1"
-            },
-            {
-                "start": "Mon 10/04/2017 10:00",
-                "end": "Mon 10/04/2017 11:00",
-                "employee": "bob@gmail.com",
-                "customer": "username1"
-            },
-            {
+                "service": "Style Cut",
                 "start": "Mon 17/04/2017 10:00",
                 "end": "Mon 17/04/2017 11:00",
+                "employee": "bob@gmail.com",
+                "customer": "username1"
+            },
+            {
+                "service": "Style Cut",
+                "start": "Mon 24/04/2017 10:00",
+                "end": "Mon 24/04/2017 11:00",
+                "employee": "bob@gmail.com",
+                "customer": "username1"
+            },
+            {
+                "service": "Style Cut",
+                "start": "Mon 01/05/2017 10:00",
+                "end": "Mon 01/05/2017 11:00",
                 "employee": "bob@gmail.com",
                 "customer": "username1"
             }

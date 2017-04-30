@@ -26,9 +26,14 @@
                   <Font size="18.0" />
                </font>
             </Label>
+<<<<<<< HEAD
             <Button mnemonicParsing="false" onAction="#handleViewBookings" text="View Booking Times" GridPane.rowIndex="1" />
             <Button fx:id="logout" mnemonicParsing="false" onAction="#handleLogout" text="Logout" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
             <Button mnemonicParsing="false" onAction="#handleMakeBookings" text="Make Booking" GridPane.rowIndex="2" />
+=======
+            <Button mnemonicParsing="false" onAction="#handleViewAvailableTimes" text="View Available Times" GridPane.rowIndex="1" />
+            <Button fx:id="logout" mnemonicParsing="false" onAction="#handleLogout" text="Logout" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+>>>>>>> master
          </children>
       </GridPane>
    </children>

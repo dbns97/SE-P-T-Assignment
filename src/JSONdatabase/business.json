@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "service10": {
         "duration": "30"
@@ -6,3 +7,19 @@
         "duration": "60"
     }
 }
+=======
+{"services": [
+    {
+        "duration": 30,
+        "name": "Simple Cut"
+    },
+    {
+        "duration": 45,
+        "name": "Style Cut"
+    },
+    {
+        "duration": 60,
+        "name": "Beard Cut"
+    }
+]}
+>>>>>>> master
