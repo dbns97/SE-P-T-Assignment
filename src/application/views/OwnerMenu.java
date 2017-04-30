@@ -156,4 +156,36 @@ public class OwnerMenu extends Menu {
 		this.business = business;
 	}
 
+	public void showMakeBookings() 
+	{
+		// TODO Auto-generated method stub
+		try 
+		{
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(PublicMenu.class.getResource("../views/OwnerMakeBooking.fxml"));
+			AnchorPane OwnerMakeBooking = (AnchorPane) loader.load();
+			OwnerMakeBookingController controller = loader.getController();
+
+			primaryStage.setWidth(OwnerMakeBooking.getPrefWidth() + 50);
+			primaryStage.setHeight(OwnerMakeBooking.getPrefHeight() + 50);
+			root.setCenter(OwnerMakeBooking);
+			controller.setMainMenu(this);
+			controller.setBusiness(business);
+			
+			controller.setEmployeeBox();
+			controller.setDayBox();
+			controller.setTimeBox();
+			controller.setConfirmButton();
+			
+			controller.setCustomerChoiceBox();
+			controller.setServiceChoiceBox();
+			
+			
+			
+		} catch (IOException e) {
+            e.printStackTrace();
+
+        }
+	}
+	
 }

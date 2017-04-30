@@ -36,12 +36,21 @@ public class Business {
 		customers = initialiseCustomers();
 	}
 	
+	
 	public Owner getOwner()
 	{
 		return owner;
 	}
 	
-	public ArrayList<Customer> getCustomers()
+	public ArrayList<Service> getServices() 
+	{
+		
+		return services;
+	}
+	
+	
+	
+ 	public ArrayList<Customer> getCustomers()
 	{
 		return customers;
 	}
@@ -341,5 +350,7 @@ public class Business {
         return null;
     	
 	}
+
+	
 
 }
