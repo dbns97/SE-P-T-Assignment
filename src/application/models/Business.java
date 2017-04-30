@@ -48,20 +48,7 @@ public class Business {
 		return services;
 	}
 	
-	public Service getService(String serviceName)
-	{
-		
-		for (Service ser : services)
-		{
-			if (ser.getName().equals(serviceName))
-			{
-				return ser;
-			}
-		}
-		
-		return null;
-		
-	}
+	
 	
  	public ArrayList<Customer> getCustomers()
 	{

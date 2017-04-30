@@ -319,7 +319,7 @@ public class CustomerMakeBookingController
 			String endTime = null;
 			
 			// save booking to database under customer
-			Booking newBooking = new Booking(startTime, endTime, currentEmployee);
+			Booking newBooking = new Booking(startTime, endTime, currentEmployee, currentService);
 			
 			
 			
