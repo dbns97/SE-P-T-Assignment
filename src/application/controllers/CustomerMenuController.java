@@ -30,9 +30,9 @@ public class CustomerMenuController {
 		this.business = business;
 	}
 
-	public void handleViewBookings()
+	public void handleViewAvailableTimes()
 	{
-		cm.showViewBookings();
+		cm.viewAvailableTimes();
 	}
 
 	public void handleLogout()
