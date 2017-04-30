@@ -1,20 +1,41 @@
-Nish joined Unit Test: Owner Add Employeean hour ago
-NNish added Unit Test: Owner Add Employee to Sprint 6 (Ending 11/4)an hour ago
-NNish joined Unit Test: Owner Add Shiftan hour ago
-NNish added Unit Test: Owner Add Shift to Sprint 6 (Ending 11/4)an hour ago
-DNDrew Nuttall-Smith joined Customer Function: View bookingsan hour ago
-DNDrew Nuttall-Smith added Customer Function: View bookings to Sprint 6 (Ending 11/4)an hour ago
-DNDrew Nuttall-Smith joined Add Booking classan hour ago
-DNDrew Nuttall-Smith added Add Booking class to Sprint 6 (Ending 11/4)an hour ago
-DNDrew Nuttall-Smith joined Owner Function: re-implement View Bookingsan hour ago
-DNDrew Nuttall-Smith added Owner Function: re-implement View Bookings to Sprint 6 (Ending 11/4)an hour ago
-ASAleksandar Stefanovic deleted card #61 from Product Backlog3 hours ago
-ASAleksandar Stefanovic deleted card #60 from Product Backlog3 hours ago
-ASAleksandar Stefanovic deleted card #31 from Product Backlog3 hours ago
-ASAleksandar Stefanovic deleted card #32 from Product Backlog3 hours ago
-ASAleksandar Stefanovic added Nish to Finish testing3 hours ago
-ASAleksandar Stefanovic added Finish testing to Sprint 6 (Ending 11/4)3 hours ago
-ASAleksandar Stefanovic added Drew Nuttall-Smith to Change employee shifts to weekly roster3 hours ago
+Aleksandar Stefanovic added Nish to User Stories: Owner create bookingsApr 29 at 10:15 PM
+ASAleksandar Stefanovic added User Stories: Owner create bookings to Sprint 7 (Ending 1/05)Apr 29 at 10:14 PM
+ASAleksandar Stefanovic deleted card #95 from Sprint 7 (Ending 1/05)Apr 29 at 10:14 PM
+ASAleksandar Stefanovic added Nish to User Stories: Customer Create BookingsApr 29 at 10:10 PM
+ASAleksandar Stefanovic added User Stories: Customer Create Bookings to Sprint 7 (Ending 1/05)Apr 29 at 9:15 PM
+ASAleksandar Stefanovic added Drew Nuttall-Smith to Mockups: View available bookingsApr 29 at 9:13 PM
+ASAleksandar Stefanovic added Shawn Taylor to Mockups: Create bookingApr 29 at 9:13 PM
+ASAleksandar Stefanovic added Mockups: View available bookings to Sprint 7 (Ending 1/05)Apr 29 at 9:13 PM
+ASAleksandar Stefanovic added Mockups: Create booking to Sprint 7 (Ending 1/05)Apr 29 at 9:13 PM
+ASAleksandar Stefanovic added Nish to Unit Testing for FX functionsApr 29 at 8:46 PM
+ASAleksandar Stefanovic joined Unit Testing for FX functionsApr 29 at 8:46 PM
+ASAleksandar Stefanovic added Unit Testing for FX functions to Sprint 7 (Ending 1/05)Apr 29 at 8:46 PM
+DNDrew Nuttall-Smith added Shawn Taylor to Owner Function: Create bookingApr 25 at 3:04 PM
+DNDrew Nuttall-Smith added Shawn Taylor to Customer Function: Create bookingApr 25 at 3:03 PM
+DNDrew Nuttall-Smith added Owner Function: Create booking to Sprint 7 (Ending 1/05)Apr 25 at 3:03 PM
+DNDrew Nuttall-Smith added Customer Function: Create booking to Sprint 7 (Ending 1/05)Apr 25 at 3:03 PM
+DNDrew Nuttall-Smith joined Implement ServicesApr 25 at 3:03 PM
+DNDrew Nuttall-Smith added Implement Services to Sprint 7 (Ending 1/05)Apr 25 at 3:03 PM
+DNDrew Nuttall-Smith joined Fix Customer Function: view available bookingsApr 25 at 3:02 PM
+DNDrew Nuttall-Smith added Fix Customer Function: view available bookings to Sprint 7 (Ending 1/05)Apr 25 at 3:02 PM
+DNDrew Nuttall-Smith added Sprint 7 (Ending 1/05) to this boardApr 25 at 3:01 PM
+NNish joined Unit Test: Owner Add EmployeeApr 10 at 2:31 AM
+NNish added Unit Test: Owner Add Employee to Sprint 6 (Ending 11/4)Apr 10 at 2:31 AM
+NNish joined Unit Test: Owner Add ShiftApr 10 at 2:30 AM
+NNish added Unit Test: Owner Add Shift to Sprint 6 (Ending 11/4)Apr 10 at 2:30 AM
+DNDrew Nuttall-Smith joined Customer Function: View bookingsApr 10 at 2:12 AM
+DNDrew Nuttall-Smith added Customer Function: View bookings to Sprint 6 (Ending 11/4)Apr 10 at 2:12 AM
+DNDrew Nuttall-Smith joined Add Booking classApr 10 at 2:12 AM
+DNDrew Nuttall-Smith added Add Booking class to Sprint 6 (Ending 11/4)Apr 10 at 2:12 AM
+DNDrew Nuttall-Smith joined Owner Function: re-implement View BookingsApr 10 at 2:11 AM
+DNDrew Nuttall-Smith added Owner Function: re-implement View Bookings to Sprint 6 (Ending 11/4)Apr 10 at 2:11 AM
+ASAleksandar Stefanovic deleted card #61 from Product BacklogApr 10 at 12:33 AM
+ASAleksandar Stefanovic deleted card #60 from Product BacklogApr 10 at 12:33 AM
+ASAleksandar Stefanovic deleted card #31 from Product BacklogApr 10 at 12:32 AM
+ASAleksandar Stefanovic deleted card #32 from Product BacklogApr 10 at 12:32 AM
+ASAleksandar Stefanovic added Nish to Finish testingApr 10 at 12:31 AM
+ASAleksandar Stefanovic added Finish testing to Sprint 6 (Ending 11/4)Apr 10 at 12:31 AM
+ASAleksandar Stefanovic added Drew Nuttall-Smith to Change employee shifts to weekly rosterApr 10 at 12:31 AM
 DNDrew Nuttall-Smith added Aleksandar Stefanovic to View bookings: show full week instead of one dayApr 4 at 5:33 PM
 DNDrew Nuttall-Smith joined Add shift: make drop down of emailsApr 4 at 5:32 PM
 DNDrew Nuttall-Smith added View bookings: show full week instead of one day to Sprint 6 (Ending 11/4)Apr 4 at 5:32 PM
