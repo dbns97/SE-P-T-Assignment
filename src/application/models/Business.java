@@ -27,12 +27,34 @@ public class Business {
 		services = initialiseServices();
 	}
 	
+	
 	public Owner getOwner()
 	{
 		return owner;
 	}
 	
-	public ArrayList<Customer> getCustomers()
+	public ArrayList<Service> getServices() 
+	{
+		
+		return services;
+	}
+	
+	public Service getService(String serviceName)
+	{
+		
+		for (Service ser : services)
+		{
+			if (ser.getName().equals(serviceName))
+			{
+				return ser;
+			}
+		}
+		
+		return null;
+		
+	}
+	
+ 	public ArrayList<Customer> getCustomers()
 	{
 		return customers;
 	}
@@ -312,5 +334,7 @@ public class Business {
         return null;
     	
 	}
+
+	
 
 }

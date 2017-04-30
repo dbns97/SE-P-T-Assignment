@@ -109,6 +109,7 @@ public class CustomerMenu extends Menu {
 			controller.setEmployeeBox();
 			controller.setDayBox();
 			controller.setTimeBox();
+			controller.setConfirmButton();
 			
 			controller.setServiceChoiceBox();
 			
