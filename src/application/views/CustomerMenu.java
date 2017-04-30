@@ -16,6 +16,7 @@ public class CustomerMenu extends Menu {
 	public BorderPane root;
 	private PublicMenu pm;
 	private Business business;
+	private Customer customer;
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -93,6 +94,11 @@ public class CustomerMenu extends Menu {
 		this.business = business;
 	}
 	
+	public void setCustomer(Customer customer)
+	{
+		this.customer = customer;
+	}
+	
 	public void showMakeBookings()
 	{
 		try {
@@ -106,6 +112,7 @@ public class CustomerMenu extends Menu {
 			root.setCenter(CustomerMakeBooking);
 			controller.setMainMenu(this);
 			controller.setBusiness(business);
+			controller.setCustomer(customer);
 			
 			controller.setEmployeeBox();
 			controller.setDayBox();

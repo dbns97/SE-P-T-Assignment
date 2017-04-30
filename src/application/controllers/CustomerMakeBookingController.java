@@ -1,6 +1,8 @@
 package application.controllers;
 
-import java.sql.Date;
+import java.util.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -9,6 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import application.models.Booking;
 import application.models.Business;
+import application.models.Customer;
 import application.models.Day;
 import application.models.Employee;
 import application.models.Service;
@@ -21,21 +24,26 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
 public class CustomerMakeBookingController 
 {
 	private CustomerMenu cm;
 	private Business business;
+	private Customer customer;
 	
 	private Employee currentEmployee;
 	private Service currentService;
-	private Calendar[] availableTimes;
+
+	private Date StartTime;
+	private Date EndTime;
+	private Date Duration;
 	
 	@FXML
     private ChoiceBox<String> day;
 	@FXML
-    private ChoiceBox<String> time;
+    private TextField time;
 	@FXML
     private ChoiceBox<String> service;
 	@FXML
@@ -71,6 +79,10 @@ public class CustomerMakeBookingController
 		this.business = business;
 	}
 	
+	public void setCustomer(Customer customer)
+	{
+		this.customer = customer;
+	}
 	// these set future choice box to invisible so user cannot enter data until previous information is entered
 	public void setEmployeeBox()
 	{
@@ -144,49 +156,8 @@ public class CustomerMakeBookingController
 	// only show available times for that day and wont end in another bookings start time
 	public void setTimeChoiceBox()
 	{
-		// get service duration, 
-		currentService = business.getService( service.getValue() );
-		int duration = currentService.getDuration();
 		
-		// then divide employee shift into list if possible booking times, 
-		for( Employee e : business.getEmployees() )
-		{
-			if( e.getName().equals( employee.getValue() ) )
-			{
-				System.out.println(business.getEmployee( e.getEmail() ));
-				currentEmployee = business.getEmployee( e.getEmail() );
-				break;		
-			}
-		} 
-		System.out.println(currentEmployee + "\n" + day.getValue());
-		HashMap<Day, Shift> curEmpRoster = currentEmployee.getRoster();
-		System.out.println(currentEmployee.getRoster());
-		
-		System.out.println("1" + curEmpRoster.get(day.getValue()));
-		Shift curEmpShift = curEmpRoster.get(day.getValue() );
-		System.out.println(curEmpShift);
-		
-		
-		long shiftDuration = curEmpShift.getEnd().getTime() - curEmpShift.getStart().getTime();
-		int avaliableBookingTimesSlots = (int) (shiftDuration/duration);
-		
-		System.out.println(shiftDuration);
-		System.out.println(duration);
-		System.out.println(avaliableBookingTimesSlots);
-		/*
-		ObservableList<String> posStartTimes = FXCollections.observableArrayList();		
-		long StartingTimes = curEmpShift.getStart().getTime();
-		for(int i = 0; i < avaliableBookingTimesSlots ; i++ )
-		{
-			String numberAsString = String.format ("%d", StartingTimes);
-			posStartTimes.add( numberAsString );
-			StartingTimes = StartingTimes + duration;
-			System.out.println(StartingTimes);			
-		}					
-*/
-		// remove any that clash with already made bookings
-		// add list to check box
-		time.setItems(FXCollections.observableArrayList( "dummy values", "1" , "2", "3" ) );
+		time.getText();
 	}
 	
 	
@@ -202,7 +173,6 @@ public class CustomerMakeBookingController
 		
 		if(timeBox.isVisible())
 		{
-			time.setItems(null);
 			timeBox.setVisible(false);
 		}
 		if(dayBox.isVisible())
@@ -230,7 +200,6 @@ public class CustomerMakeBookingController
 		
 		if(timeBox.isVisible())
 		{
-			time.setItems(null);
 			timeBox.setVisible(false);
 		}
 		
@@ -247,8 +216,8 @@ public class CustomerMakeBookingController
 		
 		errorLabel.setText("");
 		
-		if(confirm.isVisible())
-			confirm.setVisible(false);
+		if(confirm.isVisible() == false)
+			confirm.setVisible(true);
 				
 		if( timeBox.isVisible() == false)
 			timeBox.setVisible(true);
@@ -256,17 +225,6 @@ public class CustomerMakeBookingController
 		setTimeChoiceBox();
 	}
 
-	public void handleTimeChoiceBox()
-	{
-		System.out.println("time box clicked");
-		
-		errorLabel.setText("");
-		
-		if(confirm.isVisible() == false)
-			confirm.setVisible(true);
-			
-	}
-	
 	public void handleConfirmButton()
 	{
 		System.out.println("confirm button clicked");
@@ -276,13 +234,18 @@ public class CustomerMakeBookingController
 							+ service.getValue() +  "\n"
 							+ employee.getValue() +  "\n"
 							+ day.getValue() +  "\n"
-							+ time.getValue() +  "\n"							
+							+ time.getText() +  "\n"							
 							);
 		
 		Boolean madeBooking = checkBooking();
 		
 		if (madeBooking == true)
 		{
+			Booking newBooking = new Booking(StartTime.toString(), EndTime.toString() , currentEmployee, currentService);
+			System.out.println("booking made");
+			customer.addBooking(newBooking);
+			
+			
 			cm.showCustomerMenu();
 		}
 		else
@@ -295,10 +258,11 @@ public class CustomerMakeBookingController
 	public Boolean checkBooking()
 	{
 		
-		if(service.getValue() == null
+		
+		if( service.getValue() == null
 		|| employee.getValue() == null
 		|| day.getValue() == null 
-		|| time.getValue() == null)
+		|| time.getText().isEmpty() )
 		{
 			return false;
 		}
@@ -314,16 +278,84 @@ public class CustomerMakeBookingController
 				}
 			}
 			
+			System.out.println(currentEmployee);
 			
-			String startTime = null;
-			String endTime = null;
-			
-			// save booking to database under customer
-			Booking newBooking = new Booking(startTime, endTime, currentEmployee, currentService);
-			
-			
-			
-			
+			String duration = Integer.toString( currentService.getDuration() );
+
+			SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+			SimpleDateFormat sdf1 = new SimpleDateFormat("m");
+			try
+			{
+				StartTime = sdf.parse( time.getText() ) ;			
+				Duration = sdf1.parse( duration ) ;
+								
+				Calendar cal = Calendar.getInstance();
+				cal.setTime(StartTime);
+				cal.add(Calendar.MINUTE,currentService.getDuration() );				
+				EndTime = cal.getTime();
+				
+				System.out.println(StartTime);
+				System.out.println(Duration);
+				System.out.println(EndTime);
+				
+				
+				/*
+				HashMap<Day, Shift> empRoster = currentEmployee.getRoster();
+				Shift shift = empRoster.get(day.getValue());
+				System.out.println("here");
+				System.out.println(shift.getStart());
+				
+				//these are the problem
+				long empStart = currentEmployee.getShift( day.getValue() ).getStart().getTime();
+				System.out.println("now here");
+				long empEnd = currentEmployee.getShift( day.getValue() ).getEnd().getTime();
+				System.out.println(empStart);
+				//
+				*/
+				/**
+				if ( StartTime.getTime() >=  empStart && EndTime.getTime() <= empEnd )
+				{
+					ArrayList<Customer> customers = business.getCustomers();			
+					for (Customer customer : customers)
+					{
+						for (Booking booking : customer.getBookings())
+						{
+							if ( ( StartTime.getTime() <= booking.getEnd().getTime() )
+							   ||( EndTime.getTime() >= booking.getStart().getTime() )
+							   )
+							{
+								System.out.println("your chosen time goes through another booking");
+								return false;
+							}
+						}
+					}
+				}
+				else
+				{
+					System.out.println("choose a time when employee is working");
+				}
+				**/
+				ArrayList<Customer> customers = business.getCustomers();			
+				for (Customer customer : customers)
+				{
+					for (Booking booking : customer.getBookings())
+					{
+						if ( ( StartTime.getTime() < booking.getEnd().getTime() )
+						   ||( EndTime.getTime() > booking.getStart().getTime() )
+						   )
+						{
+							System.out.println("your chosen time goes through another booking");
+							return false;
+						}
+					}
+				}
+				
+			}
+			catch (ParseException e) 
+			{
+				e.printStackTrace();
+			}
+
 			return true;
 		}
 		
