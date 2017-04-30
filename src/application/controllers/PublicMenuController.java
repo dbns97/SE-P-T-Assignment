@@ -134,6 +134,13 @@ public class PublicMenuController {
        // checks the database user names and compares to what was entered in the text field
 
        String[] dataUsernames = JSONObject.getNames(data);
+       if(dataUsernames == null)
+       {
+    	   errorLabel.setText("No Username entered doesnt exist");
+    	   System.out.println("EMPTY");
+    	   return false;
+       }
+       
        for ( int i=0; i < dataUsernames.length; i++ )
 	   {
 

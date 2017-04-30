@@ -52,6 +52,91 @@ public class RegisterFormController {
 		this.business = business;
 	}
 	
+	public Business getBusiness()
+	{
+		return business;
+	}
+	
+	public void setErrorLabel(Label l)
+	{
+		this.errorLabel = l;
+	}
+	
+	public Label getErrorLabel()
+	{
+		return this.errorLabel;
+	}
+	
+	public void setUsername(TextField username)
+	{
+		this.username = username;		
+	}
+	
+	public void setUsername(String username)
+	{
+		this.username.setText(username);		
+	}
+	
+	public TextField getUsername()
+	{
+		return this.username;
+	}
+	
+	public void setPassword(PasswordField password)
+	{
+		this.password = password;
+	}
+	
+	public void setPassword(String password)
+	{
+		this.password.setText(password);
+	}
+	
+	public void setReenteredPassword(PasswordField password)
+	{
+		this.reenter = password;
+	}
+	
+	public void setReenteredPassword(String password)
+	{
+		this.reenter.setText(password);
+	}
+	
+	public void setName(TextField name)
+	{
+		this.name = name;
+	}
+	
+	public void setName(String name)
+	{
+		this.name.setText(name);
+	}
+	
+	public void setAddress(TextField address)
+	{
+		this.address = address;
+	}
+	
+	public void setAddress(String address)
+	{
+		this.address.setText(address);
+	}
+	
+	public void setContactNumber(TextField contactNumber)
+	{
+		this.contactNumber = contactNumber;
+	}
+	
+	public void setContactNumber(String contactNumber)
+	{
+		this.contactNumber.setText(contactNumber);
+	}
+	
+	public void setRegisterButton(Button registerButton)
+	{
+		this.registerButton = registerButton;
+	}
+	
 	public boolean handleRegister()
 	{
 		//File file = new File("src/JSONdatabase");
@@ -76,6 +161,7 @@ public class RegisterFormController {
 		if(reenter.getText().isEmpty() || !reenter.getText().equals(password.getText()))
 		{
 			errorLabel.setText("Please re-enter your password");
+			return false;
 		}
 		
 		if(!(name.getText().matches("[a-zA-z ,.'-]+")) || name.getText().trim().isEmpty())
@@ -99,9 +185,11 @@ public class RegisterFormController {
 		// Scans the usernames JSONArray to check if the username already exists
 		for (Customer customer : business.getCustomers())
 		{
+			System.out.println(customer.getUsername());
 			if (customer.getUsername().equals(username.getText()))
 			{
 				errorLabel.setText("Username already exists");
+				System.out.println("BREAK");
 				return false;
 			}
 		}

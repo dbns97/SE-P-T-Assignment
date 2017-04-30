@@ -1,5 +1,7 @@
 package application.tests;
 
+import static org.junit.Assert.*;
+
 import java.io.FileWriter;
 import java.util.Arrays;
 import java.util.Collection;
@@ -32,7 +34,7 @@ public class PublicControllerTests {
     {
     	//Test Structure: {username, password, if writeToFile() adds the data to the JSON database, expected output}
     	return Arrays.asList(new Object[][] {     
-            {"username", "pass", true, true}, {"username1", "pass1", true, true}, {"123", "123", true, true}, {"blank", " ", true, true}, {"notInDatabase", "pass", false, false}
+            {"username", "pass", true, true}, {"username1", "pass1", true, true}, {"123", "123", true, true}, {"blank", " ", true, true}, {"notInDatabase", "pass", false, false}, {"", "", false, false}
       });
     }
     
@@ -63,21 +65,11 @@ public class PublicControllerTests {
 	    }
 	}
 	
-	@Test
-	public void testCheckLogin() {
-		PublicMenuController controller = new PublicMenuController();
-		mock(controller);
-		controller.setUsername(username);
-		controller.setPassword(password);
-		
-		//Asserts that the expected value (found in the parameterized variable) is outputed by the function
-		Assert.assertEquals(expected, controller.checkLogin());
-	}
-	
-	@Before
 	//Writes the test data to the JSON database based on if the 3rd parameter is true
+	@Before
 	public void writeToFile()
 	{
+		System.out.println("BEFORE");
 		JSONObject wrapper = new JSONObject();
 		for(Object[] test : data())
 		{
@@ -88,7 +80,6 @@ public class PublicControllerTests {
 				newUser.put("password", (String)test[1]);
 				newUser.put("name", "test");
 				newUser.put("isOwner", false);
-			
 				newUser.put("bookings", new JSONArray());
 			
 				wrapper.put((String)test[0], newUser);
@@ -99,6 +90,7 @@ public class PublicControllerTests {
 		try
 		{
 			FileWriter custWriter = new FileWriter("src/JSONdatabase/usersTest.json");
+			System.out.println(wrapper.toString(4));
 			custWriter.write(wrapper.toString(4));
 			custWriter.flush();
 			custWriter.close();
@@ -108,6 +100,17 @@ public class PublicControllerTests {
 			e.printStackTrace();
 		}
 	}
+	
+	@Test
+	public void testCheckLogin() {
+		PublicMenuController controller = new PublicMenuController();
+		mock(controller);
+		controller.setUsername(username);
+		controller.setPassword(password);
+		
+		//Asserts that the expected value (found in the parameterized variable) is outputed by the function
+		assertEquals(expected, controller.checkLogin());
+	}	
 	
 	//Encapsulates the controller in dummy data
 	public void mock(PublicMenuController controller)

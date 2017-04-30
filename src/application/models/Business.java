@@ -24,6 +24,15 @@ public class Business {
 		customers = initialiseCustomers();
 	}
 	
+	//Used in testing to change where the Business reads in the users
+	public Business(String usersFilepath)
+	{
+		setUsersFilepath(usersFilepath);
+		owner = initialiseOwner();
+		employees = initialiseEmployees();
+		customers = initialiseCustomers();
+	}
+	
 	public Owner getOwner()
 	{
 		return owner;
@@ -34,6 +43,10 @@ public class Business {
 		return customers;
 	}
 	
+	public void setUsersFilepath(String filepath)
+	{
+		this.usersFilepath = filepath;
+	}
 	/**
 	 * @description return a customer with a specific username
 	 * @param username the username of the customer to be returned
