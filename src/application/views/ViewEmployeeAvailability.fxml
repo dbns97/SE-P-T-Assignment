@@ -59,8 +59,8 @@
                      <content>
                         <TableView fx:id="shiftTable" prefHeight="193.0" prefWidth="296.0">
                            <columns>
-                              <TableColumn fx:id="timeColumn" prefWidth="87.0" text="Time" />
-                              <TableColumn fx:id="employeeColumn" prefWidth="209.0" text="Employee" />
+                              <TableColumn fx:id="timeColumn" prefWidth="116.0" text="Time" />
+                              <TableColumn fx:id="employeeColumn" prefWidth="180.0" text="Employee" />
                            </columns>
                         </TableView>
                      </content>
