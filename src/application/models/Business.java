@@ -23,8 +23,8 @@ public class Business {
 	{
 		owner = initialiseOwner();
 		employees = initialiseEmployees();
-		customers = initialiseCustomers();
 		services = initialiseServices();
+		customers = initialiseCustomers();
 	}
 	
 	public Owner getOwner()
@@ -65,7 +65,7 @@ public class Business {
 	/**
 	 * @description return an employee with a specific email
 	 * @param email the email of the employee to be returned
-	 * @return Employee the employee
+	 * @return Employee the employee object
 	 * @author Drew Nuttall-Smith
 	 * @since 3/4/2017
 	 **/
@@ -76,6 +76,26 @@ public class Business {
 			if (emp.getEmail().equals(email))
 			{
 				return emp;
+			}
+		}
+		
+		return null;
+	}
+	
+	/**
+	 * @description return a service with a specific name
+	 * @param name the name of the service to be returned
+	 * @return Service the service object
+	 * @author Drew Nuttall-Smith
+	 * @since 30/4/2017
+	 **/
+	public Service getService(String name)
+	{
+		for (Service ser : services)
+		{
+			if (ser.getName().equals(name))
+			{
+				return ser;
 			}
 		}
 		
@@ -156,10 +176,10 @@ public class Business {
             
             // Write business to file
             JSONObject jsonBusiness = new JSONObject();
-            JSONObject jsonServices = new JSONObject();
+            JSONArray jsonServices = new JSONArray();
             for (Service s : services)
             {
-            	jsonServices.put(s.getName(), s.toJSONObject());
+            	jsonServices.put(s.toJSONObject());
             }
             jsonBusiness.put("services", jsonServices);
             
@@ -208,6 +228,31 @@ public class Business {
 		
 	}
 	
+	/**
+	 * @description create an ArrayList containing all services offered from the business JSON file
+	 * @return ArrayList<Service> the list of all services offered
+	 * @author Drew Nuttall-Smith
+	 * @since 27/4/2017
+	 **/
+	private ArrayList<Service> initialiseServices()
+	{
+		ArrayList<Service> services = new ArrayList<Service>();
+		// TODO: add services to the JSON in a business file (in future this will hold all businesses)
+		JSONArray jsonServices = JSONUtils.getJSONObjectFromFile(businessFilepath).getJSONArray("services");
+		
+		// Iterate over each service
+		for (int i = 0; i < jsonServices.length(); i++) {
+			JSONObject jsonService = jsonServices.getJSONObject(i);
+        	String name = jsonService.getString("name");
+        	int duration = jsonService.getInt("duration");
+        	
+        	services.add(new Service(name, duration));
+		}
+        
+        return services;
+		
+	}
+	
 	private ArrayList<Customer> initialiseCustomers()
 	{
 		ArrayList<Customer> customers = new ArrayList<Customer>();
@@ -231,9 +276,12 @@ public class Business {
                 	{
                 		String bookingStart = jsonBookings.getJSONObject(j).getString("start");
                 		String bookingEnd = jsonBookings.getJSONObject(j).getString("end");
-                		String bookingEmployee = jsonBookings.getJSONObject(j).getString("employee");
+                		String bookingEmployeeEmail = jsonBookings.getJSONObject(j).getString("employee");
+                		Employee bookingEmployee = getEmployee(bookingEmployeeEmail);
+                		String bookingServiceName = jsonBookings.getJSONObject(j).getString("service");
+                		Service bookingService = getService(bookingServiceName);
                 		
-                		bookings.add(new Booking(bookingStart, bookingEnd, getEmployee(bookingEmployee)));
+                		bookings.add(new Booking(bookingStart, bookingEnd, bookingEmployee, bookingService));
                 	}
                 	
                 	// Add the new customer
@@ -252,38 +300,6 @@ public class Business {
         }
         
         return customers;
-	}
-	
-	/**
-	 * @description create an ArrayList containing all services offered from the business JSON file
-	 * @return ArrayList<Service> the list of all services offered
-	 * @author Drew Nuttall-Smith
-	 * @since 27/4/2017
-	 **/
-	private ArrayList<Service> initialiseServices()
-	{
-		ArrayList<Service> services = new ArrayList<Service>();
-		// TODO: add services to the JSON in a business file (in future this will hold all businesses)
-		JSONObject jsonServices = JSONUtils.getJSONObjectFromFile(businessFilepath);
-		JSONArray names = jsonServices.names();
-		
-		// Iterate over each service
-        int i = 0;
-        if(names != null)
-        {
-            while(!names.isNull(i))
-            {
-            	String name = names.getString(i);
-            	int duration = Integer.parseInt(jsonServices.getJSONObject(name).getString("duration"));
-            	
-            	services.add(new Service(name, duration));
-
-                i++;
-            }
-        }
-        
-        return services;
-		
 	}
 	
 	private Owner initialiseOwner()
