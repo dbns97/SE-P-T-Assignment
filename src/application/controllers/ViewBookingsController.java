@@ -10,6 +10,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -23,6 +24,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 public class ViewBookingsController {
 	private Menu parentMenu;
@@ -58,70 +62,13 @@ public class ViewBookingsController {
 	{
 		week.setItems(FXCollections.observableArrayList("Last week", "This week", "Next week"));
 		week.setValue("This week");
+		week.getSelectionModel()
+	    .selectedItemProperty()
+	    .addListener(
+	    	(ObservableValue<? extends String> observable, String oldValue, String newValue) -> handleView()
+	    );
 	}
-
-	/*
-	public void handleView()
-	{
-		ObservableList<Shift> shiftList = FXCollections.observableArrayList();
-		ArrayList<Employee> employees = business.getEmployees();
-		SimpleDateFormat comparingFormat = new SimpleDateFormat("ddMMyyyy");
-		SimpleDateFormat convertingFormat = new SimpleDateFormat("EEE MMM dd hh:mm:ss zzz yyyy");
-		SimpleDateFormat inputFormat = new SimpleDateFormat("dd/MM/yyyy");
-		SimpleDateFormat sdf = Shift.getSdf();
-		SimpleDateFormat displayFormat = new SimpleDateFormat("HH:mm");
-		Date input;
-
-		errorLabel.setText("");
-		errorLabel.setWrapText(true);
-		try
-		{
-			if(date.getText().trim().isEmpty() || !(date.getText().matches("[0-9]{2}/[0-9]{2}/[0-9]{4}")))
-			{
-				errorLabel.setText("Please enter a date in the dd/mm/yyyy format");
-				return;
-			}
-
-			try
-			{
-				input = inputFormat.parse(date.getText());
-			}
-			catch(Exception e)
-			{
-				errorLabel.setText("Invalid date");
-				return;
-			}
-
-			// Create list of all shifts for the entered date
-			for(Employee e : employees) {
-				HashMap<Day,Shift> roster = e.getRoster();
-				for (HashMap.Entry<Day,Shift> entry : roster.entrySet()) {
-					if(comparingFormat.format(entry.getValue().getStart()).equals(comparingFormat.format(input)))
-					{
-						shiftList.add(entry.getValue());
-					}
-				}
-			}
-
-        	employeeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEmployee().getName()));
-            timeColumn.setCellValueFactory(cellData -> {
-				try {
-					return new SimpleStringProperty(cellData.getValue().getStart().toString() + " - " + cellData.getValue().getEnd().toString());
-				} catch (ParseException e) {
-					e.printStackTrace();
-					return null;
-				}
-			});
-            shiftTable.setItems(shiftList);
-		}
-		catch(Exception e) {
-			e.printStackTrace();
-		}
-
-	}
-	*/
 	
-	// NEW
 	public void handleView()
 	{	
 		ObservableList<Booking> bookings = FXCollections.observableArrayList();
@@ -163,7 +110,7 @@ public class ViewBookingsController {
 			for (Booking booking : customer.getBookings())
 			{
 				// Check if booking is in the selected week
-				if (booking.getStart().getTime() > startOfWeek.getTimeInMillis() && booking.getEnd().getTime() < endOfWeek.getTimeInMillis()){
+				if (booking.getStart().getTime() >= startOfWeek.getTimeInMillis() && booking.getEnd().getTime() <= endOfWeek.getTimeInMillis()){
 					bookings.add(booking);
 				}
 			}
