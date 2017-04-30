@@ -2,6 +2,7 @@ package application.tests;
 
 import static org.junit.Assert.*;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.util.Arrays;
 import java.util.Collection;
@@ -9,7 +10,6 @@ import java.util.concurrent.CountDownLatch;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -69,7 +69,6 @@ public class PublicControllerTests {
 	@Before
 	public void writeToFile()
 	{
-		System.out.println("BEFORE");
 		JSONObject wrapper = new JSONObject();
 		for(Object[] test : data())
 		{
@@ -89,10 +88,9 @@ public class PublicControllerTests {
 		//Finally writes the whole JSONObject to the test file
 		try
 		{
-			FileWriter custWriter = new FileWriter("src/JSONdatabase/usersTest.json");
+			FileWriter custWriter = new FileWriter("src/JSONdatabase/loginTest.json");
 			System.out.println(wrapper.toString(4));
 			custWriter.write(wrapper.toString(4));
-			custWriter.flush();
 			custWriter.close();
 		}
 		catch(Exception e)
@@ -103,6 +101,36 @@ public class PublicControllerTests {
 	
 	@Test
 	public void testCheckLogin() {
+
+		JSONObject wrapper = new JSONObject();
+		for(Object[] test : data())
+		{
+			//Writes the test if the test specifies
+			if((boolean)test[2])
+			{
+				JSONObject newUser = new JSONObject();
+				newUser.put("password", (String)test[1]);
+				newUser.put("name", "test");
+				newUser.put("isOwner", false);
+				newUser.put("bookings", new JSONArray());
+			
+				wrapper.put((String)test[0], newUser);
+			}
+		}
+		
+		//Finally writes the whole JSONObject to the test file
+		try
+		{
+			FileWriter custWriter = new FileWriter("src/JSONdatabase/loginTest.json");
+			System.out.println(wrapper.toString(4));
+			custWriter.write(wrapper.toString(4));
+			custWriter.close();
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
 		PublicMenuController controller = new PublicMenuController();
 		mock(controller);
 		controller.setUsername(username);
@@ -112,6 +140,12 @@ public class PublicControllerTests {
 		assertEquals(expected, controller.checkLogin());
 	}	
 	
+	//@AfterClass
+	public static void deleteFile()
+	{
+		(new File("src/JSONdatabase/loginTest.json")).delete();
+	}
+	
 	//Encapsulates the controller in dummy data
 	public void mock(PublicMenuController controller)
 	{
@@ -120,7 +154,7 @@ public class PublicControllerTests {
 		controller.setErrorLabel(new Label());
 		controller.setUsername(new TextField());
 		controller.setPassword(new PasswordField());
-		controller.setUsersFilepath("../../JSONdatabase/usersTest.json");
+		controller.setUsersFilepath("../../JSONdatabase/loginTest.json");
 	}
 
 }

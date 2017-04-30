@@ -2,9 +2,9 @@ package application.tests;
 
 import static org.junit.Assert.*;
 
-import java.io.FileNotFoundException;
+import java.io.File;
 import java.io.FileWriter;
-import java.io.PrintWriter;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.CountDownLatch;
@@ -79,6 +79,12 @@ public class RegisterFormControllerTests {
 	    {
 	    	e.printStackTrace();
 	    }
+		
+		try {
+			(new File("src/JSONdatabase/usersTest.json")).createNewFile();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Test
@@ -107,12 +113,17 @@ public class RegisterFormControllerTests {
 		}
 	}
 	
+	//@AfterClass
+	public static void deleteFile()
+	{
+		(new File("src/JSONdatabase/usersTest.json")).delete();
+	}
+	
 	public void mock(RegisterFormController controller)
 	{
 		//Clearing the usersTest file
 		try {
 			FileWriter writer = new FileWriter("src/JSONdatabase/usersTest.json");
-			System.out.println("MOCK REGISTER");
 			writer.write("{}");
 			writer.flush();
 			writer.close();

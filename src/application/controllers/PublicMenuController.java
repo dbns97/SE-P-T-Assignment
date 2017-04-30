@@ -137,7 +137,6 @@ public class PublicMenuController {
        if(dataUsernames == null)
        {
     	   errorLabel.setText("No Username entered doesnt exist");
-    	   System.out.println("EMPTY");
     	   return false;
        }
        
@@ -167,6 +166,7 @@ public class PublicMenuController {
 
 	   }
       errorLabel.setText("Username entered doesnt exist");
+      System.out.println("Username");
       return false;
    }
 
