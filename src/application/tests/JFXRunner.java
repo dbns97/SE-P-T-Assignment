@@ -30,15 +30,4 @@ public class JFXRunner extends BlockJUnit4ClassRunner {
 	    	e.printStackTrace();
 	    }
 	  }
-
-	private static void setupJavaFX() throws InterruptedException {
-		final CountDownLatch latch = new CountDownLatch(1);
-
-		PlatformImpl.startup(() -> {
-		});
-
-		latch.countDown();
-
-		latch.await();
-	}
 }
