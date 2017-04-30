@@ -38,6 +38,8 @@ public class ViewBookingsController {
 	@FXML
 	private TableColumn<Booking,String> customerColumn;
 	@FXML
+	private TableColumn<Booking,String> serviceColumn;
+	@FXML
     private ChoiceBox<String> week;
 	@FXML
 	private Label errorLabel;
@@ -171,6 +173,7 @@ public class ViewBookingsController {
 		
     	employeeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEmployee().getName()));
     	customerColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCustomer().getName()));
+    	serviceColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getService().getName()));
     	dayColumn.setCellValueFactory(cellData -> {
 			return new SimpleStringProperty(displayDayFormat.format(cellData.getValue().getStart()));
 		});
