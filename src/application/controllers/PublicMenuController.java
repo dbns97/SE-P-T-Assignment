@@ -105,9 +105,11 @@ public class PublicMenuController {
          }
          else
          {
+        	Customer customer = business.getCustomer(username.getText());
             CustomerMenu menu = new CustomerMenu();
             menu.setBusiness(business);
             menu.setMainMenu(pm);
+            menu.setCustomer(customer);
             Stage stage = (Stage) loginButton.getScene().getWindow();
               try
               {

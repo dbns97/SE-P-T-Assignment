@@ -206,7 +206,7 @@ public class Business {
             jsonBusiness.put("services", jsonServices);
             
             FileWriter serviceWriter = new FileWriter("src/JSONdatabase/business.json");
-            serviceWriter.write(jsonServices.toString(4));
+            serviceWriter.write(jsonBusiness.toString(4));
             serviceWriter.flush();
             serviceWriter.close();
         }

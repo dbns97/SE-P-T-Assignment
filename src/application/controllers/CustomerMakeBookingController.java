@@ -149,7 +149,7 @@ public class CustomerMakeBookingController
 			}			
 		}
 		
-		day.setItems(FXCollections.observableArrayList( dayList ) );		
+		day.setItems(FXCollections.observableArrayList( dayList ) );	
 
 	}
 	
@@ -241,7 +241,7 @@ public class CustomerMakeBookingController
 		
 		if (madeBooking == true)
 		{
-			Booking newBooking = new Booking(StartTime.toString(), EndTime.toString() , currentEmployee, currentService);
+			Booking newBooking = new Booking(StartTime, EndTime, currentEmployee, customer, currentService);
 			System.out.println("booking made");
 			customer.addBooking(newBooking);
 			
@@ -294,38 +294,47 @@ public class CustomerMakeBookingController
 				cal.add(Calendar.MINUTE,currentService.getDuration() );				
 				EndTime = cal.getTime();
 				
-				System.out.println(StartTime);
-				System.out.println(Duration);
-				System.out.println(EndTime);
+				System.out.println("Start time of booking : " + StartTime);
+				System.out.println("Service duration : " + Duration);
+				System.out.println("end time of booking : " + EndTime);
 				
-				
-				/*
+		Calendar startOfWeek = Calendar.getInstance();
+		startOfWeek.setFirstDayOfWeek(Calendar.MONDAY);
+		
+		// Set startOfWeek calendar value to beginning of day
+		startOfWeek.set(Calendar.HOUR_OF_DAY, 0); // Clear doesn't reset the hour of day
+		startOfWeek.clear(Calendar.MINUTE);
+		startOfWeek.clear(Calendar.SECOND);
+		startOfWeek.clear(Calendar.MILLISECOND);
+		
+		System.out.println("start of the week " + startOfWeek.getTime());
+		
 				HashMap<Day, Shift> empRoster = currentEmployee.getRoster();
 				Shift shift = empRoster.get(day.getValue());
 				System.out.println("here");
-				System.out.println(shift.getStart());
 				
 				//these are the problem
-				long empStart = currentEmployee.getShift( day.getValue() ).getStart().getTime();
+				long empStartTime = currentEmployee.getShift( day.getValue() ).getStart().getTime() % (24 * 60 * 60 * 1000);
 				System.out.println("now here");
-				long empEnd = currentEmployee.getShift( day.getValue() ).getEnd().getTime();
-				System.out.println(empStart);
-				//
-				*/
-				/**
-				if ( StartTime.getTime() >=  empStart && EndTime.getTime() <= empEnd )
+				long empEndTime = currentEmployee.getShift( day.getValue() ).getEnd().getTime() % (24 * 60 * 60 * 1000);
+				long enteredStartTime = StartTime.getTime() % (24 * 60 * 60 * 1000);
+				long enteredEndTime = EndTime.getTime() % (24 * 60 * 60 * 1000);
+				
+				if (enteredStartTime >= empStartTime && enteredEndTime <= empEndTime)
 				{
 					ArrayList<Customer> customers = business.getCustomers();			
 					for (Customer customer : customers)
 					{
 						for (Booking booking : customer.getBookings())
 						{
-							if ( ( StartTime.getTime() <= booking.getEnd().getTime() )
-							   ||( EndTime.getTime() >= booking.getStart().getTime() )
-							   )
-							{
-								System.out.println("your chosen time goes through another booking");
-								return false;
+							if (booking.getEmployee() == currentEmployee) {
+								if ( ( StartTime.getTime() >= booking.getEnd().getTime() )
+								   ||( EndTime.getTime() <= booking.getStart().getTime() )
+								   )
+								{
+									System.out.println("your chosen time goes through another booking");
+									return false;
+								}
 							}
 						}
 					}
@@ -333,21 +342,6 @@ public class CustomerMakeBookingController
 				else
 				{
 					System.out.println("choose a time when employee is working");
-				}
-				**/
-				ArrayList<Customer> customers = business.getCustomers();			
-				for (Customer customer : customers)
-				{
-					for (Booking booking : customer.getBookings())
-					{
-						if ( ( StartTime.getTime() < booking.getEnd().getTime() )
-						   ||( EndTime.getTime() > booking.getStart().getTime() )
-						   )
-						{
-							System.out.println("your chosen time goes through another booking");
-							return false;
-						}
-					}
 				}
 				
 			}

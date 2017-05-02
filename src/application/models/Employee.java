@@ -38,6 +38,11 @@ public class Employee {
 	
 	public Shift getShift(String day)
 	{
+		return roster.get(Day.valueOf(day));
+	}
+	
+	public Shift getShift(Day day)
+	{
 		return roster.get(day);
 	}
 
