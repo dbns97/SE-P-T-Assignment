@@ -2,24 +2,24 @@
     "bsmith@gmail.com": {
         "roster": {
             "MONDAY": {
-                "start": "01:30",
-                "end": "03:10"
+                "start": "13:30",
+                "end": "14:10"
             },
             "THURSDAY": {
-                "start": "01:30",
-                "end": "03:20"
-            },
-            "TUESDAY": {
-                "start": "01:00",
-                "end": "03:30"
+                "start": "13:30",
+                "end": "14:20"
             },
             "FRIDAY": {
-                "start": "01:30",
-                "end": "03:50"
+                "start": "13:30",
+                "end": "14:50"
+            },
+            "TUESDAY": {
+                "start": "13:00",
+                "end": "14:30"
             },
             "SATURDAY": {
-                "start": "01:30",
-                "end": "03:40"
+                "start": "13:30",
+                "end": "14:40"
             }
         },
         "name": "Bill Smith",
@@ -36,28 +36,28 @@
     "bob@gmail.com": {
         "roster": {
             "WEDNESDAY": {
-                "start": "01:30",
-                "end": "03:00"
+                "start": "13:30",
+                "end": "14:00"
             },
             "MONDAY": {
                 "start": "14:00",
                 "end": "15:00"
             },
             "THURSDAY": {
-                "start": "01:30",
-                "end": "03:20"
-            },
-            "TUESDAY": {
-                "start": "01:00",
-                "end": "03:30"
+                "start": "13:30",
+                "end": "14:20"
             },
             "FRIDAY": {
-                "start": "01:30",
-                "end": "03:50"
+                "start": "13:30",
+                "end": "14:50"
+            },
+            "TUESDAY": {
+                "start": "13:00",
+                "end": "14:30"
             },
             "SATURDAY": {
-                "start": "01:30",
-                "end": "03:40"
+                "start": "13:30",
+                "end": "14:40"
             }
         },
         "name": "Bob Dobalina",

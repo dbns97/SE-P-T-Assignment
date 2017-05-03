@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.StringTokenizer;
 import java.util.concurrent.ConcurrentHashMap;
 
 import application.models.Booking;
@@ -38,7 +39,6 @@ public class CustomerMakeBookingController
 
 	private Date StartTime;
 	private Date EndTime;
-	private Date Duration;
 	
 	@FXML
     private ChoiceBox<String> day;
@@ -230,11 +230,13 @@ public class CustomerMakeBookingController
 		System.out.println("confirm button clicked");
 		
 		//what will be saved to database
-		System.out.println("booking details : \n" 
+		System.out.println(   "\n------------------------\n"
+							+ "booking details : \n" 
 							+ service.getValue() +  "\n"
 							+ employee.getValue() +  "\n"
 							+ day.getValue() +  "\n"
-							+ time.getText() +  "\n"							
+							+ time.getText() 
+							+ "\n------------------------\n"							
 							);
 		
 		Boolean madeBooking = checkBooking();
@@ -247,10 +249,6 @@ public class CustomerMakeBookingController
 			
 			
 			cm.showCustomerMenu();
-		}
-		else
-		{
-			errorLabel.setText("Problem making booking");
 		}
 		
 	}
@@ -268,8 +266,8 @@ public class CustomerMakeBookingController
 		}
 		else
 		{
-			currentService = business.getService( service.getValue() );
-			
+			// get entered service and employee
+			currentService = business.getService( service.getValue() );			
 			for( Employee e : business.getEmployees() )
 			{
 				if( e.getName().equals( employee.getValue() ) )
@@ -277,83 +275,196 @@ public class CustomerMakeBookingController
 					currentEmployee = business.getEmployee( e.getEmail() );
 				}
 			}
-			
-			System.out.println(currentEmployee);
-			
-			String duration = Integer.toString( currentService.getDuration() );
 
-			SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-			SimpleDateFormat sdf1 = new SimpleDateFormat("m");
-			try
+			// get the entered time, set the dates for this week and calc the end time from that
+			StartTime = getTime(time.getText(), day.getValue() );
+			EndTime = getTime( StartTime, currentService.getDuration() );			
+			// finds the employee starting & ending time of his shift for entered day
+			Date employeeStartTime = getTime(currentEmployee.getShift( day.getValue() ).getStart(), day.getValue());
+			Date employeeEndTime = getTime( currentEmployee.getShift( day.getValue() ).getEnd(), day.getValue() );
+					
+			// convert these dates to long
+			long enteredStartTime = dateToLong(StartTime);	
+			long enteredEndTime = dateToLong(EndTime);	
+			long empStartTime = dateToLong(employeeStartTime);			
+			long empEndTime = dateToLong(employeeEndTime);			
+			
+			System.out.println(StartTime + " - Start time of booking");
+			System.out.println(EndTime + " - end time of booking");	
+			System.out.println(employeeStartTime + " - Employee Start time of shift");
+			System.out.println(employeeEndTime + "- Employee end time of shift\n");		
+			System.out.println();
+						
+			System.out.println("checking all bookings");
+			System.out.println("current chosen employee : " + currentEmployee.getEmail() );
+			// checks that the start time is after employee start time
+			// and that it ends before employee end time
+			if (enteredStartTime >= empStartTime && enteredEndTime <= empEndTime)
 			{
-				StartTime = sdf.parse( time.getText() ) ;			
-				Duration = sdf1.parse( duration ) ;
-								
-				Calendar cal = Calendar.getInstance();
-				cal.setTime(StartTime);
-				cal.add(Calendar.MINUTE,currentService.getDuration() );				
-				EndTime = cal.getTime();
+				System.out.println();
+				// searches each of the customer bookings for that day
+				// and checks that the booking is not going into any for their bookings
+				ArrayList<Customer> customers = business.getCustomers();
 				
-				System.out.println("Start time of booking : " + StartTime);
-				System.out.println("Service duration : " + Duration);
-				System.out.println("end time of booking : " + EndTime);
-				
-		Calendar startOfWeek = Calendar.getInstance();
-		startOfWeek.setFirstDayOfWeek(Calendar.MONDAY);
-		
-		// Set startOfWeek calendar value to beginning of day
-		startOfWeek.set(Calendar.HOUR_OF_DAY, 0); // Clear doesn't reset the hour of day
-		startOfWeek.clear(Calendar.MINUTE);
-		startOfWeek.clear(Calendar.SECOND);
-		startOfWeek.clear(Calendar.MILLISECOND);
-		
-		System.out.println("start of the week " + startOfWeek.getTime());
-		
-				HashMap<Day, Shift> empRoster = currentEmployee.getRoster();
-				Shift shift = empRoster.get(day.getValue());
-				System.out.println("here");
-				
-				//these are the problem
-				long empStartTime = currentEmployee.getShift( day.getValue() ).getStart().getTime() % (24 * 60 * 60 * 1000);
-				System.out.println("now here");
-				long empEndTime = currentEmployee.getShift( day.getValue() ).getEnd().getTime() % (24 * 60 * 60 * 1000);
-				long enteredStartTime = StartTime.getTime() % (24 * 60 * 60 * 1000);
-				long enteredEndTime = EndTime.getTime() % (24 * 60 * 60 * 1000);
-				
-				if (enteredStartTime >= empStartTime && enteredEndTime <= empEndTime)
+				for (Customer customer : customers)
 				{
-					ArrayList<Customer> customers = business.getCustomers();			
-					for (Customer customer : customers)
+					System.out.println("current customer bookings we are checking : " + customer.getUsername());
+					for (Booking booking : customer.getBookings())
 					{
-						for (Booking booking : customer.getBookings())
+						System.out.println("checks if the booking has the same employee as the one user chose");
+						if (booking.getEmployee().getEmail().equals(currentEmployee.getEmail()) ) 
 						{
-							if (booking.getEmployee() == currentEmployee) {
-								if ( ( StartTime.getTime() >= booking.getEnd().getTime() )
-								   ||( EndTime.getTime() <= booking.getStart().getTime() )
-								   )
-								{
-									System.out.println("your chosen time goes through another booking");
-									return false;
-								}
+							System.out.println("- They match\n");
+							
+							System.out.println("\tchosen start time : " + StartTime);
+							System.out.println("\tbooking end time : " + booking.getEnd());
+							
+							System.out.println("\tchosen end time : " + EndTime);
+							System.out.println("\tbooking start time : " + booking.getStart());
+							
+							System.out.println();
+							
+							if ( ( StartTime.getTime() >= booking.getStart().getTime() && StartTime.getTime() <= booking.getEnd().getTime() )
+							   ||( EndTime.getTime() <= booking.getEnd().getTime() && EndTime.getTime() >= booking.getStart().getTime() ) )
+							{
+								errorLabel.setText("Your chosen time goes through another booking");
+								return false;
 							}
 						}
+						System.out.println();
 					}
+					System.out.println();
 				}
-				else
-				{
-					System.out.println("choose a time when employee is working");
-				}
-				
 			}
-			catch (ParseException e) 
+			else
 			{
-				e.printStackTrace();
+				errorLabel.setText("Choose a time when employee is working");
+				return false;
 			}
-
+				
 			return true;
 		}
 		
 		
+	}
+	
+	
+	public long dateToLong(Date date)
+	{
+		return ( date.getTime() % (24 * 60 * 60 * 1000) );
+	}
+	
+	// for setting the entered start date of the booking
+	public Date getTime(String time, String day)
+	{
+		// breaks user input time to hours and mins
+		StringTokenizer st = new StringTokenizer(time);
+		int[] timeBroken = new int[2];
+		int i=0;
+		while (st.hasMoreTokens()) 
+		{
+			timeBroken[i] = Integer.parseInt(st.nextToken(":"));
+			i++;
+		}
+					
+		// sets the start of the booking
+		Calendar date = Calendar.getInstance();
+		date.set(Calendar.HOUR_OF_DAY, timeBroken[0]); 
+		date.clear(Calendar.MINUTE);
+		date.set(Calendar.MINUTE, timeBroken[1]);
+		date.clear(Calendar.SECOND);
+		date.clear(Calendar.MILLISECOND);
+		date.setFirstDayOfWeek(Calendar.MONDAY);
+		
+		if(day.equals("MONDAY"))
+		{
+			date.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+		}
+		
+		else if(day.equals("TUESDAY"))
+		{
+			date.set(Calendar.DAY_OF_WEEK, Calendar.TUESDAY);
+		}
+		else if(day.equals("WEDNESDAY"))
+		{
+			date.set(Calendar.DAY_OF_WEEK, Calendar.WEDNESDAY);	
+		}
+		else if(day.equals("THURSDAY"))
+		{
+			date.set(Calendar.DAY_OF_WEEK, Calendar.THURSDAY);
+		}
+		else if(day.equals("FRIDAY"))
+		{
+			date.set(Calendar.DAY_OF_WEEK, Calendar.FRIDAY);
+		}
+		else if(day.equals("SATURDAY"))
+		{
+			date.set(Calendar.DAY_OF_WEEK, Calendar.SATURDAY);
+		}
+		else if(day.equals("SUNDAY"))
+		{
+			date.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
+		}
+					
+		return date.getTime();
+	}
+
+	// for setting the end date of the booking
+	public Date getTime(Date start, int duration)
+	{
+		// sets the end of the booking
+		Calendar endDate = Calendar.getInstance();
+		endDate.setTime(start);
+		endDate.add(Calendar.MINUTE, duration);
+		return endDate.getTime();
+		
+	}
+
+	// for setting the times employee is working that day
+	public Date getTime(Date shift, String day)
+	{
+		// this is the shift from the data base
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(shift);
+		
+		// when you get the shift from the data base, the date is set to 1970
+		// so need to covert it to equal the same day as the users entered day
+		Calendar date = Calendar.getInstance();		
+		date.set(Calendar.HOUR_OF_DAY, cal.get( Calendar.HOUR_OF_DAY) ); 		
+		date.clear(Calendar.MINUTE);
+		date.set(Calendar.MINUTE, cal.get( Calendar.MINUTE) );		
+		date.clear(Calendar.SECOND);
+		date.clear(Calendar.MILLISECOND);	
+		date.setFirstDayOfWeek(Calendar.MONDAY);		
+		if(day.equals("MONDAY"))
+		{
+			date.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+		}		
+		else if(day.equals("TUESDAY"))
+		{
+			date.set(Calendar.DAY_OF_WEEK, Calendar.TUESDAY);
+		}
+		else if(day.equals("WEDNESDAY"))
+		{
+			date.set(Calendar.DAY_OF_WEEK, Calendar.WEDNESDAY);	
+		}
+		else if(day.equals("THURSDAY"))
+		{
+			date.set(Calendar.DAY_OF_WEEK, Calendar.THURSDAY);
+		}
+		else if(day.equals("FRIDAY"))
+		{
+			date.set(Calendar.DAY_OF_WEEK, Calendar.FRIDAY);
+		}
+		else if(day.equals("SATURDAY"))
+		{
+			date.set(Calendar.DAY_OF_WEEK, Calendar.SATURDAY);
+		}
+		else if(day.equals("SUNDAY"))
+		{
+			date.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
+		}		
+		return date.getTime();
 	}
 
 }
