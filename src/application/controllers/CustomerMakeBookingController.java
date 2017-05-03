@@ -33,13 +33,10 @@ public class CustomerMakeBookingController
 	private CustomerMenu cm;
 	private Business business;
 	private Customer customer;
-	
 	private Employee currentEmployee;
 	private Service currentService;
-
 	private Date StartTime;
 	private Date EndTime;
-	
 	@FXML
     private ChoiceBox<String> day;
 	@FXML
@@ -48,7 +45,6 @@ public class CustomerMakeBookingController
     private ChoiceBox<String> service;
 	@FXML
     private ChoiceBox<String> employee;
-	
 	@FXML
 	private AnchorPane dayBox;
 	@FXML
@@ -56,29 +52,21 @@ public class CustomerMakeBookingController
 	@FXML
 	private AnchorPane serviceBox;
 	@FXML
-	private AnchorPane employeeBox;
-	
+	private AnchorPane employeeBox;	
 	@FXML
-	private Button confirm;
-	
+	private Button confirm;	
 	@FXML
 	private Label errorLabel;
 	
+	// setters
 	public void setMainMenu(CustomerMenu cm)
 	{
 		this.cm = cm;
 	}
-	
-	public void handleBack()
-	{
-		cm.showCustomerMenu();
-	}
-	
 	public void setBusiness(Business business)
 	{
 		this.business = business;
 	}
-	
 	public void setCustomer(Customer customer)
 	{
 		this.customer = customer;
@@ -101,6 +89,13 @@ public class CustomerMakeBookingController
 		confirm.setVisible(false);
 	}
 	
+	// handlers
+	public void handleBack()
+	{
+		cm.showCustomerMenu();
+	}
+	
+	
 	// finds the services in the data base and adds to choice box
 	public void setServiceChoiceBox()
 	{				
@@ -111,8 +106,6 @@ public class CustomerMakeBookingController
 		}		
 		service.setItems(FXCollections.observableArrayList( serviceList ) );
 	}
-	
-	
 	// finds the employee in the data base and adds to choice box
 	public void setEmployeeChoiceBox()
 	{
@@ -123,7 +116,6 @@ public class CustomerMakeBookingController
 		}		
 		employee.setItems(FXCollections.observableArrayList( EmployeeList ) );
 	}
-	
 	// should only shows days that employee is working and does that service
 	public void setDayChoiceBox()
 	{
@@ -152,15 +144,7 @@ public class CustomerMakeBookingController
 		day.setItems(FXCollections.observableArrayList( dayList ) );	
 
 	}
-	
-	// only show available times for that day and wont end in another bookings start time
-	public void setTimeChoiceBox()
-	{
-		
-		time.getText();
-	}
-	
-	
+
 	public void handleServiceChoiceBox()
 	{
 		System.out.println("service box clicked");
@@ -186,8 +170,7 @@ public class CustomerMakeBookingController
 			employeeBox.setVisible(true);
 		
 		setEmployeeChoiceBox();
-	}
-	
+	}	
 	public void handleEmployeeChoiceBox()
 	{
 		System.out.println("employee box clicked");
@@ -209,7 +192,6 @@ public class CustomerMakeBookingController
 		
 		setDayChoiceBox();
 	}
-	
 	public void handleDayChoiceBox()
 	{
 		System.out.println("day box clicked");
@@ -221,10 +203,7 @@ public class CustomerMakeBookingController
 				
 		if( timeBox.isVisible() == false)
 			timeBox.setVisible(true);
-		
-		setTimeChoiceBox();
 	}
-
 	public void handleConfirmButton()
 	{
 		System.out.println("confirm button clicked");
@@ -246,8 +225,7 @@ public class CustomerMakeBookingController
 			Booking newBooking = new Booking(StartTime, EndTime, currentEmployee, customer, currentService);
 			System.out.println("booking made");
 			customer.addBooking(newBooking);
-			
-			
+					
 			cm.showCustomerMenu();
 		}
 		
@@ -348,7 +326,6 @@ public class CustomerMakeBookingController
 		
 	}
 	
-	
 	public long dateToLong(Date date)
 	{
 		return ( date.getTime() % (24 * 60 * 60 * 1000) );
@@ -408,7 +385,6 @@ public class CustomerMakeBookingController
 					
 		return date.getTime();
 	}
-
 	// for setting the end date of the booking
 	public Date getTime(Date start, int duration)
 	{
@@ -419,7 +395,6 @@ public class CustomerMakeBookingController
 		return endDate.getTime();
 		
 	}
-
 	// for setting the times employee is working that day
 	public Date getTime(Date shift, String day)
 	{
