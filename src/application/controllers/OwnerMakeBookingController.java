@@ -110,7 +110,7 @@ public class OwnerMakeBookingController {
 		String[] serviceList = new String[business.getServices().size()];
 		for (int i = 0 ; i < business.getServices().size(); i++)
 		{
-			serviceList[i] = business.getServices().get(i).getName();
+			serviceList[i] = business.getServices().get(i).getName() + " ( " + business.getServices().get(i).getDuration() + " mins )";
 		}		
 		service.setItems(FXCollections.observableArrayList( serviceList ) );
 	}
