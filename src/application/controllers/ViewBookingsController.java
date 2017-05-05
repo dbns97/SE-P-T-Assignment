@@ -58,6 +58,41 @@ public class ViewBookingsController {
 		this.business = business;
 	}
 	
+	public void setBookingsTable(TableView<Booking> table)
+	{
+		this.bookingsTable = table;
+	}
+	
+	public void setDayColumn(TableColumn<Booking,String> column)
+	{
+		this.dayColumn = column;
+	}
+	
+	public void setTimeColumn(TableColumn<Booking,String> column)
+	{
+		this.timeColumn = column;
+	}
+	
+	public void setEmployeeColumn(TableColumn<Booking,String> column)
+	{
+		this.employeeColumn = column;
+	}
+	
+	public void setCustomerColumn(TableColumn<Booking,String> column)
+	{
+		this.customerColumn = column;
+	}
+	
+	public void setServiceColumn(TableColumn<Booking,String> column)
+	{
+		this.serviceColumn = column;
+	}
+	
+	public void setWeekChoiceBox(ChoiceBox<String> choiceBox)
+	{
+		this.week = choiceBox;
+	}
+	
 	public void setWeekChoiceBox()
 	{
 		week.setItems(FXCollections.observableArrayList("Last week", "This week", "Next week"));

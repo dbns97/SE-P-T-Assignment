@@ -100,9 +100,7 @@ public class RegisterFormControllerTests {
 		controller.setAddress(address);
 		controller.setContactNumber(contactNumber);
 		
-		//System.out.println(controller.getUsername().getText() + controller.getBusiness().getCustomers().get(0).getUsername() + controller.getErrorLabel().getText());
 		assertEquals(expected, controller.handleRegister());
-		//System.out.println(controller.getUsername().getText() + controller.getBusiness().getCustomers().get(0).getUsername() + controller.getErrorLabel().getText() + controller.getBusiness().getCustomer(username).getUsername());
 		if(expected)
 		{
 			assertNotNull(controller.getBusiness().getCustomer(username));

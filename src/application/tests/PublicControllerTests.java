@@ -34,7 +34,12 @@ public class PublicControllerTests {
     {
     	//Test Structure: {username, password, if writeToFile() adds the data to the JSON database, expected output}
     	return Arrays.asList(new Object[][] {     
-            {"username", "pass", true, true}, {"username1", "pass1", true, true}, {"123", "123", true, true}, {"blank", " ", true, true}, {"notInDatabase", "pass", false, false}, {"", "", false, false}
+            {"username", "pass", true, true}, 
+            {"username1", "pass1", true, true}, 
+            {"123", "123", true, true}, 
+            {"blank", " ", true, true}, 
+            {"notInDatabase", "pass", false, false}, 
+            {"", "", false, false}
       });
     }
     
@@ -101,35 +106,6 @@ public class PublicControllerTests {
 	
 	@Test
 	public void testCheckLogin() {
-
-		JSONObject wrapper = new JSONObject();
-		for(Object[] test : data())
-		{
-			//Writes the test if the test specifies
-			if((boolean)test[2])
-			{
-				JSONObject newUser = new JSONObject();
-				newUser.put("password", (String)test[1]);
-				newUser.put("name", "test");
-				newUser.put("isOwner", false);
-				newUser.put("bookings", new JSONArray());
-			
-				wrapper.put((String)test[0], newUser);
-			}
-		}
-		
-		//Finally writes the whole JSONObject to the test file
-		try
-		{
-			FileWriter custWriter = new FileWriter("src/JSONdatabase/loginTest.json");
-			System.out.println(wrapper.toString(4));
-			custWriter.write(wrapper.toString(4));
-			custWriter.close();
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}
 		
 		PublicMenuController controller = new PublicMenuController();
 		mock(controller);
@@ -138,12 +114,6 @@ public class PublicControllerTests {
 		
 		//Asserts that the expected value (found in the parameterized variable) is outputed by the function
 		assertEquals(expected, controller.checkLogin());
-	}	
-	
-	//@AfterClass
-	public static void deleteFile()
-	{
-		(new File("src/JSONdatabase/loginTest.json")).delete();
 	}
 	
 	//Encapsulates the controller in dummy data
