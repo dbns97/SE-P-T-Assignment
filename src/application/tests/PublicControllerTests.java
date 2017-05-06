@@ -12,7 +12,9 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TemporaryFolder;
 import org.junit.runner.RunWith;
 
 import com.sun.javafx.application.PlatformImpl;
@@ -29,6 +31,9 @@ import org.junit.runners.Parameterized.Parameters;
 @RunWith(Parameterized.class)
 public class PublicControllerTests {
 
+	@Rule
+	public TemporaryFolder temp = new TemporaryFolder();
+	
     @Parameters
     public static Collection<Object[]> data() 
     {
@@ -93,7 +98,7 @@ public class PublicControllerTests {
 		//Finally writes the whole JSONObject to the test file
 		try
 		{
-			FileWriter custWriter = new FileWriter("src/JSONdatabase/loginTest.json");
+			FileWriter custWriter = new FileWriter(temp.newFile("testJSON.json"));
 			System.out.println(wrapper.toString(4));
 			custWriter.write(wrapper.toString(4));
 			custWriter.close();
@@ -124,7 +129,7 @@ public class PublicControllerTests {
 		controller.setErrorLabel(new Label());
 		controller.setUsername(new TextField());
 		controller.setPassword(new PasswordField());
-		controller.setUsersFilepath("../../JSONdatabase/loginTest.json");
+		controller.setUsersFilepath("../../JSONdatabase/testJSON.json");
 	}
 
 }

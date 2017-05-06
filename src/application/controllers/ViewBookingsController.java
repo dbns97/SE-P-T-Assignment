@@ -63,6 +63,11 @@ public class ViewBookingsController {
 		this.bookingsTable = table;
 	}
 	
+	public TableView<Booking> getBookingsTable()
+	{
+		return bookingsTable;
+	}
+	
 	public void setDayColumn(TableColumn<Booking,String> column)
 	{
 		this.dayColumn = column;

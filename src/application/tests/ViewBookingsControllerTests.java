@@ -60,7 +60,7 @@ public class ViewBookingsControllerTests {
 	{
 		ViewBookingsController controller = new ViewBookingsController();
 		mock(controller);
-		//System.out.println(controller.ge);
+		System.out.println(controller.getBookingsTable().getItems().get(0).getCustomer().getName());
 		controller.handleView();
 	}
 	
