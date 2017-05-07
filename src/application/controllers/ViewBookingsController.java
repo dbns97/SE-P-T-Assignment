@@ -58,6 +58,11 @@ public class ViewBookingsController {
 		this.business = business;
 	}
 	
+	public Business getBusiness()
+	{
+		return business;
+	}
+	
 	public void setBookingsTable(TableView<Booking> table)
 	{
 		this.bookingsTable = table;
@@ -96,6 +101,11 @@ public class ViewBookingsController {
 	public void setWeekChoiceBox(ChoiceBox<String> choiceBox)
 	{
 		this.week = choiceBox;
+	}
+	
+	public ChoiceBox<String> getWeekChoiceBox()
+	{
+		return week;
 	}
 	
 	public void setWeekChoiceBox()

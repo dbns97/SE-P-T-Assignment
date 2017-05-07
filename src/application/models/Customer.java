@@ -40,6 +40,10 @@ public class Customer extends User {
 		return name;
 	}
 	
+	public String getPassword()
+	{
+		return password;
+	}
 	public ArrayList<Booking> getBookings()
 	{
 		return bookings;

@@ -10,6 +10,7 @@ import java.util.concurrent.CountDownLatch;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Rule;
@@ -21,6 +22,7 @@ import com.sun.javafx.application.PlatformImpl;
 
 import application.controllers.PublicMenuController;
 import application.models.Business;
+import application.models.Customer;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -75,40 +77,6 @@ public class PublicControllerTests {
 	    }
 	}
 	
-	//Writes the test data to the JSON database based on if the 3rd parameter is true
-	@Before
-	public void writeToFile()
-	{
-		JSONObject wrapper = new JSONObject();
-		for(Object[] test : data())
-		{
-			//Writes the test if the test specifies
-			if((boolean)test[2])
-			{
-				JSONObject newUser = new JSONObject();
-				newUser.put("password", (String)test[1]);
-				newUser.put("name", "test");
-				newUser.put("isOwner", false);
-				newUser.put("bookings", new JSONArray());
-			
-				wrapper.put((String)test[0], newUser);
-			}
-		}
-		
-		//Finally writes the whole JSONObject to the test file
-		try
-		{
-			FileWriter custWriter = new FileWriter(temp.newFile("testJSON.json"));
-			System.out.println(wrapper.toString(4));
-			custWriter.write(wrapper.toString(4));
-			custWriter.close();
-		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}
-	}
-	
 	@Test
 	public void testCheckLogin() {
 		
@@ -124,12 +92,12 @@ public class PublicControllerTests {
 	//Encapsulates the controller in dummy data
 	public void mock(PublicMenuController controller)
 	{
-		Business business = new Business();
+		Business business = new Business("../../JSONdatabase/empty.json");
 		controller.setBusiness(business);
 		controller.setErrorLabel(new Label());
 		controller.setUsername(new TextField());
 		controller.setPassword(new PasswordField());
-		controller.setUsersFilepath("../../JSONdatabase/testJSON.json");
+		if(writeToFile) controller.getBusiness().addCustomer(new Customer(username, "empty", password));
 	}
 
 }

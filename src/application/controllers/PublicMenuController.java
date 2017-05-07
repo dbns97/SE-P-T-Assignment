@@ -4,6 +4,8 @@ import application.views.*;
 
 import javafx.scene.control.Button;
 
+import java.util.ArrayList;
+
 import org.json.JSONObject;
 
 import javafx.fxml.FXML;
@@ -82,6 +84,11 @@ public class PublicMenuController {
 		this.password = password;
 	}
 	
+	public Business getBusiness()
+	{
+		return business;
+	}
+	
 	public void handleLogin()
    {
       Boolean userExist = checkLogin();
@@ -122,56 +129,56 @@ public class PublicMenuController {
 
    }
 
-	/*
-	 * if this returns true we want to load the user information
-	 * then find out if the user is the owner then call for the
-	 * right menu to display
-	 */
+	//Checks the Customer array and Owner against the input, to check for login
 	public boolean checkLogin()
-   {
-	   errorLabel.setWrapText(true);
+	{
+		errorLabel.setWrapText(true);
+		
+		ArrayList<Customer> users = business.getCustomers();
+		
+		//Checking if the owner is has been logged in
+		if(business.getOwner() != null && username.getText().equals(business.getOwner().getUsername()))
+		{
+			if(password.getText().equals(business.getOwner().getPassword()))
+			{
+				return true;
+			}
+			else
+			{
+				errorLabel.setText("Password is invalid");
+				return false;
+			}
+			
+		}
+		
+		//Exiting if the array is empty
+		if(users == null || users.isEmpty())
+		{
+			errorLabel.setText("Username entered doesnt exist");
+		}
+		
+		//Looping through the users and checking if any are logged in
+		for(Customer user : users)
+		{
+			if(username.getText().equals(user.getUsername()))
+			{
+				if(password.getText().equals(user.getPassword()))
+				{
+		            return true;
+				}
+				else
+				{
+					errorLabel.setText("Password is invalid");
+		            return false;
+				}
+			}
+		}
+		
+		errorLabel.setText("Username entered doesnt exist");
+		return false;
+	}
 
-	   // loads all users from database
-	   JSONObject data = JSONUtils.getJSONObjectFromFile(usersFilepath);
-       // checks the database user names and compares to what was entered in the text field
-
-       String[] dataUsernames = JSONObject.getNames(data);
-       if(dataUsernames == null)
-       {
-    	   errorLabel.setText("No Username entered doesnt exist");
-    	   return false;
-       }
-       
-       for ( int i=0; i < dataUsernames.length; i++ )
-	   {
-
-	      if ( username.getText().equals( dataUsernames[i] ) )
-	      {
-	         // if here they entered the right user name
-	         // load that user information from database
-	         JSONObject user = data.getJSONObject( username.getText() );
-
-	         // checks password
-	         if ( password.getText().equals( user.getString( "password" ) ) )
-	         {
-	            errorLabel.setText("");
-	            return true;
-	         }
-	         else
-	         {
-
-
-	            errorLabel.setText("Password is invalid");
-	            return false;
-	         }
-	      }
-
-	   }
-      errorLabel.setText("Username entered doesnt exist");
-      System.out.println("Username");
-      return false;
-   }
-
+	/*
 	public JSONObject loadUser(String username)
 	{
 	   // loads all users from database
@@ -183,4 +190,5 @@ public class PublicMenuController {
       return user;
 
 	}
+	*/
 }

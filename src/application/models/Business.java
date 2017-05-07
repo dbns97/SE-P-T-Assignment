@@ -55,6 +55,10 @@ public class Business {
 		return customers;
 	}
 	
+ 	public void setCustomers(ArrayList<Customer> customers)
+ 	{
+ 		this.customers = customers;
+ 	}
 	public void setUsersFilepath(String filepath)
 	{
 		this.usersFilepath = filepath;

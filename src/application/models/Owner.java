@@ -21,6 +21,10 @@ public class Owner extends User {
 		return username;
 	}
 	
+	public String getPassword()
+	{
+		return password;
+	}
 	public JSONObject toJSONObject()
 	{
 		JSONObject jsonOwner = new JSONObject();

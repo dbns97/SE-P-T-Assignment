@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.CountDownLatch;
 
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -79,12 +80,6 @@ public class RegisterFormControllerTests {
 	    {
 	    	e.printStackTrace();
 	    }
-		
-		try {
-			(new File("src/JSONdatabase/usersTest.json")).createNewFile();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 	
 	@Test
@@ -111,25 +106,23 @@ public class RegisterFormControllerTests {
 		}
 	}
 	
-	//@AfterClass
-	public static void deleteFile()
+	@AfterClass
+	public static void cleanFile()
 	{
-		(new File("src/JSONdatabase/usersTest.json")).delete();
+		//Clearing the empty file
+				try {
+					FileWriter writer = new FileWriter("src/JSONdatabase/empty.json");
+					writer.write("{}");
+					writer.flush();
+					writer.close();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 	}
 	
 	public void mock(RegisterFormController controller)
 	{
-		//Clearing the usersTest file
-		try {
-			FileWriter writer = new FileWriter("src/JSONdatabase/usersTest.json");
-			writer.write("{}");
-			writer.flush();
-			writer.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		Business business = new Business("../../JSONdatabase/usersTest.json");
+		Business business = new Business("../../JSONdatabase/empty.json");
 		
 		controller.setBusiness(business);
 		controller.setErrorLabel(new Label());
