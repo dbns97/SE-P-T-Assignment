@@ -22,9 +22,12 @@ import application.models.Business;
 import application.models.Customer;
 import application.models.Employee;
 import application.models.Service;
+import application.views.PublicMenu;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.AnchorPane;
 
 @RunWith(Parameterized.class)
 public class ViewBookingsControllerTests {
@@ -67,7 +70,8 @@ public class ViewBookingsControllerTests {
 		ArrayList<Booking> test = new ArrayList<Booking>();
 		test.add(new Booking("Tue 02/05/2017 12:30", "Tue 02/05/2017 1:30", new Employee("email","name"), new Service("Service", 60)));
 		//controller.getBusiness().addCustomer(new Customer("username", "name", "password", test));
-		controller.getWeekChoiceBox().setValue("Last Week");
+		//controller.setWeekChoiceBox();
+		controller.setWeekChoiceBoxValue("Last week");
 		Customer temp = null;
 		for(Customer c : controller.getBusiness().getCustomers())
 		{
@@ -77,8 +81,8 @@ public class ViewBookingsControllerTests {
 		
 		controller.handleView();
 
-		System.out.println(controller.getBookingsTable().getItems().toString());
-		System.out.println(controller.getBookingsTable().getColumns().get(0).getCellObservableValue(temp.getBookings().get(0)).getValue());
+		System.out.println(controller.getBookingsTable().getItems().size());
+		System.out.println(controller.getBookingsTable().getColumns().get(0).getCellObservableValue(0).getValue());
 	}
 	
 	//@AfterClass

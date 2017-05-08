@@ -103,6 +103,11 @@ public class ViewBookingsController {
 		this.week = choiceBox;
 	}
 	
+	public void setWeekChoiceBoxValue(String value)
+	{
+		week.setValue(value);
+	}
+	
 	public ChoiceBox<String> getWeekChoiceBox()
 	{
 		return week;
