@@ -66,11 +66,19 @@ public class ViewBookingsControllerTests {
 		mock(controller);
 		ArrayList<Booking> test = new ArrayList<Booking>();
 		test.add(new Booking("Tue 02/05/2017 12:30", "Tue 02/05/2017 1:30", new Employee("email","name"), new Service("Service", 60)));
-		controller.getBusiness().addCustomer(new Customer("username", "name", "password", test));
+		//controller.getBusiness().addCustomer(new Customer("username", "name", "password", test));
 		controller.getWeekChoiceBox().setValue("Last Week");
+		Customer temp = null;
+		for(Customer c : controller.getBusiness().getCustomers())
+		{
+			System.out.println(c.getUsername());
+			temp = c;
+		}
+		
 		controller.handleView();
 
-		System.out.println(controller.getBookingsTable().getColumns().get(0).getCellObservableValue(0).getValue());
+		System.out.println(controller.getBookingsTable().getItems().toString());
+		System.out.println(controller.getBookingsTable().getColumns().get(0).getCellObservableValue(temp.getBookings().get(0)).getValue());
 	}
 	
 	//@AfterClass
@@ -90,14 +98,28 @@ public class ViewBookingsControllerTests {
 	public void mock(ViewBookingsController controller)
 	{
 		Business business = new Business();
-		
 		controller.setBusiness(business);
-		controller.setBookingsTable(new TableView<Booking>());
-		controller.setDayColumn(new TableColumn<Booking,String>());
-		controller.setTimeColumn(new TableColumn<Booking,String>());
-		controller.setEmployeeColumn(new TableColumn<Booking,String>());
-		controller.setCustomerColumn(new TableColumn<Booking,String>());
-		controller.setServiceColumn(new TableColumn<Booking,String>());
+		
+		TableView<Booking> bt = new TableView<Booking>();
+		TableColumn<Booking,String> dc = new TableColumn<Booking,String>();
+		TableColumn<Booking,String> tc = new TableColumn<Booking,String>();
+		TableColumn<Booking,String> ec = new TableColumn<Booking,String>();
+		TableColumn<Booking,String> cc = new TableColumn<Booking,String>();
+		TableColumn<Booking,String> sc = new TableColumn<Booking,String>();
+		
+		controller.setBookingsTable(bt);
+		controller.setDayColumn(dc);
+		controller.setTimeColumn(dc);
+		controller.setEmployeeColumn(dc);
+		controller.setCustomerColumn(dc);
+		controller.setServiceColumn(dc);
+		
+		bt.getColumns().add(dc);
+		bt.getColumns().add(tc);
+		bt.getColumns().add(ec);
+		bt.getColumns().add(cc);
+		bt.getColumns().add(sc);
+		System.out.println(bt.getColumns().toString());
 		controller.setWeekChoiceBox(new ChoiceBox<String>());
 		controller.setWeekChoiceBox();
 		

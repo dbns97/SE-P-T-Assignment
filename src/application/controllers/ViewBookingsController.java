@@ -178,6 +178,8 @@ public class ViewBookingsController {
 			return new SimpleStringProperty(displayFormat.format(cellData.getValue().getStart()) + "-" + displayFormat.format(cellData.getValue().getEnd()));
 		});
         
+        //System.out.println(bookingsTable.getColumns().get(0).getCellObservableValue(0).getValue());
+        //bookingsTable.getColumns().setAll(employeeColumn, customerColumn, serviceColumn, dayColumn, timeColumn);
         bookingsTable.setItems(bookings);
 		
 	}
