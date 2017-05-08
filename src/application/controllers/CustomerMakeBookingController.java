@@ -208,7 +208,7 @@ public class CustomerMakeBookingController
 	{
 		System.out.println("confirm button clicked");
 		
-		//what will be saved to database
+		//what will be saved to database a
 		System.out.println(   "\n------------------------\n"
 							+ "booking details : \n" 
 							+ service.getValue() +  "\n"
