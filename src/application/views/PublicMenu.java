@@ -108,4 +108,29 @@ public class PublicMenu extends Menu {
 
         }
 	}
+	
+	/**
+	 * @description load the view for creating a business
+	 * @return void
+	 * @author Drew Nuttall-Smith
+	 * @since 8/5/2017
+	 **/
+	public void showCreateBusiness()
+	{
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(PublicMenu.class.getResource("../views/CreateBusinessForm.fxml"));
+			AnchorPane createBusinessForm = (AnchorPane) loader.load();
+			CreateBusinessFormController controller = loader.getController();
+
+			primaryStage.setWidth(createBusinessForm.getPrefWidth() + 50);
+			primaryStage.setHeight(createBusinessForm.getPrefHeight() + 32);
+			root.setCenter(createBusinessForm);
+			controller.setMainMenu(this);
+			controller.setBusiness(business);
+		} catch (IOException e) {
+            e.printStackTrace();
+
+        }
+	}
 }
