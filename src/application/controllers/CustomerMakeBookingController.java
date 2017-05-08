@@ -102,7 +102,7 @@ public class CustomerMakeBookingController
 		String[] serviceList = new String[business.getServices().size()];
 		for (int i = 0 ; i < business.getServices().size(); i++)
 		{
-			serviceList[i] = business.getServices().get(i).getName() + " ( " + business.getServices().get(i).getDuration() + " mins )";
+			serviceList[i] = business.getServices().get(i).getName() + "  ( " + business.getServices().get(i).getDuration() + " mins )";
 		}		
 		service.setItems(FXCollections.observableArrayList( serviceList ) );
 	}
@@ -245,7 +245,21 @@ public class CustomerMakeBookingController
 		else
 		{
 			// get entered service and employee
-			currentService = business.getService( service.getValue() );			
+			
+			StringTokenizer st = new StringTokenizer(service.getValue());
+			String[] serviceBroken = new String[2];
+			int i=0;
+			while (st.hasMoreTokens()) 
+			{
+				serviceBroken[i] = st.nextToken("(");
+				System.out.println(serviceBroken[i]);
+				i++;
+			}
+			System.out.println(serviceBroken[0] + "adsas");
+			String newString = serviceBroken[0].trim();
+			currentService = business.getService( newString );	
+			
+			
 			for( Employee e : business.getEmployees() )
 			{
 				if( e.getName().equals( employee.getValue() ) )
