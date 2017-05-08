@@ -1,12 +1,16 @@
 package application.tests;
 
 import java.io.FileWriter;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Collection;
+import java.util.Date;
 import java.util.concurrent.CountDownLatch;
 
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,17 +36,45 @@ import javafx.scene.layout.AnchorPane;
 @RunWith(Parameterized.class)
 public class ViewBookingsControllerTests {
 
+	static SimpleDateFormat sdf = new SimpleDateFormat("EEE dd/MM/yyyy HH:mm");
+	
 	@Parameters
     public static Collection<Object[]> data() 
     {
-    	//Test Structure: {username, password, re-entered password, name, address, number, expected output of handleRegister}
-    	return Arrays.asList(new Object[][] {
-    		{"delete"}
-      });
+    	try
+    	{
+    		//Test Structure: {username, password, re-entered password, name, address, number, expected output of handleRegister}
+        	return Arrays.asList(new Object[][] {
+        		{sdf.parse("Tue 02/05/2017 12:30"), sdf.parse("Tue 02/05/2017 1:30"), "EName", "Service", "CName", true}
+          });
+    	}
+    	catch(Exception e)
+    	{
+    		e.printStackTrace();
+    	}
+    	
+    	return null;
     }
     
-    @Parameter
-    public String adsf;
+    @Parameter(0)
+    public Date startDate;
+    
+    @Parameter(1)
+    public Date endDate;
+    
+    @Parameter(2)
+    public String employee;
+    
+    @Parameter(3)
+    public String service;
+    
+    @Parameter(4)
+    public String customer;
+    
+    @Parameter(5)
+    public boolean isDisplayed;
+    
+    
     
 	@BeforeClass
 	public static void setupPlatform()
@@ -67,22 +99,37 @@ public class ViewBookingsControllerTests {
 	{
 		ViewBookingsController controller = new ViewBookingsController();
 		mock(controller);
-		ArrayList<Booking> test = new ArrayList<Booking>();
-		test.add(new Booking("Tue 02/05/2017 12:30", "Tue 02/05/2017 1:30", new Employee("email","name"), new Service("Service", 60)));
-		//controller.getBusiness().addCustomer(new Customer("username", "name", "password", test));
-		//controller.setWeekChoiceBox();
-		controller.setWeekChoiceBoxValue("Last week");
-		Customer temp = null;
+		
+		ArrayList<Booking> bookingsArray = new ArrayList<Booking>();
+		bookingsArray.add(new Booking(startDate, endDate, new Employee("email", employee), null, new Service(service, 60)));
+		controller.getBusiness().addCustomer(new Customer("username", customer, "password", bookingsArray));
+		
+		if (checkBeforeWeek(bookingsArray.get(0).getStart())) controller.setWeekChoiceBoxValue("Last week");
+		else if (checkAfterWeek(bookingsArray.get(0).getStart())) controller.setWeekChoiceBoxValue("Next week");
+		else controller.setWeekChoiceBoxValue("This week");
+		
 		for(Customer c : controller.getBusiness().getCustomers())
 		{
 			System.out.println(c.getUsername());
-			temp = c;
 		}
 		
 		controller.handleView();
 
 		System.out.println(controller.getBookingsTable().getItems().size());
-		System.out.println(controller.getBookingsTable().getColumns().get(0).getCellObservableValue(0).getValue());
+		System.out.println(controller.getBookingsTable().getColumns().size());
+		
+		SimpleDateFormat displayFormat = new SimpleDateFormat("HH:mm");
+		SimpleDateFormat displayDayFormat = new SimpleDateFormat("EEE");
+		
+		if(!isDisplayed)
+		{
+			Assert.assertNull(controller.getBookingsTable().getColumns().get(0).getCellObservableValue(0));
+		}
+		else
+		{
+			System.out.println(controller.getBookingsTable().getColumns().get(0).getCellObservableValue(1).getValue());
+			Assert.assertEquals(controller.getBookingsTable().getColumns().get(0).getCellObservableValue(0).getValue(), displayFormat.format(startDate) + "-" + displayFormat.format(endDate));
+		}
 	}
 	
 	//@AfterClass
@@ -101,7 +148,7 @@ public class ViewBookingsControllerTests {
 	
 	public void mock(ViewBookingsController controller)
 	{
-		Business business = new Business();
+		Business business = new Business("../../JSONdatabase/empty.json");
 		controller.setBusiness(business);
 		
 		TableView<Booking> bt = new TableView<Booking>();
@@ -126,6 +173,40 @@ public class ViewBookingsControllerTests {
 		System.out.println(bt.getColumns().toString());
 		controller.setWeekChoiceBox(new ChoiceBox<String>());
 		controller.setWeekChoiceBox();
+	}
+	
+	public boolean checkBeforeWeek(Date inputDate)
+	{
+		Calendar startOfWeek = Calendar.getInstance();
+		startOfWeek.setFirstDayOfWeek(Calendar.MONDAY);
+
+		//Calendar representing today
+		startOfWeek.set(Calendar.HOUR_OF_DAY, 0);
+		startOfWeek.set(Calendar.MINUTE, 0);
+		startOfWeek.set(Calendar.SECOND, 0);
+		startOfWeek.set(Calendar.MILLISECOND, 0);
+		startOfWeek.set(Calendar.DAY_OF_WEEK, startOfWeek.getFirstDayOfWeek());
+		startOfWeek.add(Calendar.DAY_OF_WEEK, -1);
+		Date startOfWeekDate = startOfWeek.getTime();
+		
+		return inputDate.before(startOfWeekDate);
+	}
+	
+	public boolean checkAfterWeek(Date inputDate)
+	{
+		Calendar endOfWeek = Calendar.getInstance();
+		endOfWeek.setFirstDayOfWeek(Calendar.MONDAY);
+
+		//Calendar representing end of this week
+		endOfWeek.set(Calendar.HOUR_OF_DAY, 0);
+		endOfWeek.set(Calendar.MINUTE, 0);
+		endOfWeek.set(Calendar.SECOND, 0);
+		endOfWeek.set(Calendar.MILLISECOND, 0);
+		endOfWeek.set(Calendar.DAY_OF_WEEK, endOfWeek.getFirstDayOfWeek());
+		endOfWeek.add(Calendar.DAY_OF_WEEK, -1);
+		Date endOfWeekDate = endOfWeek.getTime();
+		
+		return inputDate.before(endOfWeekDate);
 		
 		
 	}
