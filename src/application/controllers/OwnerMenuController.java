@@ -22,9 +22,16 @@ public class OwnerMenuController {
 	private Business business;
 	
 	@FXML
+	private Label businessLabel;
+	@FXML
 	private Button addEmployee;
 	@FXML
 	private Button logout;
+	
+	public void setBusinessLabel(String businessName)
+	{
+		this.businessLabel.setText(businessName);
+	}
 	
 	public void setOwnerMenu(OwnerMenu om)
 	{

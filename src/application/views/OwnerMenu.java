@@ -4,8 +4,10 @@ import application.controllers.*;
 
 import java.io.IOException;
 
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -56,6 +58,7 @@ public class OwnerMenu extends Menu {
 			primaryStage.setWidth(OwnerMenu.getPrefWidth() + 50);
 			primaryStage.setHeight(OwnerMenu.getPrefHeight() + 32);
 			root.setCenter(OwnerMenu);
+			controller.setBusinessLabel(business.getName());
 			controller.setOwnerMenu(this);
 			controller.setMainMenu(pm);
 			controller.setBusiness(business);

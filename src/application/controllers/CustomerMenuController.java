@@ -4,6 +4,7 @@ import application.views.*;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 public class CustomerMenuController {
@@ -13,8 +14,15 @@ public class CustomerMenuController {
 	private Business business;
 	
 	@FXML
+	private Label businessLabel;
+	@FXML
 	private Button logout;
 
+	public void setBusinessLabel(String businessName)
+	{
+		this.businessLabel.setText(businessName);
+	}
+	
 	public void setCustomerMenu(CustomerMenu cm)
 	{
 		this.cm = cm;
