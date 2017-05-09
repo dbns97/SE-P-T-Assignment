@@ -155,88 +155,107 @@ public class OwnerMakeBookingController {
 
 	public void handleServiceChoiceBox()
 	{
-		System.out.println("service box clicked");
-		
-		errorLabel.setText("");
-		
-		if(confirm.isVisible())
-			confirm.setVisible(false);
-		
-		
-		if(timeBox.isVisible())
+		if( service.getValue() != null)
 		{
-			timeBox.setVisible(false);
+			System.out.println("service box clicked");
+			
+			errorLabel.setText("");
+			
+			if(confirm.isVisible())
+				confirm.setVisible(false);
+			
+			
+			if(timeBox.isVisible())
+			{
+				timeBox.setVisible(false);
+			}
+			if(dayBox.isVisible())
+			{
+				//day.setItems(null);
+				dayBox.setVisible(false);
+			}
+			
+			
+			if( employeeBox.isVisible() == false)
+				employeeBox.setVisible(true);
+			
+			setEmployeeChoiceBox();
 		}
-		if(dayBox.isVisible())
-		{
-			day.setItems(null);
-			dayBox.setVisible(false);
-		}
-		
-		
-		if( employeeBox.isVisible() == false)
-			employeeBox.setVisible(true);
-		
-		setEmployeeChoiceBox();
 	}
 	public void handleEmployeeChoiceBox()
 	{
-		System.out.println("employee box clicked");
-		
-		errorLabel.setText("");
-		
-		if(confirm.isVisible())
-			confirm.setVisible(false);
-		
-		
-		if(timeBox.isVisible())
+		if( employee.getValue() != null )
 		{
-			timeBox.setVisible(false);
+			System.out.println("employee box clicked");
+			
+			errorLabel.setText("");
+			
+			if(confirm.isVisible())
+				confirm.setVisible(false);
+			
+			
+			if(timeBox.isVisible())
+			{
+				timeBox.setVisible(false);
+			}
+			
+			
+			if( dayBox.isVisible() == false)
+				dayBox.setVisible(true);	
+			
+			setDayChoiceBox();
 		}
-		
-		
-		if( dayBox.isVisible() == false)
-			dayBox.setVisible(true);	
-		
-		setDayChoiceBox();
 	}
 	public void handleDayChoiceBox()
 	{
-		System.out.println("day box clicked");
-		
-		errorLabel.setText("");
-		
-		if(confirm.isVisible() == false)
-			confirm.setVisible(true);
-				
-		if( timeBox.isVisible() == false)
-			timeBox.setVisible(true);		
+		if ( day.getValue() != null)
+		{
+			System.out.println("day box clicked");
+			
+			errorLabel.setText("");
+			
+			if(confirm.isVisible() == false)
+				confirm.setVisible(true);
+					
+			if( timeBox.isVisible() == false)
+				timeBox.setVisible(true);	
+		}
 	}
 	public void handleConfirmButton()
 	{
-		System.out.println("confirm button clicked");
-		
-		//what will be saved to database
-		System.out.println(   "\n------------------------\n"
-							+ "booking details : \n" 
-							+ service.getValue() +  "\n"
-							+ employee.getValue() +  "\n"
-							+ day.getValue() +  "\n"
-							+ time.getText() 
-							+ "\n------------------------\n"							
-							);
-		
-		Boolean madeBooking = checkBooking();
-		
-		if (madeBooking == true)
+		if( service.getValue() == null
+		|| employee.getValue() == null
+		|| day.getValue() == null 
+		|| time.getText().isEmpty() )
 		{
-			Booking newBooking = new Booking(StartTime, EndTime, currentEmployee, currentCustomer, currentService);
-			System.out.println("booking made");
-			currentCustomer.addBooking(newBooking);
-			
-			om.showOwnerMenu();
+			errorLabel.setText("Please enter all information first\n");
 		}
-
+		else
+		{
+					
+			System.out.println("confirm button clicked");
+			
+			//what will be saved to database
+			System.out.println(   "\n------------------------\n"
+								+ "booking details : \n" 
+								+ service.getValue() +  "\n"
+								+ employee.getValue() +  "\n"
+								+ day.getValue() +  "\n"
+								+ time.getText() 
+								+ "\n------------------------\n"							
+								);
+			
+			Boolean madeBooking = checkBooking();
+			
+			if (madeBooking == true)
+			{
+				Booking newBooking = new Booking(StartTime, EndTime, currentEmployee, currentCustomer, currentService);
+				System.out.println("booking made");
+				currentCustomer.addBooking(newBooking);
+				
+				om.showOwnerMenu();
+			}
+		}
 	}
 
 	public Boolean checkBooking()
@@ -252,8 +271,22 @@ public class OwnerMakeBookingController {
 		{
 			// gets their name not their username
 			currentCustomer = business.getCustomer(customer.getValue() );
-			// get entered service and employee
-			currentService = business.getService( service.getValue() );
+			
+			// get entered service
+			StringTokenizer st = new StringTokenizer(service.getValue());
+			String[] serviceBroken = new String[2];
+			int i=0;
+			while (st.hasMoreTokens()) 
+			{
+				serviceBroken[i] = st.nextToken("(");
+				//System.out.println(serviceBroken[i]);
+				i++;
+			}
+			//System.out.println(serviceBroken[0] + "adsas");
+			String newString = serviceBroken[0].trim();
+			currentService = business.getService( newString );
+			
+			// and employee
 			for( Employee e : business.getEmployees() )
 			{
 				if( e.getName().equals( employee.getValue() ) )
