@@ -101,22 +101,32 @@ public class ViewBookingsControllerTests {
 		mock(controller);
 		
 		ArrayList<Booking> bookingsArray = new ArrayList<Booking>();
-		bookingsArray.add(new Booking(startDate, endDate, new Employee("email", employee), null, new Service(service, 60)));
-		controller.getBusiness().addCustomer(new Customer("username", customer, "password", bookingsArray));
+		bookingsArray.add(new Booking(sdf.format(startDate), sdf.format(endDate), new Employee("email", employee), new Service(service, 60)));
+		Customer c = new Customer("username", customer, "password", bookingsArray);
+		controller.getBusiness().addCustomer(c);
+		controller.getBusiness().getCustomer("username").getBookings().get(0).setCustomer(c);
+		//System.out.println(controller.getBusiness().getCustomer("username").toJSONObject().toString(4));
 		
 		if (checkBeforeWeek(bookingsArray.get(0).getStart())) controller.setWeekChoiceBoxValue("Last week");
 		else if (checkAfterWeek(bookingsArray.get(0).getStart())) controller.setWeekChoiceBoxValue("Next week");
 		else controller.setWeekChoiceBoxValue("This week");
 		
-		for(Customer c : controller.getBusiness().getCustomers())
+		for(Customer cust : controller.getBusiness().getCustomers())
 		{
-			System.out.println(c.getUsername());
+			System.out.println(cust.toJSONObject().toString(4));
 		}
 		
 		controller.handleView();
 
 		System.out.println(controller.getBookingsTable().getItems().size());
+		System.out.println(controller.getBookingsTable().getItems().get(0).toJSONObject().toString(4));
 		System.out.println(controller.getBookingsTable().getColumns().size());
+		
+		for(TableColumn<Booking,?> cust : controller.getBookingsTable().getColumns())
+		{
+			if(cust.getCellObservableValue(0) != null) System.out.println(cust.getCellObservableValue(0).getValue().toString());
+			else System.out.println("NULL");
+		}
 		
 		SimpleDateFormat displayFormat = new SimpleDateFormat("HH:mm");
 		SimpleDateFormat displayDayFormat = new SimpleDateFormat("EEE");
@@ -127,7 +137,7 @@ public class ViewBookingsControllerTests {
 		}
 		else
 		{
-			System.out.println(controller.getBookingsTable().getColumns().get(0).getCellObservableValue(1).getValue());
+			System.out.println(controller.getBookingsTable().getColumns().get(1).getCellObservableValue(0).getValue());
 			Assert.assertEquals(controller.getBookingsTable().getColumns().get(0).getCellObservableValue(0).getValue(), displayFormat.format(startDate) + "-" + displayFormat.format(endDate));
 		}
 	}
@@ -158,6 +168,8 @@ public class ViewBookingsControllerTests {
 		TableColumn<Booking,String> cc = new TableColumn<Booking,String>();
 		TableColumn<Booking,String> sc = new TableColumn<Booking,String>();
 		
+		bt.getColumns().setAll(dc, tc, ec, cc, sc);
+		
 		controller.setBookingsTable(bt);
 		controller.setDayColumn(dc);
 		controller.setTimeColumn(dc);
@@ -165,11 +177,7 @@ public class ViewBookingsControllerTests {
 		controller.setCustomerColumn(dc);
 		controller.setServiceColumn(dc);
 		
-		bt.getColumns().add(dc);
-		bt.getColumns().add(tc);
-		bt.getColumns().add(ec);
-		bt.getColumns().add(cc);
-		bt.getColumns().add(sc);
+		
 		System.out.println(bt.getColumns().toString());
 		controller.setWeekChoiceBox(new ChoiceBox<String>());
 		controller.setWeekChoiceBox();
