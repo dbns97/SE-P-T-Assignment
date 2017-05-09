@@ -226,7 +226,7 @@ public class CreateBusinessFormController {
 		newBusiness.updateFile();
 		
         OwnerMenu menu = new OwnerMenu();
-        menu.setBusiness(business);
+        menu.setBusiness(newBusiness);
         menu.setMainMenu(pm);
         Stage stage = (Stage) createBusinessButton.getScene().getWindow();
           try

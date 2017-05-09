@@ -161,7 +161,7 @@ public class Business {
 			{
 				jsonUsers.put(c.getUsername(), c.toJSONObject());
 			}
-			jsonUsers.put("owner", owner.toJSONObject());
+			jsonUsers.put(owner.getUsername(), owner.toJSONObject());
 			
 			// Write users to file
 			JSONObject allJsonUsers = JSONUtils.getJSONObjectFromFile(usersFilepath);
@@ -224,6 +224,8 @@ public class Business {
 		JSONObject jsonEmployees = JSONUtils.getJSONObjectFromFile(employeesFilepath).getJSONObject(this.name);
 		String[] emails = JSONObject.getNames(jsonEmployees);
 		
+		if (emails == null) return employees;
+		
 		// Iterate over each employee
 		for(int i = 0; i < emails.length; i++) {
         	String email = emails[i];
@@ -270,6 +272,8 @@ public class Business {
 		ArrayList<Customer> customers = new ArrayList<Customer>();
 		JSONObject jsonUsers = JSONUtils.getJSONObjectFromFile(usersFilepath).getJSONObject(this.name);
 		String[] usernames = JSONObject.getNames(jsonUsers);
+		
+		if (usernames == null) return customers;
 		
 		// Find the owner in the list of users
 		for(int i = 0; i < usernames.length; i++) {
@@ -318,6 +322,8 @@ public class Business {
 		// Get usernames of all users in selected business business
 		JSONObject jsonUsers = JSONUtils.getJSONObjectFromFile(usersFilepath).getJSONObject(this.name);
 		String[] usernames = JSONObject.getNames(jsonUsers);
+		
+		if (usernames == null) return null;
 		
 		// Find the owner in the list of users
 		for(int i = 0; i < usernames.length; i++) {
