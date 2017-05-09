@@ -39,13 +39,13 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="CENTER" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Label focusTraversable="false" text="Username" GridPane.rowIndex="1" />
-                  <Button fx:id="loginButton" mnemonicParsing="false" onAction="#handleLogin" prefWidth="104.0" text="Login" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <PasswordField fx:id="password" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <TextField fx:id="username" prefWidth="221.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Label focusTraversable="false" text="Password" GridPane.rowIndex="2" />
                   <Label focusTraversable="false" text="Business" />
                   <TextField fx:id="businessName" prefWidth="221.0" GridPane.columnIndex="1" />
+                  <Label focusTraversable="false" text="Username" GridPane.rowIndex="1" />
+                  <TextField fx:id="username" prefWidth="221.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label focusTraversable="false" text="Password" GridPane.rowIndex="2" />
+                  <PasswordField fx:id="password" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Button fx:id="loginButton" mnemonicParsing="false" onAction="#handleLogin" prefWidth="104.0" text="Login" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                </children>
             </GridPane>
             <GridPane prefHeight="83.0" prefWidth="365.0" GridPane.rowIndex="2">
@@ -61,9 +61,9 @@
                <children>
                   <Label text="New user?" GridPane.columnIndex="1" />
                   <Button fx:id="registerButton" mnemonicParsing="false" onAction="#handleRegister" prefWidth="104.0" text="Register" GridPane.columnIndex="2" />
-                  <Label fx:id="errorLabel" />
-                  <Button fx:id="createBusinessButton" mnemonicParsing="false" onAction="#handleCreateBusiness" text="New Business" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                   <Label text="New business?" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Button fx:id="createBusinessButton" mnemonicParsing="false" onAction="#handleCreateBusiness" text="New Business" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <Label fx:id="errorLabel" />
                </children>
             </GridPane>
          </children>

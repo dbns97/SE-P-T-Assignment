@@ -26,10 +26,11 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="logout" mnemonicParsing="false" onAction="#handleLogout" text="Logout" textAlignment="CENTER" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
-            <Button mnemonicParsing="false" onAction="#handleMakeBookings" prefWidth="148.0" text="Make Booking" GridPane.rowIndex="2" />
             <Button mnemonicParsing="false" onAction="#handleViewAvailableTimes" text="View Available Times" GridPane.rowIndex="1" />
+            <Button mnemonicParsing="false" onAction="#handleMakeBookings" prefWidth="148.0" text="Make Booking" GridPane.rowIndex="2" />
+            <Button fx:id="logout" mnemonicParsing="false" onAction="#handleLogout" text="Logout" textAlignment="CENTER" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
          </children>
       </GridPane>
+      <Label fx:id="errorLabel" layoutX="8.0" layoutY="222.0" />
    </children>
 </AnchorPane>

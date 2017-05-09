@@ -32,28 +32,11 @@
           <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="37.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Username" GridPane.rowIndex="4" />
-            <Label text="Password" GridPane.rowIndex="5" />
-            <Label text="Name" GridPane.rowIndex="7" />
-            <Label text="Address" GridPane.rowIndex="8" />
-            <Label text="Contact Number" GridPane.rowIndex="9" />
-            <Button fx:id="createBusinessButton" mnemonicParsing="false" onAction="#handleCreateBusiness" text="Create" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-            <TextField fx:id="username" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <PasswordField fx:id="password" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <PasswordField fx:id="reenter" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <TextField fx:id="ownerName" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-            <TextField fx:id="address" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-            <TextField fx:id="contactNumber" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-            <Button mnemonicParsing="false" onAction="#handleBack" text="Back" GridPane.rowIndex="10" />
             <Label prefHeight="23.0" prefWidth="364.0" text="Create Business" GridPane.columnSpan="2">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="errorLabel" GridPane.columnIndex="1" />
-            <Label text="Re-enter Password" GridPane.rowIndex="6" />
-            <Label text="Name" GridPane.rowIndex="2" />
-            <TextField fx:id="businessName" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label alignment="CENTER" prefHeight="19.0" prefWidth="365.0" text="Business" textAlignment="CENTER" GridPane.columnSpan="2" GridPane.rowIndex="1">
                <font>
                   <Font name="System Bold" size="15.0" />
@@ -62,11 +45,27 @@
                   <Insets />
                </GridPane.margin>
             </Label>
+            <Label text="Name" GridPane.rowIndex="2" />
+            <TextField fx:id="businessName" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label alignment="CENTER" prefHeight="19.0" prefWidth="366.0" text="Owner" GridPane.columnSpan="2" GridPane.rowIndex="3">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
+            <Label text="Username" GridPane.rowIndex="4" />
+            <TextField fx:id="username" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label text="Password" GridPane.rowIndex="5" />
+            <PasswordField fx:id="password" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Label text="Re-enter Password" GridPane.rowIndex="6" />
+            <PasswordField fx:id="reenter" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Label text="Name" GridPane.rowIndex="7" />
+            <TextField fx:id="ownerName" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <Label text="Address" GridPane.rowIndex="8" />
+            <TextField fx:id="address" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <Label text="Contact Number" GridPane.rowIndex="9" />
+            <TextField fx:id="contactNumber" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <Button mnemonicParsing="false" onAction="#handleBack" text="Back" GridPane.rowIndex="10" />
+            <Button fx:id="createBusinessButton" mnemonicParsing="false" onAction="#handleCreateBusiness" text="Create" GridPane.columnIndex="1" GridPane.rowIndex="10" />
          </children>
       </GridPane>
    </children>
