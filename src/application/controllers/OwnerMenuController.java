@@ -63,6 +63,11 @@ public class OwnerMenuController {
 		om.showAddShift();
 	}
 	
+	public void showAddService()
+	{
+		om.showAddService();
+	}
+	
 	public void handleViewBookings()
 	{
 		om.showViewBookings();

@@ -139,6 +139,26 @@ public class Business {
 		return null;
 	}
 	
+	/**
+	 * @description add a service to the business
+	 * @param name the name of the service
+	 * @param duration the duration of the service in minutes
+	 * @return boolean whether the operation was successful
+	 * @author Drew Nuttall-Smith
+	 * @since 9/5/2017
+	 **/
+	public boolean addService(String serviceName, int serviceDuration)
+	{
+		// Check if service name is already in use
+		for (int i = 0; i < services.size(); i++) {
+			if (services.get(i).getName().equals(serviceName)) {
+				return false;
+			}
+		}
+		services.add(new Service(serviceName, serviceDuration));
+		return true;
+	}
+	
 	public void addCustomer(Customer customer)
 	{
 		customers.add(customer);

@@ -10,14 +10,15 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="305.0" prefWidth="346.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.OwnerMenuController">
    <children>
-      <GridPane layoutX="73.0" layoutY="28.0" prefHeight="222.0" prefWidth="200.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0">
+      <GridPane layoutX="73.0" layoutY="28.0" prefHeight="222.0" prefWidth="200.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="20.0">
         <columnConstraints>
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints maxHeight="57.0" minHeight="10.0" prefHeight="57.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="57.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -29,13 +30,15 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button mnemonicParsing="false" onAction="#handleViewBookings" prefWidth="175.0" text="View bookings summary" GridPane.rowIndex="3" />
             <Button mnemonicParsing="false" onAction="#showAddEmployee" prefWidth="175.0" text="Add employee" GridPane.rowIndex="1" />
             <Button mnemonicParsing="false" onAction="#showAddShift" prefWidth="175.0" text="Add shift" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" onAction="#handleViewEmployeeAvailability" prefWidth="175.0" text="View employees' availability" GridPane.rowIndex="5" />
-            <Button fx:id="logout" mnemonicParsing="false" onAction="#handleLogout" text="Logout" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
-            <Button mnemonicParsing="false" onAction="#handleMakeBooking" prefWidth="175.0" text="Make Booking" GridPane.rowIndex="4" />
+            <Button mnemonicParsing="false" onAction="#showAddService" prefWidth="175.0" text="Add service" GridPane.rowIndex="3" />
+            <Button mnemonicParsing="false" onAction="#handleViewBookings" prefWidth="175.0" text="View bookings summary" GridPane.rowIndex="4" />
+            <Button mnemonicParsing="false" onAction="#handleMakeBooking" prefWidth="175.0" text="Make Booking" GridPane.rowIndex="5" />
+            <Button mnemonicParsing="false" onAction="#handleViewEmployeeAvailability" prefWidth="175.0" text="View employees' availability" GridPane.rowIndex="6" />
+            <Button fx:id="logout" mnemonicParsing="false" onAction="#handleLogout" text="Logout" GridPane.halignment="RIGHT" GridPane.rowIndex="7" />
          </children>
       </GridPane>
+      <Label fx:id="errorLabel" layoutX="8.0" layoutY="277.0" />
    </children>
 </AnchorPane>

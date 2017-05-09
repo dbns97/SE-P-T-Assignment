@@ -153,6 +153,26 @@ public class OwnerMenu extends Menu {
 
         }
 	}
+	
+	public void showAddService()
+	{
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(PublicMenu.class.getResource("../views/AddService.fxml"));
+			AnchorPane addService = (AnchorPane) loader.load();
+			AddServiceController controller = loader.getController();
+
+			primaryStage.setWidth(addService.getPrefWidth() + 50);
+			primaryStage.setHeight(addService.getPrefHeight() + 32);
+			root.setCenter(addService);
+			controller.setMainMenu(this);
+			controller.setBusiness(business);
+
+		} catch (IOException e) {
+            e.printStackTrace();
+
+        }
+	}
 
 	public void setBusiness(Business business)
 	{
