@@ -173,25 +173,28 @@ public class ViewBookingsController {
 		
 		bookings.sort((a,b) -> a.getStart().getTime() < b.getStart().getTime() ? -1 : a.getStart().getTime() == b.getStart().getTime() ? 0 : 1);
 		
+		System.out.println("size: " + bookings.size());
     	employeeColumn.setCellValueFactory(cellData -> { 
     		System.out.println("eColumn:" + cellData.getValue().toJSONObject().toString(4));
     		return new SimpleStringProperty(cellData.getValue().getEmployee().getName());
     		});
     	customerColumn.setCellValueFactory(cellData -> { return new SimpleStringProperty(cellData.getValue().getCustomer().getName());});
     	serviceColumn.setCellValueFactory(cellData -> { return new SimpleStringProperty(cellData.getValue().getService().getName());});
-    	timeColumn.setCellValueFactory(cellData -> {
-        	System.out.println("timeColumn:" + cellData.getValue().toJSONObject().toString(4));
-			return new SimpleStringProperty(displayFormat.format(cellData.getValue().getStart()) + "-" + displayFormat.format(cellData.getValue().getEnd()));
-		});
     	dayColumn.setCellValueFactory(cellData -> {
     		System.out.println("dayColumn:" + cellData.getValue().toJSONObject().toString(4));
 			return new SimpleStringProperty(displayDayFormat.format(cellData.getValue().getStart()));
 		});
+    	timeColumn.setCellValueFactory(cellData -> {
+        	System.out.println("timeColumn:" + cellData.getValue().toJSONObject().toString(4));
+			return new SimpleStringProperty(displayFormat.format(cellData.getValue().getStart()) + "-" + displayFormat.format(cellData.getValue().getEnd()));
+		});
+    	
         
         
         //System.out.println(bookingsTable.getColumns().get(0).getCellObservableValue(0).getValue());
-        //bookingsTable.getColumns().setAll(employeeColumn, customerColumn, serviceColumn, dayColumn, timeColumn);
         bookingsTable.setItems(bookings);
+        //bookingsTable.getColumns().clear();
+        //bookingsTable.getColumns().setAll(employeeColumn, customerColumn, serviceColumn, dayColumn, timeColumn);
 		
 	}
 	

@@ -137,9 +137,11 @@ public class ViewBookingsControllerTests {
 		}
 		else
 		{
-			System.out.println(controller.getBookingsTable().getColumns().get(1).getCellObservableValue(0).getValue());
+			System.out.println(controller.getBookingsTable().getColumns().get(0).getCellObservableValue(0).getValue());
 			Assert.assertEquals(controller.getBookingsTable().getColumns().get(0).getCellObservableValue(0).getValue(), displayFormat.format(startDate) + "-" + displayFormat.format(endDate));
 		}
+		
+		
 	}
 	
 	//@AfterClass
@@ -168,7 +170,7 @@ public class ViewBookingsControllerTests {
 		TableColumn<Booking,String> cc = new TableColumn<Booking,String>();
 		TableColumn<Booking,String> sc = new TableColumn<Booking,String>();
 		
-		bt.getColumns().setAll(dc, tc, ec, cc, sc);
+		//bt.getColumns().setAll(dc, tc, ec, cc, sc);
 		
 		controller.setBookingsTable(bt);
 		controller.setDayColumn(dc);
@@ -180,7 +182,7 @@ public class ViewBookingsControllerTests {
 		
 		System.out.println(bt.getColumns().toString());
 		controller.setWeekChoiceBox(new ChoiceBox<String>());
-		controller.setWeekChoiceBox();
+		//controller.setWeekChoiceBox();
 	}
 	
 	public boolean checkBeforeWeek(Date inputDate)
