@@ -1,0 +1,243 @@
+package application.controllers;
+import application.models.*;
+import application.views.*;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
+public class CreateBusinessFormController {
+	private String businessFilepath  = "../../JSONdatabase/businesses.json";
+	
+	private PublicMenu pm;
+	@FXML
+    private TextField businessName;
+	@FXML
+    private TextField username;
+    @FXML
+    private PasswordField password;
+    @FXML
+    private PasswordField reenter;
+	@FXML
+    private TextField ownerName;
+	@FXML
+    private TextField address;
+	@FXML
+    private TextField contactNumber;
+    @FXML
+    private Button createBusinessButton;
+    @FXML
+    private Label errorLabel;
+    private Business business;
+    
+	public void setMainMenu(PublicMenu pm)
+	{
+		this.pm = pm;
+	}
+	
+	public void handleBack()
+	{
+		pm.showPublicMenu();
+	}
+	
+	public void setBusiness(Business business)
+	{
+		this.business = business;
+	}
+	
+	public Business getBusiness()
+	{
+		return business;
+	}
+	
+	public void setErrorLabel(Label l)
+	{
+		this.errorLabel = l;
+	}
+	
+	public Label getErrorLabel()
+	{
+		return this.errorLabel;
+	}
+	
+	public void setBusinessName(TextField businessName)
+	{
+		this.businessName = businessName;
+	}
+	
+	public void setBusinessName(String businessName)
+	{
+		this.businessName.setText(businessName);
+	}
+	
+	public void setUsername(TextField username)
+	{
+		this.username = username;		
+	}
+	
+	public void setUsername(String username)
+	{
+		this.username.setText(username);		
+	}
+	
+	public TextField getUsername()
+	{
+		return this.username;
+	}
+	
+	public void setPassword(PasswordField password)
+	{
+		this.password = password;
+	}
+	
+	public void setPassword(String password)
+	{
+		this.password.setText(password);
+	}
+	
+	public void setReenteredPassword(PasswordField password)
+	{
+		this.reenter = password;
+	}
+	
+	public void setReenteredPassword(String password)
+	{
+		this.reenter.setText(password);
+	}
+	
+	public void setOwnerName(TextField ownerName)
+	{
+		this.ownerName = ownerName;
+	}
+	
+	public void setOwnerName(String ownerName)
+	{
+		this.ownerName.setText(ownerName);
+	}
+	
+	public void setAddress(TextField address)
+	{
+		this.address = address;
+	}
+	
+	public void setAddress(String address)
+	{
+		this.address.setText(address);
+	}
+	
+	public void setContactNumber(TextField contactNumber)
+	{
+		this.contactNumber = contactNumber;
+	}
+	
+	public void setContactNumber(String contactNumber)
+	{
+		this.contactNumber.setText(contactNumber);
+	}
+	
+	public void setCreateBusinessButton(Button createBusinessButton)
+	{
+		this.createBusinessButton = createBusinessButton;
+	}
+	
+	public boolean handleCreateBusiness()
+	{		
+		errorLabel.setWrapText(true);
+		
+		if(businessName.getText().isEmpty())
+		{
+			errorLabel.setText("Please enter a business name");
+			return false;
+		}
+		
+		if(username.getText().trim().isEmpty() || !(username.getText().matches("[a-zA-z0-9]+")))
+		{
+			errorLabel.setText("Please enter a username without symbols or whitespace");
+			return false;
+		}
+		
+		if(password.getText().isEmpty())
+		{
+			errorLabel.setText("Please enter a password");
+			return false;
+		}
+		
+		if(reenter.getText().isEmpty() || !reenter.getText().equals(password.getText()))
+		{
+			errorLabel.setText("Please re-enter your password");
+			return false;
+		}
+		
+		if(!(ownerName.getText().matches("[a-zA-z ,.'-]+")) || ownerName.getText().trim().isEmpty())
+		{
+			errorLabel.setText("Please enter a name without numbers or symbols");
+			return false;
+		}
+		
+		if(!(address.getText().matches("[a-zA-z0-9 ,.'-]+")) || address.getText().trim().isEmpty())
+		{
+			errorLabel.setText("Please enter an address without symbols");
+			return false;
+		}
+		
+		if(!(contactNumber.getText().matches("[0-9]+")) || contactNumber.getText().trim().isEmpty())
+		{
+			errorLabel.setText("Please enter a contact number with only numbers");
+			return false;
+		}
+		
+		// Scans the list of businesses to see if the business name already exists
+		JSONObject jsonBusinesses = JSONUtils.getJSONObjectFromFile(businessFilepath);
+		String[] businesses = JSONObject.getNames(jsonBusinesses);
+		for (int i = 0; i < businesses.length; i++) {
+			if (businesses[i].equals(businessName.getText())) {
+				errorLabel.setText("Business name already exists");
+				return false;
+			}
+		}
+		
+		// Initialise business owner object
+		Owner businessOwner = new Owner(username.getText(), password.getText());
+		
+		// Initialise empty ArrayLists for employees, services and customers
+		ArrayList<Employee> employeesList = new ArrayList<Employee>();
+		ArrayList<Service> servicesList = new ArrayList<Service>();
+		ArrayList<Customer> customersList = new ArrayList<Customer>();
+		
+		// Initialise the business object
+		Business newBusiness = new Business(businessName.getText(), businessOwner, employeesList, servicesList, customersList);
+		
+		errorLabel.setText("Successfully registered " + username.getText());
+		
+		// Write the new business to file
+		newBusiness.updateFile();
+		
+        OwnerMenu menu = new OwnerMenu();
+        menu.setBusiness(business);
+        menu.setMainMenu(pm);
+        Stage stage = (Stage) createBusinessButton.getScene().getWindow();
+          try
+          {
+           menu.start(stage);
+          } catch(Exception e) {
+           e.printStackTrace();
+        }
+          
+		return true;		
+		
+	}
+
+}

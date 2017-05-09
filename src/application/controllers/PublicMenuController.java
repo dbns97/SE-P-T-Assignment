@@ -21,9 +21,12 @@ public class PublicMenuController {
 	private Business business;
 	private JSONObject loggedInUser = null;
 	private String usersFilepath = "../../JSONdatabase/users.json";
+	private String businessesFilepath = "../../JSONdatabase/businesses.json";
 
 	@FXML
 	private Button loginButton;
+	@FXML
+	private TextField businessName;
 	@FXML
     private TextField username;
     @FXML
@@ -36,57 +39,57 @@ public class PublicMenuController {
     {
     	this.username.setText(username);
     }
-    
+
     public void setPassword(String password)
     {
     	this.password.setText(password);
     }
-    
+
 	public void setMainMenu(PublicMenu pm)
 	{
 		this.pm = pm;
-	}
-
-	public void setBusiness(Business business)
-	{
-		this.business = business;
 	}
 
 	public void setLoggedInUser(JSONObject user)
 	{
 		loggedInUser = user;
 	}
-	
+
 	public void handleRegister()
 	{
 		pm.showRegister();
 	}
+	
+	public void handleCreateBusiness()
+	{
+		pm.showCreateBusiness();
+	}
 
 	public void setUsername(TextField username)
 	{
-		this.username = username;		
+		this.username = username;
 	}
-	
+
 	public void setErrorLabel(Label errorLabel)
 	{
-		this.errorLabel = errorLabel;		
+		this.errorLabel = errorLabel;
 	}
-	
+
 	public void setUsersFilepath(String path)
 	{
 		this.usersFilepath = path;
 	}
-	
+
 	public void setPassword(PasswordField password)
 	{
 		this.password = password;
 	}
-	
+
 	public void handleLogin()
    {
-      Boolean userExist = checkLogin();
+      Boolean validLogin = checkLogin();
 
-      if( userExist == true )
+      if( validLogin == true )
       {
          // find out if owner or customer
          if(business.getOwner().getUsername().equals(username.getText()))
@@ -130,18 +133,33 @@ public class PublicMenuController {
 	public boolean checkLogin()
    {
 	   errorLabel.setWrapText(true);
+	   
+	   // Check if business name entered is valid
+	   JSONObject businesses = JSONUtils.getJSONObjectFromFile(businessesFilepath);
+	   String[] businessNames = JSONObject.getNames(businesses);
+	   if (businessNames == null) {
+    	   errorLabel.setText("Business entered doesn't exist");
+    	   return false;
+	   }
+	   
+	   for(int i = 0; i < businessNames.length; i++) {
+		   if(businessName.getText().equals(businessNames[i])) {
+			   business = new Business(businessName.getText());
+			   break;
+		   }
+	   }
 
 	   // loads all users from database
-	   JSONObject data = JSONUtils.getJSONObjectFromFile(usersFilepath);
+	   JSONObject data = JSONUtils.getJSONObjectFromFile(usersFilepath).getJSONObject(businessName.getText());
+	   
        // checks the database user names and compares to what was entered in the text field
-
        String[] dataUsernames = JSONObject.getNames(data);
        if(dataUsernames == null)
        {
-    	   errorLabel.setText("No Username entered doesnt exist");
+    	   errorLabel.setText("Username entered doesn't exist");
     	   return false;
        }
-       
+
        for ( int i=0; i < dataUsernames.length; i++ )
 	   {
 

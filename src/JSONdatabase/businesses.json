@@ -1,0 +1,17 @@
+{
+    "Bob's Building": {"services": []},
+    "Jim's Barber Shop": {"services": [
+        {
+            "duration": 30,
+            "name": "Simple Cut"
+        },
+        {
+            "duration": 45,
+            "name": "Style Cut"
+        },
+        {
+            "duration": 60,
+            "name": "Beard Cut"
+        }
+    ]}
+}

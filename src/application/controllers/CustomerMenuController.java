@@ -42,10 +42,12 @@ public class CustomerMenuController {
 
 	public void handleLogout()
 	{
-		Stage stage = (Stage) logout.getScene().getWindow();
+		business.updateFile();
+
         try
         {
-        	pm.start(stage, business);
+    		Stage stage = (Stage) logout.getScene().getWindow();
+        	pm.start(stage);
         } catch(Exception e) {
 			e.printStackTrace();
 		}

@@ -1,74 +1,80 @@
 {
-    "owner": {
+    "Bob's Building": {"owner": {
         "password": "pass1",
         "isOwner": true
-    },
-    "username3": {
-        "password": "pass3",
-        "isOwner": false,
-        "name": "Joe",
-        "bookings": [{
-            "service": "Style Cut",
-            "start": "Mon 01/05/2017 14:10",
-            "end": "Mon 01/05/2017 14:55",
-            "employee": "bob@gmail.com",
-            "customer": "username3"
-        }]
-    },
-    "username2": {
-        "password": "pass2",
-        "isOwner": false,
-        "name": "Bill",
-        "bookings": [
-            {
-                "service": "Simple Cut",
-                "start": "Mon 17/04/2017 12:00",
-                "end": "Mon 17/04/2017 13:00",
-                "employee": "bob@gmail.com",
-                "customer": "username2"
-            },
-            {
-                "service": "Simple Cut",
-                "start": "Mon 24/04/2017 12:00",
-                "end": "Mon 24/04/2017 13:00",
-                "employee": "bob@gmail.com",
-                "customer": "username2"
-            },
-            {
-                "service": "Simple Cut",
-                "start": "Mon 01/05/2017 12:00",
-                "end": "Mon 01/05/2017 13:00",
-                "employee": "bob@gmail.com",
-                "customer": "username2"
-            }
-        ]
-    },
-    "username1": {
-        "password": "pass",
-        "isOwner": false,
-        "name": "Bob",
-        "bookings": [
-            {
+    }},
+    "Jim's Barber Shop": {
+        "owner": {
+            "password": "pass1",
+            "isOwner": true
+        },
+        "username3": {
+            "password": "pass3",
+            "isOwner": false,
+            "name": "Joe",
+            "bookings": [{
                 "service": "Style Cut",
-                "start": "Mon 17/04/2017 10:00",
-                "end": "Mon 17/04/2017 11:00",
+                "start": "Mon 01/05/2017 14:10",
+                "end": "Mon 01/05/2017 14:55",
                 "employee": "bob@gmail.com",
-                "customer": "username1"
-            },
-            {
-                "service": "Style Cut",
-                "start": "Mon 24/04/2017 10:00",
-                "end": "Mon 24/04/2017 11:00",
-                "employee": "bob@gmail.com",
-                "customer": "username1"
-            },
-            {
-                "service": "Style Cut",
-                "start": "Mon 01/05/2017 10:00",
-                "end": "Mon 01/05/2017 11:00",
-                "employee": "bob@gmail.com",
-                "customer": "username1"
-            }
-        ]
+                "customer": "username3"
+            }]
+        },
+        "username2": {
+            "password": "pass2",
+            "isOwner": false,
+            "name": "Bill",
+            "bookings": [
+                {
+                    "service": "Simple Cut",
+                    "start": "Mon 17/04/2017 12:00",
+                    "end": "Mon 17/04/2017 13:00",
+                    "employee": "bob@gmail.com",
+                    "customer": "username2"
+                },
+                {
+                    "service": "Simple Cut",
+                    "start": "Mon 24/04/2017 12:00",
+                    "end": "Mon 24/04/2017 13:00",
+                    "employee": "bob@gmail.com",
+                    "customer": "username2"
+                },
+                {
+                    "service": "Simple Cut",
+                    "start": "Mon 01/05/2017 12:00",
+                    "end": "Mon 01/05/2017 13:00",
+                    "employee": "bob@gmail.com",
+                    "customer": "username2"
+                }
+            ]
+        },
+        "username1": {
+            "password": "pass",
+            "isOwner": false,
+            "name": "Bob",
+            "bookings": [
+                {
+                    "service": "Style Cut",
+                    "start": "Mon 17/04/2017 10:00",
+                    "end": "Mon 17/04/2017 11:00",
+                    "employee": "bob@gmail.com",
+                    "customer": "username1"
+                },
+                {
+                    "service": "Style Cut",
+                    "start": "Mon 24/04/2017 10:00",
+                    "end": "Mon 24/04/2017 11:00",
+                    "employee": "bob@gmail.com",
+                    "customer": "username1"
+                },
+                {
+                    "service": "Style Cut",
+                    "start": "Mon 01/05/2017 10:00",
+                    "end": "Mon 01/05/2017 11:00",
+                    "employee": "bob@gmail.com",
+                    "customer": "username1"
+                }
+            ]
+        }
     }
 }

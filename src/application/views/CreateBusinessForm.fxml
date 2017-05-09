@@ -37,11 +37,11 @@
             <Label text="Name" GridPane.rowIndex="7" />
             <Label text="Address" GridPane.rowIndex="8" />
             <Label text="Contact Number" GridPane.rowIndex="9" />
-            <Button fx:id="createButton" mnemonicParsing="false" onAction="#handleCreateBusiness" text="Create" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+            <Button fx:id="createBusinessButton" mnemonicParsing="false" onAction="#handleCreateBusiness" text="Create" GridPane.columnIndex="1" GridPane.rowIndex="10" />
             <TextField fx:id="username" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <PasswordField fx:id="password" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <PasswordField fx:id="reenter" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <TextField fx:id="name" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <TextField fx:id="ownerName" GridPane.columnIndex="1" GridPane.rowIndex="7" />
             <TextField fx:id="address" GridPane.columnIndex="1" GridPane.rowIndex="8" />
             <TextField fx:id="contactNumber" GridPane.columnIndex="1" GridPane.rowIndex="9" />
             <Button mnemonicParsing="false" onAction="#handleBack" text="Back" GridPane.rowIndex="10" />
