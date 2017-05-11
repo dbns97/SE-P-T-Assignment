@@ -139,13 +139,8 @@ public class RegisterFormController {
 	
 	public boolean handleRegister()
 	{
-		//File file = new File("src/JSONdatabase");
-		//for(String fileNames : file.list()) System.out.println(fileNames);
-		
-		//JSONObject users = JSONUtils.getJSONObjectFromFile("../../JSONdatabase/users.json");
-		//System.out.println(users.toString());
-		
 		errorLabel.setWrapText(true);
+		
 		if(username.getText().trim().isEmpty() || !(username.getText().matches("[a-zA-z0-9]+")))
 		{
 			errorLabel.setText("Please enter a username without symbols or whitespace");
@@ -181,7 +176,21 @@ public class RegisterFormController {
 			errorLabel.setText("Please enter a contact number with only numbers");
 			return false;
 		}
-		
+		/*
+		if(checkBusinessUsers(username.getText(), business))
+		{
+			Customer newUser = new Customer(username.getText(), name.getText(), password.getText());
+			business.addCustomer(newUser);
+			
+			errorLabel.setText("Successfully registered " + username.getText());
+			return true;
+		}
+		else 
+		{
+			errorLabel.setText("Username already exists");
+			return false;
+		}
+		*/
 		// Scans the usernames JSONArray to check if the username already exists
 		for (Customer customer : business.getCustomers())
 		{
@@ -189,7 +198,6 @@ public class RegisterFormController {
 			if (customer.getUsername().equals(username.getText()))
 			{
 				errorLabel.setText("Username already exists");
-				System.out.println("BREAK");
 				return false;
 			}
 		}
@@ -199,21 +207,19 @@ public class RegisterFormController {
 		business.addCustomer(newUser);
 		
 		errorLabel.setText("Successfully registered " + username.getText());
-		/*
-		try
-        {
-            FileWriter custWriter = new FileWriter("src/JSONdatabase/users.json");
-            custWriter.write(users.toString(4));
-            custWriter.flush();
-            custWriter.close();
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
-		*/
-		//System.out.println(JSONUtils.getJSONObjectFromFile("users.json").toString());
 		return true;		
 		
+	}
+	
+	public boolean checkBusinessUsers(String username, Business business)
+	{
+		for (Customer customer : business.getCustomers())
+		{
+			if (customer.getUsername().equals(username))
+			{
+				return false;
+			}
+		}
+		return true;
 	}
 }

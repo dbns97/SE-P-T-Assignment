@@ -47,6 +47,7 @@
             <TextField fx:id="contactNumber" GridPane.columnIndex="1" GridPane.rowIndex="6" />
             <Button mnemonicParsing="false" onAction="#handleBack" text="Back" GridPane.rowIndex="7" />
             <Button fx:id="registerButton" mnemonicParsing="false" onAction="#handleRegister" text="Register" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <Label fx:id="errorLabel" GridPane.columnIndex="1" />
          </children>
       </GridPane>
    </children>
