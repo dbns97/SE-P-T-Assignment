@@ -46,27 +46,6 @@ public class AddEmployeeController {
 
 	public boolean handleAddEmployee()
 	{
-		/* Check name format
-		if(name.getText().trim().isEmpty() || !(name.getText().matches("[a-zA-Z ,.'-]+")))
-		{
-			errorLabel.setText("Please enter a valid name");
-			return false;
-		}
-
-		// Check email format
-		if(email.getText().isEmpty() || !(email.getText().matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]+")))
-		{
-			errorLabel.setText("Please enter a valid email");
-			return false;
-		}
-
-		// Check if employee already exists with supplied email
-		if (business.getEmployee(email.getText()) != null)
-		{
-			errorLabel.setText("Employee already exists with that email");
-			return false;
-		}
-		 */
 		String errorMessage = checkEmployeeDetails(email.getText(), name.getText(), business);
 		if(errorMessage != null)
 		{
