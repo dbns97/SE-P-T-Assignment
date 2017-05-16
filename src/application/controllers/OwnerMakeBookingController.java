@@ -1,5 +1,8 @@
 package application.controllers;
 
+import org.apache.logging.log4j.Logger; 
+import org.apache.logging.log4j.LogManager;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -25,8 +28,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
+
+
 public class OwnerMakeBookingController {
 
+	private static final Logger log4j = LogManager.getLogger(OwnerMakeBookingController.class.getName());
 	
 	private OwnerMenu om;
 	private Business business;
@@ -102,6 +108,7 @@ public class OwnerMakeBookingController {
 			System.out.println(business.getCustomers().get(i).getUsername());
 		}		
 		System.out.println(CustomerList);
+		log4j.debug("This is  a debug message."); 
 		customer.setItems(FXCollections.observableArrayList( CustomerList ) );
 	}
 	// finds the services in the data base and adds to choice box
