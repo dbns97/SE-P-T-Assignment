@@ -76,5 +76,9 @@
                 }
             ]
         }
-    }
+    },
+    "Admin Made Me": {"owner": {
+        "password": "pass1",
+        "isOwner": true
+    }}
 }

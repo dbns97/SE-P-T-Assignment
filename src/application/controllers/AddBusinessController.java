@@ -19,10 +19,10 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class CreateBusinessFormController {
+public class AddBusinessController {
 	private String businessFilepath  = "../../JSONdatabase/businesses.json";
 	
-	private PublicMenu pm;
+	private AdminMenu am;
 	@FXML
     private TextField businessName;
 	@FXML
@@ -38,19 +38,19 @@ public class CreateBusinessFormController {
 	@FXML
     private TextField contactNumber;
     @FXML
-    private Button createBusinessButton;
+    private Button addBusinessButton;
     @FXML
     private Label errorLabel;
     private Business business;
     
-	public void setMainMenu(PublicMenu pm)
+	public void setMainMenu(AdminMenu am)
 	{
-		this.pm = pm;
+		this.am = am;
 	}
 	
 	public void handleBack()
 	{
-		pm.showPublicMenu();
+		am.showAdminMenu();
 	}
 	
 	public void setBusiness(Business business)
@@ -148,12 +148,12 @@ public class CreateBusinessFormController {
 		this.contactNumber.setText(contactNumber);
 	}
 	
-	public void setCreateBusinessButton(Button createBusinessButton)
+	public void setAddBusinessButton(Button addBusinessButton)
 	{
-		this.createBusinessButton = createBusinessButton;
+		this.addBusinessButton = addBusinessButton;
 	}
 	
-	public boolean handleCreateBusiness()
+	public boolean handleAddBusiness()
 	{		
 		errorLabel.setWrapText(true);
 		
@@ -225,16 +225,7 @@ public class CreateBusinessFormController {
 		// Write the new business to file
 		newBusiness.updateFile();
 		
-        OwnerMenu menu = new OwnerMenu();
-        menu.setBusiness(newBusiness);
-        menu.setMainMenu(pm);
-        Stage stage = (Stage) createBusinessButton.getScene().getWindow();
-          try
-          {
-           menu.start(stage);
-          } catch(Exception e) {
-           e.printStackTrace();
-        }
+        am.showAdminMenu();
           
 		return true;		
 		

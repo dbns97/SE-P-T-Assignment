@@ -11,13 +11,13 @@
                     "start": "13:30",
                     "end": "14:20"
                 },
-                "TUESDAY": {
-                    "start": "13:00",
-                    "end": "14:30"
-                },
                 "FRIDAY": {
                     "start": "13:30",
                     "end": "14:50"
+                },
+                "TUESDAY": {
+                    "start": "13:00",
+                    "end": "14:30"
                 },
                 "SATURDAY": {
                     "start": "13:30",
@@ -49,13 +49,13 @@
                     "start": "13:30",
                     "end": "14:20"
                 },
-                "TUESDAY": {
-                    "start": "13:00",
-                    "end": "14:30"
-                },
                 "FRIDAY": {
                     "start": "13:30",
                     "end": "14:50"
+                },
+                "TUESDAY": {
+                    "start": "13:00",
+                    "end": "14:30"
                 },
                 "SATURDAY": {
                     "start": "13:30",
@@ -65,5 +65,6 @@
             "name": "Bob Dobalina",
             "email": "bob@gmail.com"
         }
-    }
+    },
+    "Admin Made Me": {}
 }
