@@ -2,13 +2,6 @@ package application.controllers;
 import application.models.*;
 import application.views.*;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 import javafx.fxml.FXML;
@@ -16,9 +9,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class RegisterFormController {
 	private PublicMenu pm;
+	private String businessesFilepath = "../../JSONdatabase/businesses.json";
+	@FXML
+	private TextField businessName;
 	@FXML
     private TextField username;
     @FXML
@@ -138,14 +135,30 @@ public class RegisterFormController {
 	}
 	
 	public boolean handleRegister()
-	{
-		//File file = new File("src/JSONdatabase");
-		//for(String fileNames : file.list()) System.out.println(fileNames);
-		
-		//JSONObject users = JSONUtils.getJSONObjectFromFile("../../JSONdatabase/users.json");
-		//System.out.println(users.toString());
-		
+	{	
 		errorLabel.setWrapText(true);
+		
+		// Check if business name entered is valid
+		JSONObject businesses = JSONUtils.getJSONObjectFromFile(businessesFilepath);
+		String[] businessNames = JSONObject.getNames(businesses);
+		boolean businessIsValid = false;
+		// Look for business name is list
+		if (businessNames != null) {
+			for(int i = 0; i < businessNames.length; i++) {
+				if(businessName.getText().equals(businessNames[i])) {
+					business = new Business(businessName.getText());
+					businessIsValid = true;
+					break;
+				}
+			}
+		}
+		
+		if(!businessIsValid)
+		{
+			errorLabel.setText("Business entered doesn't exist");
+			return false;
+		}
+		
 		if(username.getText().trim().isEmpty() || !(username.getText().matches("[a-zA-z0-9]+")))
 		{
 			errorLabel.setText("Please enter a username without symbols or whitespace");
@@ -185,11 +198,9 @@ public class RegisterFormController {
 		// Scans the usernames JSONArray to check if the username already exists
 		for (Customer customer : business.getCustomers())
 		{
-			System.out.println(customer.getUsername());
 			if (customer.getUsername().equals(username.getText()))
 			{
 				errorLabel.setText("Username already exists");
-				System.out.println("BREAK");
 				return false;
 			}
 		}
@@ -199,21 +210,22 @@ public class RegisterFormController {
 		business.addCustomer(newUser);
 		
 		errorLabel.setText("Successfully registered " + username.getText());
-		/*
-		try
-        {
-            FileWriter custWriter = new FileWriter("src/JSONdatabase/users.json");
-            custWriter.write(users.toString(4));
-            custWriter.flush();
-            custWriter.close();
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
-		*/
-		//System.out.println(JSONUtils.getJSONObjectFromFile("users.json").toString());
+		login(newUser);
 		return true;		
 		
+	}
+	
+	private void login(Customer customer) {;
+		CustomerMenu menu = new CustomerMenu();
+		menu.setBusiness(business);
+		menu.setMainMenu(pm);
+		menu.setCustomer(customer);
+		Stage stage = (Stage) registerButton.getScene().getWindow();
+		try
+		{
+			menu.start(stage);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
