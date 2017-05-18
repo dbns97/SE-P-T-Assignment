@@ -20,6 +20,8 @@ public class PublicMenu extends Menu {
 	public Stage primaryStage;
 	public BorderPane root;
 	@FXML
+	private TextField businessName;
+	@FXML
     private TextField username;
     @FXML
     private PasswordField password;
@@ -27,36 +29,16 @@ public class PublicMenu extends Menu {
     private Button loginButton;
     @FXML
     private Label errorLabel;
-    private Business business;
 
 	@Override
 	public void start(Stage primaryStage) {
-		this.business = new Business();
 		this.primaryStage = primaryStage;
-		primaryStage.setOnCloseRequest(e -> {business.updateFile();});
 		this.primaryStage.setTitle("Booking System");
 
 		//business.loadUsers();
 		setRoot();
 		showPublicMenu();
 
-	}
-	
-	public void start(Stage primaryStage, Business business) {
-		this.business = business;
-		this.primaryStage = primaryStage;
-		primaryStage.setOnCloseRequest(e -> {business.updateFile();});
-		this.primaryStage.setTitle("Booking System");
-
-		//business.loadUsers();
-		setRoot();
-		showPublicMenu();
-
-	}
-	
-	public void setBusiness(Business business)
-	{
-		this.business = business;
 	}
 
     public void showPublicMenu()
@@ -71,7 +53,6 @@ public class PublicMenu extends Menu {
 			primaryStage.setHeight(publicMenu.getPrefHeight() + 32);
 			root.setCenter(publicMenu);
 			controller.setMainMenu(this);
-			controller.setBusiness(business);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -102,10 +83,10 @@ public class PublicMenu extends Menu {
 			primaryStage.setHeight(registerForm.getPrefHeight() + 32);
 			root.setCenter(registerForm);
 			controller.setMainMenu(this);
-			controller.setBusiness(business);
 		} catch (IOException e) {
             e.printStackTrace();
 
         }
 	}
+	
 }

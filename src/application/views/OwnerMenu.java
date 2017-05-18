@@ -4,8 +4,10 @@ import application.controllers.*;
 
 import java.io.IOException;
 
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -56,6 +58,7 @@ public class OwnerMenu extends Menu {
 			primaryStage.setWidth(OwnerMenu.getPrefWidth() + 50);
 			primaryStage.setHeight(OwnerMenu.getPrefHeight() + 32);
 			root.setCenter(OwnerMenu);
+			controller.setBusinessLabel(business.getName());
 			controller.setOwnerMenu(this);
 			controller.setMainMenu(pm);
 			controller.setBusiness(business);
@@ -144,6 +147,26 @@ public class OwnerMenu extends Menu {
 			controller.setBusiness(business);
 			controller.setDaysChoiceBox();
 			controller.setEmailsChoiceBox();
+
+		} catch (IOException e) {
+            e.printStackTrace();
+
+        }
+	}
+	
+	public void showAddService()
+	{
+		try {
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(PublicMenu.class.getResource("../views/AddService.fxml"));
+			AnchorPane addService = (AnchorPane) loader.load();
+			AddServiceController controller = loader.getController();
+
+			primaryStage.setWidth(addService.getPrefWidth() + 50);
+			primaryStage.setHeight(addService.getPrefHeight() + 32);
+			root.setCenter(addService);
+			controller.setMainMenu(this);
+			controller.setBusiness(business);
 
 		} catch (IOException e) {
             e.printStackTrace();

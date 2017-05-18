@@ -22,9 +22,16 @@ public class OwnerMenuController {
 	private Business business;
 	
 	@FXML
+	private Label businessLabel;
+	@FXML
 	private Button addEmployee;
 	@FXML
 	private Button logout;
+	
+	public void setBusinessLabel(String businessName)
+	{
+		this.businessLabel.setText(businessName);
+	}
 	
 	public void setOwnerMenu(OwnerMenu om)
 	{
@@ -56,6 +63,11 @@ public class OwnerMenuController {
 		om.showAddShift();
 	}
 	
+	public void showAddService()
+	{
+		om.showAddService();
+	}
+	
 	public void handleViewBookings()
 	{
 		om.showViewBookings();
@@ -73,10 +85,12 @@ public class OwnerMenuController {
 	
 	public void handleLogout()
 	{
-		Stage stage = (Stage) logout.getScene().getWindow();
+		business.updateFile();
+		
         try
         {
-        	pm.start(stage, business);
+    		Stage stage = (Stage) logout.getScene().getWindow();
+        	pm.start(stage);
         } catch(Exception e) {
 			e.printStackTrace();
 		}

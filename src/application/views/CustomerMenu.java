@@ -57,6 +57,7 @@ public class CustomerMenu extends Menu {
 			primaryStage.setWidth(CustomerMenu.getPrefWidth() + 50);
 			primaryStage.setHeight(CustomerMenu.getPrefHeight() + 50);
 			root.setCenter(CustomerMenu);
+			controller.setBusinessLabel(business.getName());
 			controller.setCustomerMenu(this);
 			controller.setMainMenu(pm);
 			controller.setBusiness(business);

@@ -2,6 +2,14 @@ package application.controllers;
 import application.models.*;
 import application.views.*;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import javafx.fxml.FXML;
@@ -11,11 +19,12 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class RegisterFormController {
-	private PublicMenu pm;
-	private String businessesFilepath = "../../JSONdatabase/businesses.json";
+public class AddBusinessController {
+	private String businessFilepath  = "../../JSONdatabase/businesses.json";
+	
+	private AdminMenu am;
 	@FXML
-	private TextField businessName;
+    private TextField businessName;
 	@FXML
     private TextField username;
     @FXML
@@ -23,25 +32,25 @@ public class RegisterFormController {
     @FXML
     private PasswordField reenter;
 	@FXML
-    private TextField name;
+    private TextField ownerName;
 	@FXML
     private TextField address;
 	@FXML
     private TextField contactNumber;
     @FXML
-    private Button registerButton;
+    private Button addBusinessButton;
     @FXML
     private Label errorLabel;
     private Business business;
     
-	public void setMainMenu(PublicMenu pm)
+	public void setMainMenu(AdminMenu am)
 	{
-		this.pm = pm;
+		this.am = am;
 	}
 	
 	public void handleBack()
 	{
-		pm.showPublicMenu();
+		am.showAdminMenu();
 	}
 	
 	public void setBusiness(Business business)
@@ -62,6 +71,16 @@ public class RegisterFormController {
 	public Label getErrorLabel()
 	{
 		return this.errorLabel;
+	}
+	
+	public void setBusinessName(TextField businessName)
+	{
+		this.businessName = businessName;
+	}
+	
+	public void setBusinessName(String businessName)
+	{
+		this.businessName.setText(businessName);
 	}
 	
 	public void setUsername(TextField username)
@@ -99,14 +118,14 @@ public class RegisterFormController {
 		this.reenter.setText(password);
 	}
 	
-	public void setName(TextField name)
+	public void setOwnerName(TextField ownerName)
 	{
-		this.name = name;
+		this.ownerName = ownerName;
 	}
 	
-	public void setName(String name)
+	public void setOwnerName(String ownerName)
 	{
-		this.name.setText(name);
+		this.ownerName.setText(ownerName);
 	}
 	
 	public void setAddress(TextField address)
@@ -129,33 +148,18 @@ public class RegisterFormController {
 		this.contactNumber.setText(contactNumber);
 	}
 	
-	public void setRegisterButton(Button registerButton)
+	public void setAddBusinessButton(Button addBusinessButton)
 	{
-		this.registerButton = registerButton;
+		this.addBusinessButton = addBusinessButton;
 	}
 	
-	public boolean handleRegister()
-	{	
+	public boolean handleAddBusiness()
+	{		
 		errorLabel.setWrapText(true);
 		
-		// Check if business name entered is valid
-		JSONObject businesses = JSONUtils.getJSONObjectFromFile(businessesFilepath);
-		String[] businessNames = JSONObject.getNames(businesses);
-		boolean businessIsValid = false;
-		// Look for business name is list
-		if (businessNames != null) {
-			for(int i = 0; i < businessNames.length; i++) {
-				if(businessName.getText().equals(businessNames[i])) {
-					business = new Business(businessName.getText());
-					businessIsValid = true;
-					break;
-				}
-			}
-		}
-		
-		if(!businessIsValid)
+		if(businessName.getText().isEmpty())
 		{
-			errorLabel.setText("Business entered doesn't exist");
+			errorLabel.setText("Please enter a business name");
 			return false;
 		}
 		
@@ -177,7 +181,7 @@ public class RegisterFormController {
 			return false;
 		}
 		
-		if(!(name.getText().matches("[a-zA-z ,.'-]+")) || name.getText().trim().isEmpty())
+		if(!(ownerName.getText().matches("[a-zA-z ,.'-]+")) || ownerName.getText().trim().isEmpty())
 		{
 			errorLabel.setText("Please enter a name without numbers or symbols");
 			return false;
@@ -195,37 +199,36 @@ public class RegisterFormController {
 			return false;
 		}
 		
-		// Scans the usernames JSONArray to check if the username already exists
-		for (Customer customer : business.getCustomers())
-		{
-			if (customer.getUsername().equals(username.getText()))
-			{
-				errorLabel.setText("Username already exists");
+		// Scans the list of businesses to see if the business name already exists
+		JSONObject jsonBusinesses = JSONUtils.getJSONObjectFromFile(businessFilepath);
+		String[] businesses = JSONObject.getNames(jsonBusinesses);
+		for (int i = 0; i < businesses.length; i++) {
+			if (businesses[i].equals(businessName.getText())) {
+				errorLabel.setText("Business name already exists");
 				return false;
 			}
 		}
-        
-		Customer newUser = new Customer(username.getText(), name.getText(), password.getText());
 		
-		business.addCustomer(newUser);
+		// Initialise business owner object
+		Owner businessOwner = new Owner(username.getText(), password.getText());
+		
+		// Initialise empty ArrayLists for employees, services and customers
+		ArrayList<Employee> employeesList = new ArrayList<Employee>();
+		ArrayList<Service> servicesList = new ArrayList<Service>();
+		ArrayList<Customer> customersList = new ArrayList<Customer>();
+		
+		// Initialise the business object
+		Business newBusiness = new Business(businessName.getText(), businessOwner, employeesList, servicesList, customersList);
 		
 		errorLabel.setText("Successfully registered " + username.getText());
-		login(newUser);
+		
+		// Write the new business to file
+		newBusiness.updateFile();
+		
+        am.showAdminMenu();
+          
 		return true;		
 		
 	}
-	
-	private void login(Customer customer) {;
-		CustomerMenu menu = new CustomerMenu();
-		menu.setBusiness(business);
-		menu.setMainMenu(pm);
-		menu.setCustomer(customer);
-		Stage stage = (Stage) registerButton.getScene().getWindow();
-		try
-		{
-			menu.start(stage);
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-	}
+
 }

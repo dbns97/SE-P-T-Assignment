@@ -10,26 +10,27 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="346.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.CustomerMenuController">
    <children>
-      <GridPane layoutX="73.0" layoutY="28.0" prefHeight="205.0" prefWidth="296.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0">
+      <GridPane layoutX="73.0" layoutY="28.0" prefHeight="205.0" prefWidth="296.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="20.0">
         <columnConstraints>
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints maxHeight="57.0" minHeight="10.0" prefHeight="52.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="113.0" minHeight="10.0" prefHeight="94.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="113.0" minHeight="10.0" prefHeight="94.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="54.0" minHeight="0.0" prefHeight="54.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="57.0" minHeight="10.0" percentHeight="30.0" prefHeight="52.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="113.0" minHeight="10.0" percentHeight="25.0" prefHeight="94.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="113.0" minHeight="10.0" percentHeight="25.0" prefHeight="94.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="54.0" minHeight="0.0" percentHeight="20.0" prefHeight="54.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Company Name" GridPane.halignment="LEFT">
+            <Label fx:id="businessLabel" text="Company Name" GridPane.halignment="LEFT">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="logout" mnemonicParsing="false" onAction="#handleLogout" text="Logout" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
-            <Button mnemonicParsing="false" onAction="#handleMakeBookings" text="Make Booking" GridPane.rowIndex="2" />
             <Button mnemonicParsing="false" onAction="#handleViewAvailableTimes" text="View Available Times" GridPane.rowIndex="1" />
+            <Button mnemonicParsing="false" onAction="#handleMakeBookings" prefWidth="148.0" text="Make Booking" GridPane.rowIndex="2" />
+            <Button fx:id="logout" mnemonicParsing="false" onAction="#handleLogout" text="Logout" textAlignment="CENTER" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
          </children>
       </GridPane>
+      <Label fx:id="errorLabel" layoutX="8.0" layoutY="222.0" />
    </children>
 </AnchorPane>

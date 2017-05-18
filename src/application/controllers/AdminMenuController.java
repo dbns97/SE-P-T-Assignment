@@ -2,56 +2,53 @@ package application.controllers;
 import application.models.*;
 import application.views.*;
 
+import java.io.IOException;
+
+import org.json.JSONArray;
+
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class CustomerMenuController {
+public class AdminMenuController {
 
-	private CustomerMenu cm;
+	private AdminMenu am;
 	private PublicMenu pm;
-	private Business business;
 	
 	@FXML
-	private Label businessLabel;
+	private Button addBusiness;
 	@FXML
 	private Button logout;
-
-	public void setBusinessLabel(String businessName)
+	@FXML
+	private Label errorLabel;
+	
+	public void setAdminMenu(AdminMenu am)
 	{
-		this.businessLabel.setText(businessName);
+		this.am = am;
 	}
 	
-	public void setCustomerMenu(CustomerMenu cm)
-	{
-		this.cm = cm;
-	}
-
 	public void setMainMenu(PublicMenu pm)
 	{
 		this.pm = pm;
 	}
 	
-	public void setBusiness(Business business)
+	public void showAddBusiness()
 	{
-		this.business = business;
-	}
-
-	public void handleViewAvailableTimes()
-	{
-		cm.viewAvailableTimes();
+		am.showAddBusiness();
 	}
 	
-	public void handleMakeBookings()
+	public void handleBack()
 	{
-		cm.showMakeBookings();
+		am.showAdminMenu();
 	}
-
+	
 	public void handleLogout()
-	{
-		business.updateFile();
-
+	{	
         try
         {
     		Stage stage = (Stage) logout.getScene().getWindow();
