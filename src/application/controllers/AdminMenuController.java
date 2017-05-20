@@ -1,5 +1,4 @@
 package application.controllers;
-import application.models.*;
 import application.views.*;
 
 import javafx.fxml.FXML;

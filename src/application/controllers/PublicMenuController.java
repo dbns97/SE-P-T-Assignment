@@ -6,10 +6,6 @@ import javafx.scene.control.Button;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.json.JSONObject;
-
-import javafx.fxml.FXML;
-import org.json.JSONObject;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -20,7 +16,7 @@ import javafx.stage.Stage;
 public class PublicMenuController {
 
 	final static Logger logger = LogManager.getLogger(PublicMenuController.class.getName());
-
+	
 	private PublicMenu pm;
 	private Business business;
 
@@ -79,6 +75,7 @@ public class PublicMenuController {
 			isAdmin = DatabaseHandler.checkAdminLogin(username.getText(), password.getText());
 		} else {
 			validLogin = DatabaseHandler.checkLogin(businessName.getText(), username.getText(), password.getText());
+			
 		}
 
 		if (isAdmin)

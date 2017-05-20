@@ -2,13 +2,8 @@ package application.controllers;
 import application.models.*;
 import application.views.*;
 
-
-import java.io.IOException;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
-import org.json.JSONArray;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

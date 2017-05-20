@@ -1,14 +1,10 @@
 package application.controllers;
 
 import java.util.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.StringTokenizer;
-import java.util.concurrent.ConcurrentHashMap;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -234,7 +230,7 @@ public class CustomerMakeBookingController
 		{
 			logger.info("confirm button clicked");
 			
-			//what will be saved to database a
+			//what will be saved to database
 			/*
 			System.out.println(   "\n------------------------\n"
 								+ "booking details : \n" 

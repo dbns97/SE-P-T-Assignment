@@ -2,16 +2,8 @@ package application.controllers;
 import application.models.*;
 import application.views.*;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
