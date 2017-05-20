@@ -4,9 +4,6 @@ import application.controllers.*;
 
 import java.util.ArrayList;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 public class Customer extends User {
 
 	private String username;
@@ -40,6 +37,11 @@ public class Customer extends User {
 		return name;
 	}
 	
+	public String getPassword()
+	{
+		return password;
+	}
+	
 	public ArrayList<Booking> getBookings()
 	{
 		return bookings;
@@ -50,20 +52,4 @@ public class Customer extends User {
 		bookings.add(booking);
 	}
 
-	public JSONObject toJSONObject()
-	{
-		JSONObject newUser = new JSONObject();
-		newUser.put("password", password);
-		newUser.put("name", name);
-		newUser.put("isOwner", false);
-		
-		JSONArray jsonBookings = new JSONArray();
-		for (Booking b : bookings)
-		{
-			jsonBookings.put(b.toJSONObject());
-		}
-		newUser.put("bookings", jsonBookings);
-		
-		return newUser;
-	}
 }

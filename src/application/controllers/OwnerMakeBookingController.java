@@ -253,6 +253,7 @@ public class OwnerMakeBookingController {
 				System.out.println("booking made");
 				currentCustomer.addBooking(newBooking);
 				
+				DatabaseHandler.writeBusinessToFile(business);
 				om.showOwnerMenu();
 			}
 		}

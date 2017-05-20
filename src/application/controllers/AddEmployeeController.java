@@ -2,21 +2,11 @@ package application.controllers;
 import application.models.*;
 import application.views.*;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-//jkgasdjhags
+
 public class AddEmployeeController {
 	private OwnerMenu om;
 	@FXML
@@ -70,21 +60,8 @@ public class AddEmployeeController {
 		business.addEmployee(email.getText(), name.getText());
 		
 		errorLabel.setText("Successfully registered new employee");
-
-		/*
-		try
-        {
-            FileWriter employeeWriter = new FileWriter("src/JSONdatabase/employees.json");
-            employeeWriter.write(employees.toString(4));
-            employeeWriter.flush();
-            employeeWriter.close();
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
-        */
-
+		DatabaseHandler.writeBusinessToFile(business);
+		om.showOwnerMenu();
 		return true;
         
 	}

@@ -2,8 +2,6 @@ package application.controllers;
 import application.models.*;
 import application.views.*;
 
-import org.json.JSONObject;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -13,7 +11,6 @@ import javafx.stage.Stage;
 
 public class RegisterFormController {
 	private PublicMenu pm;
-	private String businessesFilepath = "../../JSONdatabase/businesses.json";
 	@FXML
 	private TextField businessName;
 	@FXML
@@ -139,22 +136,9 @@ public class RegisterFormController {
 		errorLabel.setWrapText(true);
 		
 		// Check if business name entered is valid
-		JSONObject businesses = JSONUtils.getJSONObjectFromFile(businessesFilepath);
-		String[] businessNames = JSONObject.getNames(businesses);
-		boolean businessIsValid = false;
-		// Look for business name is list
-		if (businessNames != null) {
-			for(int i = 0; i < businessNames.length; i++) {
-				if(businessName.getText().equals(businessNames[i])) {
-					business = new Business(businessName.getText());
-					businessIsValid = true;
-					break;
-				}
-			}
-		}
-		
-		if(!businessIsValid)
-		{
+		if (DatabaseHandler.businessExists(businessName.getText())) {
+			business = new Business(businessName.getText());
+		} else {
 			errorLabel.setText("Business entered doesn't exist");
 			return false;
 		}
@@ -195,7 +179,7 @@ public class RegisterFormController {
 			return false;
 		}
 		
-		// Scans the usernames JSONArray to check if the username already exists
+		// Checks the business's customers to see if the username already exists
 		for (Customer customer : business.getCustomers())
 		{
 			if (customer.getUsername().equals(username.getText()))
@@ -210,6 +194,7 @@ public class RegisterFormController {
 		business.addCustomer(newUser);
 		
 		errorLabel.setText("Successfully registered " + username.getText());
+		DatabaseHandler.writeBusinessToFile(business);
 		login(newUser);
 		return true;		
 		

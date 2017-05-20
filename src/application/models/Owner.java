@@ -1,8 +1,5 @@
 package application.models;
 import application.views.*;
-
-import org.json.JSONObject;
-
 import application.controllers.*;
 
 public class Owner extends User {
@@ -21,13 +18,9 @@ public class Owner extends User {
 		return username;
 	}
 	
-	public JSONObject toJSONObject()
+	public String getPassword()
 	{
-		JSONObject jsonOwner = new JSONObject();
-		jsonOwner.put("password", password);
-		jsonOwner.put("isOwner", true);
-		
-		return jsonOwner;
+		return password;
 	}
 	
 }

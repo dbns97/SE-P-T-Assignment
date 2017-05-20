@@ -50,7 +50,7 @@ public class CustomerMenuController {
 
 	public void handleLogout()
 	{
-		business.updateFile();
+		DatabaseHandler.writeBusinessToFile(business);
 
         try
         {

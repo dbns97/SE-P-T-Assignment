@@ -246,7 +246,8 @@ public class CustomerMakeBookingController
 				Booking newBooking = new Booking(StartTime, EndTime, currentEmployee, customer, currentService);
 				System.out.println("booking made");
 				customer.addBooking(newBooking);
-						
+
+				DatabaseHandler.writeBusinessToFile(business);
 				cm.showCustomerMenu();
 			}
 		}

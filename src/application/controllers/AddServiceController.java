@@ -2,25 +2,9 @@ package application.controllers;
 import application.models.*;
 import application.views.*;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class AddServiceController {
@@ -34,7 +18,6 @@ public class AddServiceController {
     @FXML
     private Label errorLabel;
     private Business business;
-    private SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
     
 	public void setMainMenu(OwnerMenu om)
 	{
@@ -71,6 +54,8 @@ public class AddServiceController {
 		
 		if (success) {
 			errorLabel.setText("Successfully created service: " + name.getText());
+			DatabaseHandler.writeBusinessToFile(business);
+			om.showOwnerMenu();
 			return true;
 		} else {
 			errorLabel.setText("Failed to create service. Name: " + name.getText() + " already in use");

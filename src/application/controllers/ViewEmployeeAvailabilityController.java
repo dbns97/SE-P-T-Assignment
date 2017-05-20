@@ -2,12 +2,7 @@ package application.controllers;
 import application.models.*;
 import application.views.*;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -16,11 +11,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
 
 public class ViewEmployeeAvailabilityController {
 	private OwnerMenu om;
@@ -96,16 +88,14 @@ public class ViewEmployeeAvailabilityController {
 		}
 		
 		populateArrays();
-		//System.out.println(business.getEmployees().size());
+
 		for(Employee e : business.getEmployees())
 		{
-			//System.out.println(e.toJSONObject().toString());
 			int i = 0;
 			for (Day day : Day.values())
 			{
 				if (e.getRoster().containsKey(day) && e.getRoster().get(day) != null)
 				{
-					//System.out.println(e.getRoster().get(day).toString());
 					shiftList.get(i).add(e.getRoster().get(day));
 				}
 				i++;
@@ -114,7 +104,6 @@ public class ViewEmployeeAvailabilityController {
 		
 		for(int i = 0; i < Day.values().length; i++)
 		{
-			//System.out.println(shiftList.get(i).get(0).toJSONObject().toString() + " " + shiftList.get(i).get(0).getEmployee().getName());
 			employeeColumns.get(i).setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEmployee().getName()));
 	        timeColumns.get(i).setCellValueFactory(cellData -> new SimpleStringProperty(displayFormat.format(cellData.getValue().getStart()) + " - " + displayFormat.format(cellData.getValue().getEnd())));
 	        tables.get(i).setItems(shiftList.get(i));

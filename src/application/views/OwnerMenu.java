@@ -4,10 +4,8 @@ import application.controllers.*;
 
 import java.io.IOException;
 
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -181,7 +179,6 @@ public class OwnerMenu extends Menu {
 
 	public void showMakeBookings() 
 	{
-		// TODO Auto-generated method stub
 		try 
 		{
 			FXMLLoader loader = new FXMLLoader();

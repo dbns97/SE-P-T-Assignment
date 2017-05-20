@@ -2,15 +2,7 @@ package application.controllers;
 import application.models.*;
 import application.views.*;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -19,9 +11,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class AddBusinessController {
-	private String businessFilepath  = "../../JSONdatabase/businesses.json";
-	
+public class AddBusinessController {	
 	private AdminMenu am;
 	@FXML
     private TextField businessName;
@@ -199,14 +189,10 @@ public class AddBusinessController {
 			return false;
 		}
 		
-		// Scans the list of businesses to see if the business name already exists
-		JSONObject jsonBusinesses = JSONUtils.getJSONObjectFromFile(businessFilepath);
-		String[] businesses = JSONObject.getNames(jsonBusinesses);
-		for (int i = 0; i < businesses.length; i++) {
-			if (businesses[i].equals(businessName.getText())) {
-				errorLabel.setText("Business name already exists");
-				return false;
-			}
+		// Check if business name already exists
+		if (DatabaseHandler.businessExists(businessName.getText())) {
+			errorLabel.setText("Business name already exists");
+			return false;
 		}
 		
 		// Initialise business owner object
@@ -223,10 +209,8 @@ public class AddBusinessController {
 		errorLabel.setText("Successfully registered " + username.getText());
 		
 		// Write the new business to file
-		newBusiness.updateFile();
-		
+		DatabaseHandler.writeBusinessToFile(newBusiness);
         am.showAdminMenu();
-          
 		return true;		
 		
 	}

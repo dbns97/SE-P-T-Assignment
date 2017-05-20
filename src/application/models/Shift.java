@@ -2,15 +2,13 @@ package application.models;
 import application.views.*;
 import application.controllers.*;
 
-import org.json.JSONObject;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Shift {
 
-	private static SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+	public static SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
 	private Date start;
 	private Date end;
 	private Employee employee;
@@ -60,19 +58,4 @@ public class Shift {
 		return sdf;
 	}
 
-	/**
-	 * @description create a JSONObject to represent the shift
-	 * @return JSONObject the shift as a JSONObject
-	 * @author Drew Nuttall-Smith
-	 * @since 2/4/2017
-	 **/
-	public JSONObject toJSONObject()
-	{
-		JSONObject jsonShift = new JSONObject();
-
-		jsonShift.put("start", sdf.format(start));
-		jsonShift.put("end", sdf.format(end));
-
-		return jsonShift;
-	}
 }

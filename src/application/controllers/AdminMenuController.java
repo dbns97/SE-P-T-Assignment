@@ -2,17 +2,9 @@ package application.controllers;
 import application.models.*;
 import application.views.*;
 
-import java.io.IOException;
-
-import org.json.JSONArray;
-
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class AdminMenuController {

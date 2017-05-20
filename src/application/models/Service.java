@@ -1,9 +1,6 @@
 package application.models;
 
 import java.util.Calendar;
-import java.util.HashMap;
-
-import org.json.JSONObject;
 
 public class Service {
 	
@@ -62,22 +59,6 @@ public class Service {
 		startTime.setTimeInMillis(endTime.getTimeInMillis() - timeToSubtract);
 		
 		return startTime;
-	}
-	
-	/**
-	 * @description create a JSONObject to represent the service
-	 * @return JSONObject the service as a JSONObject
-	 * @author Drew Nuttall-Smith
-	 * @since 27/4/2017
-	 **/
-	public JSONObject toJSONObject()
-	{
-		JSONObject newService = new JSONObject();
-		
-		newService.put("name", name);
-		newService.put("duration", duration);
-
-		return newService;
 	}
 
 }
