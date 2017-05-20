@@ -75,6 +75,11 @@ public class OwnerMenuController {
 		om.showMakeBookings();
 	}
 	
+	public void handleChangeStyles()
+	{
+		om.showChangeStyles();
+	}
+	
 	public void handleLogout()
 	{
 		DatabaseHandler.writeBusinessToFile(business);

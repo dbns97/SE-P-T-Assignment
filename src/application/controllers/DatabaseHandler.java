@@ -18,6 +18,7 @@ import application.models.Employee;
 import application.models.Owner;
 import application.models.Service;
 import application.models.Shift;
+import javafx.scene.paint.Color;
 
 public class DatabaseHandler {
 	
@@ -159,6 +160,38 @@ public class DatabaseHandler {
 	}
 	
 	/**
+	 * @description Creates a Color object for the business's background color
+	 * @return Color the color object
+	 * @author Drew Nuttall-Smith
+	 * @since 20/5/2017
+	 **/
+	public static Color getBackgroundColor(String businessName)
+	{
+		JSONArray jsonBackgroundColor = getJSONObjectFromFile(businessesFilePath)
+										.getJSONObject(businessName)
+										.getJSONObject("styles")
+										.getJSONArray("background");
+		
+		return Color.rgb(jsonBackgroundColor.getInt(0), jsonBackgroundColor.getInt(1), jsonBackgroundColor.getInt(2));
+	}
+	
+	/**
+	 * @description Creates a Color object for the business's font color
+	 * @return Color the color object
+	 * @author Drew Nuttall-Smith
+	 * @since 20/5/2017
+	 **/
+	public static Color getFontColor(String businessName)
+	{
+		JSONArray jsonFontColor = getJSONObjectFromFile(businessesFilePath)
+								  .getJSONObject(businessName)
+								  .getJSONObject("styles")
+								  .getJSONArray("font");
+		
+		return Color.rgb(jsonFontColor.getInt(0), jsonFontColor.getInt(1), jsonFontColor.getInt(2));
+	}
+	
+	/**
 	 * @description Create a HashMap of a roster from a JSONObject of a roster
 	 * @param jsonRoster A JSONObjects of a roster
 	 * @return HashMap<String,Shift> the roster
@@ -238,6 +271,11 @@ public class DatabaseHandler {
             	jsonServices.put(serviceToJSON(s));
             }
             jsonBusiness.put("services", jsonServices);
+            
+            JSONObject jsonStyles = new JSONObject();
+            jsonStyles.put("background", colorToJSON(business.getBackgroundColor()));
+            jsonStyles.put("font", colorToJSON(business.getFontColor()));
+            jsonBusiness.put("styles", jsonStyles);
            
             // Write business to file
 			JSONObject allJsonBusinesses = getJSONObjectFromFile(businessesFilePath);
@@ -440,6 +478,23 @@ public class DatabaseHandler {
 		jsonBooking.put("service", booking.getService().getName());
 
 		return jsonBooking;
+	}
+	
+	/**
+	 * @description Convert a Color to a JSONObject
+	 * @return JSONObject the color as a JSONObject
+	 * @author Drew Nuttall-Smith
+	 * @since 20/5/2017
+	 **/
+	private static JSONArray colorToJSON(Color color)
+	{
+		JSONArray jsonColor = new JSONArray();
+
+		jsonColor.put(color.getRed() * 255);
+		jsonColor.put(color.getGreen() * 255);
+		jsonColor.put(color.getBlue() * 255);
+
+		return jsonColor;
 	}
 	
 	private static JSONObject getJSONObjectFromFile(String path)

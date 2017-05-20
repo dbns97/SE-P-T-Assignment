@@ -1,5 +1,6 @@
 package application.models;
 import application.views.*;
+import javafx.scene.paint.Color;
 import application.controllers.*;
 
 import java.util.ArrayList;
@@ -10,6 +11,8 @@ public class Business {
 	private ArrayList<Customer> customers;
 	private ArrayList<Employee> employees;
 	private ArrayList<Service> services;
+	private Color backgroundColor;
+	private Color fontColor;
 	
 	public Business(String name)
 	{
@@ -18,6 +21,8 @@ public class Business {
 		employees = DatabaseHandler.getEmployees(name);
 		services = DatabaseHandler.getServices(name);
 		customers = DatabaseHandler.getCustomers(this);
+		backgroundColor = DatabaseHandler.getBackgroundColor(name);
+		fontColor = DatabaseHandler.getFontColor(name);
 	}
 	
 	public Business(String name, Owner owner, ArrayList<Employee> employees, ArrayList<Service> services, ArrayList<Customer> customers)
@@ -27,6 +32,8 @@ public class Business {
 		this.employees = employees;
 		this.services = services;
 		this.customers = customers;
+		this.backgroundColor = Color.rgb(244, 244, 244);
+		this.fontColor = Color.rgb(50, 50, 50);
 	}
 	
 	public String getName()
@@ -112,6 +119,26 @@ public class Business {
 		}
 		
 		return null;
+	}
+	
+	public Color getBackgroundColor()
+	{
+		return backgroundColor;
+	}
+	
+	public Color getFontColor()
+	{
+		return fontColor;
+	}
+	
+	public void setBackgroundColor(Color backgroundColor)
+	{
+		this.backgroundColor = backgroundColor;
+	}
+	
+	public void setFontColor(Color fontColor)
+	{
+		this.fontColor = fontColor;
 	}
 	
 	/**

@@ -29,6 +29,11 @@ public class OwnerMenu extends Menu {
 	{
 		this.pm = pm;
 	}
+	
+	public Stage getPrimaryStage()
+	{
+		return primaryStage;
+	}
 
 	public void setRoot()
 	{
@@ -36,8 +41,9 @@ public class OwnerMenu extends Menu {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("../views/RootLayout.fxml"));
 			root = (BorderPane) loader.load();
-
-			Scene scene = new Scene(root);
+			
+			root.setStyle("-fx-background-color: transparent;");
+			Scene scene = new Scene(root, business.getBackgroundColor());
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {
@@ -200,7 +206,26 @@ public class OwnerMenu extends Menu {
 			controller.setCustomerChoiceBox();
 			controller.setServiceChoiceBox();
 			
-			
+		} catch (IOException e) {
+            e.printStackTrace();
+
+        }
+	}
+	
+	public void showChangeStyles()
+	{
+		try 
+		{
+			FXMLLoader loader = new FXMLLoader();
+			loader.setLocation(PublicMenu.class.getResource("../views/ChangeStyles.fxml"));
+			AnchorPane ChangeStyles = (AnchorPane) loader.load();
+			ChangeStylesController controller = loader.getController();
+
+			primaryStage.setWidth(ChangeStyles.getPrefWidth() + 50);
+			primaryStage.setHeight(ChangeStyles.getPrefHeight() + 50);
+			root.setCenter(ChangeStyles);
+			controller.setMainMenu(this);
+			controller.setBusiness(business);
 			
 		} catch (IOException e) {
             e.printStackTrace();

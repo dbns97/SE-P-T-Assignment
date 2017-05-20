@@ -37,8 +37,9 @@ public class CustomerMenu extends Menu {
 			FXMLLoader loader = new FXMLLoader();
 			loader.setLocation(getClass().getResource("../views/RootLayout.fxml"));
 			root = (BorderPane) loader.load();
-
-			Scene scene = new Scene(root);
+			
+			root.setStyle("-fx-background-color: transparent;");
+			Scene scene = new Scene(root, business.getBackgroundColor());
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {
