@@ -4,6 +4,12 @@ import application.views.*;
 
 import java.text.SimpleDateFormat;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,12 +21,15 @@ import javafx.scene.control.TableView;
 import java.util.ArrayList;
 
 public class ViewEmployeeAvailabilityController {
+
+	final static Logger logger = LogManager.getLogger(ViewEmployeeAvailabilityController.class.getName());
+
 	private OwnerMenu om;
 	private Business business;
 	private ArrayList<TableView<Shift>> tables = new ArrayList<TableView<Shift>>();
 	private ArrayList<TableColumn<Shift,String>> timeColumns = new ArrayList<TableColumn<Shift,String>>();
 	private ArrayList<TableColumn<Shift,String>> employeeColumns = new ArrayList<TableColumn<Shift,String>>();
-	
+
 	SimpleDateFormat displayFormat = new SimpleDateFormat("HH:mm");
 	SimpleDateFormat convertingFormat = new SimpleDateFormat("EEE MMM dd hh:mm:ss zzz yyyy");
 	@FXML
@@ -81,12 +90,12 @@ public class ViewEmployeeAvailabilityController {
 	public void loadRoster()
 	{
 		ArrayList<ObservableList<Shift>> shiftList = new ArrayList<ObservableList<Shift>>();
-		
+
 		for(int i = 0; i < Day.values().length; i++)
 		{
 			shiftList.add(FXCollections.observableArrayList());
 		}
-		
+
 		populateArrays();
 
 		for(Employee e : business.getEmployees())
@@ -101,7 +110,7 @@ public class ViewEmployeeAvailabilityController {
 				i++;
 			}
 		}
-		
+
 		for(int i = 0; i < Day.values().length; i++)
 		{
 			employeeColumns.get(i).setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEmployee().getName()));
@@ -109,12 +118,12 @@ public class ViewEmployeeAvailabilityController {
 	        tables.get(i).setItems(shiftList.get(i));
 		}
 	}
-	
+
 	public void handleBack()
 	{
 		om.showOwnerMenu();
 	}
-	
+
 	private void populateArrays()
 	{
 		tables.add(shiftTable);
@@ -124,7 +133,7 @@ public class ViewEmployeeAvailabilityController {
 		tables.add(shiftTable4);
 		tables.add(shiftTable5);
 		tables.add(shiftTable6);
-		
+
 		employeeColumns.add(employeeColumn);
 		employeeColumns.add(employeeColumn1);
 		employeeColumns.add(employeeColumn2);
@@ -132,7 +141,7 @@ public class ViewEmployeeAvailabilityController {
 		employeeColumns.add(employeeColumn4);
 		employeeColumns.add(employeeColumn5);
 		employeeColumns.add(employeeColumn6);
-		
+
 		timeColumns.add(timeColumn);
 		timeColumns.add(timeColumn1);
 		timeColumns.add(timeColumn2);

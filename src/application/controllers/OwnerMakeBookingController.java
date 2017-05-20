@@ -8,6 +8,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.StringTokenizer;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import application.models.Booking;
 import application.models.Business;
 import application.models.Customer;
@@ -25,8 +28,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
+
+
 public class OwnerMakeBookingController {
 
+	final static Logger logger = LogManager.getLogger(OwnerMakeBookingController.class.getName());
 	
 	private OwnerMenu om;
 	private Business business;
@@ -95,13 +101,16 @@ public class OwnerMakeBookingController {
 	public void setCustomerChoiceBox() {
 		// TODO Auto-generated method stub
 		String[] CustomerList = new String[business.getCustomers().size()];
-		System.out.println(business.getCustomers().size());
+		logger.debug("business.getCustomers().size() : {} ", business.getCustomers().size());
+		//System.out.println(business.getCustomers().size());
 		for (int i = 0 ; i < business.getCustomers().size(); i++)
 		{
 			CustomerList[i] = business.getCustomers().get(i).getUsername();
-			System.out.println(business.getCustomers().get(i).getUsername());
-		}		
-		System.out.println(CustomerList);
+			logger.debug(" customer username: {}", business.getCustomers().get(i).getUsername());
+			//System.out.println(business.getCustomers().get(i).getUsername());
+		}
+		//logger.debug("CustomerList : {}", CustomerList);
+		//System.out.println(CustomerList);
 		customer.setItems(FXCollections.observableArrayList( CustomerList ) );
 	}
 	// finds the services in the data base and adds to choice box
@@ -157,8 +166,8 @@ public class OwnerMakeBookingController {
 	{
 		if( service.getValue() != null)
 		{
-			System.out.println("service box clicked");
-			
+			//System.out.println("service box clicked");
+			logger.info("service box clicked");
 			errorLabel.setText("");
 			
 			if(confirm.isVisible())
@@ -186,8 +195,8 @@ public class OwnerMakeBookingController {
 	{
 		if( employee.getValue() != null )
 		{
-			System.out.println("employee box clicked");
-			
+			//System.out.println("employee box clicked");
+			logger.info("employee box clicked");
 			errorLabel.setText("");
 			
 			if(confirm.isVisible())
@@ -210,8 +219,8 @@ public class OwnerMakeBookingController {
 	{
 		if ( day.getValue() != null)
 		{
-			System.out.println("day box clicked");
-			
+			//System.out.println("day box clicked");
+			logger.info("day box clicked");
 			errorLabel.setText("");
 			
 			if(confirm.isVisible() == false)
@@ -233,9 +242,10 @@ public class OwnerMakeBookingController {
 		else
 		{
 					
-			System.out.println("confirm button clicked");
-			
+			//System.out.println("confirm button clicked");
+			logger.info("confirm button clicked");
 			//what will be saved to database
+			/*
 			System.out.println(   "\n------------------------\n"
 								+ "booking details : \n" 
 								+ service.getValue() +  "\n"
@@ -244,13 +254,14 @@ public class OwnerMakeBookingController {
 								+ time.getText() 
 								+ "\n------------------------\n"							
 								);
-			
+			*/
 			Boolean madeBooking = checkBooking();
 			
 			if (madeBooking == true)
 			{
 				Booking newBooking = new Booking(StartTime, EndTime, currentEmployee, currentCustomer, currentService);
-				System.out.println("booking made");
+				//System.out.println("booking made");
+				logger.info("booking made");
 				currentCustomer.addBooking(newBooking);
 				
 				DatabaseHandler.writeBusinessToFile(business);
@@ -309,38 +320,38 @@ public class OwnerMakeBookingController {
 			long empStartTime = dateToLong(employeeStartTime);			
 			long empEndTime = dateToLong(employeeEndTime);			
 			
-			System.out.println(StartTime + " - Start time of booking");
-			System.out.println(EndTime + " - end time of booking");	
-			System.out.println(employeeStartTime + " - Employee Start time of shift");
-			System.out.println(employeeEndTime + "- Employee end time of shift\n");		
-			System.out.println();
+			logger.debug(StartTime + " - Start time of booking");
+			logger.debug(EndTime + " - end time of booking");	
+			logger.debug(employeeStartTime + " - Employee Start time of shift");
+			logger.debug(employeeEndTime + "- Employee end time of shift\n");		
+			
 						
-			System.out.println("checking all bookings");
-			System.out.println("current chosen employee : " + currentEmployee.getEmail() );
+			logger.debug("checking all bookings");
+			logger.debug("current chosen employee : " + currentEmployee.getEmail() );
 			// checks that the start time is after employee start time
 			// and that it ends before employee end time
 			if (enteredStartTime >= empStartTime && enteredEndTime <= empEndTime)
 			{
-				System.out.println();
+				//System.out.println();
 				// searches each of the customer bookings for that day
 				// and checks that the booking is not going into any for their bookings
 				ArrayList<Customer> customers = business.getCustomers();
 				
 				for (Customer customer : customers)
 				{
-					System.out.println("current customer bookings we are checking : " + customer.getUsername());
+					logger.debug("current customer bookings we are checking : " + customer.getUsername());
 					for (Booking booking : customer.getBookings())
 					{
-						System.out.println("checks if the booking has the same employee as the one user chose");
+						logger.debug("checks if the booking has the same employee as the one user chose");
 						if (booking.getEmployee().getEmail().equals(currentEmployee.getEmail()) ) 
 						{
-							System.out.println("- They match\n");
+							logger.debug("- They match");
 							
-							System.out.println("\tchosen start time : " + StartTime);
-							System.out.println("\tbooking end time : " + booking.getEnd());
+							logger.debug("chosen start time : " + StartTime);
+							logger.debug("booking end time : " + booking.getEnd());
 							
-							System.out.println("\tchosen end time : " + EndTime);
-							System.out.println("\tbooking start time : " + booking.getStart());
+							logger.debug("chosen end time : " + EndTime);
+							logger.debug("booking start time : " + booking.getStart());
 							
 							System.out.println();
 							
@@ -351,9 +362,9 @@ public class OwnerMakeBookingController {
 								return false;
 							}
 						}
-						System.out.println();
+						//System.out.println();
 					}
-					System.out.println();
+					//System.out.println();
 				}
 			}
 			else

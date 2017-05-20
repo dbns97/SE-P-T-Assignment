@@ -1,4 +1,7 @@
 package application.controllers;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import application.models.*;
 import application.views.*;
 
@@ -9,6 +12,8 @@ import javafx.stage.Stage;
 
 public class CustomerMenuController {
 
+	final static Logger logger = LogManager.getLogger(CustomerMenuController.class.getName());
+	
 	private CustomerMenu cm;
 	private PublicMenu pm;
 	private Business business;
@@ -57,6 +62,7 @@ public class CustomerMenuController {
     		Stage stage = (Stage) logout.getScene().getWindow();
         	pm.start(stage);
         } catch(Exception e) {
+        	logger.warn("problem logging out from customer menu");
 			e.printStackTrace();
 		}
 	}
