@@ -11,6 +11,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -23,7 +25,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-public class AddShiftController {
+public class AddShiftController 
+{
+	private static final Logger logger = LogManager.getLogger(AddShiftController.class.getName());
+	
 	private OwnerMenu om;
 	@FXML
     private ChoiceBox<String> email;
@@ -81,6 +86,7 @@ public class AddShiftController {
 		if(startTime.getText().trim().isEmpty() || !(startTime.getText().matches("([01]?[0-9]|2[0-3]):[0-5][0-9]")))
 		{
 			errorLabel.setText("Please enter a valid start time");
+			logger.debug("invalid start time : {}", startTime.getText() );
 			return false;
 		}
 		
@@ -88,6 +94,7 @@ public class AddShiftController {
 		if(endTime.getText().trim().isEmpty() || !(endTime.getText().matches("([01]?[0-9]|2[0-3]):[0-5][0-9]")))
 		{
 			errorLabel.setText("Please enter a valid end time");
+			logger.debug("invalid end time : {}", endTime.getText() );
 			return false;
 		}
 		
@@ -101,6 +108,7 @@ public class AddShiftController {
 		}
 		catch(ParseException e)
 		{
+			logger.warn("problem with parse");
 			return false;
 		}
 		
@@ -130,6 +138,7 @@ public class AddShiftController {
         }
 		*/
 		//System.out.println(JSONUtils.getJSONObjectFromFile("employees.json").toString());
+		logger.info("add shift finished");
 		return true;
         
 	}

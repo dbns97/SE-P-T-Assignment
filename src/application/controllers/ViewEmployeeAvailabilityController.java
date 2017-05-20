@@ -5,6 +5,8 @@ import application.views.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -23,6 +25,9 @@ import java.util.Date;
 import java.util.HashMap;
 
 public class ViewEmployeeAvailabilityController {
+	
+	final static Logger logger = LogManager.getLogger(ViewEmployeeAvailabilityController.class.getName());
+	
 	private OwnerMenu om;
 	private Business business;
 	private ArrayList<TableView<Shift>> tables = new ArrayList<TableView<Shift>>();

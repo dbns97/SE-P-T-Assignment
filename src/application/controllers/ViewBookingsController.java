@@ -5,6 +5,8 @@ import application.views.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,6 +31,9 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 public class ViewBookingsController {
+	
+	final static Logger logger = LogManager.getLogger(ViewBookingsController.class.getName());
+	
 	private Menu parentMenu;
 	private Business business;
 	@FXML

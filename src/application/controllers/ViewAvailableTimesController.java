@@ -17,7 +17,13 @@ import javafx.scene.control.TableView;
 import java.util.Calendar;
 import java.util.Date;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class ViewAvailableTimesController {
+	
+	final static Logger logger = LogManager.getLogger(ViewAvailableTimesController.class.getName());
+	
 	private Menu parentMenu;
 	private Business business;
 	@FXML

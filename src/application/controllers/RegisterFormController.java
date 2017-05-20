@@ -8,6 +8,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -18,6 +20,9 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class RegisterFormController {
+	
+	final static Logger logger = LogManager.getLogger(RegisterFormController.class.getName());
+	
 	private PublicMenu pm;
 	@FXML
     private TextField username;
@@ -149,12 +154,14 @@ public class RegisterFormController {
 		if(username.getText().trim().isEmpty() || !(username.getText().matches("[a-zA-z0-9]+")))
 		{
 			errorLabel.setText("Please enter a username without symbols or whitespace");
+			logger.debug("incorrect syntax with username");
 			return false;
 		}
 		
 		if(password.getText().isEmpty())
 		{
 			errorLabel.setText("Please enter a password");
+			
 			return false;
 		}
 		
@@ -167,18 +174,21 @@ public class RegisterFormController {
 		if(!(name.getText().matches("[a-zA-z ,.'-]+")) || name.getText().trim().isEmpty())
 		{
 			errorLabel.setText("Please enter a name without numbers or symbols");
+			logger.debug("incorrect syntax with entered name");
 			return false;
 		}
 		
 		if(!(address.getText().matches("[a-zA-z0-9 ,.'-]+")) || address.getText().trim().isEmpty())
 		{
 			errorLabel.setText("Please enter an address without symbols");
+			logger.debug("incorrect syntax with address");
 			return false;
 		}
 		
 		if(!(contactNumber.getText().matches("[0-9]+")) || contactNumber.getText().trim().isEmpty())
 		{
 			errorLabel.setText("Please enter a contact number with only numbers");
+			logger.debug("incorrect syntax with contact number");
 			return false;
 		}
 		
@@ -199,6 +209,7 @@ public class RegisterFormController {
 		business.addCustomer(newUser);
 		
 		errorLabel.setText("Successfully registered " + username.getText());
+		logger.info("new user added to system : %s", username.getText());
 		/*
 		try
         {

@@ -4,6 +4,9 @@ import application.views.*;
 
 import java.io.IOException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import org.json.JSONArray;
 
 import javafx.fxml.FXML;
@@ -16,6 +19,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class OwnerMenuController {
+	
+	final static Logger logger = LogManager.getLogger(OwnerMenuController.class.getName());
 
 	private OwnerMenu om;
 	private PublicMenu pm;
@@ -78,6 +83,7 @@ public class OwnerMenuController {
         {
         	pm.start(stage, business);
         } catch(Exception e) {
+        	logger.warn("problem with logging out of owner menu");
 			e.printStackTrace();
 		}
 	}

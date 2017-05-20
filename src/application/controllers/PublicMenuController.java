@@ -4,6 +4,8 @@ import application.views.*;
 
 import javafx.scene.control.Button;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.json.JSONObject;
 
 import javafx.fxml.FXML;
@@ -17,6 +19,9 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class PublicMenuController {
+	
+	final static Logger logger = LogManager.getLogger(PublicMenuController.class.getName());
+	
 	private PublicMenu pm;
 	private Business business;
 	private JSONObject loggedInUser = null;
@@ -99,6 +104,7 @@ public class PublicMenuController {
               {
                menu.start(stage);
               } catch(Exception e) {
+            	  logger.warn("problem with trying to log in as a owner");
                e.printStackTrace();
             }
 
@@ -115,6 +121,7 @@ public class PublicMenuController {
               {
                menu.start(stage);
               } catch(Exception e) {
+            	  logger.warn("problem trying to log in as a customer");
                e.printStackTrace();
             }
          }
@@ -168,7 +175,7 @@ public class PublicMenuController {
 
 	   }
       errorLabel.setText("Username entered doesnt exist");
-      System.out.println("Username");
+      //System.out.println("Username");
       return false;
    }
 

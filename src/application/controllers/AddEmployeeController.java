@@ -8,6 +8,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -17,7 +19,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 //jkgasdjhags
-public class AddEmployeeController {
+public class AddEmployeeController 
+{
+	private static final Logger logger = LogManager.getLogger(AddEmployeeController.class.getName());
+	
 	private OwnerMenu om;
 	@FXML
     private TextField name;
@@ -50,6 +55,7 @@ public class AddEmployeeController {
 		if(name.getText().trim().isEmpty() || !(name.getText().matches("[a-zA-Z ,.'-]+")))
 		{
 			errorLabel.setText("Please enter a valid name");
+			logger.debug("invalid name entered : {}", name.getText() );
 			return false;
 		}
 		
@@ -57,6 +63,7 @@ public class AddEmployeeController {
 		if(email.getText().isEmpty() || !(email.getText().matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]+")))
 		{
 			errorLabel.setText("Please enter a valid email");
+			logger.debug("invalid email entered : {}", email.getText() );
 			return false;
 		}
 		
@@ -64,6 +71,7 @@ public class AddEmployeeController {
 		if (business.getEmployee(email.getText()) != null)
 		{
         	errorLabel.setText("Employee already exists with that email");
+        	logger.debug("existing employee already has this email : {}", email.getText() );
             return false;
 		}
 		
@@ -84,7 +92,7 @@ public class AddEmployeeController {
             e.printStackTrace();
         }
         */
-
+		logger.info("employee added");
 		return true;
         
 	}
