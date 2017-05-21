@@ -1,0 +1,183 @@
+﻿Component,User Action,Precondition,Expected Results,Priority,Require File,Steps
+,,,,,,
+Log in,Invalid Username,"Username is not unique 
+User is not registered
+Username doesn't match password","Login unsuccessful
+Error message ""Username doesn't exist""
+User prompted to re-enter username
+User prompted whether they would like to register",High,no,Enter Username || Enter Password || Click 'Log In' button
+Log in,Invalid Password,"Password doesn't meet criteria
+Password doesn't match username
+Password doesn't match re-entered password
+","Login Unsuccessful
+Error message displayed ""Password doesn't exist""
+User prompted to check password 
+User asked whether they would like to register",High,no,Enter valid username || Enter password || Click Log In
+Log in,Valid Username,"Username must be unique
+Username must be registered
+Username must match password
+User must be registered
+","Login successful
+User directed to Main Menu",High,no,Enter username || Enter password || Click Log In
+Log in,Valid Password,"Password must match username
+Password must  contain letters, symbols and numbers
+User must be registered","Log in successful
+User directed to main menu",High,no,Enter username || Enter password || Click log in
+,,,,,,
+Register,Successful Registration,"Username shouldn't already be taken
+Username must be unique
+Username must not contain white space or symbols
+Password must contain numbers, characters and symbols
+Password must match with re-entered password
+None of the fields should be empty","User registration successful
+User asked to log in to the system
+User added to the system database",High,no,Enter unique username || Enter password || Re-Enter password || Enter name || Enter address || Enter contact number || Click register button
+Register,Invalid Username,"Username already taken
+Username contains white spaces, symbols
+Username field is empty","Registration Unsuccessful
+Error message displayed ""Username already exists""
+User is not added into the system database
+",High,no,Enter Username || Enter password || Re-enter password || Enter name || Enter address || Enter contact number || Click Register
+Register,Invalid Password,"Password has too many characters
+Password doesn't match criteria
+","Registration unsuccessful
+User prompted to re-enter password
+User not added to the system database",High,no,Enter username || Enter password || Re-enter password || Enter name || Enter address || Enter contact number || Click Register
+Register,Passwords don't match,"Password doesn't match with the re-entered password
+","Registration unsuccessful
+User prompted to re-enter password
+User is not added into the system database",High,no,Enter username || Enter password || Re-enter password || Enter name || Enter address || Enter contact number || Click Register button
+Register,Invalid name,"Name contains numbers
+Name contains symbols","Registration unsuccessful
+User prompted to re-enter name without numbers and symbols
+Error message displayed
+User is not added to the system database",High,no,Enter username || Enter password || Re-enter password || Enter name || Enter address || Enter contact number || Click register button
+Register,Invalid address,Address contains symbols,"Registration unsuccessful
+User prompted to re-enter address without symbols
+Error message displayed
+User is not added into the system database",High,no,Enter username || Enter password || Re-enter password || Enter name || Enter address || Enter contact number || Click Register button
+Register,Invalid contact number,"Contact number contains letters 
+Contact number contains symbols","Registration unsuccessful
+User prompted to re-enter contact number with only numbers
+Error message displayed
+User is not added into the system database",High,no,Enter username || Enter password || Re-enter password || Enter name || Enter address || Enter contact number || Click Register button
+Register,Empty fields,"Username field shouldn't be empty
+Password field shouldn't be empty
+Re-enter password field shouldn't be empty
+Name field shouldn't be empty
+Address field shouldn't be empty
+Contact number field shouldn't be empty","Registration unsuccessful
+User prompted to fill in all fields
+Error message displayed
+User is not added into the system database",High,no,Leave any field empty || Click Register button
+,,,,,,
+Make Booking,Invalid Time,"Time doesn't match with employee availability 
+Time doesn't match format
+","Booking not made
+Booking is not added into the system database
+User prompted to enter a time that matches employee availability
+Error message displayed",High,no,Select service || Select employee || Select day || Enter invalid time || Click Confirm button
+Make Booking,Empty time field,Time field is empty,"Booking not made
+User prompted to enter all information before proceeding
+Error message displayed
+Booking is not added into the system database",High,no,Select service || Select employee || Select day || Leave time field empty || Click Confirm button
+Make Booking,Invalid Day,Selected day doesn't match with employee availability,"Booking not created
+User prompted to select a time when employee is available
+Error message displayed
+Booking is not added into the system",High,no,Select service || Select employee || Select unavailable day || Select time || Click confirm buton
+Make Booking,Successful Booking,"Employee availability matches with time selected
+Employee availability matches with day selected
+None of the fields are empty
+Time matches with correct format
+","Booking is created
+Booking added to the system database
+User re-directed to main menu",High,no,Select service || Select employee || Select day || Enter time || Click Confirm button
+Make Booking,Existing Booking,"Service, Day, Employee and Time matches an existing booking in the database
+","Booking is not created
+Booking is not added into the system database
+Error message displayed
+User is alerted that the booking already exists",High,no,Select service || Select employee || Select day || Enter time || Click Confirm button
+,,,,,,
+Main Menu,Display,"User must be logged in
+User must be registered",Display main menu without errors or glitches,High,no,Register || Log in
+Main Menu,Log out,"User must be logged in
+User must be registered
+","User is logged out successfully
+User re-directed to Log in / Register page
+",High,no,Click Log out
+Main Menu,View Available Times,"User must be logged in
+User must be registered
+","User directed to employee availability page
+Employee availability is displayed ",High,no,Click View Available Times
+Main Menu,View Booking Times,"User must be logged in
+User must be registered","User directed to Booking page
+Booking page displayed successfully
+",High,no,Click Make Bookings button
+,,,,,,
+Log in - Owner,Successful Log in,"Owner must be registered
+Username must be unique
+Username must match password","Log in successful
+User directed to owner main menu
+",High,no,Enter username || Enter password || Click Log in button
+Log in - Owner,Unsuccessful Log in,"Username invalid
+Password invalid","Log in unsuccessful
+User prompted to re-enter username / password
+Error message displayed
+",High,no,Enter invalid username || Enter invalid password || Click Log in button
+,,,,,,
+Owner - Add Employee,Successful Add Employee,"Employee name is unique
+Employee email is unique
+Owner must be logged in
+Owner must be registered","New employee added successfully
+Message displayed 
+",High,no,Enter employee name || Enter employee email || Click Add button
+Owner - Add Employee,Invalid Add Employee,"Employee name already exists
+Employee email already exists
+Owner must be registered
+Owner must be logged in","New employee not added
+Error message displayed
+User prompted to add a different name",High,no,Enter invalid name || Enter email || Click Add button
+Owner - Add Employee,Invalid Email,"Employee email is wrong format
+Owner must be registered
+Owner must be logged in 
+","New employee not added
+User prompted to enter a valid email
+Error message displayed",High,no,Enter name || Enter invalid email || Click Add button
+,,,,,,
+Owner - Add Shift,Successful Add Shift,"Owner must be logged in 
+Owner must be registered
+Employee name must exist in the system
+Employee availability must match ","Shift add successful
+Message displayed
+New shift is added into the system database",High,no,Enter email || Enter day || Enter start time || Enter end time || Click Add button
+Owner - Add Shift,Invalid Time,"Owner must be registered
+Owner must be logged in
+Start time doesn't match with employee availability
+End time doesn't match with employee availability","Shift add unsuccessful
+Shift is not added into the system database
+User prompted to enter valid time",High,no,Enter email || Enter Day || Enter invalid start time || Enter invalid end time || Click Add button
+Owner - Add Shift,Invalid Day,"Owner must be registered
+Owner must be logged in
+Employee availability doesn't match with selected day","Add shift unsuccessful
+Shift is not added into the system
+User prompted to add a valid day
+Error message displayed",High,no,Enter email || Enter invalid day || Enter start time || Enter end time || Click Add button
+,,,,,,
+Owner - Make Booking,Successful Booking,"Owner must be registered
+Owner must be logged in
+Time must match employee availability
+","Booking successful
+New booking added into the system
+",High,no,Select Customer || Select Service || Select Employee || Select Day || Select Time || Click Confirm Button
+Owner - Make Booking,Unsuccessful Booking,"Owner must be logged in
+Owner must be registered
+Employee availability doesn't match the selected day or time
+","Booking unsuccessful
+User prompted to enter a valid time
+Error message displayed
+Booking not added into the database",High,no,Select Customer || Select service || Select employee || Select invalid day || Select invalid time || Click Confirm button
+Owner - Make Booking,Booking already exists,"Owner must be registered
+Owner must be logged in
+Booking already exists in the system","Booking not created
+Error message displayed
+User prompted to enter a new booking or update",High,no,Select customer || Select service || Select employee || Select day || Select time || Click Confirm button
