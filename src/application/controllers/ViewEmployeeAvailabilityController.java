@@ -15,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.text.Font;
 
 import java.util.ArrayList;
 
@@ -30,6 +31,8 @@ public class ViewEmployeeAvailabilityController {
 
 	SimpleDateFormat displayFormat = new SimpleDateFormat("HH:mm");
 	SimpleDateFormat convertingFormat = new SimpleDateFormat("EEE MMM dd hh:mm:ss zzz yyyy");
+	@FXML
+	private Label heading;
 	@FXML
 	private TableView<Shift> shiftTable;
 	@FXML
@@ -78,6 +81,11 @@ public class ViewEmployeeAvailabilityController {
 	public void setOwnerMenu(OwnerMenu om)
 	{
 		this.om = om;
+	}
+	
+	public void setHeading()
+	{
+		this.heading.setFont(Font.font(business.getFont(), 18));
 	}
 
 	public void setBusiness(Business business)

@@ -26,6 +26,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Font;
 
 public class CustomerMakeBookingController 
 {
@@ -38,6 +39,8 @@ public class CustomerMakeBookingController
 	private Service currentService;
 	private Date StartTime;
 	private Date EndTime;
+	@FXML
+	private Label heading;
 	@FXML
     private ChoiceBox<String> day;
 	@FXML
@@ -63,6 +66,11 @@ public class CustomerMakeBookingController
 	public void setMainMenu(CustomerMenu cm)
 	{
 		this.cm = cm;
+	}
+	public void setHeading()
+	{
+		System.out.println(heading);
+		heading.setFont(Font.font(business.getFont(), 18));
 	}
 	public void setBusiness(Business business)
 	{

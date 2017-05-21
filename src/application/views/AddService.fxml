@@ -37,5 +37,11 @@
             <Label fx:id="errorLabel" prefHeight="17.0" prefWidth="160.0" GridPane.columnIndex="1" />
          </children>
       </GridPane>
+      <Label fx:id="heading" layoutX="14.0" prefHeight="81.0" prefWidth="160.0" text="Add Service">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="errorLabel" layoutX="160.0" layoutY="32.0" prefHeight="17.0" prefWidth="160.0" />
    </children>
 </AnchorPane>

@@ -9,12 +9,15 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Font;
 
 public class AddServiceController {
 	
 	private static final Logger logger = LogManager.getLogger(AddServiceController.class.getName());
 	
 	private OwnerMenu om;
+	@FXML
+	private Label heading;
     @FXML
     private TextField name;
     @FXML
@@ -28,6 +31,11 @@ public class AddServiceController {
 	public void setMainMenu(OwnerMenu om)
 	{
 		this.om = om;
+	}
+	
+	public void setHeading()
+	{
+		this.heading.setFont(Font.font(business.getFont(), 18));
 	}
 	
 	public void handleBack()

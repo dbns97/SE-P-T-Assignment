@@ -24,7 +24,7 @@
             <RowConstraints maxHeight="247.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Label text="Available Times">
+            <Label fx:id="heading" text="Available Times">
                <font>
                   <Font size="18.0" />
                </font>

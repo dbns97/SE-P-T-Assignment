@@ -24,11 +24,6 @@
             <RowConstraints maxHeight="247.0" minHeight="10.0" prefHeight="35.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Label text="Booking Times">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
             <TableView fx:id="bookingsTable" prefHeight="259.0" prefWidth="470.0" GridPane.rowIndex="2">
                <columns>
                   <TableColumn fx:id="dayColumn" prefWidth="94.0" text="Day" />
@@ -72,7 +67,7 @@
                   <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Label text="Booking Times">
+                  <Label fx:id="heading" text="Booking Times">
                      <font>
                         <Font size="18.0" />
                      </font>

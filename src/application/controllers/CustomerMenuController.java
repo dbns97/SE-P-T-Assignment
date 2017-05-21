@@ -8,6 +8,7 @@ import application.views.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class CustomerMenuController {
@@ -26,6 +27,7 @@ public class CustomerMenuController {
 	public void setBusinessLabel(String businessName)
 	{
 		this.businessLabel.setText(businessName);
+		this.businessLabel.setFont(Font.font(business.getFont(), 18));
 	}
 	
 	public void setCustomerMenu(CustomerMenu cm)

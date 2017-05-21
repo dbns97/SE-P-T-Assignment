@@ -13,6 +13,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.text.Font;
 
 import java.util.Calendar;
 
@@ -25,6 +26,8 @@ public class ViewAvailableTimesController {
 	
 	private Menu parentMenu;
 	private Business business;
+	@FXML
+	private Label heading;
 	@FXML
 	private TableView<Shift> freeSlotTable;
 	@FXML
@@ -41,6 +44,12 @@ public class ViewAvailableTimesController {
 	public void setParentMenu(Menu menu)
 	{
 		this.parentMenu = menu;
+	}
+	
+	public void setHeading()
+	{
+		System.out.println(heading);
+		heading.setFont(Font.font(business.getFont(), 18));
 	}
 
 	public void setBusiness(Business business)

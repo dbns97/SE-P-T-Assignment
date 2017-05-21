@@ -1,18 +1,48 @@
 {
-    "Bob's Building": {"services": []},
-    "Jim's Barber Shop": {"services": [
-        {
-            "duration": 30,
-            "name": "Simple Cut"
+    "Bob's Building": {
+        "styles": {
+            "background": [
+                200.00000327825546,
+                100.00000163912773,
+                100.00000163912773
+            ],
+            "font": "Menlo"
         },
-        {
-            "duration": 45,
-            "name": "Style Cut"
+        "services": []
+    },
+    "Jim's Barber Shop": {
+        "styles": {
+            "background": [
+                100.00000163912773,
+                200.00000327825546,
+                100.00000163912773
+            ],
+            "font": "Arial Black"
         },
-        {
-            "duration": 60,
-            "name": "Beard Cut"
-        }
-    ]},
-    "Admin Made Me": {"services": []}
+        "services": [
+            {
+                "duration": 30,
+                "name": "Simple Cut"
+            },
+            {
+                "duration": 45,
+                "name": "Style Cut"
+            },
+            {
+                "duration": 60,
+                "name": "Beard Cut"
+            }
+        ]
+    },
+    "Admin Made Me": {
+        "styles": {
+            "background": [
+                100,
+                100,
+                200
+            ],
+            "font": "System"
+        },
+        "services": []
+    }
 }

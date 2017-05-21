@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class OwnerMenuController {
@@ -28,6 +29,7 @@ public class OwnerMenuController {
 	public void setBusinessLabel(String businessName)
 	{
 		this.businessLabel.setText(businessName);
+		this.businessLabel.setFont(Font.font(business.getFont(), 18));
 	}
 
 	public void setOwnerMenu(OwnerMenu om)
@@ -79,7 +81,12 @@ public class OwnerMenuController {
 	{
 		om.showMakeBookings();
 	}
-
+	
+	public void handleChangeStyles()
+	{
+		om.showChangeStyles();
+	}
+	
 	public void handleLogout()
 	{
 		DatabaseHandler.writeBusinessToFile(business);
