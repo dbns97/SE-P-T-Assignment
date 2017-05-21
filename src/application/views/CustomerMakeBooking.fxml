@@ -11,7 +11,7 @@
    <children>
       <AnchorPane prefHeight="80.0" prefWidth="500.0">
          <children>
-            <Label layoutX="153.0" prefHeight="80.0" prefWidth="194.0" text="Make Booking" textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="153.0" AnchorPane.rightAnchor="153.0" AnchorPane.topAnchor="0.0">
+            <Label fx:id="heading" layoutX="153.0" prefHeight="80.0" prefWidth="194.0" text="Make Booking" textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="153.0" AnchorPane.rightAnchor="153.0" AnchorPane.topAnchor="0.0">
                <font>
                   <Font size="28.0" />
                </font>

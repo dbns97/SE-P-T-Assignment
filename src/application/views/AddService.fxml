@@ -30,7 +30,7 @@
             <TextField fx:id="duration" promptText="45" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
-      <Label layoutX="14.0" prefHeight="81.0" prefWidth="160.0" text="Add Service">
+      <Label fx:id="heading" layoutX="14.0" prefHeight="81.0" prefWidth="160.0" text="Add Service">
          <font>
             <Font size="18.0" />
          </font>

@@ -176,19 +176,19 @@ public class DatabaseHandler {
 	}
 	
 	/**
-	 * @description Creates a Color object for the business's font color
-	 * @return Color the color object
+	 * @description Gets the name of the business' font from file
+	 * @return String the font name
 	 * @author Drew Nuttall-Smith
-	 * @since 20/5/2017
+	 * @since 21/5/2017
 	 **/
-	public static Color getFontColor(String businessName)
+	public static String getFont(String businessName)
 	{
-		JSONArray jsonFontColor = getJSONObjectFromFile(businessesFilePath)
+		String font = getJSONObjectFromFile(businessesFilePath)
 								  .getJSONObject(businessName)
 								  .getJSONObject("styles")
-								  .getJSONArray("font");
+								  .getString("font");
 		
-		return Color.rgb(jsonFontColor.getInt(0), jsonFontColor.getInt(1), jsonFontColor.getInt(2));
+		return font;
 	}
 	
 	/**
@@ -274,7 +274,7 @@ public class DatabaseHandler {
             
             JSONObject jsonStyles = new JSONObject();
             jsonStyles.put("background", colorToJSON(business.getBackgroundColor()));
-            jsonStyles.put("font", colorToJSON(business.getFontColor()));
+            jsonStyles.put("font", business.getFont());
             jsonBusiness.put("styles", jsonStyles);
            
             // Write business to file

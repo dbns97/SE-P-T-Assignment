@@ -12,7 +12,7 @@ public class Business {
 	private ArrayList<Employee> employees;
 	private ArrayList<Service> services;
 	private Color backgroundColor;
-	private Color fontColor;
+	private String font;
 	
 	public Business(String name)
 	{
@@ -22,7 +22,7 @@ public class Business {
 		services = DatabaseHandler.getServices(name);
 		customers = DatabaseHandler.getCustomers(this);
 		backgroundColor = DatabaseHandler.getBackgroundColor(name);
-		fontColor = DatabaseHandler.getFontColor(name);
+		font = DatabaseHandler.getFont(name);
 	}
 	
 	public Business(String name, Owner owner, ArrayList<Employee> employees, ArrayList<Service> services, ArrayList<Customer> customers)
@@ -33,7 +33,7 @@ public class Business {
 		this.services = services;
 		this.customers = customers;
 		this.backgroundColor = Color.rgb(244, 244, 244);
-		this.fontColor = Color.rgb(50, 50, 50);
+		this.font = "System";
 	}
 	
 	public String getName()
@@ -126,9 +126,9 @@ public class Business {
 		return backgroundColor;
 	}
 	
-	public Color getFontColor()
+	public String getFont()
 	{
-		return fontColor;
+		return font;
 	}
 	
 	public void setBackgroundColor(Color backgroundColor)
@@ -136,9 +136,9 @@ public class Business {
 		this.backgroundColor = backgroundColor;
 	}
 	
-	public void setFontColor(Color fontColor)
+	public void setFont(String font)
 	{
-		this.fontColor = fontColor;
+		this.font = font;
 	}
 	
 	/**

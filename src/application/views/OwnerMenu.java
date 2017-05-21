@@ -42,7 +42,7 @@ public class OwnerMenu extends Menu {
 			loader.setLocation(getClass().getResource("../views/RootLayout.fxml"));
 			root = (BorderPane) loader.load();
 			
-			root.setStyle("-fx-background-color: transparent;");
+			root.setStyle("-fx-font-family:\"" + business.getFont() + "\"; -fx-background-color: transparent;");
 			Scene scene = new Scene(root, business.getBackgroundColor());
 			primaryStage.setScene(scene);
 			primaryStage.show();
@@ -62,10 +62,10 @@ public class OwnerMenu extends Menu {
 			primaryStage.setWidth(OwnerMenu.getPrefWidth() + 50);
 			primaryStage.setHeight(OwnerMenu.getPrefHeight() + 32);
 			root.setCenter(OwnerMenu);
-			controller.setBusinessLabel(business.getName());
 			controller.setOwnerMenu(this);
 			controller.setMainMenu(pm);
 			controller.setBusiness(business);
+			controller.setBusinessLabel(business.getName());
 
 		} catch (IOException e) {
             e.printStackTrace();
@@ -87,6 +87,7 @@ public class OwnerMenu extends Menu {
 			controller.setOwnerMenu(this);
 			controller.setBusiness(business);
 			controller.loadRoster();
+			controller.setHeading();
 
 		} catch (IOException e) {
             e.printStackTrace();
@@ -108,6 +109,7 @@ public class OwnerMenu extends Menu {
 			controller.setParentMenu(this);
 			controller.setBusiness(business);
 			controller.setWeekChoiceBox();
+			controller.setHeading();
 			controller.handleView();
 
 		} catch (IOException e) {
@@ -129,6 +131,7 @@ public class OwnerMenu extends Menu {
 			root.setCenter(addEmployee);
 			controller.setMainMenu(this);
 			controller.setBusiness(business);
+			controller.setHeading();
 
 		} catch (IOException e) {
             e.printStackTrace();
@@ -151,6 +154,7 @@ public class OwnerMenu extends Menu {
 			controller.setBusiness(business);
 			controller.setDaysChoiceBox();
 			controller.setEmailsChoiceBox();
+			controller.setHeading();
 
 		} catch (IOException e) {
             e.printStackTrace();
@@ -171,6 +175,7 @@ public class OwnerMenu extends Menu {
 			root.setCenter(addService);
 			controller.setMainMenu(this);
 			controller.setBusiness(business);
+			controller.setHeading();
 
 		} catch (IOException e) {
             e.printStackTrace();
@@ -197,6 +202,7 @@ public class OwnerMenu extends Menu {
 			root.setCenter(OwnerMakeBooking);
 			controller.setMainMenu(this);
 			controller.setBusiness(business);
+			controller.setHeading();
 			
 			controller.setEmployeeBox();
 			controller.setDayBox();
@@ -226,6 +232,8 @@ public class OwnerMenu extends Menu {
 			root.setCenter(ChangeStyles);
 			controller.setMainMenu(this);
 			controller.setBusiness(business);
+			controller.setFontChoiceBox();
+			controller.setHeading();
 			
 		} catch (IOException e) {
             e.printStackTrace();

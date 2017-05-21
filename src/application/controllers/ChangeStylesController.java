@@ -1,21 +1,28 @@
 package application.controllers;
 import application.models.*;
 import application.views.*;
-
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 public class ChangeStylesController {
 	private OwnerMenu om;
+	@FXML
+	private Label heading;
     @FXML
     private TextField backgroundRed;
     @FXML
     private TextField backgroundGreen;
     @FXML
     private TextField backgroundBlue;
+    @FXML
+    private ChoiceBox<String> font;
     @FXML
     private Button changeStylesButton;
     @FXML
@@ -27,6 +34,11 @@ public class ChangeStylesController {
 		this.om = om;
 	}
 	
+	public void setHeading()
+	{
+		this.heading.setFont(Font.font(business.getFont(), 18));
+	}
+	
 	public void handleBack()
 	{
 		om.showOwnerMenu();
@@ -35,6 +47,12 @@ public class ChangeStylesController {
 	public void setBusiness(Business business)
 	{
 		this.business = business;
+	}
+	
+	public void setFontChoiceBox()
+	{
+		font.setItems(FXCollections.observableArrayList(Font.getFamilies()));
+		font.setValue(business.getFont());
 	}
 	
 	public boolean handleChangeStyles()
@@ -58,6 +76,9 @@ public class ChangeStylesController {
 		Color backgroundColor = Color.rgb(backgroundRedVal, backgroundGreenVal, backgroundBlueVal);
 		business.setBackgroundColor(backgroundColor);
 		om.getPrimaryStage().getScene().setFill(backgroundColor);
+		
+		business.setFont(font.getValue());
+		om.getPrimaryStage().getScene().getRoot().setStyle("-fx-font-family:\"" + font.getValue() + "\"; -fx-background-color: transparent;");
 		
 		errorLabel.setText("Successfully changed styles");
 		DatabaseHandler.writeBusinessToFile(business);

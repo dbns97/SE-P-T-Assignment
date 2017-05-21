@@ -13,6 +13,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.text.Font;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -20,6 +21,8 @@ import java.util.Calendar;
 public class ViewBookingsController {
 	private Menu parentMenu;
 	private Business business;
+	@FXML
+	private Label heading;
 	@FXML
 	private TableView<Booking> bookingsTable;
 	@FXML
@@ -40,6 +43,11 @@ public class ViewBookingsController {
 	public void setParentMenu(Menu menu)
 	{
 		this.parentMenu = menu;
+	}
+	
+	public void setHeading()
+	{
+		this.heading.setFont(Font.font(business.getFont(), 18));
 	}
 
 	public void setBusiness(Business business)

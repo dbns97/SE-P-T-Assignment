@@ -38,7 +38,7 @@ public class CustomerMenu extends Menu {
 			loader.setLocation(getClass().getResource("../views/RootLayout.fxml"));
 			root = (BorderPane) loader.load();
 			
-			root.setStyle("-fx-background-color: transparent;");
+			root.setStyle("-fx-font-family:\"" + business.getFont() + "\"; -fx-background-color: transparent;");
 			Scene scene = new Scene(root, business.getBackgroundColor());
 			primaryStage.setScene(scene);
 			primaryStage.show();
@@ -58,10 +58,10 @@ public class CustomerMenu extends Menu {
 			primaryStage.setWidth(CustomerMenu.getPrefWidth() + 50);
 			primaryStage.setHeight(CustomerMenu.getPrefHeight() + 50);
 			root.setCenter(CustomerMenu);
-			controller.setBusinessLabel(business.getName());
 			controller.setCustomerMenu(this);
 			controller.setMainMenu(pm);
 			controller.setBusiness(business);
+			controller.setBusinessLabel(business.getName());
 
 		} catch (IOException e) {
             e.printStackTrace();
@@ -83,6 +83,7 @@ public class CustomerMenu extends Menu {
 			controller.setParentMenu(this);
 			controller.setBusiness(business);
 			controller.setWeekChoiceBox();
+			controller.setHeading();
 			controller.handleView();
 
 		} catch (IOException e) {
@@ -115,6 +116,7 @@ public class CustomerMenu extends Menu {
 			controller.setMainMenu(this);
 			controller.setBusiness(business);
 			controller.setCustomer(customer);
+			controller.setHeading();
 			
 			controller.setEmployeeBox();
 			controller.setDayBox();

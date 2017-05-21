@@ -13,9 +13,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Font;
 
 public class AddShiftController {
 	private OwnerMenu om;
+	@FXML
+	private Label heading;
 	@FXML
     private ChoiceBox<String> email;
 	@FXML
@@ -34,6 +37,11 @@ public class AddShiftController {
 	public void setMainMenu(OwnerMenu om)
 	{
 		this.om = om;
+	}
+	
+	public void setHeading()
+	{
+		this.heading.setFont(Font.font(business.getFont(), 18));
 	}
 	
 	public void handleBack()
@@ -62,7 +70,9 @@ public class AddShiftController {
 			emailList.add(emp.getEmail());
 		}
 		email.setItems(emailList);
-		email.setValue(employeeList.get(0).getEmail());
+		if (employeeList.size() > 0) {
+			email.setValue(employeeList.get(0).getEmail());
+		}
 		
 	}
 	

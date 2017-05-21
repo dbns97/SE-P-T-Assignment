@@ -1,7 +1,5 @@
 package application.controllers;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -24,6 +22,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Font;
 
 public class OwnerMakeBookingController {
 
@@ -35,6 +34,8 @@ public class OwnerMakeBookingController {
 	private Service currentService;
 	private Date StartTime;
 	private Date EndTime;	
+	@FXML
+	private Label heading;
 	@FXML
 	private ChoiceBox<String> customer;
 	@FXML
@@ -62,6 +63,10 @@ public class OwnerMakeBookingController {
 	public void setMainMenu(OwnerMenu om)
 	{
 		this.om = om;
+	}
+	public void setHeading()
+	{
+		this.heading.setFont(Font.font(business.getFont(), 18));
 	}
 	public void setBusiness(Business business)
 	{
