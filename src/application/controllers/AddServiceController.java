@@ -1,4 +1,7 @@
 package application.controllers;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import application.models.*;
 import application.views.*;
 
@@ -8,6 +11,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class AddServiceController {
+	
+	private static final Logger logger = LogManager.getLogger(AddServiceController.class.getName());
+	
 	private OwnerMenu om;
     @FXML
     private TextField name;
@@ -40,6 +46,7 @@ public class AddServiceController {
 		if(name.getText().trim().isEmpty() || !(name.getText().matches("[a-zA-z0-9 ,.'-]+")))
 		{
 			errorLabel.setText("Please enter a valid name");
+			logger.debug("invalid name entered into system : {}", name.getText());
 			return false;
 		}
 		

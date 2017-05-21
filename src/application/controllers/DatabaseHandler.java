@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -20,6 +22,9 @@ import application.models.Service;
 import application.models.Shift;
 
 public class DatabaseHandler {
+	
+
+	final static Logger logger = LogManager.getLogger(DatabaseHandler.class.getName());
 	
 	private final static String adminFilePath      = "../../JSONdatabase/admin.json";
 	private final static String businessesFilePath = "../../JSONdatabase/businesses.json";
@@ -249,6 +254,7 @@ public class DatabaseHandler {
         }
         catch (IOException e)
         {
+        	logger.fatal("database wasnt able to get updated");
             e.printStackTrace();
         }
 	}

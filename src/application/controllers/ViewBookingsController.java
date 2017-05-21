@@ -4,6 +4,10 @@ import application.views.*;
 
 import java.text.SimpleDateFormat;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -18,6 +22,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class ViewBookingsController {
+
+	final static Logger logger = LogManager.getLogger(ViewBookingsController.class.getName());
+
 	private Menu parentMenu;
 	private Business business;
 	@FXML
@@ -46,7 +53,7 @@ public class ViewBookingsController {
 	{
 		this.business = business;
 	}
-	
+
 	public void setWeekChoiceBox()
 	{
 		week.setItems(FXCollections.observableArrayList("Last week", "This week", "Next week"));
@@ -57,23 +64,23 @@ public class ViewBookingsController {
 	    	(ObservableValue<? extends String> observable, String oldValue, String newValue) -> handleView()
 	    );
 	}
-	
+
 	public void handleView()
-	{	
+	{
 		ObservableList<Booking> bookings = FXCollections.observableArrayList();
 		SimpleDateFormat displayFormat = new SimpleDateFormat("HH:mm");
 		SimpleDateFormat displayDayFormat = new SimpleDateFormat("EEE");
-		
+
 		Calendar startOfWeek = Calendar.getInstance();
 		Calendar endOfWeek = Calendar.getInstance();
 		startOfWeek.setFirstDayOfWeek(Calendar.MONDAY);
-		
+
 		// Set startOfWeek calendar value to beginning of day
 		startOfWeek.set(Calendar.HOUR_OF_DAY, 0); // Clear doesn't reset the hour of day
 		startOfWeek.clear(Calendar.MINUTE);
 		startOfWeek.clear(Calendar.SECOND);
 		startOfWeek.clear(Calendar.MILLISECOND);
-		
+
 		// Set startOfWeek calendar to match the selected week
 		if (week.getValue().equals("Last week")) {
 			// Get start of last week
@@ -87,13 +94,13 @@ public class ViewBookingsController {
 			startOfWeek.set(Calendar.DAY_OF_WEEK, startOfWeek.getFirstDayOfWeek());
 			startOfWeek.add(Calendar.WEEK_OF_YEAR, 1);
 		}
-		
+
 		// Set endOfWeek calendar based on startOfWeek calendar
 		endOfWeek.setTimeInMillis(startOfWeek.getTimeInMillis());
 		endOfWeek.add(Calendar.WEEK_OF_YEAR, 1);
-		
+
 		ArrayList<Customer> customers = business.getCustomers();
-		
+
 		for (Customer customer : customers)
 		{
 			for (Booking booking : customer.getBookings())
@@ -104,9 +111,9 @@ public class ViewBookingsController {
 				}
 			}
 		}
-		
+
 		bookings.sort((a,b) -> a.getStart().getTime() < b.getStart().getTime() ? -1 : a.getStart().getTime() == b.getStart().getTime() ? 0 : 1);
-		
+
     	employeeColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEmployee().getName()));
     	customerColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCustomer().getName()));
     	serviceColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getService().getName()));
@@ -116,11 +123,11 @@ public class ViewBookingsController {
         timeColumn.setCellValueFactory(cellData -> {
 			return new SimpleStringProperty(displayFormat.format(cellData.getValue().getStart()) + "-" + displayFormat.format(cellData.getValue().getEnd()));
 		});
-        
+
         bookingsTable.setItems(bookings);
-		
+
 	}
-	
+
 	public void handleBack()
 	{
 		if (parentMenu instanceof OwnerMenu) {
