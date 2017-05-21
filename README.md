@@ -16,6 +16,12 @@
 * Aleks: Tests, Code - 25%
 * Nish: User stories, Tests - 25%
 
+## Part C Contributions
+* Drew: Code (Admin users, create business function, DatabaseHandler class, ChangeStyles function) - 25%
+* Shawn: Logging - 25%
+* Aleks: Design document, unit tests - 25%
+* Nish:  Acceptance tests - 25%
+
 ## Tutorial
 Tutor: Homy
 Time:  Tuesday 4.30
