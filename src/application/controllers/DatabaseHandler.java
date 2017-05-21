@@ -286,32 +286,22 @@ public class DatabaseHandler {
 	public static boolean checkLogin(String businessName, String username, String password)
 	{
 		// Load all users for the business
-		JSONObject jsonUsers = getJSONObjectFromFile(usersFilePath).getJSONObject(businessName);
-
-		if(jsonUsers == null ){
-			logger.warn("business: {}, is null");
-		}
-		// Create an array of usernames
-		String[] usernames = JSONObject.getNames(jsonUsers);
-		if(usernames == null) {
+		JSONObject jsonUsers = getJSONObjectFromFile(usersFilePath);
+		if (jsonUsers.has(businessName)) {
+			jsonUsers = jsonUsers.getJSONObject(businessName);
+		} else {
 			return false;
 		}
-
-		// Loop over all usernames
-		for (int i = 0; i < usernames.length; i++) {
-			// Check if the username matches the current one in the list
-			if (username.equals(usernames[i])) {
-				JSONObject jsonUser = jsonUsers.getJSONObject(username);
-
-				// checks password
-				if (password.equals(jsonUser.getString("password")))
-				{
-					return true;
-				}
-				else
-				{
-					return false;
-				}
+		
+		// Check if username is valid
+		if (jsonUsers.has(username)) {
+			JSONObject jsonUser = jsonUsers.getJSONObject(username);
+			// checks password
+			if (password.equals(jsonUser.getString("password"))) {
+				return true;
+			}
+			else {
+				return false;
 			}
 		}
 		return false;
