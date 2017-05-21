@@ -1,0 +1,23 @@
+[PROGRAM] 2017-05-21 14:49:57.327 [main] Driver - Starting Program
+[DEBUG] 2017-05-21 14:52:30.729 [JavaFX Application Thread] OwnerMakeBookingController - business.getCustomers().size() : 3 
+[DEBUG] 2017-05-21 14:52:30.729 [JavaFX Application Thread] OwnerMakeBookingController -  customer username: username3
+[DEBUG] 2017-05-21 14:52:30.729 [JavaFX Application Thread] OwnerMakeBookingController -  customer username: username2
+[DEBUG] 2017-05-21 14:52:30.729 [JavaFX Application Thread] OwnerMakeBookingController -  customer username: username1
+[INFO ] 2017-05-21 14:52:33.841 [JavaFX Application Thread] OwnerMakeBookingController - service box clicked
+[DEBUG] 2017-05-21 14:52:57.706 [JavaFX Application Thread] OwnerMakeBookingController - business.getCustomers().size() : 3 
+[DEBUG] 2017-05-21 14:52:57.723 [JavaFX Application Thread] OwnerMakeBookingController -  customer username: username3
+[DEBUG] 2017-05-21 14:52:57.723 [JavaFX Application Thread] OwnerMakeBookingController -  customer username: username2
+[DEBUG] 2017-05-21 14:52:57.723 [JavaFX Application Thread] OwnerMakeBookingController -  customer username: username1
+[DEBUG] 2017-05-21 14:52:59.814 [JavaFX Application Thread] OwnerMakeBookingController - business.getCustomers().size() : 3 
+[DEBUG] 2017-05-21 14:52:59.814 [JavaFX Application Thread] OwnerMakeBookingController -  customer username: username3
+[DEBUG] 2017-05-21 14:52:59.814 [JavaFX Application Thread] OwnerMakeBookingController -  customer username: username2
+[DEBUG] 2017-05-21 14:52:59.814 [JavaFX Application Thread] OwnerMakeBookingController -  customer username: username1
+[DEBUG] 2017-05-21 14:53:02.380 [JavaFX Application Thread] OwnerMakeBookingController - business.getCustomers().size() : 3 
+[DEBUG] 2017-05-21 14:53:02.380 [JavaFX Application Thread] OwnerMakeBookingController -  customer username: username3
+[DEBUG] 2017-05-21 14:53:02.380 [JavaFX Application Thread] OwnerMakeBookingController -  customer username: username2
+[DEBUG] 2017-05-21 14:53:02.380 [JavaFX Application Thread] OwnerMakeBookingController -  customer username: username1
+[PROGRAM] 2017-05-21 14:53:09.409 [main] Driver - Ending Program
+[PROGRAM] 2017-05-21 14:55:47.094 [main] Driver - Starting Program
+[PROGRAM] 2017-05-21 14:56:19.424 [main] Driver - Ending Program
+[PROGRAM] 2017-05-21 15:16:05.367 [main] Driver - Starting Program
+[PROGRAM] 2017-05-21 15:17:00.445 [main] Driver - Ending Program
