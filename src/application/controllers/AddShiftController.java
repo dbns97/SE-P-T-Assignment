@@ -75,16 +75,11 @@ public class AddShiftController
 		{
 			emailList.add(emp.getEmail());
 		}
+		
 		email.setItems(emailList);
-<<<<<<< HEAD
-		email.setValue(employeeList.get(0).getEmail());
-
-=======
 		if (employeeList.size() > 0) {
 			email.setValue(employeeList.get(0).getEmail());
 		}
-		
->>>>>>> customiseColours
 	}
 
 	public boolean handleAddShift()
