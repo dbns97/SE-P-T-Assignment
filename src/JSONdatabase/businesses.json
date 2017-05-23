@@ -2,11 +2,11 @@
     "Bob's Building": {
         "styles": {
             "background": [
-                200.00000327825546,
-                100.00000163912773,
-                100.00000163912773
+                255,
+                152.0000061392784,
+                0
             ],
-            "font": "Menlo"
+            "font": "Avenir"
         },
         "services": []
     },
@@ -44,5 +44,19 @@
             "font": "System"
         },
         "services": []
+    },
+    "Test Business": {
+        "styles": {
+            "background": [
+                244.0000006556511,
+                244.0000006556511,
+                244.0000006556511
+            ],
+            "font": "System"
+        },
+        "services": [{
+            "duration": 30,
+            "name": "test service"
+        }]
     }
 }

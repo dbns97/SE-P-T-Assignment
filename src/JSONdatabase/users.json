@@ -80,5 +80,17 @@
     "Admin Made Me": {"owner": {
         "password": "pass1",
         "isOwner": true
-    }}
+    }},
+    "Test Business": {
+        "owner": {
+            "password": "pass1",
+            "isOwner": true
+        },
+        "username1": {
+            "password": "pass1",
+            "isOwner": false,
+            "name": "User One",
+            "bookings": []
+        }
+    }
 }

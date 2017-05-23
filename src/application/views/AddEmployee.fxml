@@ -30,7 +30,7 @@
             <Button mnemonicParsing="false" onAction="#handleBack" text="Back" GridPane.rowIndex="2" />
          </children>
       </GridPane>
-      <Label fx:id="heading" layoutX="14.0" prefHeight="81.0" prefWidth="160.0" text="Add Employee">
+      <Label fx:id="heading" layoutX="25.0" layoutY="9.0" prefHeight="81.0" prefWidth="296.0" text="Add Employee">
          <font>
             <Font size="18.0" />
          </font>

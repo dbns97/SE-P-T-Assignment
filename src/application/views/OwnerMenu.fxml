@@ -31,14 +31,14 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button mnemonicParsing="false" onAction="#showAddEmployee" prefWidth="175.0" text="Add employee" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" onAction="#showAddShift" prefWidth="175.0" text="Add shift" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" onAction="#showAddService" prefWidth="175.0" text="Add service" GridPane.rowIndex="3" />
-            <Button mnemonicParsing="false" onAction="#handleViewBookings" prefWidth="175.0" text="View bookings summary" GridPane.rowIndex="4" />
-            <Button mnemonicParsing="false" onAction="#handleMakeBooking" prefWidth="175.0" text="Make Booking" GridPane.rowIndex="5" />
-            <Button mnemonicParsing="false" onAction="#handleViewEmployeeAvailability" prefWidth="175.0" text="View employees' availability" GridPane.rowIndex="6" />
+            <Button mnemonicParsing="false" onAction="#showAddEmployee" prefWidth="230.0" text="Add employee" GridPane.rowIndex="1" />
+            <Button mnemonicParsing="false" onAction="#showAddShift" prefWidth="230.0" text="Add shift" GridPane.rowIndex="2" />
+            <Button mnemonicParsing="false" onAction="#showAddService" prefWidth="230.0" text="Add service" GridPane.rowIndex="3" />
+            <Button mnemonicParsing="false" onAction="#handleViewBookings" prefWidth="230.0" text="View bookings summary" GridPane.rowIndex="4" />
+            <Button mnemonicParsing="false" onAction="#handleMakeBooking" prefWidth="230.0" text="Make Booking" GridPane.rowIndex="5" />
+            <Button mnemonicParsing="false" onAction="#handleViewEmployeeAvailability" prefWidth="230.0" text="View employees' availability" GridPane.rowIndex="6" />
             <Button fx:id="logout" mnemonicParsing="false" onAction="#handleLogout" text="Logout" GridPane.halignment="RIGHT" GridPane.rowIndex="8" />
-            <Button fx:id="changeStyles" mnemonicParsing="false" onAction="#handleChangeStyles" prefWidth="175.0" text="Change Styles" GridPane.rowIndex="7" />
+            <Button fx:id="changeStyles" mnemonicParsing="false" onAction="#handleChangeStyles" prefWidth="230.0" text="Change Styles" GridPane.rowIndex="7" />
          </children>
       </GridPane>
       <Label fx:id="errorLabel" layoutX="8.0" layoutY="277.0" />

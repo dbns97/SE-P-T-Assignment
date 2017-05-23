@@ -232,7 +232,7 @@ public class OwnerMenu extends Menu {
 			root.setCenter(ChangeStyles);
 			controller.setMainMenu(this);
 			controller.setBusiness(business);
-			controller.setFontChoiceBox();
+			controller.setDefaultValues();
 			controller.setHeading();
 			
 		} catch (IOException e) {

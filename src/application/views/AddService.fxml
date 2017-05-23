@@ -11,37 +11,30 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="342.0" prefWidth="346.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controllers.AddServiceController">
    <children>
-      <GridPane layoutY="28.0" prefHeight="289.0" prefWidth="296.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0">
+      <GridPane layoutY="87.0" prefHeight="230.0" prefWidth="296.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="87.0">
         <columnConstraints>
           <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="168.0" minWidth="10.0" prefWidth="113.0" />
           <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="248.0" minWidth="10.0" prefWidth="183.0" />
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints maxHeight="132.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="132.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="132.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="168.0" minHeight="10.0" prefHeight="85.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="145.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="159.0" minHeight="10.0" prefHeight="74.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="168.0" minHeight="10.0" prefHeight="86.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="addServiceButton" mnemonicParsing="false" onAction="#handleAddService" text="Add" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Button mnemonicParsing="false" onAction="#handleBack" text="Back" GridPane.rowIndex="3" />
-            <Label text="Name" GridPane.rowIndex="1" />
-            <TextField fx:id="name" prefHeight="27.0" prefWidth="171.0" promptText="Basic Service" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label text="Duration (mins)" GridPane.rowIndex="2" />
-            <TextField fx:id="duration" promptText="45" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label prefHeight="81.0" prefWidth="160.0" text="Add Service">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Label fx:id="errorLabel" prefHeight="17.0" prefWidth="160.0" GridPane.columnIndex="1" />
+            <Button fx:id="addServiceButton" mnemonicParsing="false" onAction="#handleAddService" text="Add" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button mnemonicParsing="false" onAction="#handleBack" text="Back" GridPane.rowIndex="2" />
+            <Label text="Name" />
+            <TextField fx:id="name" prefHeight="27.0" prefWidth="171.0" promptText="Basic Service" GridPane.columnIndex="1" />
+            <Label text="Duration (mins)" GridPane.rowIndex="1" />
+            <TextField fx:id="duration" promptText="45" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
-      <Label fx:id="heading" layoutX="14.0" prefHeight="81.0" prefWidth="160.0" text="Add Service">
+      <Label fx:id="errorLabel" layoutX="160.0" layoutY="32.0" prefHeight="17.0" prefWidth="160.0" />
+      <Label fx:id="heading" layoutX="25.0" layoutY="18.0" prefHeight="62.0" prefWidth="296.0" text="Add Service">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label fx:id="errorLabel" layoutX="160.0" layoutY="32.0" prefHeight="17.0" prefWidth="160.0" />
    </children>
 </AnchorPane>

@@ -49,10 +49,13 @@ public class ChangeStylesController {
 		this.business = business;
 	}
 	
-	public void setFontChoiceBox()
+	public void setDefaultValues()
 	{
 		font.setItems(FXCollections.observableArrayList(Font.getFamilies()));
 		font.setValue(business.getFont());
+		backgroundRed.setText(Integer.toString((int)(business.getBackgroundColor().getRed() * 255)));
+		backgroundGreen.setText(Integer.toString((int)(business.getBackgroundColor().getGreen() * 255)));
+		backgroundBlue.setText(Integer.toString((int)(business.getBackgroundColor().getBlue() * 255)));
 	}
 	
 	public boolean handleChangeStyles()
