@@ -25,50 +25,50 @@ import javafx.scene.control.TextField;
 
 public class AddServiceController {
 	private OwnerMenu om;
-    @FXML
-    private TextField name;
-    @FXML
-    private TextField duration;
-    @FXML
-    private Button addShiftButton;
-    @FXML
-    private Label errorLabel;
-    private Business business;
-    private SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
-    
+	@FXML
+	private TextField name;
+	@FXML
+	private TextField duration;
+	@FXML
+	private Button addShiftButton;
+	@FXML
+	private Label errorLabel;
+	private Business business;
+	private SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+
 	public void setMainMenu(OwnerMenu om)
 	{
 		this.om = om;
 	}
-	
+
 	public void handleBack()
 	{
 		om.showOwnerMenu();
 	}
-	
+
 	public void setBusiness(Business business)
 	{
 		this.business = business;
 	}
-	
+
 	public boolean handleAddService()
 	{	
-		// Check name format
+		/* Check name format
 		if(name.getText().trim().isEmpty() || !(name.getText().matches("[a-zA-z0-9 ,.'-]+")))
 		{
 			errorLabel.setText("Please enter a valid name");
 			return false;
 		}
-		
+
 		// Check duration format
 		if(duration.getText().trim().isEmpty() || !(duration.getText().matches("[0-9]{1,3}")))
 		{
 			errorLabel.setText("Please enter a valid duration in minutes (maximum 3 digits)");
 			return false;
 		}
-		
+
 		boolean success = business.addService(name.getText(), Integer.parseInt(duration.getText()));
-		
+
 		if (success) {
 			errorLabel.setText("Successfully created service: " + name.getText());
 			return true;
@@ -76,6 +76,36 @@ public class AddServiceController {
 			errorLabel.setText("Failed to create service. Name: " + name.getText() + " already in use");
 			return false;
 		} 
+		*/
+		String errorMessage = checkServiceDetails(name.getText(), duration.getText(), business);
+		if(errorMessage != null)
+		{
+			errorLabel.setText(errorMessage);
+			return false;
+		}
+		return true;
 	}
 
+	public String checkServiceDetails(String name, String duration, Business business)
+	{
+		// Check name format
+		if(name.trim().isEmpty() || !(name.matches("[a-zA-z0-9 ,.'-]+")))
+		{
+			return "Please enter a valid name";
+		}
+
+		// Check duration format
+		if(duration.trim().isEmpty() || !(duration.matches("[0-9]{1,3}")))
+		{
+			return "Please enter a valid duration in minutes (maximum 3 digits)";
+		}
+
+		boolean success = business.addService(name, Integer.parseInt(duration));
+
+		if (success) {
+			return ("Successfully created service: " + name);
+		} else {
+			return ("Failed to create service. Name: " + name + " already in use");
+		} 
+	}
 }
