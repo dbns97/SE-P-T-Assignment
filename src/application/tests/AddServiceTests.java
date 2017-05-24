@@ -35,7 +35,7 @@ public class AddServiceTests {
 			{"Service Name", "", false, "Please enter a valid duration in minutes (maximum 3 digits)"},
 			{"Service Name", " ", false, "Please enter a valid duration in minutes (maximum 3 digits)"},
 			{"Service Name", "string", false, "Please enter a valid duration in minutes (maximum 3 digits)"},
-			{"Service Name", "1234", false, "Please enter a valid duration in minutes (maximum 3 digits)"},
+			{"Service Name", "1234", false, "Please enter a valid duration in minutes (maximum 3 digits)"}
 			
 		});
 	}
