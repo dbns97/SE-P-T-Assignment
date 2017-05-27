@@ -1,4 +1,5 @@
 package application.controllers;
+
 import application.models.*;
 import application.views.*;
 
@@ -28,177 +29,186 @@ public class PublicMenuController {
 	@FXML
 	private TextField businessName;
 	@FXML
-    private TextField username;
-    @FXML
-    private PasswordField password;
-    @FXML
-    private Label errorLabel;
+	private TextField username;
+	@FXML
+	private PasswordField password;
+	@FXML
+	private Label errorLabel;
 
+	public void setUsername(String username) {
+		this.username.setText(username);
+	}
 
-    public void setUsername(String username)
-    {
-    	this.username.setText(username);
-    }
+	public void setPassword(String password) {
+		this.password.setText(password);
+	}
 
-    public void setPassword(String password)
-    {
-    	this.password.setText(password);
-    }
-
-	public void setMainMenu(PublicMenu pm)
-	{
+	public void setMainMenu(PublicMenu pm) {
 		this.pm = pm;
 	}
 
-	public void setLoggedInUser(JSONObject user)
-	{
+	public void setLoggedInUser(JSONObject user) {
 		loggedInUser = user;
 	}
 
-	public void handleRegister()
-	{
+	public void handleRegister() {
 		pm.showRegister();
 	}
-	
-	public void handleCreateBusiness()
-	{
+
+	public void handleCreateBusiness() {
 		pm.showCreateBusiness();
 	}
 
-	public void setUsername(TextField username)
-	{
+	public void setUsername(TextField username) {
 		this.username = username;
 	}
 
-	public void setErrorLabel(Label errorLabel)
-	{
+	public void setErrorLabel(Label errorLabel) {
 		this.errorLabel = errorLabel;
 	}
 
-	public void setUsersFilepath(String path)
-	{
+	public void setUsersFilepath(String path) {
 		this.usersFilepath = path;
 	}
 
-	public void setPassword(PasswordField password)
-	{
+	public void setPassword(PasswordField password) {
 		this.password = password;
 	}
 
-	public void handleLogin()
-   {
-      Boolean validLogin = checkLogin();
+	public void handleLogin() {
+		Boolean validLogin = checkLogin();
 
-      if( validLogin == true )
-      {
-         // find out if owner or customer
-         if(business.getOwner().getUsername().equals(username.getText()))
-         {
-            OwnerMenu menu = new OwnerMenu();
-            menu.setBusiness(business);
-            menu.setMainMenu(pm);
-            Stage stage = (Stage) loginButton.getScene().getWindow();
-              try
-              {
-               menu.start(stage);
-              } catch(Exception e) {
-               e.printStackTrace();
-            }
+		if (validLogin == true) {
+			// find out if owner or customer
+			if (business.getOwner().getUsername().equals(username.getText())) {
+				OwnerMenu menu = new OwnerMenu();
+				menu.setBusiness(business);
+				menu.setMainMenu(pm);
+				Stage stage = (Stage) loginButton.getScene().getWindow();
+				try {
+					menu.start(stage);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 
-         }
-         else
-         {
-        	Customer customer = business.getCustomer(username.getText());
-            CustomerMenu menu = new CustomerMenu();
-            menu.setBusiness(business);
-            menu.setMainMenu(pm);
-            menu.setCustomer(customer);
-            Stage stage = (Stage) loginButton.getScene().getWindow();
-              try
-              {
-               menu.start(stage);
-              } catch(Exception e) {
-               e.printStackTrace();
-            }
-         }
-      }
+			} else {
+				Customer customer = business.getCustomer(username.getText());
+				CustomerMenu menu = new CustomerMenu();
+				menu.setBusiness(business);
+				menu.setMainMenu(pm);
+				menu.setCustomer(customer);
+				Stage stage = (Stage) loginButton.getScene().getWindow();
+				try {
+					menu.start(stage);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		}
 
-   }
+	}
 
 	/*
-	 * if this returns true we want to load the user information
-	 * then find out if the user is the owner then call for the
-	 * right menu to display
+	 * if this returns true we want to load the user information then find out
+	 * if the user is the owner then call for the right menu to display
 	 */
-	public boolean checkLogin()
-   {
-	   errorLabel.setWrapText(true);
-	   
-	   // Check if business name entered is valid
-	   JSONObject businesses = JSONUtils.getJSONObjectFromFile(businessesFilepath);
-	   String[] businessNames = JSONObject.getNames(businesses);
-	   if (businessNames == null) {
-    	   errorLabel.setText("Business entered doesn't exist");
-    	   return false;
-	   }
-	   
-	   for(int i = 0; i < businessNames.length; i++) {
-		   if(businessName.getText().equals(businessNames[i])) {
-			   business = new Business(businessName.getText());
-			   break;
-		   }
-	   }
+	public boolean checkLogin() {
+		errorLabel.setWrapText(true);
 
-	   // loads all users from database
-	   JSONObject data = JSONUtils.getJSONObjectFromFile(usersFilepath).getJSONObject(businessName.getText());
-	   
-       // checks the database user names and compares to what was entered in the text field
-       String[] dataUsernames = JSONObject.getNames(data);
-       if(dataUsernames == null)
-       {
-    	   errorLabel.setText("Username entered doesn't exist");
-    	   return false;
-       }
+		// Check if business name entered is valid
+		JSONObject businesses = JSONUtils.getJSONObjectFromFile(businessesFilepath);
+		String[] businessNames = JSONObject.getNames(businesses);
+		if (businessNames == null) {
+			errorLabel.setText("Business entered doesn't exist");
+			return false;
+		}
 
-       for ( int i=0; i < dataUsernames.length; i++ )
-	   {
+		for (int i = 0; i < businessNames.length; i++) {
+			if (businessName.getText().equals(businessNames[i])) {
+				business = new Business(businessName.getText());
+				break;
+			}
+		}
 
-	      if ( username.getText().equals( dataUsernames[i] ) )
-	      {
-	         // if here they entered the right user name
-	         // load that user information from database
-	         JSONObject user = data.getJSONObject( username.getText() );
+		// loads all users from database
+		JSONObject data = JSONUtils.getJSONObjectFromFile(usersFilepath).getJSONObject(businessName.getText());
 
-	         // checks password
-	         if ( password.getText().equals( user.getString( "password" ) ) )
-	         {
-	            errorLabel.setText("");
-	            return true;
-	         }
-	         else
-	         {
+		String errorMessage = checkLoginDetails(username.getText(), password.getText(), data);
+		if(errorMessage != null)
+		{
+			errorLabel.setText(errorMessage);
+			return false;
+		}
+		return true;
+		// checks the database user names and compares to what was entered in
+		// the text field
+		/*
+		String[] dataUsernames = JSONObject.getNames(data);
+		if (dataUsernames == null) {
+			errorLabel.setText("Username entered doesn't exist");
+			return false;
+		}
 
+		for (int i = 0; i < dataUsernames.length; i++) {
 
-	            errorLabel.setText("Password is invalid");
-	            return false;
-	         }
-	      }
+			if (username.getText().equals(dataUsernames[i])) {
+				// if here they entered the right user name
+				// load that user information from database
+				JSONObject user = data.getJSONObject(username.getText());
 
-	   }
-      errorLabel.setText("Username entered doesnt exist");
-      System.out.println("Username");
-      return false;
-   }
+				// checks password
+				if (password.getText().equals(user.getString("password"))) {
+					errorLabel.setText("");
+					return true;
+				} else {
 
-	public JSONObject loadUser(String username)
-	{
-	   // loads all users from database
-      JSONObject data = JSONUtils.getJSONObjectFromFile("../../JSONdatabase/users.json");
+					errorLabel.setText("Password is invalid");
+					return false;
+				}
+			}
 
-      // load that user information from database
-      JSONObject user = data.getJSONObject( username );
+		}
+		errorLabel.setText("Username entered doesnt exist");
+		System.out.println("Username");
+		return false;
+		*/
+	}
 
-      return user;
+	public JSONObject loadUser(String username) {
+		// loads all users from database
+		JSONObject data = JSONUtils.getJSONObjectFromFile("../../JSONdatabase/users.json");
 
+		// load that user information from database
+		JSONObject user = data.getJSONObject(username);
+
+		return user;
+
+	}
+
+	// Checks the database user names and compares to what was entered in
+	public String checkLoginDetails(String username, String password, JSONObject data) {
+		String[] dataUsernames = JSONObject.getNames(data);
+		if (dataUsernames == null) {
+			return "Username entered doesn't exist";
+		}
+
+		for (int i = 0; i < dataUsernames.length; i++) {
+
+			if (username.equals(dataUsernames[i])) {
+				// if here they entered the right user name
+				// load that user information from database
+				JSONObject user = data.getJSONObject(username);
+
+				// checks password
+				if (password.equals(user.getString("password"))) {
+					return null;
+				} else {
+
+					return "Password is invalid";
+				}
+			}
+
+		}
+		return "Username entered doesnt exist";
 	}
 }

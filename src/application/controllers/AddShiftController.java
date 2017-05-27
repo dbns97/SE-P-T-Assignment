@@ -76,34 +76,7 @@ public class AddShiftController {
 	}
 
 	public boolean handleAddShift()
-	{	
-		/* Check start time format
-		if(startTime.getText().trim().isEmpty() || !(startTime.getText().matches("([01]?[0-9]|2[0-3]):[0-5][0-9]")))
-		{
-			errorLabel.setText("Please enter a valid start time");
-			return false;
-		}
-
-		// Check end time format
-		if(endTime.getText().trim().isEmpty() || !(endTime.getText().matches("([01]?[0-9]|2[0-3]):[0-5][0-9]")))
-		{
-			errorLabel.setText("Please enter a valid end time");
-			return false;
-		}
-
-		try
-		{
-			if(sdf.parse(endTime.getText()).before(sdf.parse(startTime.getText())))
-			{
-				errorLabel.setText("End time is before start time");
-				return false;
-			}
-		}
-		catch(ParseException e)
-		{
-			return false;
-		}
-		 */
+	{
 
 		String errorMessage = checkShiftTimes(startTime.getText(), endTime.getText());
 		if(errorMessage != null)
