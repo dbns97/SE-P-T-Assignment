@@ -1,4 +1,5 @@
 package application.controllers;
+
 import application.models.*;
 import application.views.*;
 
@@ -31,7 +32,6 @@ public class PublicMenuController {
 	@FXML
 	private Label errorLabel;
 
-
 	public void setUsername(String username)
 	{
 		this.username.setText(username);
@@ -47,18 +47,15 @@ public class PublicMenuController {
 		this.pm = pm;
 	}
 
-	public void handleRegister()
-	{
+	public void handleRegister() {
 		pm.showRegister();
 	}
 
-	public void setUsername(TextField username)
-	{
+	public void setUsername(TextField username) {
 		this.username = username;
 	}
 
-	public void setErrorLabel(Label errorLabel)
-	{
+	public void setErrorLabel(Label errorLabel) {
 		this.errorLabel = errorLabel;
 	}
 
@@ -125,8 +122,8 @@ public class PublicMenuController {
 		} else {
 			System.out.println("Invalid login details!");
 			errorLabel.setText("Invalid login details!");
-		}
 
+		}
 	}
 
 }

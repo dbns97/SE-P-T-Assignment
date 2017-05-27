@@ -211,7 +211,7 @@ public class RegisterFormController {
 
 	}
 
-	private void login(Customer customer) {;
+	private void login(Customer customer) {
 		CustomerMenu menu = new CustomerMenu();
 		menu.setBusiness(business);
 		menu.setMainMenu(pm);
@@ -223,5 +223,17 @@ public class RegisterFormController {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public boolean checkBusinessUsers(String username, Business business)
+	{
+		for (Customer customer : business.getCustomers())
+		{
+			if (customer.getUsername().equals(username))
+			{
+				return false;
+			}
+		}
+		return true;
 	}
 }

@@ -38,7 +38,6 @@ public class AddEmployeeController
 		System.out.println(heading);
 		heading.setFont(Font.font(business.getFont(), 18));
 	}
-	
 	public void handleBack()
 	{
 		om.showOwnerMenu();
@@ -51,28 +50,11 @@ public class AddEmployeeController
 
 	public boolean handleAddEmployee()
 	{
-		// Check name format
-		if(name.getText().trim().isEmpty() || !(name.getText().matches("[a-zA-Z ,.'-]+")))
+		String errorMessage = checkEmployeeDetails(email.getText(), name.getText(), business);
+		if(errorMessage != null)
 		{
-			errorLabel.setText("Please enter a valid name");
-			logger.debug("invalid name entered : {}", name.getText() );
+			errorLabel.setText(errorMessage);
 			return false;
-		}
-
-		// Check email format
-		if(email.getText().isEmpty() || !(email.getText().matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]+")))
-		{
-			errorLabel.setText("Please enter a valid email");
-			logger.debug("invalid email entered : {}", email.getText() );
-			return false;
-		}
-
-		// Check if employee already exists with supplied email
-		if (business.getEmployee(email.getText()) != null)
-		{
-        	errorLabel.setText("Employee already exists with that email");
-        	logger.debug("existing employee already has this email : {}", email.getText() );
-            return false;
 		}
 
 		business.addEmployee(email.getText(), name.getText());
@@ -81,8 +63,33 @@ public class AddEmployeeController
 		DatabaseHandler.writeBusinessToFile(business);
 		om.showOwnerMenu();
 		logger.info("employee added");
-		return true;
+		return true;  
+	}
 
+	//Checks the email and name using regex and iterating through existing employees
+	public String checkEmployeeDetails(String email, String name, Business business)
+	{
+		// Check name format
+		if(name.trim().isEmpty() || !(name.matches("[a-zA-Z ,.'-]+")))
+		{
+			logger.debug("invalid email entered : {}", email);
+			return new String("Please enter a valid name");
+		}
+
+		// Check email format
+		if(email.isEmpty() || !(email).matches("[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]+"))
+		{
+			logger.debug("invalid email entered : {}", email);
+			return new String("Please enter a valid email");
+		}
+
+		// Check if employee already exists with supplied email
+		if (business.getEmployee(email) != null)
+		{
+			logger.debug("existing employee already has this email : {}", email);
+			return new String("Employee already exists with that email");
+		}
+		return null;
 	}
 
 }
