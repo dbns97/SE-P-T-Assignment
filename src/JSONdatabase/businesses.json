@@ -1,4 +1,15 @@
 {
+    "Busness Name": {
+        "styles": {
+            "background": [
+                244.0000006556511,
+                244.0000006556511,
+                244.0000006556511
+            ],
+            "font": "System"
+        },
+        "services": []
+    },
     "Bob's Building": {
         "styles": {
             "background": [

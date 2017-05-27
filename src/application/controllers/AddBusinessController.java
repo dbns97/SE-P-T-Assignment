@@ -132,43 +132,7 @@ public class AddBusinessController {
 			errorLabel.setText(errorMessage);
 			return false;
 		}
-		/*
-		if (businessName.getText().isEmpty()) {
-			errorLabel.setText("Please enter a business name");
-			return false;
-		}
-
-		if (username.getText().trim().isEmpty() || !(username.getText().matches("[a-zA-z0-9]+"))) {
-			errorLabel.setText("Please enter a username without symbols or whitespace");
-			return false;
-		}
-
-		if (password.getText().isEmpty()) {
-			errorLabel.setText("Please enter a password");
-			return false;
-		}
-
-		if (reenter.getText().isEmpty() || !reenter.getText().equals(password.getText())) {
-			errorLabel.setText("Please re-enter your password");
-			return false;
-		}
-
-		if (!(ownerName.getText().matches("[a-zA-z ,.'-]+")) || ownerName.getText().trim().isEmpty()) {
-			errorLabel.setText("Please enter a name without numbers or symbols");
-			return false;
-		}
-
-		if (!(address.getText().matches("[a-zA-z0-9 ,.'-]+")) || address.getText().trim().isEmpty()) {
-			errorLabel.setText("Please enter an address without symbols");
-			return false;
-		}
-
-		if (!(contactNumber.getText().matches("[0-9]+")) || contactNumber.getText().trim().isEmpty()) {
-			errorLabel.setText("Please enter a contact number with only numbers");
-			return false;
-		}
-		*/
-
+		
 		// Check if business name already exists
 		if (DatabaseHandler.businessExists(businessName.getText())) {
 			errorLabel.setText("Business name already exists");

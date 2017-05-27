@@ -1,4 +1,8 @@
 {
+    "Busness Name": {"owner": {
+        "password": "pass1",
+        "isOwner": true
+    }},
     "Bob's Building": {"owner": {
         "password": "pass1",
         "isOwner": true

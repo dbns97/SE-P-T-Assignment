@@ -68,3 +68,5 @@
 [DEBUG] 2017-05-27 19:50:30.505 [main] AddShiftController - invalid end time : 2:30
 [DEBUG] 2017-05-27 19:50:30.505 [main] AddShiftController - invalid end time : 24:30
 [DEBUG] 2017-05-27 19:50:30.506 [main] AddShiftController - invalid end time : 2:30
+[PROGRAM] 2017-05-27 20:27:51.178 [main] Driver - Starting Program
+[PROGRAM] 2017-05-27 22:26:17.457 [main] Driver - Ending Program
