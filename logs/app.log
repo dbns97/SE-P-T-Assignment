@@ -21,3 +21,50 @@
 [PROGRAM] 2017-05-21 14:56:19.424 [main] Driver - Ending Program
 [PROGRAM] 2017-05-21 15:16:05.367 [main] Driver - Starting Program
 [PROGRAM] 2017-05-21 15:17:00.445 [main] Driver - Ending Program
+[PROGRAM] 2017-05-27 18:23:09.407 [main] Driver - Starting Program
+[PROGRAM] 2017-05-27 18:23:12.245 [main] Driver - Ending Program
+[DEBUG] 2017-05-27 18:23:24.391 [main] AddEmployeeController - existing employee already has this email : test@domain.com
+[DEBUG] 2017-05-27 18:23:24.392 [main] AddEmployeeController - invalid email entered : NoAtSymbol.com
+[DEBUG] 2017-05-27 18:23:24.393 [main] AddEmployeeController - invalid email entered : NoAtSymbol.com
+[DEBUG] 2017-05-27 18:23:24.393 [main] AddEmployeeController - invalid email entered : test@NoDotCom
+[DEBUG] 2017-05-27 18:23:24.393 [main] AddEmployeeController - invalid email entered : 
+[DEBUG] 2017-05-27 18:23:24.393 [main] AddEmployeeController - invalid email entered : test@domain.com
+[DEBUG] 2017-05-27 18:23:24.394 [main] AddEmployeeController - invalid email entered : test@domain.com
+[DEBUG] 2017-05-27 18:23:24.416 [main] AddShiftController - invalid end time : 2:30
+[DEBUG] 2017-05-27 18:23:24.417 [main] AddShiftController - invalid end time : Word
+[DEBUG] 2017-05-27 18:23:24.417 [main] AddShiftController - invalid end time : 2:30
+[DEBUG] 2017-05-27 18:23:24.417 [main] AddShiftController - invalid end time : 2:30
+[DEBUG] 2017-05-27 18:23:24.418 [main] AddShiftController - invalid end time :  
+[DEBUG] 2017-05-27 18:23:24.418 [main] AddShiftController - invalid end time : 2:30
+[DEBUG] 2017-05-27 18:23:24.418 [main] AddShiftController - invalid end time : 24:30
+[DEBUG] 2017-05-27 18:23:24.418 [main] AddShiftController - invalid end time : 2:30
+[DEBUG] 2017-05-27 18:24:09.157 [main] AddEmployeeController - existing employee already has this email : test@domain.com
+[DEBUG] 2017-05-27 18:24:09.158 [main] AddEmployeeController - invalid email entered : NoAtSymbol.com
+[DEBUG] 2017-05-27 18:24:09.158 [main] AddEmployeeController - invalid email entered : NoAtSymbol.com
+[DEBUG] 2017-05-27 18:24:09.159 [main] AddEmployeeController - invalid email entered : test@NoDotCom
+[DEBUG] 2017-05-27 18:24:09.159 [main] AddEmployeeController - invalid email entered : 
+[DEBUG] 2017-05-27 18:24:09.159 [main] AddEmployeeController - invalid email entered : test@domain.com
+[DEBUG] 2017-05-27 18:24:09.159 [main] AddEmployeeController - invalid email entered : test@domain.com
+[DEBUG] 2017-05-27 18:24:09.167 [main] AddShiftController - invalid end time : 2:30
+[DEBUG] 2017-05-27 18:24:09.167 [main] AddShiftController - invalid end time : Word
+[DEBUG] 2017-05-27 18:24:09.168 [main] AddShiftController - invalid end time : 2:30
+[DEBUG] 2017-05-27 18:24:09.168 [main] AddShiftController - invalid end time : 2:30
+[DEBUG] 2017-05-27 18:24:09.168 [main] AddShiftController - invalid end time :  
+[DEBUG] 2017-05-27 18:24:09.168 [main] AddShiftController - invalid end time : 2:30
+[DEBUG] 2017-05-27 18:24:09.169 [main] AddShiftController - invalid end time : 24:30
+[DEBUG] 2017-05-27 18:24:09.169 [main] AddShiftController - invalid end time : 2:30
+[DEBUG] 2017-05-27 19:50:30.495 [main] AddEmployeeController - existing employee already has this email : test@domain.com
+[DEBUG] 2017-05-27 19:50:30.496 [main] AddEmployeeController - invalid email entered : NoAtSymbol.com
+[DEBUG] 2017-05-27 19:50:30.496 [main] AddEmployeeController - invalid email entered : NoAtSymbol.com
+[DEBUG] 2017-05-27 19:50:30.497 [main] AddEmployeeController - invalid email entered : test@NoDotCom
+[DEBUG] 2017-05-27 19:50:30.497 [main] AddEmployeeController - invalid email entered : 
+[DEBUG] 2017-05-27 19:50:30.497 [main] AddEmployeeController - invalid email entered : test@domain.com
+[DEBUG] 2017-05-27 19:50:30.497 [main] AddEmployeeController - invalid email entered : test@domain.com
+[DEBUG] 2017-05-27 19:50:30.504 [main] AddShiftController - invalid end time : 2:30
+[DEBUG] 2017-05-27 19:50:30.504 [main] AddShiftController - invalid end time : Word
+[DEBUG] 2017-05-27 19:50:30.504 [main] AddShiftController - invalid end time : 2:30
+[DEBUG] 2017-05-27 19:50:30.505 [main] AddShiftController - invalid end time : 2:30
+[DEBUG] 2017-05-27 19:50:30.505 [main] AddShiftController - invalid end time :  
+[DEBUG] 2017-05-27 19:50:30.505 [main] AddShiftController - invalid end time : 2:30
+[DEBUG] 2017-05-27 19:50:30.505 [main] AddShiftController - invalid end time : 24:30
+[DEBUG] 2017-05-27 19:50:30.506 [main] AddShiftController - invalid end time : 2:30

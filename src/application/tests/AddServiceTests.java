@@ -27,7 +27,7 @@ public class AddServiceTests {
 	{
 		//Test Structure: {Employee email, Employee name, whether the employee is added to the business, expect output}
 		return Arrays.asList(new Object[][] {     
-			{"Service name", "120", false, "Successfully created service: Service name"},
+			{"Service name", "120", false, null},
 			{"Service name", "120", true, "Failed to create service. Name: Service name already in use"},
 			{"@!$", "120", false, "Please enter a valid name"},
 			{"", "120", false, "Please enter a valid name"},
