@@ -17,10 +17,10 @@
 * Nish: User stories, Tests - 25%
 
 ## Part C Contributions
-* Drew: Code (Admin users, create business function, DatabaseHandler class, ChangeStyles function) - 25%
-* Shawn: Logging - 25%
+* Drew: Code (Admin users, create business function, DatabaseHandler class, ChangeStyles function), Maven build, sales pitch - 25%
+* Shawn: Logging, User Manual - 25%
 * Aleks: Design document, unit tests - 25%
-* Nish:  Acceptance tests - 25%
+* Nish:  Acceptance tests, Project Post-Mortem - 25%
 
 ## Tutorial
 Tutor: Homy
@@ -31,5 +31,8 @@ Time:  Tuesday 4.30
 * Trello: https://trello.com/b/e5k9w1I6/project-information
 
 ## Compiling and Running
-To run the application in eclipse, download the JavaFX plugin e(fx)clipse here: http://www.eclipse.org/efxclipse/install.html
-Import the project, and choose the 'Existing Projects into Workspace' option. You may also need to add the jUnit Library by going to the project Preferences > Build Path > Add Library..., and then adding the jUnit Library. The application will run from the Driver class in src, or as a jUnit Test.
+To run the application, extract the zip file then from the root of the project.
+Make sure you have Maven installed then run the following commands:
+mvn clean
+mvn install
+java -cp target/SE-P-T-Assignment-0.0.1-SNAPSHOT-jar-with-dependencies.jar application.controllers.Driver
