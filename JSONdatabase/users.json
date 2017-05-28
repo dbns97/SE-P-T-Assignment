@@ -18,15 +18,13 @@
             "password": "pass2",
             "isOwner": false,
             "name": "Bill",
-            "bookings": [
-            ]
+            "bookings": []
         },
         "username1": {
             "password": "pass",
             "isOwner": false,
             "name": "Bob",
-            "bookings": [
-            ]
+            "bookings": []
         }
     },
     "Admin Made Me": {"owner": {

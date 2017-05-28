@@ -35,7 +35,7 @@ public class CustomerMenu extends Menu {
 	{
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("../views/RootLayout.fxml"));
+			loader.setLocation(getClass().getResource("/application/views/RootLayout.fxml"));
 			root = (BorderPane) loader.load();
 			
 			root.setStyle("-fx-font-family:\"" + business.getFont() + "\"; -fx-background-color: transparent;");
@@ -51,7 +51,7 @@ public class CustomerMenu extends Menu {
 	{
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(PublicMenu.class.getResource("../views/CustomerMenu.fxml"));
+			loader.setLocation(PublicMenu.class.getResource("/application/views/CustomerMenu.fxml"));
 			AnchorPane CustomerMenu = (AnchorPane) loader.load();
 			CustomerMenuController controller = loader.getController();
 
@@ -73,7 +73,7 @@ public class CustomerMenu extends Menu {
 	{
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(PublicMenu.class.getResource("../views/ViewAvailableTimesForm.fxml"));
+			loader.setLocation(PublicMenu.class.getResource("/application/views/ViewAvailableTimesForm.fxml"));
 			AnchorPane CustomerAvailableTimesForm = (AnchorPane) loader.load();
 			ViewAvailableTimesController controller = loader.getController();
 
@@ -106,7 +106,7 @@ public class CustomerMenu extends Menu {
 	{
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(PublicMenu.class.getResource("../views/CustomerMakeBooking.fxml"));
+			loader.setLocation(PublicMenu.class.getResource("/application/views/CustomerMakeBooking.fxml"));
 			AnchorPane CustomerMakeBooking = (AnchorPane) loader.load();
 			CustomerMakeBookingController controller = loader.getController();
 

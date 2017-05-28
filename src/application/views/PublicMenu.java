@@ -45,7 +45,7 @@ public class PublicMenu extends Menu {
 	{
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("../views/PublicMenu.fxml"));
+			loader.setLocation(getClass().getResource("/application/views/PublicMenu.fxml"));
 			AnchorPane publicMenu = (AnchorPane) loader.load();
 			PublicMenuController controller = loader.getController();
 
@@ -61,7 +61,7 @@ public class PublicMenu extends Menu {
 	{
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("../views/RootLayout.fxml"));
+			loader.setLocation(getClass().getResource("/application/views/RootLayout.fxml"));
 			root = (BorderPane) loader.load();
 
 			Scene scene = new Scene(root);
@@ -75,7 +75,7 @@ public class PublicMenu extends Menu {
 	{
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(PublicMenu.class.getResource("../views/RegisterForm.fxml"));
+			loader.setLocation(PublicMenu.class.getResource("/application/views/RegisterForm.fxml"));
 			AnchorPane registerForm = (AnchorPane) loader.load();
 			RegisterFormController controller = loader.getController();
 

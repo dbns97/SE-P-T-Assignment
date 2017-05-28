@@ -39,7 +39,7 @@ public class OwnerMenu extends Menu {
 	{
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("../views/RootLayout.fxml"));
+			loader.setLocation(getClass().getResource("/application/views/RootLayout.fxml"));
 			root = (BorderPane) loader.load();
 			
 			root.setStyle("-fx-font-family:\"" + business.getFont() + "\"; -fx-background-color: transparent;");
@@ -55,7 +55,7 @@ public class OwnerMenu extends Menu {
 	{
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(PublicMenu.class.getResource("../views/OwnerMenu.fxml"));
+			loader.setLocation(PublicMenu.class.getResource("/application/views/OwnerMenu.fxml"));
 			AnchorPane OwnerMenu = (AnchorPane) loader.load();
 			OwnerMenuController controller = loader.getController();
 
@@ -77,7 +77,7 @@ public class OwnerMenu extends Menu {
 	{
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(PublicMenu.class.getResource("../views/ViewEmployeeAvailability.fxml"));
+			loader.setLocation(PublicMenu.class.getResource("/application/views/ViewEmployeeAvailability.fxml"));
 			AnchorPane ViewEmployeeAvailability = (AnchorPane) loader.load();
 			ViewEmployeeAvailabilityController controller = loader.getController();
 
@@ -99,7 +99,7 @@ public class OwnerMenu extends Menu {
 	{
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(PublicMenu.class.getResource("../views/ViewBookingsForm.fxml"));
+			loader.setLocation(PublicMenu.class.getResource("/application/views/ViewBookingsForm.fxml"));
 			AnchorPane ViewBookingsForm = (AnchorPane) loader.load();
 			ViewBookingsController controller = loader.getController();
 
@@ -122,7 +122,7 @@ public class OwnerMenu extends Menu {
 	{
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(PublicMenu.class.getResource("../views/AddEmployee.fxml"));
+			loader.setLocation(PublicMenu.class.getResource("/application/views/AddEmployee.fxml"));
 			AnchorPane addEmployee = (AnchorPane) loader.load();
 			AddEmployeeController controller = loader.getController();
 
@@ -143,7 +143,7 @@ public class OwnerMenu extends Menu {
 	{
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(PublicMenu.class.getResource("../views/AddShift.fxml"));
+			loader.setLocation(PublicMenu.class.getResource("/application/views/AddShift.fxml"));
 			AnchorPane addShift = (AnchorPane) loader.load();
 			AddShiftController controller = loader.getController();
 
@@ -166,7 +166,7 @@ public class OwnerMenu extends Menu {
 	{
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(PublicMenu.class.getResource("../views/AddService.fxml"));
+			loader.setLocation(PublicMenu.class.getResource("/application/views/AddService.fxml"));
 			AnchorPane addService = (AnchorPane) loader.load();
 			AddServiceController controller = loader.getController();
 
@@ -193,7 +193,7 @@ public class OwnerMenu extends Menu {
 		try 
 		{
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(PublicMenu.class.getResource("../views/OwnerMakeBooking.fxml"));
+			loader.setLocation(PublicMenu.class.getResource("/application/views/OwnerMakeBooking.fxml"));
 			AnchorPane OwnerMakeBooking = (AnchorPane) loader.load();
 			OwnerMakeBookingController controller = loader.getController();
 
@@ -223,7 +223,7 @@ public class OwnerMenu extends Menu {
 		try 
 		{
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(PublicMenu.class.getResource("../views/ChangeStyles.fxml"));
+			loader.setLocation(PublicMenu.class.getResource("/application/views/ChangeStyles.fxml"));
 			AnchorPane ChangeStyles = (AnchorPane) loader.load();
 			ChangeStylesController controller = loader.getController();
 
