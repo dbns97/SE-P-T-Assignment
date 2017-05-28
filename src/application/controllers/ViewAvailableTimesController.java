@@ -201,14 +201,21 @@ public class ViewAvailableTimesController {
 						if (booking.getEmployee().equals(slot.getEmployee())) {
 							// Check if booking is inside the free time slot
 							if (booking.getStart().getTime() >= slot.getStart().getTime() && booking.getEnd().getTime() <= slot.getEnd().getTime()) {
+								Shift newFreeSlot;
 								// Add new slot before the booking
-								Shift newFreeSlot = new Shift(slot.getStart(), booking.getStart());
-								newFreeSlot.setEmployee(slot.getEmployee());
-								freeSlotList.add(newFreeSlot);
+								if(!slot.getStart().equals(booking.getStart()))
+								{
+									newFreeSlot = new Shift(slot.getStart(), booking.getStart());
+									newFreeSlot.setEmployee(slot.getEmployee());
+									freeSlotList.add(newFreeSlot);
+								}
 								// Add new slot after the booking
-								newFreeSlot = new Shift(booking.getEnd(), slot.getEnd());
-								newFreeSlot.setEmployee(slot.getEmployee());
-								freeSlotList.add(newFreeSlot);
+								if(!slot.getEnd().equals(booking.getEnd()))
+								{
+									newFreeSlot = new Shift(booking.getEnd(), slot.getEnd());
+									newFreeSlot.setEmployee(slot.getEmployee());
+									freeSlotList.add(newFreeSlot);
+								}
 								// Remove the old slot
 								freeSlotList.remove(slot);
 							}

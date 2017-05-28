@@ -1,11 +1,12 @@
 {
+    "Busness Name": {},
     "Bob's Building": {},
     "Jim's Barber Shop": {
         "bsmith@gmail.com": {
             "roster": {
                 "MONDAY": {
-                    "start": "13:30",
-                    "end": "14:10"
+                    "start": "02:30",
+                    "end": "03:00"
                 },
                 "THURSDAY": {
                     "start": "13:30",

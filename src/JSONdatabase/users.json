@@ -1,12 +1,28 @@
 {
+    "Busness Name": {"owner": {
+        "password": "pass1",
+        "isOwner": true
+    }},
     "Bob's Building": {"owner": {
         "password": "pass1",
         "isOwner": true
     }},
     "Jim's Barber Shop": {
+        "": {
+            "password": "",
+            "isOwner": false,
+            "name": "",
+            "bookings": []
+        },
         "owner": {
             "password": "pass1",
             "isOwner": true
+        },
+        "username123123": {
+            "password": "pass1",
+            "isOwner": false,
+            "name": "name",
+            "bookings": []
         },
         "username3": {
             "password": "pass3",
@@ -72,6 +88,48 @@
                     "start": "Mon 01/05/2017 10:00",
                     "end": "Mon 01/05/2017 11:00",
                     "employee": "bob@gmail.com",
+                    "customer": "username1"
+                },
+                {
+                    "service": "Simple Cut",
+                    "start": "Thu 25/05/2017 09:30",
+                    "end": "Thu 25/05/2017 10:00",
+                    "employee": "jimbo@gmail.com",
+                    "customer": "username1"
+                },
+                {
+                    "service": "Simple Cut",
+                    "start": "Thu 25/05/2017 10:30",
+                    "end": "Thu 25/05/2017 11:00",
+                    "employee": "jimbo@gmail.com",
+                    "customer": "username1"
+                },
+                {
+                    "service": "Simple Cut",
+                    "start": "Thu 25/05/2017 11:30",
+                    "end": "Thu 25/05/2017 12:00",
+                    "employee": "jimbo@gmail.com",
+                    "customer": "username1"
+                },
+                {
+                    "service": "Simple Cut",
+                    "start": "Fri 26/05/2017 13:30",
+                    "end": "Fri 26/05/2017 14:00",
+                    "employee": "bsmith@gmail.com",
+                    "customer": "username1"
+                },
+                {
+                    "service": "Simple Cut",
+                    "start": "Thu 25/05/2017 09:00",
+                    "end": "Thu 25/05/2017 09:30",
+                    "employee": "jimbo@gmail.com",
+                    "customer": "username1"
+                },
+                {
+                    "service": "Simple Cut",
+                    "start": "Thu 25/05/2017 10:00",
+                    "end": "Thu 25/05/2017 10:30",
+                    "employee": "jimbo@gmail.com",
                     "customer": "username1"
                 }
             ]

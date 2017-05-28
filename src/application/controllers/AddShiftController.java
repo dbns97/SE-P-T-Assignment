@@ -49,7 +49,7 @@ public class AddShiftController
 	{
 		this.heading.setFont(Font.font(business.getFont(), 18));
 	}
-	
+
 	public void handleBack()
 	{
 		om.showOwnerMenu();
@@ -84,33 +84,10 @@ public class AddShiftController
 
 	public boolean handleAddShift()
 	{
-		// Check start time format
-		if(startTime.getText().trim().isEmpty() || !(startTime.getText().matches("([01]?[0-9]|2[0-3]):[0-5][0-9]")))
+		String errorMessage = checkShiftTimes(startTime.getText(), endTime.getText());
+		if(errorMessage != null)
 		{
-			errorLabel.setText("Please enter a valid start time");
-			logger.debug("invalid start time : {}", startTime.getText() );
-			return false;
-		}
-
-		// Check end time format
-		if(endTime.getText().trim().isEmpty() || !(endTime.getText().matches("([01]?[0-9]|2[0-3]):[0-5][0-9]")))
-		{
-			errorLabel.setText("Please enter a valid end time");
-			logger.debug("invalid end time : {}", endTime.getText() );
-			return false;
-		}
-
-		try
-		{
-			if(sdf.parse(endTime.getText()).before(sdf.parse(startTime.getText())))
-			{
-				errorLabel.setText("End time is before start time");
-				return false;
-			}
-		}
-		catch(ParseException e)
-		{
-			logger.warn("problem with parse");
+			errorLabel.setText(errorMessage);
 			return false;
 		}
 
@@ -123,16 +100,45 @@ public class AddShiftController
 			return false;
 		}
 
-        employee.setShift(day.getValue(), startTime.getText(), endTime.getText());
+		employee.setShift(day.getValue(), startTime.getText(), endTime.getText());
 
 		errorLabel.setText("Successfully created shift for employee with email: " + email.getValue());
-
 		DatabaseHandler.writeBusinessToFile(business);
 		om.showOwnerMenu();
 		logger.info("add shift finished");
-
 		return true;
 
+	}
+
+	public String checkShiftTimes(String startTime, String endTime)
+	{
+		// Check start time format
+		if(startTime.trim().isEmpty() || !(startTime.matches("([01]?[0-9]|2[0-3]):[0-5][0-9]")))
+		{
+			logger.debug("invalid end time : {}", endTime);
+			return new String("Please enter a valid start time");
+		}
+
+		// Check end time format
+		if(endTime.trim().isEmpty() || !(endTime.matches("([01]?[0-9]|2[0-3]):[0-5][0-9]")))
+		{
+			logger.debug("invalid end time : {}", endTime);
+			return new String("Please enter a valid end time");
+		}
+		try
+		{
+			if(sdf.parse(endTime).before(sdf.parse(startTime)))
+			{
+				return new String("End time is before start time");
+			}
+		}
+		catch(ParseException e)
+		{
+			logger.warn("problem with parse");
+			return new String("Incorrect format");
+		}
+
+		return null;
 	}
 
 }
