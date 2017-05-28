@@ -1,6 +1,9 @@
 package application.controllers;
 
 import java.io.FileWriter;
+import java.io.FileReader; 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -27,10 +30,21 @@ public class DatabaseHandler {
 
 	final static Logger logger = LogManager.getLogger(DatabaseHandler.class.getName());
 	
-	private final static String adminFilePath      = "../../JSONdatabase/admin.json";
-	private final static String businessesFilePath = "../../JSONdatabase/businesses.json";
-	private final static String employeesFilePath  = "../../JSONdatabase/employees.json";
-	private final static String usersFilePath      = "../../JSONdatabase/users.json";
+	/*
+	private final static String adminFilePath      = "/resources/JSONdatabase/admin.json";
+	private final static String businessesFilePath = "/resources/JSONdatabase/businesses.json";
+	private final static String employeesFilePath  = "/resources/JSONdatabase/employees.json";
+	private final static String usersFilePath      = "/resources/JSONdatabase/users.json";
+	*/
+	private final static String adminFilePath      = "JSONdatabase/admin.json";
+	private final static String businessesFilePath = "JSONdatabase/businesses.json";
+	private final static String employeesFilePath  = "JSONdatabase/employees.json";
+	private final static String usersFilePath      = "JSONdatabase/users.json";
+	
+	private final static String adminWritePath      = "/Users/drewnuttall-smith/RMIT Drive/Year 2/Semester 1/SE Process & Tools/Assignment 1/septNewRepo/SE-P-T-Assignment/JSONdatabase/admin.json";
+	private final static String businessesWritePath = "/Users/drewnuttall-smith/RMIT Drive/Year 2/Semester 1/SE Process & Tools/Assignment 1/septNewRepo/SE-P-T-Assignment/JSONdatabase/businesses.json";
+	private final static String employeesWritePath  = "/Users/drewnuttall-smith/RMIT Drive/Year 2/Semester 1/SE Process & Tools/Assignment 1/septNewRepo/SE-P-T-Assignment/JSONdatabase/employees.json";
+	private final static String usersWritePath      = "/Users/drewnuttall-smith/RMIT Drive/Year 2/Semester 1/SE Process & Tools/Assignment 1/septNewRepo/SE-P-T-Assignment/JSONdatabase/users.json";
     
 	/**
 	 * @description create an ArrayList containing all employees for a business
@@ -247,7 +261,7 @@ public class DatabaseHandler {
 			// Write users to file
 			JSONObject allJsonUsers = getJSONObjectFromFile(usersFilePath);
 			allJsonUsers.put(business.getName(), jsonUsers);
-            FileWriter custWriter = new FileWriter("src/JSONdatabase/users.json");
+            FileWriter custWriter = new FileWriter(usersWritePath);
             custWriter.write(allJsonUsers.toString(4));
             custWriter.flush();
             custWriter.close();
@@ -263,7 +277,7 @@ public class DatabaseHandler {
             // Write employees to file
 			JSONObject allJsonEmployees = getJSONObjectFromFile(employeesFilePath);
 			allJsonEmployees.put(business.getName(), jsonEmployees);
-            FileWriter employeeWriter = new FileWriter("src/JSONdatabase/employees.json");
+            FileWriter employeeWriter = new FileWriter(employeesWritePath);
             employeeWriter.write(allJsonEmployees.toString(4));
             employeeWriter.flush();
             employeeWriter.close();
@@ -285,7 +299,7 @@ public class DatabaseHandler {
             // Write business to file
 			JSONObject allJsonBusinesses = getJSONObjectFromFile(businessesFilePath);
 			allJsonBusinesses.put(business.getName(), jsonBusiness);
-            FileWriter serviceWriter = new FileWriter("src/JSONdatabase/businesses.json");
+            FileWriter serviceWriter = new FileWriter(businessesWritePath);
             serviceWriter.write(allJsonBusinesses.toString(4));
             serviceWriter.flush();
             serviceWriter.close();
@@ -518,7 +532,9 @@ public class DatabaseHandler {
     {
        try
        {
-          InputStream inputStream = DatabaseHandler.class.getResourceAsStream(path);
+    	  File newFile = new File(path);
+    	  InputStream inputStream = new FileInputStream(newFile);
+          //InputStream inputStream = DatabaseHandler.class.getResourceAsStream(path);
           return inputStream;
        }
        catch(Exception e)

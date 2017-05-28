@@ -35,7 +35,7 @@ public class AdminMenu extends Menu {
 	{
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("../views/RootLayout.fxml"));
+			loader.setLocation(getClass().getResource("/application/views/RootLayout.fxml"));
 			root = (BorderPane) loader.load();
 
 			Scene scene = new Scene(root);
@@ -50,7 +50,7 @@ public class AdminMenu extends Menu {
 	{
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(PublicMenu.class.getResource("../views/AdminMenu.fxml"));
+			loader.setLocation(PublicMenu.class.getResource("/application/views/AdminMenu.fxml"));
 			AnchorPane AdminMenu = (AnchorPane) loader.load();
 			AdminMenuController controller = loader.getController();
 
@@ -76,7 +76,7 @@ public class AdminMenu extends Menu {
 	{
 		try {
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(PublicMenu.class.getResource("../views/AddBusiness.fxml"));
+			loader.setLocation(PublicMenu.class.getResource("/application/views/AddBusiness.fxml"));
 			AnchorPane addBusiness = (AnchorPane) loader.load();
 			AddBusinessController controller = loader.getController();
 

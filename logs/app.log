@@ -21,6 +21,7 @@
 [PROGRAM] 2017-05-21 14:56:19.424 [main] Driver - Ending Program
 [PROGRAM] 2017-05-21 15:16:05.367 [main] Driver - Starting Program
 [PROGRAM] 2017-05-21 15:17:00.445 [main] Driver - Ending Program
+<<<<<<< HEAD
 [PROGRAM] 2017-05-27 18:23:09.407 [main] Driver - Starting Program
 [PROGRAM] 2017-05-27 18:23:12.245 [main] Driver - Ending Program
 [DEBUG] 2017-05-27 18:23:24.391 [main] AddEmployeeController - existing employee already has this email : test@domain.com

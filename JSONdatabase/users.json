@@ -1,0 +1,46 @@
+{
+    "Bob's Building": {"owner": {
+        "password": "pass1",
+        "isOwner": true
+    }},
+    "Jim's Barber Shop": {
+        "owner": {
+            "password": "pass1",
+            "isOwner": true
+        },
+        "username3": {
+            "password": "pass3",
+            "isOwner": false,
+            "name": "Joe",
+            "bookings": []
+        },
+        "username2": {
+            "password": "pass2",
+            "isOwner": false,
+            "name": "Bill",
+            "bookings": []
+        },
+        "username1": {
+            "password": "pass",
+            "isOwner": false,
+            "name": "Bob",
+            "bookings": []
+        }
+    },
+    "Admin Made Me": {"owner": {
+        "password": "pass1",
+        "isOwner": true
+    }},
+    "Test Business": {
+        "owner": {
+            "password": "pass1",
+            "isOwner": true
+        },
+        "username1": {
+            "password": "pass1",
+            "isOwner": false,
+            "name": "User One",
+            "bookings": []
+        }
+    }
+}
