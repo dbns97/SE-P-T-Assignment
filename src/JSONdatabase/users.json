@@ -49,6 +49,27 @@
                     "end": "Mon 01/05/2017 13:00",
                     "employee": "bob@gmail.com",
                     "customer": "username2"
+                },
+                {
+                    "service": "Simple Cut",
+                    "start": "Fri 26/05/2017 14:00",
+                    "end": "Fri 26/05/2017 14:30",
+                    "employee": "bsmith@gmail.com",
+                    "customer": "username2"
+                },
+                {
+                    "service": "Simple Cut",
+                    "start": "Mon 22/05/2017 14:30",
+                    "end": "Mon 22/05/2017 15:00",
+                    "employee": "bob@gmail.com",
+                    "customer": "username2"
+                },
+                {
+                    "service": "Simple Cut",
+                    "start": "Mon 22/05/2017 14:00",
+                    "end": "Mon 22/05/2017 14:30",
+                    "employee": "bob@gmail.com",
+                    "customer": "username2"
                 }
             ]
         },

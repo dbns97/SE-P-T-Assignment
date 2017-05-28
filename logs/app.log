@@ -1871,3 +1871,443 @@
 [DEBUG] 2017-05-28 19:35:36.150 [main] CustomerMakeBookingController - 	chosen end time : 2017-05-28T13:30:00.000+1000
 [DEBUG] 2017-05-28 19:35:36.150 [main] CustomerMakeBookingController - 	booking start time : 2017-05-28T13:15:00.000+1000
 [INFO ] 2017-05-28 19:35:36.150 [main] CustomerMakeBookingController - Clashes with another booking
+[PROGRAM] 2017-05-28 20:35:14.716 [main] Driver - Ending Program
+[PROGRAM] 2017-05-28 20:54:30.979 [main] Driver - Starting Program
+[DEBUG] 2017-05-28 20:55:47.746 [JavaFX Application Thread] OwnerMakeBookingController - business.getCustomers().size() : 3 
+[DEBUG] 2017-05-28 20:55:47.747 [JavaFX Application Thread] OwnerMakeBookingController -  customer username: username3
+[DEBUG] 2017-05-28 20:55:47.747 [JavaFX Application Thread] OwnerMakeBookingController -  customer username: username2
+[DEBUG] 2017-05-28 20:55:47.747 [JavaFX Application Thread] OwnerMakeBookingController -  customer username: username1
+[INFO ] 2017-05-28 20:55:52.925 [JavaFX Application Thread] OwnerMakeBookingController - service box clicked
+[INFO ] 2017-05-28 20:55:55.089 [JavaFX Application Thread] OwnerMakeBookingController - employee box clicked
+[INFO ] 2017-05-28 20:55:57.070 [JavaFX Application Thread] OwnerMakeBookingController - day box clicked
+[INFO ] 2017-05-28 20:55:59.072 [JavaFX Application Thread] OwnerMakeBookingController - day box clicked
+[INFO ] 2017-05-28 20:56:05.491 [JavaFX Application Thread] OwnerMakeBookingController - confirm button clicked
+[DEBUG] 2017-05-28 20:56:05.492 [JavaFX Application Thread] OwnerMakeBookingController - 2017-05-26T01:30:00.000+1000 - Start time of booking
+[DEBUG] 2017-05-28 20:56:05.492 [JavaFX Application Thread] OwnerMakeBookingController - 2017-05-26T02:00:00.000+1000 - end time of booking
+[DEBUG] 2017-05-28 20:56:05.492 [JavaFX Application Thread] OwnerMakeBookingController - 2017-05-26T13:30:00.000+1000 - Employee Start time of shift
+[DEBUG] 2017-05-28 20:56:05.492 [JavaFX Application Thread] OwnerMakeBookingController - 2017-05-26T14:50:00.000+1000 - Employee end time of shift
+[INFO ] 2017-05-28 20:56:05.492 [JavaFX Application Thread] OwnerMakeBookingController - checking all bookings
+[DEBUG] 2017-05-28 20:56:05.492 [JavaFX Application Thread] OwnerMakeBookingController - current chosen employee : bsmith@gmail.com
+[INFO ] 2017-05-28 20:56:05.492 [JavaFX Application Thread] OwnerMakeBookingController - Outside working times
+[PROGRAM] 2017-05-28 20:57:18.936 [main] Driver - Ending Program
+[PROGRAM] 2017-05-28 20:57:25.460 [main] Driver - Starting Program
+[DEBUG] 2017-05-28 20:57:46.078 [JavaFX Application Thread] OwnerMakeBookingController - business.getCustomers().size() : 3 
+[DEBUG] 2017-05-28 20:57:46.078 [JavaFX Application Thread] OwnerMakeBookingController -  customer username: username3
+[DEBUG] 2017-05-28 20:57:46.078 [JavaFX Application Thread] OwnerMakeBookingController -  customer username: username2
+[DEBUG] 2017-05-28 20:57:46.078 [JavaFX Application Thread] OwnerMakeBookingController -  customer username: username1
+[INFO ] 2017-05-28 20:57:52.695 [JavaFX Application Thread] OwnerMakeBookingController - service box clicked
+[INFO ] 2017-05-28 20:57:54.208 [JavaFX Application Thread] OwnerMakeBookingController - employee box clicked
+[INFO ] 2017-05-28 20:57:56.874 [JavaFX Application Thread] OwnerMakeBookingController - day box clicked
+[INFO ] 2017-05-28 20:58:09.754 [JavaFX Application Thread] OwnerMakeBookingController - confirm button clicked
+[DEBUG] 2017-05-28 20:58:09.755 [JavaFX Application Thread] OwnerMakeBookingController - 2017-05-26T01:30:00.000+1000 - Start time of booking
+[DEBUG] 2017-05-28 20:58:09.755 [JavaFX Application Thread] OwnerMakeBookingController - 2017-05-26T02:00:00.000+1000 - end time of booking
+[DEBUG] 2017-05-28 20:58:09.755 [JavaFX Application Thread] OwnerMakeBookingController - 2017-05-26T13:30:00.000+1000 - Employee Start time of shift
+[DEBUG] 2017-05-28 20:58:09.755 [JavaFX Application Thread] OwnerMakeBookingController - 2017-05-26T14:50:00.000+1000 - Employee end time of shift
+[INFO ] 2017-05-28 20:58:09.755 [JavaFX Application Thread] OwnerMakeBookingController - checking all bookings
+[DEBUG] 2017-05-28 20:58:09.755 [JavaFX Application Thread] OwnerMakeBookingController - current chosen employee : bsmith@gmail.com
+[INFO ] 2017-05-28 20:58:09.755 [JavaFX Application Thread] OwnerMakeBookingController - Outside working times
+[INFO ] 2017-05-28 20:58:17.590 [JavaFX Application Thread] OwnerMakeBookingController - confirm button clicked
+[DEBUG] 2017-05-28 20:58:17.590 [JavaFX Application Thread] OwnerMakeBookingController - 2017-05-26T13:30:00.000+1000 - Start time of booking
+[DEBUG] 2017-05-28 20:58:17.590 [JavaFX Application Thread] OwnerMakeBookingController - 2017-05-26T14:00:00.000+1000 - end time of booking
+[DEBUG] 2017-05-28 20:58:17.590 [JavaFX Application Thread] OwnerMakeBookingController - 2017-05-26T13:30:00.000+1000 - Employee Start time of shift
+[DEBUG] 2017-05-28 20:58:17.590 [JavaFX Application Thread] OwnerMakeBookingController - 2017-05-26T14:50:00.000+1000 - Employee end time of shift
+[INFO ] 2017-05-28 20:58:17.591 [JavaFX Application Thread] OwnerMakeBookingController - checking all bookings
+[DEBUG] 2017-05-28 20:58:17.591 [JavaFX Application Thread] OwnerMakeBookingController - current chosen employee : bsmith@gmail.com
+[DEBUG] 2017-05-28 20:58:17.591 [JavaFX Application Thread] OwnerMakeBookingController - current customer bookings we are checking : username3
+[DEBUG] 2017-05-28 20:58:17.591 [JavaFX Application Thread] OwnerMakeBookingController - current customer bookings we are checking : username2
+[DEBUG] 2017-05-28 20:58:17.591 [JavaFX Application Thread] OwnerMakeBookingController - current customer bookings we are checking : username1
+[DEBUG] 2017-05-28 20:58:17.591 [JavaFX Application Thread] OwnerMakeBookingController - - They match
+[DEBUG] 2017-05-28 20:58:17.591 [JavaFX Application Thread] OwnerMakeBookingController - 	chosen start time : 2017-05-26T13:30:00.000+1000
+[DEBUG] 2017-05-28 20:58:17.591 [JavaFX Application Thread] OwnerMakeBookingController - 	booking end time : 2017-05-26T14:00:00.000+1000
+[DEBUG] 2017-05-28 20:58:17.591 [JavaFX Application Thread] OwnerMakeBookingController - 	chosen end time : 2017-05-26T14:00:00.000+1000
+[DEBUG] 2017-05-28 20:58:17.591 [JavaFX Application Thread] OwnerMakeBookingController - 	booking start time : 2017-05-26T13:30:00.000+1000
+[INFO ] 2017-05-28 20:58:17.591 [JavaFX Application Thread] OwnerMakeBookingController - Clashes with another booking
+[INFO ] 2017-05-28 20:58:24.550 [JavaFX Application Thread] OwnerMakeBookingController - confirm button clicked
+[DEBUG] 2017-05-28 20:58:24.550 [JavaFX Application Thread] OwnerMakeBookingController - 2017-05-26T13:00:00.000+1000 - Start time of booking
+[DEBUG] 2017-05-28 20:58:24.550 [JavaFX Application Thread] OwnerMakeBookingController - 2017-05-26T13:30:00.000+1000 - end time of booking
+[DEBUG] 2017-05-28 20:58:24.550 [JavaFX Application Thread] OwnerMakeBookingController - 2017-05-26T13:30:00.000+1000 - Employee Start time of shift
+[DEBUG] 2017-05-28 20:58:24.551 [JavaFX Application Thread] OwnerMakeBookingController - 2017-05-26T14:50:00.000+1000 - Employee end time of shift
+[INFO ] 2017-05-28 20:58:24.551 [JavaFX Application Thread] OwnerMakeBookingController - checking all bookings
+[DEBUG] 2017-05-28 20:58:24.551 [JavaFX Application Thread] OwnerMakeBookingController - current chosen employee : bsmith@gmail.com
+[INFO ] 2017-05-28 20:58:24.551 [JavaFX Application Thread] OwnerMakeBookingController - Outside working times
+[INFO ] 2017-05-28 20:58:33.966 [JavaFX Application Thread] OwnerMakeBookingController - confirm button clicked
+[DEBUG] 2017-05-28 20:58:33.967 [JavaFX Application Thread] OwnerMakeBookingController - 2017-05-26T14:00:00.000+1000 - Start time of booking
+[DEBUG] 2017-05-28 20:58:33.967 [JavaFX Application Thread] OwnerMakeBookingController - 2017-05-26T14:30:00.000+1000 - end time of booking
+[DEBUG] 2017-05-28 20:58:33.967 [JavaFX Application Thread] OwnerMakeBookingController - 2017-05-26T13:30:00.000+1000 - Employee Start time of shift
+[DEBUG] 2017-05-28 20:58:33.967 [JavaFX Application Thread] OwnerMakeBookingController - 2017-05-26T14:50:00.000+1000 - Employee end time of shift
+[INFO ] 2017-05-28 20:58:33.967 [JavaFX Application Thread] OwnerMakeBookingController - checking all bookings
+[DEBUG] 2017-05-28 20:58:33.968 [JavaFX Application Thread] OwnerMakeBookingController - current chosen employee : bsmith@gmail.com
+[DEBUG] 2017-05-28 20:58:33.968 [JavaFX Application Thread] OwnerMakeBookingController - current customer bookings we are checking : username3
+[DEBUG] 2017-05-28 20:58:33.968 [JavaFX Application Thread] OwnerMakeBookingController - current customer bookings we are checking : username2
+[DEBUG] 2017-05-28 20:58:33.968 [JavaFX Application Thread] OwnerMakeBookingController - current customer bookings we are checking : username1
+[DEBUG] 2017-05-28 20:58:33.968 [JavaFX Application Thread] OwnerMakeBookingController - - They match
+[DEBUG] 2017-05-28 20:58:33.968 [JavaFX Application Thread] OwnerMakeBookingController - 	chosen start time : 2017-05-26T14:00:00.000+1000
+[DEBUG] 2017-05-28 20:58:33.968 [JavaFX Application Thread] OwnerMakeBookingController - 	booking end time : 2017-05-26T14:00:00.000+1000
+[DEBUG] 2017-05-28 20:58:33.968 [JavaFX Application Thread] OwnerMakeBookingController - 	chosen end time : 2017-05-26T14:30:00.000+1000
+[DEBUG] 2017-05-28 20:58:33.968 [JavaFX Application Thread] OwnerMakeBookingController - 	booking start time : 2017-05-26T13:30:00.000+1000
+[INFO ] 2017-05-28 20:58:33.968 [JavaFX Application Thread] OwnerMakeBookingController - check booking finished
+[INFO ] 2017-05-28 20:58:33.968 [JavaFX Application Thread] OwnerMakeBookingController - booking made
+[DEBUG] 2017-05-28 20:59:24.157 [JavaFX Application Thread] OwnerMakeBookingController - business.getCustomers().size() : 3 
+[DEBUG] 2017-05-28 20:59:24.157 [JavaFX Application Thread] OwnerMakeBookingController -  customer username: username3
+[DEBUG] 2017-05-28 20:59:24.158 [JavaFX Application Thread] OwnerMakeBookingController -  customer username: username2
+[DEBUG] 2017-05-28 20:59:24.158 [JavaFX Application Thread] OwnerMakeBookingController -  customer username: username1
+[INFO ] 2017-05-28 20:59:27.293 [JavaFX Application Thread] OwnerMakeBookingController - service box clicked
+[INFO ] 2017-05-28 20:59:29.277 [JavaFX Application Thread] OwnerMakeBookingController - employee box clicked
+[INFO ] 2017-05-28 20:59:32.079 [JavaFX Application Thread] OwnerMakeBookingController - day box clicked
+[INFO ] 2017-05-28 20:59:38.205 [JavaFX Application Thread] OwnerMakeBookingController - confirm button clicked
+[DEBUG] 2017-05-28 20:59:38.205 [JavaFX Application Thread] OwnerMakeBookingController - 2017-05-22T14:30:00.000+1000 - Start time of booking
+[DEBUG] 2017-05-28 20:59:38.206 [JavaFX Application Thread] OwnerMakeBookingController - 2017-05-22T15:00:00.000+1000 - end time of booking
+[DEBUG] 2017-05-28 20:59:38.206 [JavaFX Application Thread] OwnerMakeBookingController - 2017-05-22T14:00:00.000+1000 - Employee Start time of shift
+[DEBUG] 2017-05-28 20:59:38.206 [JavaFX Application Thread] OwnerMakeBookingController - 2017-05-22T15:00:00.000+1000 - Employee end time of shift
+[INFO ] 2017-05-28 20:59:38.206 [JavaFX Application Thread] OwnerMakeBookingController - checking all bookings
+[DEBUG] 2017-05-28 20:59:38.206 [JavaFX Application Thread] OwnerMakeBookingController - current chosen employee : bob@gmail.com
+[DEBUG] 2017-05-28 20:59:38.206 [JavaFX Application Thread] OwnerMakeBookingController - current customer bookings we are checking : username3
+[DEBUG] 2017-05-28 20:59:38.206 [JavaFX Application Thread] OwnerMakeBookingController - - They match
+[DEBUG] 2017-05-28 20:59:38.206 [JavaFX Application Thread] OwnerMakeBookingController - 	chosen start time : 2017-05-22T14:30:00.000+1000
+[DEBUG] 2017-05-28 20:59:38.206 [JavaFX Application Thread] OwnerMakeBookingController - 	booking end time : 2017-05-01T14:55:00.000+1000
+[DEBUG] 2017-05-28 20:59:38.206 [JavaFX Application Thread] OwnerMakeBookingController - 	chosen end time : 2017-05-22T15:00:00.000+1000
+[DEBUG] 2017-05-28 20:59:38.206 [JavaFX Application Thread] OwnerMakeBookingController - 	booking start time : 2017-05-01T14:10:00.000+1000
+[DEBUG] 2017-05-28 20:59:38.206 [JavaFX Application Thread] OwnerMakeBookingController - current customer bookings we are checking : username2
+[DEBUG] 2017-05-28 20:59:38.206 [JavaFX Application Thread] OwnerMakeBookingController - - They match
+[DEBUG] 2017-05-28 20:59:38.206 [JavaFX Application Thread] OwnerMakeBookingController - 	chosen start time : 2017-05-22T14:30:00.000+1000
+[DEBUG] 2017-05-28 20:59:38.206 [JavaFX Application Thread] OwnerMakeBookingController - 	booking end time : 2017-04-17T13:00:00.000+1000
+[DEBUG] 2017-05-28 20:59:38.207 [JavaFX Application Thread] OwnerMakeBookingController - 	chosen end time : 2017-05-22T15:00:00.000+1000
+[DEBUG] 2017-05-28 20:59:38.207 [JavaFX Application Thread] OwnerMakeBookingController - 	booking start time : 2017-04-17T12:00:00.000+1000
+[DEBUG] 2017-05-28 20:59:38.207 [JavaFX Application Thread] OwnerMakeBookingController - - They match
+[DEBUG] 2017-05-28 20:59:38.207 [JavaFX Application Thread] OwnerMakeBookingController - 	chosen start time : 2017-05-22T14:30:00.000+1000
+[DEBUG] 2017-05-28 20:59:38.207 [JavaFX Application Thread] OwnerMakeBookingController - 	booking end time : 2017-04-24T13:00:00.000+1000
+[DEBUG] 2017-05-28 20:59:38.207 [JavaFX Application Thread] OwnerMakeBookingController - 	chosen end time : 2017-05-22T15:00:00.000+1000
+[DEBUG] 2017-05-28 20:59:38.207 [JavaFX Application Thread] OwnerMakeBookingController - 	booking start time : 2017-04-24T12:00:00.000+1000
+[DEBUG] 2017-05-28 20:59:38.207 [JavaFX Application Thread] OwnerMakeBookingController - - They match
+[DEBUG] 2017-05-28 20:59:38.207 [JavaFX Application Thread] OwnerMakeBookingController - 	chosen start time : 2017-05-22T14:30:00.000+1000
+[DEBUG] 2017-05-28 20:59:38.207 [JavaFX Application Thread] OwnerMakeBookingController - 	booking end time : 2017-05-01T13:00:00.000+1000
+[DEBUG] 2017-05-28 20:59:38.207 [JavaFX Application Thread] OwnerMakeBookingController - 	chosen end time : 2017-05-22T15:00:00.000+1000
+[DEBUG] 2017-05-28 20:59:38.207 [JavaFX Application Thread] OwnerMakeBookingController - 	booking start time : 2017-05-01T12:00:00.000+1000
+[DEBUG] 2017-05-28 20:59:38.207 [JavaFX Application Thread] OwnerMakeBookingController - current customer bookings we are checking : username1
+[DEBUG] 2017-05-28 20:59:38.207 [JavaFX Application Thread] OwnerMakeBookingController - - They match
+[DEBUG] 2017-05-28 20:59:38.208 [JavaFX Application Thread] OwnerMakeBookingController - 	chosen start time : 2017-05-22T14:30:00.000+1000
+[DEBUG] 2017-05-28 20:59:38.208 [JavaFX Application Thread] OwnerMakeBookingController - 	booking end time : 2017-04-17T11:00:00.000+1000
+[DEBUG] 2017-05-28 20:59:38.208 [JavaFX Application Thread] OwnerMakeBookingController - 	chosen end time : 2017-05-22T15:00:00.000+1000
+[DEBUG] 2017-05-28 20:59:38.208 [JavaFX Application Thread] OwnerMakeBookingController - 	booking start time : 2017-04-17T10:00:00.000+1000
+[DEBUG] 2017-05-28 20:59:38.208 [JavaFX Application Thread] OwnerMakeBookingController - - They match
+[DEBUG] 2017-05-28 20:59:38.208 [JavaFX Application Thread] OwnerMakeBookingController - 	chosen start time : 2017-05-22T14:30:00.000+1000
+[DEBUG] 2017-05-28 20:59:38.208 [JavaFX Application Thread] OwnerMakeBookingController - 	booking end time : 2017-04-24T11:00:00.000+1000
+[DEBUG] 2017-05-28 20:59:38.208 [JavaFX Application Thread] OwnerMakeBookingController - 	chosen end time : 2017-05-22T15:00:00.000+1000
+[DEBUG] 2017-05-28 20:59:38.208 [JavaFX Application Thread] OwnerMakeBookingController - 	booking start time : 2017-04-24T10:00:00.000+1000
+[DEBUG] 2017-05-28 20:59:38.208 [JavaFX Application Thread] OwnerMakeBookingController - - They match
+[DEBUG] 2017-05-28 20:59:38.208 [JavaFX Application Thread] OwnerMakeBookingController - 	chosen start time : 2017-05-22T14:30:00.000+1000
+[DEBUG] 2017-05-28 20:59:38.208 [JavaFX Application Thread] OwnerMakeBookingController - 	booking end time : 2017-05-01T11:00:00.000+1000
+[DEBUG] 2017-05-28 20:59:38.208 [JavaFX Application Thread] OwnerMakeBookingController - 	chosen end time : 2017-05-22T15:00:00.000+1000
+[DEBUG] 2017-05-28 20:59:38.208 [JavaFX Application Thread] OwnerMakeBookingController - 	booking start time : 2017-05-01T10:00:00.000+1000
+[INFO ] 2017-05-28 20:59:38.209 [JavaFX Application Thread] OwnerMakeBookingController - check booking finished
+[INFO ] 2017-05-28 20:59:38.209 [JavaFX Application Thread] OwnerMakeBookingController - booking made
+[DEBUG] 2017-05-28 20:59:51.833 [JavaFX Application Thread] OwnerMakeBookingController - business.getCustomers().size() : 3 
+[DEBUG] 2017-05-28 20:59:51.833 [JavaFX Application Thread] OwnerMakeBookingController -  customer username: username3
+[DEBUG] 2017-05-28 20:59:51.833 [JavaFX Application Thread] OwnerMakeBookingController -  customer username: username2
+[DEBUG] 2017-05-28 20:59:51.833 [JavaFX Application Thread] OwnerMakeBookingController -  customer username: username1
+[INFO ] 2017-05-28 20:59:54.605 [JavaFX Application Thread] OwnerMakeBookingController - service box clicked
+[INFO ] 2017-05-28 20:59:56.505 [JavaFX Application Thread] OwnerMakeBookingController - employee box clicked
+[INFO ] 2017-05-28 20:59:59.243 [JavaFX Application Thread] OwnerMakeBookingController - day box clicked
+[INFO ] 2017-05-28 21:00:24.160 [JavaFX Application Thread] OwnerMakeBookingController - confirm button clicked
+[DEBUG] 2017-05-28 21:00:24.160 [JavaFX Application Thread] OwnerMakeBookingController - 2017-05-22T14:00:00.000+1000 - Start time of booking
+[DEBUG] 2017-05-28 21:00:24.160 [JavaFX Application Thread] OwnerMakeBookingController - 2017-05-22T14:30:00.000+1000 - end time of booking
+[DEBUG] 2017-05-28 21:00:24.160 [JavaFX Application Thread] OwnerMakeBookingController - 2017-05-22T14:00:00.000+1000 - Employee Start time of shift
+[DEBUG] 2017-05-28 21:00:24.160 [JavaFX Application Thread] OwnerMakeBookingController - 2017-05-22T15:00:00.000+1000 - Employee end time of shift
+[INFO ] 2017-05-28 21:00:24.160 [JavaFX Application Thread] OwnerMakeBookingController - checking all bookings
+[DEBUG] 2017-05-28 21:00:24.160 [JavaFX Application Thread] OwnerMakeBookingController - current chosen employee : bob@gmail.com
+[DEBUG] 2017-05-28 21:00:24.160 [JavaFX Application Thread] OwnerMakeBookingController - current customer bookings we are checking : username3
+[DEBUG] 2017-05-28 21:00:24.160 [JavaFX Application Thread] OwnerMakeBookingController - - They match
+[DEBUG] 2017-05-28 21:00:24.160 [JavaFX Application Thread] OwnerMakeBookingController - 	chosen start time : 2017-05-22T14:00:00.000+1000
+[DEBUG] 2017-05-28 21:00:24.161 [JavaFX Application Thread] OwnerMakeBookingController - 	booking end time : 2017-05-01T14:55:00.000+1000
+[DEBUG] 2017-05-28 21:00:24.161 [JavaFX Application Thread] OwnerMakeBookingController - 	chosen end time : 2017-05-22T14:30:00.000+1000
+[DEBUG] 2017-05-28 21:00:24.161 [JavaFX Application Thread] OwnerMakeBookingController - 	booking start time : 2017-05-01T14:10:00.000+1000
+[DEBUG] 2017-05-28 21:00:24.161 [JavaFX Application Thread] OwnerMakeBookingController - current customer bookings we are checking : username2
+[DEBUG] 2017-05-28 21:00:24.161 [JavaFX Application Thread] OwnerMakeBookingController - - They match
+[DEBUG] 2017-05-28 21:00:24.161 [JavaFX Application Thread] OwnerMakeBookingController - 	chosen start time : 2017-05-22T14:00:00.000+1000
+[DEBUG] 2017-05-28 21:00:24.161 [JavaFX Application Thread] OwnerMakeBookingController - 	booking end time : 2017-04-17T13:00:00.000+1000
+[DEBUG] 2017-05-28 21:00:24.161 [JavaFX Application Thread] OwnerMakeBookingController - 	chosen end time : 2017-05-22T14:30:00.000+1000
+[DEBUG] 2017-05-28 21:00:24.161 [JavaFX Application Thread] OwnerMakeBookingController - 	booking start time : 2017-04-17T12:00:00.000+1000
+[DEBUG] 2017-05-28 21:00:24.161 [JavaFX Application Thread] OwnerMakeBookingController - - They match
+[DEBUG] 2017-05-28 21:00:24.161 [JavaFX Application Thread] OwnerMakeBookingController - 	chosen start time : 2017-05-22T14:00:00.000+1000
+[DEBUG] 2017-05-28 21:00:24.161 [JavaFX Application Thread] OwnerMakeBookingController - 	booking end time : 2017-04-24T13:00:00.000+1000
+[DEBUG] 2017-05-28 21:00:24.161 [JavaFX Application Thread] OwnerMakeBookingController - 	chosen end time : 2017-05-22T14:30:00.000+1000
+[DEBUG] 2017-05-28 21:00:24.162 [JavaFX Application Thread] OwnerMakeBookingController - 	booking start time : 2017-04-24T12:00:00.000+1000
+[DEBUG] 2017-05-28 21:00:24.162 [JavaFX Application Thread] OwnerMakeBookingController - - They match
+[DEBUG] 2017-05-28 21:00:24.162 [JavaFX Application Thread] OwnerMakeBookingController - 	chosen start time : 2017-05-22T14:00:00.000+1000
+[DEBUG] 2017-05-28 21:00:24.162 [JavaFX Application Thread] OwnerMakeBookingController - 	booking end time : 2017-05-01T13:00:00.000+1000
+[DEBUG] 2017-05-28 21:00:24.162 [JavaFX Application Thread] OwnerMakeBookingController - 	chosen end time : 2017-05-22T14:30:00.000+1000
+[DEBUG] 2017-05-28 21:00:24.162 [JavaFX Application Thread] OwnerMakeBookingController - 	booking start time : 2017-05-01T12:00:00.000+1000
+[DEBUG] 2017-05-28 21:00:24.162 [JavaFX Application Thread] OwnerMakeBookingController - - They match
+[DEBUG] 2017-05-28 21:00:24.162 [JavaFX Application Thread] OwnerMakeBookingController - 	chosen start time : 2017-05-22T14:00:00.000+1000
+[DEBUG] 2017-05-28 21:00:24.162 [JavaFX Application Thread] OwnerMakeBookingController - 	booking end time : 2017-05-22T15:00:00.000+1000
+[DEBUG] 2017-05-28 21:00:24.162 [JavaFX Application Thread] OwnerMakeBookingController - 	chosen end time : 2017-05-22T14:30:00.000+1000
+[DEBUG] 2017-05-28 21:00:24.162 [JavaFX Application Thread] OwnerMakeBookingController - 	booking start time : 2017-05-22T14:30:00.000+1000
+[DEBUG] 2017-05-28 21:00:24.162 [JavaFX Application Thread] OwnerMakeBookingController - current customer bookings we are checking : username1
+[DEBUG] 2017-05-28 21:00:24.162 [JavaFX Application Thread] OwnerMakeBookingController - - They match
+[DEBUG] 2017-05-28 21:00:24.162 [JavaFX Application Thread] OwnerMakeBookingController - 	chosen start time : 2017-05-22T14:00:00.000+1000
+[DEBUG] 2017-05-28 21:00:24.162 [JavaFX Application Thread] OwnerMakeBookingController - 	booking end time : 2017-04-17T11:00:00.000+1000
+[DEBUG] 2017-05-28 21:00:24.162 [JavaFX Application Thread] OwnerMakeBookingController - 	chosen end time : 2017-05-22T14:30:00.000+1000
+[DEBUG] 2017-05-28 21:00:24.162 [JavaFX Application Thread] OwnerMakeBookingController - 	booking start time : 2017-04-17T10:00:00.000+1000
+[DEBUG] 2017-05-28 21:00:24.163 [JavaFX Application Thread] OwnerMakeBookingController - - They match
+[DEBUG] 2017-05-28 21:00:24.163 [JavaFX Application Thread] OwnerMakeBookingController - 	chosen start time : 2017-05-22T14:00:00.000+1000
+[DEBUG] 2017-05-28 21:00:24.163 [JavaFX Application Thread] OwnerMakeBookingController - 	booking end time : 2017-04-24T11:00:00.000+1000
+[DEBUG] 2017-05-28 21:00:24.163 [JavaFX Application Thread] OwnerMakeBookingController - 	chosen end time : 2017-05-22T14:30:00.000+1000
+[DEBUG] 2017-05-28 21:00:24.163 [JavaFX Application Thread] OwnerMakeBookingController - 	booking start time : 2017-04-24T10:00:00.000+1000
+[DEBUG] 2017-05-28 21:00:24.163 [JavaFX Application Thread] OwnerMakeBookingController - - They match
+[DEBUG] 2017-05-28 21:00:24.163 [JavaFX Application Thread] OwnerMakeBookingController - 	chosen start time : 2017-05-22T14:00:00.000+1000
+[DEBUG] 2017-05-28 21:00:24.163 [JavaFX Application Thread] OwnerMakeBookingController - 	booking end time : 2017-05-01T11:00:00.000+1000
+[DEBUG] 2017-05-28 21:00:24.163 [JavaFX Application Thread] OwnerMakeBookingController - 	chosen end time : 2017-05-22T14:30:00.000+1000
+[DEBUG] 2017-05-28 21:00:24.163 [JavaFX Application Thread] OwnerMakeBookingController - 	booking start time : 2017-05-01T10:00:00.000+1000
+[INFO ] 2017-05-28 21:00:24.163 [JavaFX Application Thread] OwnerMakeBookingController - check booking finished
+[INFO ] 2017-05-28 21:00:24.163 [JavaFX Application Thread] OwnerMakeBookingController - booking made
+[PROGRAM] 2017-05-28 21:01:01.531 [main] Driver - Ending Program
+[PROGRAM] 2017-05-28 21:02:52.001 [main] Driver - Starting Program
+[PROGRAM] 2017-05-28 21:02:56.917 [main] Driver - Ending Program
+[PROGRAM] 2017-05-28 21:23:56.267 [main] Driver - Starting Program
+[PROGRAM] 2017-05-28 21:24:55.347 [main] Driver - Ending Program
+[DEBUG] 2017-05-28 21:48:06.966 [main] AddEmployeeController - existing employee already has this email : test@domain.com
+[DEBUG] 2017-05-28 21:48:06.967 [main] AddEmployeeController - invalid email entered : NoAtSymbol.com
+[DEBUG] 2017-05-28 21:48:06.967 [main] AddEmployeeController - invalid email entered : NoAtSymbol.com
+[DEBUG] 2017-05-28 21:48:06.968 [main] AddEmployeeController - invalid email entered : test@NoDotCom
+[DEBUG] 2017-05-28 21:48:06.968 [main] AddEmployeeController - invalid email entered : 
+[DEBUG] 2017-05-28 21:48:06.968 [main] AddEmployeeController - invalid email entered : test@domain.com
+[DEBUG] 2017-05-28 21:48:06.968 [main] AddEmployeeController - invalid email entered : test@domain.com
+[DEBUG] 2017-05-28 21:48:06.973 [main] CustomerMakeBookingController - 2017-05-28T13:00:00.000+1000 - Start time of booking
+[DEBUG] 2017-05-28 21:48:06.973 [main] CustomerMakeBookingController - 2017-05-28T13:30:00.000+1000 - end time of booking
+[DEBUG] 2017-05-28 21:48:06.973 [main] CustomerMakeBookingController - 2017-05-28T09:00:00.000+1000 - Employee Start time of shift
+[DEBUG] 2017-05-28 21:48:06.973 [main] CustomerMakeBookingController - 2017-05-28T17:00:00.000+1000 - Employee end time of shift
+[INFO ] 2017-05-28 21:48:06.974 [main] CustomerMakeBookingController - checking all bookings
+[DEBUG] 2017-05-28 21:48:06.974 [main] CustomerMakeBookingController - current chosen employee : Email
+[INFO ] 2017-05-28 21:48:06.974 [main] CustomerMakeBookingController - check booking finished
+[DEBUG] 2017-05-28 21:48:06.975 [main] CustomerMakeBookingController - 2017-05-28T09:00:00.000+1000 - Start time of booking
+[DEBUG] 2017-05-28 21:48:06.975 [main] CustomerMakeBookingController - 2017-05-28T09:30:00.000+1000 - end time of booking
+[DEBUG] 2017-05-28 21:48:06.975 [main] CustomerMakeBookingController - 2017-05-28T09:00:00.000+1000 - Employee Start time of shift
+[DEBUG] 2017-05-28 21:48:06.975 [main] CustomerMakeBookingController - 2017-05-28T17:00:00.000+1000 - Employee end time of shift
+[INFO ] 2017-05-28 21:48:06.975 [main] CustomerMakeBookingController - checking all bookings
+[DEBUG] 2017-05-28 21:48:06.975 [main] CustomerMakeBookingController - current chosen employee : Email
+[INFO ] 2017-05-28 21:48:06.975 [main] CustomerMakeBookingController - check booking finished
+[DEBUG] 2017-05-28 21:48:06.976 [main] CustomerMakeBookingController - 2017-05-28T16:30:00.000+1000 - Start time of booking
+[DEBUG] 2017-05-28 21:48:06.976 [main] CustomerMakeBookingController - 2017-05-28T17:00:00.000+1000 - end time of booking
+[DEBUG] 2017-05-28 21:48:06.976 [main] CustomerMakeBookingController - 2017-05-28T09:00:00.000+1000 - Employee Start time of shift
+[DEBUG] 2017-05-28 21:48:06.976 [main] CustomerMakeBookingController - 2017-05-28T17:00:00.000+1000 - Employee end time of shift
+[INFO ] 2017-05-28 21:48:06.976 [main] CustomerMakeBookingController - checking all bookings
+[DEBUG] 2017-05-28 21:48:06.976 [main] CustomerMakeBookingController - current chosen employee : Email
+[INFO ] 2017-05-28 21:48:06.976 [main] CustomerMakeBookingController - check booking finished
+[DEBUG] 2017-05-28 21:48:06.977 [main] CustomerMakeBookingController - 2017-05-28T16:31:00.000+1000 - Start time of booking
+[DEBUG] 2017-05-28 21:48:06.977 [main] CustomerMakeBookingController - 2017-05-28T17:01:00.000+1000 - end time of booking
+[DEBUG] 2017-05-28 21:48:06.977 [main] CustomerMakeBookingController - 2017-05-28T09:00:00.000+1000 - Employee Start time of shift
+[DEBUG] 2017-05-28 21:48:06.977 [main] CustomerMakeBookingController - 2017-05-28T17:00:00.000+1000 - Employee end time of shift
+[INFO ] 2017-05-28 21:48:06.977 [main] CustomerMakeBookingController - checking all bookings
+[DEBUG] 2017-05-28 21:48:06.977 [main] CustomerMakeBookingController - current chosen employee : Email
+[INFO ] 2017-05-28 21:48:06.978 [main] CustomerMakeBookingController - Outside working times
+[DEBUG] 2017-05-28 21:48:06.978 [main] CustomerMakeBookingController - 2017-05-28T17:00:00.000+1000 - Start time of booking
+[DEBUG] 2017-05-28 21:48:06.978 [main] CustomerMakeBookingController - 2017-05-28T17:30:00.000+1000 - end time of booking
+[DEBUG] 2017-05-28 21:48:06.978 [main] CustomerMakeBookingController - 2017-05-28T09:00:00.000+1000 - Employee Start time of shift
+[DEBUG] 2017-05-28 21:48:06.978 [main] CustomerMakeBookingController - 2017-05-28T17:00:00.000+1000 - Employee end time of shift
+[INFO ] 2017-05-28 21:48:06.978 [main] CustomerMakeBookingController - checking all bookings
+[DEBUG] 2017-05-28 21:48:06.979 [main] CustomerMakeBookingController - current chosen employee : Email
+[INFO ] 2017-05-28 21:48:06.979 [main] CustomerMakeBookingController - Outside working times
+[DEBUG] 2017-05-28 21:48:06.979 [main] CustomerMakeBookingController - 2017-05-28T08:59:00.000+1000 - Start time of booking
+[DEBUG] 2017-05-28 21:48:06.979 [main] CustomerMakeBookingController - 2017-05-28T09:29:00.000+1000 - end time of booking
+[DEBUG] 2017-05-28 21:48:06.979 [main] CustomerMakeBookingController - 2017-05-28T09:00:00.000+1000 - Employee Start time of shift
+[DEBUG] 2017-05-28 21:48:06.979 [main] CustomerMakeBookingController - 2017-05-28T17:00:00.000+1000 - Employee end time of shift
+[INFO ] 2017-05-28 21:48:06.979 [main] CustomerMakeBookingController - checking all bookings
+[DEBUG] 2017-05-28 21:48:06.980 [main] CustomerMakeBookingController - current chosen employee : Email
+[INFO ] 2017-05-28 21:48:06.980 [main] CustomerMakeBookingController - Outside working times
+[DEBUG] 2017-05-28 21:48:06.981 [main] CustomerMakeBookingController - 2017-05-28T08:30:00.000+1000 - Start time of booking
+[DEBUG] 2017-05-28 21:48:06.981 [main] CustomerMakeBookingController - 2017-05-28T09:00:00.000+1000 - end time of booking
+[DEBUG] 2017-05-28 21:48:06.981 [main] CustomerMakeBookingController - 2017-05-28T09:00:00.000+1000 - Employee Start time of shift
+[DEBUG] 2017-05-28 21:48:06.981 [main] CustomerMakeBookingController - 2017-05-28T17:00:00.000+1000 - Employee end time of shift
+[INFO ] 2017-05-28 21:48:06.981 [main] CustomerMakeBookingController - checking all bookings
+[DEBUG] 2017-05-28 21:48:06.981 [main] CustomerMakeBookingController - current chosen employee : Email
+[INFO ] 2017-05-28 21:48:06.981 [main] CustomerMakeBookingController - Outside working times
+[DEBUG] 2017-05-28 21:48:06.983 [main] CustomerMakeBookingController - 2017-05-28T13:00:00.000+1000 - Start time of booking
+[DEBUG] 2017-05-28 21:48:06.983 [main] CustomerMakeBookingController - 2017-05-28T13:30:00.000+1000 - end time of booking
+[DEBUG] 2017-05-28 21:48:06.983 [main] CustomerMakeBookingController - 2017-05-28T09:00:00.000+1000 - Employee Start time of shift
+[DEBUG] 2017-05-28 21:48:06.983 [main] CustomerMakeBookingController - 2017-05-28T17:00:00.000+1000 - Employee end time of shift
+[INFO ] 2017-05-28 21:48:06.983 [main] CustomerMakeBookingController - checking all bookings
+[DEBUG] 2017-05-28 21:48:06.983 [main] CustomerMakeBookingController - current chosen employee : Email
+[DEBUG] 2017-05-28 21:48:06.983 [main] CustomerMakeBookingController - current customer bookings we are checking : Username
+[DEBUG] 2017-05-28 21:48:06.983 [main] CustomerMakeBookingController - - They match
+[DEBUG] 2017-05-28 21:48:06.984 [main] CustomerMakeBookingController - 	chosen start time : 2017-05-28T13:00:00.000+1000
+[DEBUG] 2017-05-28 21:48:06.984 [main] CustomerMakeBookingController - 	booking end time : 2017-05-28T11:30:00.000+1000
+[DEBUG] 2017-05-28 21:48:06.984 [main] CustomerMakeBookingController - 	chosen end time : 2017-05-28T13:30:00.000+1000
+[DEBUG] 2017-05-28 21:48:06.984 [main] CustomerMakeBookingController - 	booking start time : 2017-05-28T11:00:00.000+1000
+[INFO ] 2017-05-28 21:48:06.984 [main] CustomerMakeBookingController - check booking finished
+[DEBUG] 2017-05-28 21:48:06.985 [main] CustomerMakeBookingController - 2017-05-28T13:00:00.000+1000 - Start time of booking
+[DEBUG] 2017-05-28 21:48:06.985 [main] CustomerMakeBookingController - 2017-05-28T13:30:00.000+1000 - end time of booking
+[DEBUG] 2017-05-28 21:48:06.985 [main] CustomerMakeBookingController - 2017-05-28T09:00:00.000+1000 - Employee Start time of shift
+[DEBUG] 2017-05-28 21:48:06.985 [main] CustomerMakeBookingController - 2017-05-28T17:00:00.000+1000 - Employee end time of shift
+[INFO ] 2017-05-28 21:48:06.985 [main] CustomerMakeBookingController - checking all bookings
+[DEBUG] 2017-05-28 21:48:06.985 [main] CustomerMakeBookingController - current chosen employee : Email
+[DEBUG] 2017-05-28 21:48:06.985 [main] CustomerMakeBookingController - current customer bookings we are checking : Username
+[DEBUG] 2017-05-28 21:48:06.985 [main] CustomerMakeBookingController - - They match
+[DEBUG] 2017-05-28 21:48:06.985 [main] CustomerMakeBookingController - 	chosen start time : 2017-05-28T13:00:00.000+1000
+[DEBUG] 2017-05-28 21:48:06.985 [main] CustomerMakeBookingController - 	booking end time : 2017-05-28T14:00:00.000+1000
+[DEBUG] 2017-05-28 21:48:06.985 [main] CustomerMakeBookingController - 	chosen end time : 2017-05-28T13:30:00.000+1000
+[DEBUG] 2017-05-28 21:48:06.985 [main] CustomerMakeBookingController - 	booking start time : 2017-05-28T13:30:00.000+1000
+[INFO ] 2017-05-28 21:48:06.985 [main] CustomerMakeBookingController - check booking finished
+[DEBUG] 2017-05-28 21:48:06.986 [main] CustomerMakeBookingController - 2017-05-28T13:00:00.000+1000 - Start time of booking
+[DEBUG] 2017-05-28 21:48:06.986 [main] CustomerMakeBookingController - 2017-05-28T13:30:00.000+1000 - end time of booking
+[DEBUG] 2017-05-28 21:48:06.986 [main] CustomerMakeBookingController - 2017-05-28T09:00:00.000+1000 - Employee Start time of shift
+[DEBUG] 2017-05-28 21:48:06.986 [main] CustomerMakeBookingController - 2017-05-28T17:00:00.000+1000 - Employee end time of shift
+[INFO ] 2017-05-28 21:48:06.986 [main] CustomerMakeBookingController - checking all bookings
+[DEBUG] 2017-05-28 21:48:06.986 [main] CustomerMakeBookingController - current chosen employee : Email
+[DEBUG] 2017-05-28 21:48:06.987 [main] CustomerMakeBookingController - current customer bookings we are checking : Username
+[DEBUG] 2017-05-28 21:48:06.987 [main] CustomerMakeBookingController - - They match
+[DEBUG] 2017-05-28 21:48:06.987 [main] CustomerMakeBookingController - 	chosen start time : 2017-05-28T13:00:00.000+1000
+[DEBUG] 2017-05-28 21:48:06.987 [main] CustomerMakeBookingController - 	booking end time : 2017-05-28T13:00:00.000+1000
+[DEBUG] 2017-05-28 21:48:06.987 [main] CustomerMakeBookingController - 	chosen end time : 2017-05-28T13:30:00.000+1000
+[DEBUG] 2017-05-28 21:48:06.987 [main] CustomerMakeBookingController - 	booking start time : 2017-05-28T12:30:00.000+1000
+[INFO ] 2017-05-28 21:48:06.987 [main] CustomerMakeBookingController - check booking finished
+[DEBUG] 2017-05-28 21:48:06.988 [main] CustomerMakeBookingController - 2017-05-28T13:00:00.000+1000 - Start time of booking
+[DEBUG] 2017-05-28 21:48:06.988 [main] CustomerMakeBookingController - 2017-05-28T13:30:00.000+1000 - end time of booking
+[DEBUG] 2017-05-28 21:48:06.988 [main] CustomerMakeBookingController - 2017-05-28T09:00:00.000+1000 - Employee Start time of shift
+[DEBUG] 2017-05-28 21:48:06.988 [main] CustomerMakeBookingController - 2017-05-28T17:00:00.000+1000 - Employee end time of shift
+[INFO ] 2017-05-28 21:48:06.988 [main] CustomerMakeBookingController - checking all bookings
+[DEBUG] 2017-05-28 21:48:06.988 [main] CustomerMakeBookingController - current chosen employee : Email
+[DEBUG] 2017-05-28 21:48:06.988 [main] CustomerMakeBookingController - current customer bookings we are checking : Username
+[DEBUG] 2017-05-28 21:48:06.989 [main] CustomerMakeBookingController - - They match
+[DEBUG] 2017-05-28 21:48:06.989 [main] CustomerMakeBookingController - 	chosen start time : 2017-05-28T13:00:00.000+1000
+[DEBUG] 2017-05-28 21:48:06.989 [main] CustomerMakeBookingController - 	booking end time : 2017-05-28T13:30:00.000+1000
+[DEBUG] 2017-05-28 21:48:06.989 [main] CustomerMakeBookingController - 	chosen end time : 2017-05-28T13:30:00.000+1000
+[DEBUG] 2017-05-28 21:48:06.989 [main] CustomerMakeBookingController - 	booking start time : 2017-05-28T13:00:00.000+1000
+[INFO ] 2017-05-28 21:48:06.991 [main] CustomerMakeBookingController - Clashes with another booking
+[DEBUG] 2017-05-28 21:48:06.992 [main] CustomerMakeBookingController - 2017-05-28T13:00:00.000+1000 - Start time of booking
+[DEBUG] 2017-05-28 21:48:06.992 [main] CustomerMakeBookingController - 2017-05-28T13:30:00.000+1000 - end time of booking
+[DEBUG] 2017-05-28 21:48:06.992 [main] CustomerMakeBookingController - 2017-05-28T09:00:00.000+1000 - Employee Start time of shift
+[DEBUG] 2017-05-28 21:48:06.992 [main] CustomerMakeBookingController - 2017-05-28T17:00:00.000+1000 - Employee end time of shift
+[INFO ] 2017-05-28 21:48:06.993 [main] CustomerMakeBookingController - checking all bookings
+[DEBUG] 2017-05-28 21:48:06.993 [main] CustomerMakeBookingController - current chosen employee : Email
+[DEBUG] 2017-05-28 21:48:06.993 [main] CustomerMakeBookingController - current customer bookings we are checking : Username
+[DEBUG] 2017-05-28 21:48:06.993 [main] CustomerMakeBookingController - - They match
+[DEBUG] 2017-05-28 21:48:06.993 [main] CustomerMakeBookingController - 	chosen start time : 2017-05-28T13:00:00.000+1000
+[DEBUG] 2017-05-28 21:48:06.993 [main] CustomerMakeBookingController - 	booking end time : 2017-05-28T13:45:00.000+1000
+[DEBUG] 2017-05-28 21:48:06.993 [main] CustomerMakeBookingController - 	chosen end time : 2017-05-28T13:30:00.000+1000
+[DEBUG] 2017-05-28 21:48:06.993 [main] CustomerMakeBookingController - 	booking start time : 2017-05-28T13:15:00.000+1000
+[INFO ] 2017-05-28 21:48:06.993 [main] CustomerMakeBookingController - Clashes with another booking
+[DEBUG] 2017-05-28 21:48:06.996 [main] OwnerMakeBookingController - 2017-05-28T13:00:00.000+1000 - Start time of booking
+[DEBUG] 2017-05-28 21:48:06.996 [main] OwnerMakeBookingController - 2017-05-28T13:30:00.000+1000 - end time of booking
+[DEBUG] 2017-05-28 21:48:06.996 [main] OwnerMakeBookingController - 2017-05-28T09:00:00.000+1000 - Employee Start time of shift
+[DEBUG] 2017-05-28 21:48:06.996 [main] OwnerMakeBookingController - 2017-05-28T17:00:00.000+1000 - Employee end time of shift
+[INFO ] 2017-05-28 21:48:06.996 [main] OwnerMakeBookingController - checking all bookings
+[DEBUG] 2017-05-28 21:48:06.996 [main] OwnerMakeBookingController - current chosen employee : Email
+[DEBUG] 2017-05-28 21:48:06.996 [main] OwnerMakeBookingController - current customer bookings we are checking : Username
+[INFO ] 2017-05-28 21:48:06.996 [main] OwnerMakeBookingController - check booking finished
+[DEBUG] 2017-05-28 21:48:06.997 [main] OwnerMakeBookingController - 2017-05-28T09:00:00.000+1000 - Start time of booking
+[DEBUG] 2017-05-28 21:48:06.997 [main] OwnerMakeBookingController - 2017-05-28T09:30:00.000+1000 - end time of booking
+[DEBUG] 2017-05-28 21:48:06.997 [main] OwnerMakeBookingController - 2017-05-28T09:00:00.000+1000 - Employee Start time of shift
+[DEBUG] 2017-05-28 21:48:06.997 [main] OwnerMakeBookingController - 2017-05-28T17:00:00.000+1000 - Employee end time of shift
+[INFO ] 2017-05-28 21:48:06.997 [main] OwnerMakeBookingController - checking all bookings
+[DEBUG] 2017-05-28 21:48:06.997 [main] OwnerMakeBookingController - current chosen employee : Email
+[DEBUG] 2017-05-28 21:48:06.997 [main] OwnerMakeBookingController - current customer bookings we are checking : Username
+[INFO ] 2017-05-28 21:48:06.997 [main] OwnerMakeBookingController - check booking finished
+[DEBUG] 2017-05-28 21:48:06.998 [main] OwnerMakeBookingController - 2017-05-28T16:30:00.000+1000 - Start time of booking
+[DEBUG] 2017-05-28 21:48:06.998 [main] OwnerMakeBookingController - 2017-05-28T17:00:00.000+1000 - end time of booking
+[DEBUG] 2017-05-28 21:48:06.998 [main] OwnerMakeBookingController - 2017-05-28T09:00:00.000+1000 - Employee Start time of shift
+[DEBUG] 2017-05-28 21:48:06.998 [main] OwnerMakeBookingController - 2017-05-28T17:00:00.000+1000 - Employee end time of shift
+[INFO ] 2017-05-28 21:48:06.998 [main] OwnerMakeBookingController - checking all bookings
+[DEBUG] 2017-05-28 21:48:06.998 [main] OwnerMakeBookingController - current chosen employee : Email
+[DEBUG] 2017-05-28 21:48:06.998 [main] OwnerMakeBookingController - current customer bookings we are checking : Username
+[INFO ] 2017-05-28 21:48:06.998 [main] OwnerMakeBookingController - check booking finished
+[DEBUG] 2017-05-28 21:48:06.999 [main] OwnerMakeBookingController - 2017-05-28T16:31:00.000+1000 - Start time of booking
+[DEBUG] 2017-05-28 21:48:06.999 [main] OwnerMakeBookingController - 2017-05-28T17:01:00.000+1000 - end time of booking
+[DEBUG] 2017-05-28 21:48:06.999 [main] OwnerMakeBookingController - 2017-05-28T09:00:00.000+1000 - Employee Start time of shift
+[DEBUG] 2017-05-28 21:48:06.999 [main] OwnerMakeBookingController - 2017-05-28T17:00:00.000+1000 - Employee end time of shift
+[INFO ] 2017-05-28 21:48:06.999 [main] OwnerMakeBookingController - checking all bookings
+[DEBUG] 2017-05-28 21:48:06.999 [main] OwnerMakeBookingController - current chosen employee : Email
+[INFO ] 2017-05-28 21:48:06.999 [main] OwnerMakeBookingController - Outside working times
+[DEBUG] 2017-05-28 21:48:07.000 [main] OwnerMakeBookingController - 2017-05-28T17:00:00.000+1000 - Start time of booking
+[DEBUG] 2017-05-28 21:48:07.000 [main] OwnerMakeBookingController - 2017-05-28T17:30:00.000+1000 - end time of booking
+[DEBUG] 2017-05-28 21:48:07.000 [main] OwnerMakeBookingController - 2017-05-28T09:00:00.000+1000 - Employee Start time of shift
+[DEBUG] 2017-05-28 21:48:07.000 [main] OwnerMakeBookingController - 2017-05-28T17:00:00.000+1000 - Employee end time of shift
+[INFO ] 2017-05-28 21:48:07.000 [main] OwnerMakeBookingController - checking all bookings
+[DEBUG] 2017-05-28 21:48:07.000 [main] OwnerMakeBookingController - current chosen employee : Email
+[INFO ] 2017-05-28 21:48:07.000 [main] OwnerMakeBookingController - Outside working times
+[DEBUG] 2017-05-28 21:48:07.000 [main] OwnerMakeBookingController - 2017-05-28T08:59:00.000+1000 - Start time of booking
+[DEBUG] 2017-05-28 21:48:07.001 [main] OwnerMakeBookingController - 2017-05-28T09:29:00.000+1000 - end time of booking
+[DEBUG] 2017-05-28 21:48:07.001 [main] OwnerMakeBookingController - 2017-05-28T09:00:00.000+1000 - Employee Start time of shift
+[DEBUG] 2017-05-28 21:48:07.001 [main] OwnerMakeBookingController - 2017-05-28T17:00:00.000+1000 - Employee end time of shift
+[INFO ] 2017-05-28 21:48:07.001 [main] OwnerMakeBookingController - checking all bookings
+[DEBUG] 2017-05-28 21:48:07.001 [main] OwnerMakeBookingController - current chosen employee : Email
+[INFO ] 2017-05-28 21:48:07.001 [main] OwnerMakeBookingController - Outside working times
+[DEBUG] 2017-05-28 21:48:07.001 [main] OwnerMakeBookingController - 2017-05-28T08:30:00.000+1000 - Start time of booking
+[DEBUG] 2017-05-28 21:48:07.001 [main] OwnerMakeBookingController - 2017-05-28T09:00:00.000+1000 - end time of booking
+[DEBUG] 2017-05-28 21:48:07.001 [main] OwnerMakeBookingController - 2017-05-28T09:00:00.000+1000 - Employee Start time of shift
+[DEBUG] 2017-05-28 21:48:07.001 [main] OwnerMakeBookingController - 2017-05-28T17:00:00.000+1000 - Employee end time of shift
+[INFO ] 2017-05-28 21:48:07.001 [main] OwnerMakeBookingController - checking all bookings
+[DEBUG] 2017-05-28 21:48:07.002 [main] OwnerMakeBookingController - current chosen employee : Email
+[INFO ] 2017-05-28 21:48:07.002 [main] OwnerMakeBookingController - Outside working times
+[DEBUG] 2017-05-28 21:48:07.002 [main] OwnerMakeBookingController - 2017-05-28T13:00:00.000+1000 - Start time of booking
+[DEBUG] 2017-05-28 21:48:07.002 [main] OwnerMakeBookingController - 2017-05-28T13:30:00.000+1000 - end time of booking
+[DEBUG] 2017-05-28 21:48:07.002 [main] OwnerMakeBookingController - 2017-05-28T09:00:00.000+1000 - Employee Start time of shift
+[DEBUG] 2017-05-28 21:48:07.002 [main] OwnerMakeBookingController - 2017-05-28T17:00:00.000+1000 - Employee end time of shift
+[INFO ] 2017-05-28 21:48:07.002 [main] OwnerMakeBookingController - checking all bookings
+[DEBUG] 2017-05-28 21:48:07.002 [main] OwnerMakeBookingController - current chosen employee : Email
+[DEBUG] 2017-05-28 21:48:07.002 [main] OwnerMakeBookingController - current customer bookings we are checking : Username
+[DEBUG] 2017-05-28 21:48:07.003 [main] OwnerMakeBookingController - - They match
+[DEBUG] 2017-05-28 21:48:07.003 [main] OwnerMakeBookingController - 	chosen start time : 2017-05-28T13:00:00.000+1000
+[DEBUG] 2017-05-28 21:48:07.003 [main] OwnerMakeBookingController - 	booking end time : 2017-05-28T11:30:00.000+1000
+[DEBUG] 2017-05-28 21:48:07.003 [main] OwnerMakeBookingController - 	chosen end time : 2017-05-28T13:30:00.000+1000
+[DEBUG] 2017-05-28 21:48:07.003 [main] OwnerMakeBookingController - 	booking start time : 2017-05-28T11:00:00.000+1000
+[INFO ] 2017-05-28 21:48:07.003 [main] OwnerMakeBookingController - check booking finished
+[DEBUG] 2017-05-28 21:48:07.004 [main] OwnerMakeBookingController - 2017-05-28T13:00:00.000+1000 - Start time of booking
+[DEBUG] 2017-05-28 21:48:07.004 [main] OwnerMakeBookingController - 2017-05-28T13:30:00.000+1000 - end time of booking
+[DEBUG] 2017-05-28 21:48:07.004 [main] OwnerMakeBookingController - 2017-05-28T09:00:00.000+1000 - Employee Start time of shift
+[DEBUG] 2017-05-28 21:48:07.004 [main] OwnerMakeBookingController - 2017-05-28T17:00:00.000+1000 - Employee end time of shift
+[INFO ] 2017-05-28 21:48:07.004 [main] OwnerMakeBookingController - checking all bookings
+[DEBUG] 2017-05-28 21:48:07.004 [main] OwnerMakeBookingController - current chosen employee : Email
+[DEBUG] 2017-05-28 21:48:07.004 [main] OwnerMakeBookingController - current customer bookings we are checking : Username
+[DEBUG] 2017-05-28 21:48:07.004 [main] OwnerMakeBookingController - - They match
+[DEBUG] 2017-05-28 21:48:07.004 [main] OwnerMakeBookingController - 	chosen start time : 2017-05-28T13:00:00.000+1000
+[DEBUG] 2017-05-28 21:48:07.004 [main] OwnerMakeBookingController - 	booking end time : 2017-05-28T14:00:00.000+1000
+[DEBUG] 2017-05-28 21:48:07.005 [main] OwnerMakeBookingController - 	chosen end time : 2017-05-28T13:30:00.000+1000
+[DEBUG] 2017-05-28 21:48:07.005 [main] OwnerMakeBookingController - 	booking start time : 2017-05-28T13:30:00.000+1000
+[INFO ] 2017-05-28 21:48:07.005 [main] OwnerMakeBookingController - check booking finished
+[DEBUG] 2017-05-28 21:48:07.005 [main] OwnerMakeBookingController - 2017-05-28T13:00:00.000+1000 - Start time of booking
+[DEBUG] 2017-05-28 21:48:07.005 [main] OwnerMakeBookingController - 2017-05-28T13:30:00.000+1000 - end time of booking
+[DEBUG] 2017-05-28 21:48:07.006 [main] OwnerMakeBookingController - 2017-05-28T09:00:00.000+1000 - Employee Start time of shift
+[DEBUG] 2017-05-28 21:48:07.006 [main] OwnerMakeBookingController - 2017-05-28T17:00:00.000+1000 - Employee end time of shift
+[INFO ] 2017-05-28 21:48:07.006 [main] OwnerMakeBookingController - checking all bookings
+[DEBUG] 2017-05-28 21:48:07.006 [main] OwnerMakeBookingController - current chosen employee : Email
+[DEBUG] 2017-05-28 21:48:07.006 [main] OwnerMakeBookingController - current customer bookings we are checking : Username
+[DEBUG] 2017-05-28 21:48:07.006 [main] OwnerMakeBookingController - - They match
+[DEBUG] 2017-05-28 21:48:07.006 [main] OwnerMakeBookingController - 	chosen start time : 2017-05-28T13:00:00.000+1000
+[DEBUG] 2017-05-28 21:48:07.006 [main] OwnerMakeBookingController - 	booking end time : 2017-05-28T13:00:00.000+1000
+[DEBUG] 2017-05-28 21:48:07.006 [main] OwnerMakeBookingController - 	chosen end time : 2017-05-28T13:30:00.000+1000
+[DEBUG] 2017-05-28 21:48:07.006 [main] OwnerMakeBookingController - 	booking start time : 2017-05-28T12:30:00.000+1000
+[INFO ] 2017-05-28 21:48:07.006 [main] OwnerMakeBookingController - check booking finished
+[DEBUG] 2017-05-28 21:48:07.007 [main] OwnerMakeBookingController - 2017-05-28T13:00:00.000+1000 - Start time of booking
+[DEBUG] 2017-05-28 21:48:07.007 [main] OwnerMakeBookingController - 2017-05-28T13:30:00.000+1000 - end time of booking
+[DEBUG] 2017-05-28 21:48:07.007 [main] OwnerMakeBookingController - 2017-05-28T09:00:00.000+1000 - Employee Start time of shift
+[DEBUG] 2017-05-28 21:48:07.007 [main] OwnerMakeBookingController - 2017-05-28T17:00:00.000+1000 - Employee end time of shift
+[INFO ] 2017-05-28 21:48:07.007 [main] OwnerMakeBookingController - checking all bookings
+[DEBUG] 2017-05-28 21:48:07.007 [main] OwnerMakeBookingController - current chosen employee : Email
+[DEBUG] 2017-05-28 21:48:07.007 [main] OwnerMakeBookingController - current customer bookings we are checking : Username
+[DEBUG] 2017-05-28 21:48:07.007 [main] OwnerMakeBookingController - - They match
+[DEBUG] 2017-05-28 21:48:07.007 [main] OwnerMakeBookingController - 	chosen start time : 2017-05-28T13:00:00.000+1000
+[DEBUG] 2017-05-28 21:48:07.007 [main] OwnerMakeBookingController - 	booking end time : 2017-05-28T13:30:00.000+1000
+[DEBUG] 2017-05-28 21:48:07.007 [main] OwnerMakeBookingController - 	chosen end time : 2017-05-28T13:30:00.000+1000
+[DEBUG] 2017-05-28 21:48:07.008 [main] OwnerMakeBookingController - 	booking start time : 2017-05-28T13:00:00.000+1000
+[INFO ] 2017-05-28 21:48:07.008 [main] OwnerMakeBookingController - Clashes with another booking
+[DEBUG] 2017-05-28 21:48:07.008 [main] OwnerMakeBookingController - 2017-05-28T13:00:00.000+1000 - Start time of booking
+[DEBUG] 2017-05-28 21:48:07.008 [main] OwnerMakeBookingController - 2017-05-28T13:30:00.000+1000 - end time of booking
+[DEBUG] 2017-05-28 21:48:07.008 [main] OwnerMakeBookingController - 2017-05-28T09:00:00.000+1000 - Employee Start time of shift
+[DEBUG] 2017-05-28 21:48:07.008 [main] OwnerMakeBookingController - 2017-05-28T17:00:00.000+1000 - Employee end time of shift
+[INFO ] 2017-05-28 21:48:07.008 [main] OwnerMakeBookingController - checking all bookings
+[DEBUG] 2017-05-28 21:48:07.008 [main] OwnerMakeBookingController - current chosen employee : Email
+[DEBUG] 2017-05-28 21:48:07.009 [main] OwnerMakeBookingController - current customer bookings we are checking : Username
+[DEBUG] 2017-05-28 21:48:07.009 [main] OwnerMakeBookingController - - They match
+[DEBUG] 2017-05-28 21:48:07.009 [main] OwnerMakeBookingController - 	chosen start time : 2017-05-28T13:00:00.000+1000
+[DEBUG] 2017-05-28 21:48:07.009 [main] OwnerMakeBookingController - 	booking end time : 2017-05-28T13:45:00.000+1000
+[DEBUG] 2017-05-28 21:48:07.009 [main] OwnerMakeBookingController - 	chosen end time : 2017-05-28T13:30:00.000+1000
+[DEBUG] 2017-05-28 21:48:07.009 [main] OwnerMakeBookingController - 	booking start time : 2017-05-28T13:15:00.000+1000
+[INFO ] 2017-05-28 21:48:07.009 [main] OwnerMakeBookingController - Clashes with another booking
+[DEBUG] 2017-05-28 21:48:07.014 [main] AddShiftController - invalid end time : 2:30
+[DEBUG] 2017-05-28 21:48:07.014 [main] AddShiftController - invalid end time : Word
+[DEBUG] 2017-05-28 21:48:07.014 [main] AddShiftController - invalid end time : 2:30
+[DEBUG] 2017-05-28 21:48:07.014 [main] AddShiftController - invalid end time : 2:30
+[DEBUG] 2017-05-28 21:48:07.015 [main] AddShiftController - invalid end time :  
+[DEBUG] 2017-05-28 21:48:07.015 [main] AddShiftController - invalid end time : 2:30
+[DEBUG] 2017-05-28 21:48:07.015 [main] AddShiftController - invalid end time : 24:30
+[DEBUG] 2017-05-28 21:48:07.015 [main] AddShiftController - invalid end time : 2:30
