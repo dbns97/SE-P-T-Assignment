@@ -246,6 +246,8 @@ public class OwnerMakeBookingController {
 		}
 		else
 		{
+					
+			//System.out.println("confirm button clicked");
 			logger.info("confirm button clicked");
 			//what will be saved to database
 			/*
@@ -258,9 +260,9 @@ public class OwnerMakeBookingController {
 								+ "\n------------------------\n"							
 								);
 			*/
-			String errorMessage = checkBooking(customer.getValue(), service.getValue(), employee.getValue(), day.getValue(), time.getText(), business);
+			Boolean madeBooking = checkBooking();
 			
-			if (errorMessage == null)
+			if (madeBooking == true)
 			{
 				Booking newBooking = new Booking(StartTime, EndTime, currentEmployee, currentCustomer, currentService);
 				//System.out.println("booking made");
@@ -270,98 +272,118 @@ public class OwnerMakeBookingController {
 				DatabaseHandler.writeBusinessToFile(business);
 				om.showOwnerMenu();
 			}
-			else
-			{
-				errorLabel.setText(errorMessage);
-			}
 		}
 	}
 
-	public String checkBooking(String customer, String service, String employee, String day, String time, Business business) {
-		if (service == null || employee == null || day == null || time.isEmpty()) {
-			return "Please complete all fields";
-		} else {
-			// gets their name, not their username
-			currentCustomer = business.getCustomer(customer);
+	public Boolean checkBooking()
+	{
+		if( service.getValue() == null
+		|| employee.getValue() == null
+		|| day.getValue() == null 
+		|| time.getText().isEmpty() )
+		{
+			return false;
+		}
+		else
+		{
+			// gets their name not their username
+			currentCustomer = business.getCustomer(customer.getValue() );
 			
 			// get entered service
-			StringTokenizer st = new StringTokenizer(service);
+			StringTokenizer st = new StringTokenizer(service.getValue());
 			String[] serviceBroken = new String[2];
-			int i = 0;
-			while (st.hasMoreTokens()) {
+			int i=0;
+			while (st.hasMoreTokens()) 
+			{
 				serviceBroken[i] = st.nextToken("(");
-				// logger.debug("", serviceBroken[i]);
+				//System.out.println(serviceBroken[i]);
 				i++;
 			}
+			//System.out.println(serviceBroken[0] + "adsas");
 			String newString = serviceBroken[0].trim();
-			currentService = business.getService(newString);
-
+			currentService = business.getService( newString );
+			
 			// and employee
-			for (Employee e : business.getEmployees()) {
-				if (e.getName().equals(employee)) {
-					currentEmployee = business.getEmployee(e.getEmail());
+			for( Employee e : business.getEmployees() )
+			{
+				if( e.getName().equals( employee.getValue() ) )
+				{
+					currentEmployee = business.getEmployee( e.getEmail() );
 				}
 			}
-
-			// get the entered time, set the dates for this week and calc the
-			// end time from that
-			StartTime = getTime(time, day);
-			EndTime = getTime(StartTime, currentService.getDuration());
-			// finds the employee starting & ending time of his shift for
-			// entered day
-			Date employeeStartTime = getTime(currentEmployee.getShift(day).getStart(), day);
-			Date employeeEndTime = getTime(currentEmployee.getShift(day).getEnd(), day);
-
-			logger.debug("{} - Start time of booking", StartTime);
-			logger.debug("{} - end time of booking", EndTime);
-			logger.debug("{} - Employee Start time of shift", employeeStartTime);
-			logger.debug("{} - Employee end time of shift", employeeEndTime);
-
-			logger.info("checking all bookings");
-			logger.debug("current chosen employee : {}", currentEmployee.getEmail());
-			if ((StartTime.after(employeeStartTime) || StartTime.equals(employeeStartTime))
-					&& (EndTime.before(employeeEndTime) || EndTime.equals(employeeEndTime))) {
+			
+			// get the entered time, set the dates for this week and calc the end time from that
+			StartTime = getTime(time.getText(), day.getValue() );
+			EndTime = getTime( StartTime, currentService.getDuration() );			
+			// finds the employee starting & ending time of his shift for entered day
+			Date employeeStartTime = getTime(currentEmployee.getShift( day.getValue() ).getStart(), day.getValue());
+			Date employeeEndTime = getTime( currentEmployee.getShift( day.getValue() ).getEnd(), day.getValue() );
+					
+			// convert these dates to long
+			long enteredStartTime = dateToLong(StartTime);	
+			long enteredEndTime = dateToLong(EndTime);	
+			long empStartTime = dateToLong(employeeStartTime);			
+			long empEndTime = dateToLong(employeeEndTime);			
+			
+			logger.debug(StartTime + " - Start time of booking");
+			logger.debug(EndTime + " - end time of booking");	
+			logger.debug(employeeStartTime + " - Employee Start time of shift");
+			logger.debug(employeeEndTime + "- Employee end time of shift\n");		
+			
+						
+			logger.debug("checking all bookings");
+			logger.debug("current chosen employee : " + currentEmployee.getEmail() );
+			// checks that the start time is after employee start time
+			// and that it ends before employee end time
+			if (enteredStartTime >= empStartTime && enteredEndTime <= empEndTime)
+			{
+				//System.out.println();
 				// searches each of the customer bookings for that day
-				// and checks that the booking is not going into any for their
-				// bookings
+				// and checks that the booking is not going into any for their bookings
 				ArrayList<Customer> customers = business.getCustomers();
-
-				for (Customer c : customers) {
-
-					logger.debug("current customer bookings we are checking : {}", c.getUsername());
-					for (Booking booking : c.getBookings()) {
-						// logger.debug("checks if the booking has the same
-						// employee as the one user chose");
-						if (booking.getEmployee().getEmail().equals(currentEmployee.getEmail())) {
+				
+				for (Customer customer : customers)
+				{
+					logger.debug("current customer bookings we are checking : " + customer.getUsername());
+					for (Booking booking : customer.getBookings())
+					{
+						logger.debug("checks if the booking has the same employee as the one user chose");
+						if (booking.getEmployee().getEmail().equals(currentEmployee.getEmail()) ) 
+						{
 							logger.debug("- They match");
-
-							logger.debug("\tchosen start time : {}", StartTime);
-							logger.debug("\tbooking end time : {}", booking.getEnd());
-
-							logger.debug("\tchosen end time : {}", EndTime);
-							logger.debug("\tbooking start time : {}", booking.getStart());
-
-							if ((StartTime.getTime() > booking.getStart().getTime()
-									&& StartTime.getTime() < booking.getEnd().getTime())
-									|| (EndTime.getTime() < booking.getEnd().getTime()
-											&& EndTime.getTime() > booking.getStart().getTime())
-									|| (StartTime.getTime() >= booking.getStart().getTime()
-											&& EndTime.getTime() <= booking.getEnd().getTime())
-									|| (StartTime.getTime() <= booking.getStart().getTime()
-											&& EndTime.getTime() >= booking.getEnd().getTime())) {
-								logger.info("Clashes with another booking");
-								return "Your chosen time goes through another booking";
+							
+							logger.debug("chosen start time : " + StartTime);
+							logger.debug("booking end time : " + booking.getEnd());
+							
+							logger.debug("chosen end time : " + EndTime);
+							logger.debug("booking start time : " + booking.getStart());
+							
+							System.out.println();
+							
+							if ( ( StartTime.getTime() >= booking.getStart().getTime() && StartTime.getTime() <= booking.getEnd().getTime() )
+							   ||( EndTime.getTime() <= booking.getEnd().getTime() && EndTime.getTime() >= booking.getStart().getTime() ) )
+							{
+								errorLabel.setText("Your chosen time goes through another booking");
+								return false;
 							}
 						}
+						//System.out.println();
 					}
+					//System.out.println();
 				}
-			} else {
-				logger.info("Outside working times");
-				return "Choose a time when employee is working";
 			}
-			logger.info("check booking finished");
-			return null;
+			else
+			{
+				errorLabel.setText("Choose a time when employee is working");
+				return false;
+			}
+				
+			return true;			
+			
 		}
+		
+		
+
 	}
 
 	public long dateToLong(Date date)

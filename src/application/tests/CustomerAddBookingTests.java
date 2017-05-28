@@ -24,7 +24,7 @@ import application.models.Owner;
 import application.models.Service;
 
 @RunWith(Parameterized.class)
-public class CustomerMakeBookingTests {
+public class CustomerAddBookingTests {
 
 	@Parameters
 	public static Collection<Object[]> data() 
