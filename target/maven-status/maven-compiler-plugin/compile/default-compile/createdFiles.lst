@@ -21,12 +21,17 @@ application/models/Booking.class
 application/controllers/ChangeStylesController.class
 application/models/Employee.class
 application/controllers/DatabaseHandler.class
+application/tests/CustomerAddBookingTests.class
 application/controllers/ViewBookingsController.class
 application/views/Menu.class
 application/controllers/ViewAvailableTimesController.class
 application/controllers/PublicMenuController.class
 application/views/CustomerMenu.class
 application/controllers/CustomerMenuController.class
+application/tests/AddServiceTests.class
+application/tests/AddShiftTest.class
 application/controllers/AddEmployeeController.class
+application/tests/AddEmployeeTests.class
 application/models/User.class
+application/tests/AddBusinessTest.class
 application/controllers/ViewAvailableTimesController$1.class

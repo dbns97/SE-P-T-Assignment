@@ -24,11 +24,11 @@
     "Jim's Barber Shop": {
         "styles": {
             "background": [
-                100.00000163912773,
-                200.00000327825546,
-                100.00000163912773
+                255,
+                172.00000494718552,
+                0
             ],
-            "font": "Arial Black"
+            "font": "Avenir"
         },
         "services": [
             {

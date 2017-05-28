@@ -1,0 +1,5 @@
+application/tests/AddServiceTests.class
+application/tests/AddShiftTest.class
+application/tests/CustomerAddBookingTests.class
+application/tests/AddBusinessTest.class
+application/tests/AddEmployeeTests.class
