@@ -8,9 +8,21 @@
         "isOwner": true
     }},
     "Jim's Barber Shop": {
+        "": {
+            "password": "",
+            "isOwner": false,
+            "name": "",
+            "bookings": []
+        },
         "owner": {
             "password": "pass1",
             "isOwner": true
+        },
+        "username123123": {
+            "password": "pass1",
+            "isOwner": false,
+            "name": "name",
+            "bookings": []
         },
         "username3": {
             "password": "pass3",

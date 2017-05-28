@@ -149,6 +149,7 @@ public class RegisterFormController {
 			return false;
 		}
 
+		/*
 		if(username.getText().trim().isEmpty() || !(username.getText().matches("[a-zA-z0-9]+")))
 		{
 			errorLabel.setText("Please enter a username without symbols or whitespace");
@@ -198,7 +199,14 @@ public class RegisterFormController {
 				return false;
 			}
 		}
-
+		*/
+		String errorMessage = checkRegisterDetails(username.getText(), password.getText(), reenter.getText(), name.getText(), address.getText(), contactNumber.getText(), business);
+		if(!(errorMessage == null))
+		{
+			errorLabel.setText(errorMessage);
+			return false;
+		}
+		
 		Customer newUser = new Customer(username.getText(), name.getText(), password.getText());
 
 		business.addCustomer(newUser);
@@ -209,6 +217,45 @@ public class RegisterFormController {
 		logger.info("new user added to system : {}", username.getText());
 		return true;
 
+	}
+	
+	public String checkRegisterDetails(String username, String password, String reenter, String name, String address, String contactNumber, Business business) {
+		if (username.trim().isEmpty() || !(username.matches("[a-zA-z0-9]+"))) {
+			logger.debug("incorrect syntax with username");
+			return "Please enter a username without symbols or whitespace";
+		}
+
+		if (password.isEmpty()) {
+			return "Please enter a password";
+		}
+
+		if (reenter.isEmpty() || !reenter.equals(password)) {
+			return "Please re-enter your password";
+		}
+
+		if (!(name.matches("[a-zA-z ,.'-]+")) || name.trim().isEmpty()) {
+			logger.debug("incorrect syntax with entered name");
+			return "Please enter a name without numbers or symbols";
+		}
+
+		if (!(address.matches("[a-zA-z0-9 ,.'-]+")) || address.trim().isEmpty()) {
+			logger.debug("incorrect syntax with address");
+			return "Please enter an address without symbols";
+		}
+
+		if (!(contactNumber.matches("[0-9]+")) || contactNumber.trim().isEmpty()) {
+			logger.debug("incorrect syntax with contact number");
+			return "Please enter a contact number with only numbers";
+		}
+
+		// Checks the business's customers to see if the username already exists
+		for (Customer customer : business.getCustomers()) {
+			if (customer.getUsername().equals(username)) {
+				return "Username already exists";
+			}
+		}
+		logger.debug("Details correct");
+		return null;
 	}
 
 	private void login(Customer customer) {
