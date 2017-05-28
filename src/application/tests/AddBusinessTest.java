@@ -18,7 +18,7 @@ public class AddBusinessTest {
 
 	@Parameters
 	public static Collection<Object[]> data() {
-		// Test Structure: {Employee email, Employee name, whether the employee is added to the business, expect output}
+		// Test Structure: {Business name, Owner Username, Owner Password, Re-entered Password, Owner name, Owner Address, Owner Number, Expected result}
 		return Arrays.asList(new Object[][] { 
 				{"Business Name", "OwnerUsername", "Password", "Password", "John", "1 StreetName, CityName", "99999999", "Successfully registered OwnerUsername"},
 				{"Business Name 123", "OwnerUsername1", "Password1", "Password1", "John", "1 StreetName, CityName", "99999999", "Successfully registered OwnerUsername1"},

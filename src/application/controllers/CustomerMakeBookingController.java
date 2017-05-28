@@ -225,6 +225,7 @@ public class CustomerMakeBookingController
 				timeBox.setVisible(true);
 		}
 	}
+	
 	public void handleConfirmButton()
 	{
 		if( service.getValue() == null
@@ -249,9 +250,9 @@ public class CustomerMakeBookingController
 								+ "\n------------------------\n"							
 								);
 			*/
-			Boolean madeBooking = checkBooking();
+			String errorMessage = checkBooking(service.getValue(), employee.getValue(), day.getValue(), time.getText(), business);
 			
-			if (madeBooking == true)
+			if (errorMessage == null)
 			{
 				Booking newBooking = new Booking(StartTime, EndTime, currentEmployee, customer, currentService);
 				logger.info("booking made");
@@ -260,19 +261,23 @@ public class CustomerMakeBookingController
 				DatabaseHandler.writeBusinessToFile(business);
 				cm.showCustomerMenu();
 			}
+			else
+			{
+				errorLabel.setText(errorMessage);
+			}
 		}
 		
 		
 	}
 	
-	public Boolean checkBooking(String service, String employee, String day, String time, Business business)
+	public String checkBooking(String service, String employee, String day, String time, Business business)
 	{
 		if( service == null
 				|| employee == null
 				|| day == null 
 				|| time.isEmpty() )
 				{
-					return false;
+					return "Please complete all fields";
 				}
 				else
 				{
@@ -321,7 +326,15 @@ public class CustomerMakeBookingController
 					logger.debug("current chosen employee : {}", currentEmployee.getEmail() );
 					// checks that the start time is after employee start time
 					// and that it ends before employee end time
-					if (enteredStartTime >= empStartTime && enteredEndTime <= empEndTime)
+					logger.debug("{} - Start time of booking in milliseconds", enteredStartTime );
+					logger.debug("{} - Employee Start time of shift in milliseconds", empStartTime );
+					logger.debug("Boolean for StartTime >= EmployeeStart: {}", (enteredStartTime >= empStartTime));
+					logger.debug("{} - end time of booking in milliseconds", enteredEndTime );
+					logger.debug("{} - Employee end time of shift in milliseconds", empEndTime );
+					logger.debug("Boolean for EndTime <= EmployeeEnd: {}", (enteredEndTime <= empEndTime));
+					// if (enteredStartTime >= empStartTime && enteredEndTime <= empEndTime)
+					if((StartTime.after(employeeStartTime) || StartTime.equals(employeeStartTime)) &&
+							(EndTime.before(employeeEndTime) || EndTime.equals(employeeEndTime)))
 					{
 						// searches each of the customer bookings for that day
 						// and checks that the booking is not going into any for their bookings
@@ -336,7 +349,7 @@ public class CustomerMakeBookingController
 								//logger.debug("checks if the booking has the same employee as the one user chose");
 								if (booking.getEmployee().getEmail().equals(currentEmployee.getEmail()) ) 
 								{
-									logger.debug("- They match\n");
+									logger.debug("- They match");
 									
 									logger.debug("\tchosen start time : {}", StartTime);
 									logger.debug("\tbooking end time : {}",  booking.getEnd());
@@ -344,13 +357,13 @@ public class CustomerMakeBookingController
 									logger.debug("\tchosen end time : {}",  EndTime);
 									logger.debug("\tbooking start time : {}",  booking.getStart());
 									
-									//System.out.println();
-									
-									if ( ( StartTime.getTime() >= booking.getStart().getTime() && StartTime.getTime() <= booking.getEnd().getTime() )
-									   ||( EndTime.getTime() <= booking.getEnd().getTime() && EndTime.getTime() >= booking.getStart().getTime() ) )
+									if ( (StartTime.getTime() > booking.getStart().getTime() && StartTime.getTime() < booking.getEnd().getTime())
+									   || (EndTime.getTime() < booking.getEnd().getTime() && EndTime.getTime() > booking.getStart().getTime())
+									   || (StartTime.getTime() >= booking.getStart().getTime() && EndTime.getTime() <= booking.getEnd().getTime())
+									   || (StartTime.getTime() <= booking.getStart().getTime() && EndTime.getTime() >= booking.getEnd().getTime()))
 									{
-										errorLabel.setText("Your chosen time goes through another booking");
-										return false;
+										logger.info("Clashes with another booking");
+										return "Your chosen time goes through another booking";
 									}
 								}
 							}
@@ -358,11 +371,13 @@ public class CustomerMakeBookingController
 					}
 					else
 					{
-						errorLabel.setText("Choose a time when employee is working");
-						return false;
+						logger.info("Outside working times");
+						return "Choose a time when employee is working";
 					}
 					logger.info("check booking finished");	
-					return true;
+					return null;
+				}
+		
 		/*
 		if( service.getValue() == null
 		|| employee.getValue() == null

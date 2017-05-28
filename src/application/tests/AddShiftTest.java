@@ -54,7 +54,7 @@ public class AddShiftTest {
 	public void checkShiftTimesTest() {
 		AddShiftController controller = new AddShiftController();
 		String result = controller.checkShiftTimes(startTime, endTime);
-		Assert.assertEquals(expected, result);
+		assertEquals(expected, result);
 		
 	}
 
